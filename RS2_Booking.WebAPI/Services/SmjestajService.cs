@@ -9,18 +9,13 @@ using System.Threading.Tasks;
 
 namespace RS2_Booking.WebAPI.Services
 {
-    public class SmjestajService : ISmjestajService
+    public class SmjestajService : BaseService<SmjestajModel, SmjestajSearchRequest, Smjestaj>
     {
-        private readonly Online_BookingContext _context;
-        private readonly IMapper _mapper;
-
-        public SmjestajService(Online_BookingContext context, IMapper mapper)
+        public SmjestajService(Online_BookingContext context, IMapper mapper) : base(context, mapper)
         {
-            _context = context;
-            _mapper = mapper;
         }
 
-        public SmjestajModel GetById(int id)
+        public override SmjestajModel GetById(int id)
         {
             var m = _context.Smjestaj.Find(id);
            var nova = _mapper.Map<SmjestajModel>(m);
@@ -52,7 +47,7 @@ namespace RS2_Booking.WebAPI.Services
             return _mapper.Map<SmjestajModel>(s);
         }
 
-        List<SmjestajModel> ISmjestajService.Get(SmjestajSearchRequest request)
+        public override List<SmjestajModel> Get(SmjestajSearchRequest request)
         {
             var query = _context.Smjestaj.AsQueryable();
             if ( request.GradId > 0)
@@ -62,6 +57,11 @@ namespace RS2_Booking.WebAPI.Services
             if (!(string.IsNullOrWhiteSpace(request.Naziv)))
             {
                 query = query.Where(x => x.Naziv.Contains(request.Naziv));
+            }
+
+            if ( request.IzdavacId > 0 )
+            {
+                query = query.Where(x => x.IzdavacId == request.IzdavacId);
             }
 
             var lista = query.ToList();

@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using RS2_Booking.WebAPI.Models;
 using RS2_Booking.WebAPI.Filters;
 using RS2_Booking.Model;
+using RS2_Booking.Model.Requests;
 
 namespace RS2_Booking.WebAPI
 {
@@ -44,7 +45,7 @@ namespace RS2_Booking.WebAPI
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
 
-            services.AddScoped<ISmjestajService, SmjestajService>();
+            services.AddScoped<IService<SmjestajModel, SmjestajSearchRequest>, BaseService<SmjestajModel, SmjestajSearchRequest, Smjestaj>>();
             services.AddScoped<IKorisnikService, KorisnikService>();
             services.AddScoped<IService<GradModel, object>, BaseService<GradModel, object, Grad>>();
             services.AddScoped<IService<SobaModel, object>, BaseService<SobaModel, object, Soba>>();
