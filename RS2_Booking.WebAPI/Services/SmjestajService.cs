@@ -1,0 +1,79 @@
+﻿using AutoMapper;
+using RS2_Booking.Model;
+using RS2_Booking.Model.Requests;
+using RS2_Booking.WebAPI.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace RS2_Booking.WebAPI.Services
+{
+    public class SmjestajService : ISmjestajService
+    {
+        private readonly Online_BookingContext _context;
+        private readonly IMapper _mapper;
+
+        public SmjestajService(Online_BookingContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public SmjestajModel GetById(int id)
+        {
+            var m = _context.Smjestaj.Find(id);
+           var nova = _mapper.Map<SmjestajModel>(m);
+            SmjestajModel Model = new SmjestajModel();
+            Model = nova;
+            Model.GradNaziv = _context.Grad.Where(x => x.GradId == Model.GradId).SingleOrDefault().Naziv;
+            return Model;
+        }
+
+
+        public Smjestaj Insert(SmjestajInsertRequest request)
+        {
+            var s = _mapper.Map<Models.Smjestaj>(request);
+
+            Smjestaj q = new Smjestaj();
+            return q;
+        }
+
+        public SmjestajModel Update(int id, SmjestajModel m)
+        {
+            Smjestaj s = _context.Smjestaj.Find(id);
+
+            s.Naziv = m.Naziv;
+            s.Opis = m.Opis;
+            s.Email = m.Email;
+            s.KontaktTelefon = m.KontaktTelefon;
+
+            _context.SaveChanges();
+            return _mapper.Map<SmjestajModel>(s);
+        }
+
+        List<SmjestajModel> ISmjestajService.Get(SmjestajSearchRequest request)
+        {
+            var query = _context.Smjestaj.AsQueryable();
+            if ( request.GradId > 0)
+            {
+                query = query.Where(x => x.GradId == request.GradId);
+            }
+            if (!(string.IsNullOrWhiteSpace(request.Naziv)))
+            {
+                query = query.Where(x => x.Naziv.Contains(request.Naziv));
+            }
+
+            var lista = query.ToList();
+
+            var novalista = _mapper.Map<List<SmjestajModel>>(lista);
+
+            foreach ( SmjestajModel sm in novalista )
+            {
+                sm.GradNaziv = _context.Grad.Where(x => x.GradId == sm.GradId).SingleOrDefault().Naziv;
+            }
+
+            return novalista;
+        }
+    }
+}

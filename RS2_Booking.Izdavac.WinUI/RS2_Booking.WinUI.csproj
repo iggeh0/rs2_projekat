@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F07BC63E-C4C0-4BEA-80E7-12CDA0920CDD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RS2_Booking.Izdavac.WinUI</RootNamespace>
+    <AssemblyName>RS2_Booking.Izdavac.WinUI</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Flurl, Version=2.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.2.8.1\lib\net40\Flurl.dll</HintPath>
+    </Reference>
+    <Reference Include="Flurl.Http, Version=2.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.Http.2.4.1\lib\net46\Flurl.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administrator\frm_AdminIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\frm_AdminIndex.Designer.cs">
+      <DependentUpon>frm_AdminIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APIService.cs" />
+    <Compile Include="frm_Korisnik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Korisnik.Designer.cs">
+      <DependentUpon>frm_Korisnik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Login.Designer.cs">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Izdavac\frm_DodajSmjestaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izdavac\frm_DodajSmjestaj.Designer.cs">
+      <DependentUpon>frm_DodajSmjestaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izdavac\frm_IzdavacRezervacija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izdavac\frm_IzdavacRezervacija.Designer.cs">
+      <DependentUpon>frm_IzdavacRezervacija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izdavac\frm_IzdavacRezervacijaDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izdavac\frm_IzdavacRezervacijaDetalji.Designer.cs">
+      <DependentUpon>frm_IzdavacRezervacijaDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izdavac\frm_Smjestaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izdavac\frm_Smjestaj.Designer.cs">
+      <DependentUpon>frm_Smjestaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izdavac\frm_SmjestajOkoline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izdavac\frm_SmjestajOkoline.Designer.cs">
+      <DependentUpon>frm_SmjestajOkoline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izdavac\frm_SmjestajSobe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izdavac\frm_SmjestajSobe.Designer.cs">
+      <DependentUpon>frm_SmjestajSobe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izdavac\frm_SmjestajUsluge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izdavac\frm_SmjestajUsluge.Designer.cs">
+      <DependentUpon>frm_SmjestajUsluge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izdavac\frm_DodajSobe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izdavac\frm_DodajSobe.Designer.cs">
+      <DependentUpon>frm_DodajSobe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izdavac\frm_UrediSmjestaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izdavac\frm_UrediSmjestaj.Designer.cs">
+      <DependentUpon>frm_UrediSmjestaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izdavac\frm_UrediSobe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izdavac\frm_UrediSobe.Designer.cs">
+      <DependentUpon>frm_UrediSobe.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Administrator\frm_AdminIndex.resx">
+      <DependentUpon>frm_AdminIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Korisnik.resx">
+      <DependentUpon>frm_Korisnik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Login.resx">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Izdavac\frm_DodajSmjestaj.resx">
+      <DependentUpon>frm_DodajSmjestaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izdavac\frm_IzdavacRezervacija.resx">
+      <DependentUpon>frm_IzdavacRezervacija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izdavac\frm_IzdavacRezervacijaDetalji.resx">
+      <DependentUpon>frm_IzdavacRezervacijaDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izdavac\frm_Smjestaj.resx">
+      <DependentUpon>frm_Smjestaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izdavac\frm_SmjestajOkoline.resx">
+      <DependentUpon>frm_SmjestajOkoline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izdavac\frm_SmjestajSobe.resx">
+      <DependentUpon>frm_SmjestajSobe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izdavac\frm_SmjestajUsluge.resx">
+      <DependentUpon>frm_SmjestajUsluge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izdavac\frm_DodajSobe.resx">
+      <DependentUpon>frm_DodajSobe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izdavac\frm_UrediSmjestaj.resx">
+      <DependentUpon>frm_UrediSmjestaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izdavac\frm_UrediSobe.resx">
+      <DependentUpon>frm_UrediSobe.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RS2_Booking.ModelNovi\RS2_Booking.Model.csproj">
+      <Project>{c84cc8fa-7881-4ea6-bc12-6e5fc8c542e5}</Project>
+      <Name>RS2_Booking.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
