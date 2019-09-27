@@ -18,16 +18,5 @@ namespace RS2_Booking.WebAPI.Controllers
         {
         }
 
-        
-        //[HttpPut("{id}")]
-        //public SmjestajModel Update(int id, SmjestajModel m)
-        //{
-        //    return _smjestajService.Update(id, m);
-        //}
-        //[HttpPost]
-        //public void Insert(SmjestajInsertRequest request)
-        //{
-        //    _smjestajService.Insert(request);
-        //}
     }
 }

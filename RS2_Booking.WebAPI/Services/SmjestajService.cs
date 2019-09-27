@@ -15,42 +15,10 @@ namespace RS2_Booking.WebAPI.Services
         {
         }
 
-        public override SmjestajModel GetById(int id)
-        {
-            var m = _context.Smjestaj.Find(id);
-           var nova = _mapper.Map<SmjestajModel>(m);
-            SmjestajModel Model = new SmjestajModel();
-            Model = nova;
-            Model.GradNaziv = _context.Grad.Where(x => x.GradId == Model.GradId).SingleOrDefault().Naziv;
-            return Model;
-        }
-
-
-        public Smjestaj Insert(SmjestajInsertRequest request)
-        {
-            var s = _mapper.Map<Models.Smjestaj>(request);
-
-            Smjestaj q = new Smjestaj();
-            return q;
-        }
-
-        public SmjestajModel Update(int id, SmjestajModel m)
-        {
-            Smjestaj s = _context.Smjestaj.Find(id);
-
-            s.Naziv = m.Naziv;
-            s.Opis = m.Opis;
-            s.Email = m.Email;
-            s.KontaktTelefon = m.KontaktTelefon;
-
-            _context.SaveChanges();
-            return _mapper.Map<SmjestajModel>(s);
-        }
-
         public override List<SmjestajModel> Get(SmjestajSearchRequest request)
         {
             var query = _context.Smjestaj.AsQueryable();
-            if ( request.GradId > 0)
+            if (request.GradId > 0)
             {
                 query = query.Where(x => x.GradId == request.GradId);
             }
@@ -59,7 +27,7 @@ namespace RS2_Booking.WebAPI.Services
                 query = query.Where(x => x.Naziv.Contains(request.Naziv));
             }
 
-            if ( request.IzdavacId > 0 )
+            if (request.IzdavacId > 0)
             {
                 query = query.Where(x => x.IzdavacId == request.IzdavacId);
             }
@@ -68,12 +36,22 @@ namespace RS2_Booking.WebAPI.Services
 
             var novalista = _mapper.Map<List<SmjestajModel>>(lista);
 
-            foreach ( SmjestajModel sm in novalista )
+            foreach (SmjestajModel sm in novalista)
             {
                 sm.GradNaziv = _context.Grad.Where(x => x.GradId == sm.GradId).SingleOrDefault().Naziv;
             }
 
             return novalista;
+        }
+
+        public override SmjestajModel GetById(int id)
+        {
+            var m = _context.Smjestaj.Find(id);
+           var nova = _mapper.Map<SmjestajModel>(m);
+            SmjestajModel Model = new SmjestajModel();
+            Model = nova;
+            Model.GradNaziv = _context.Grad.Where(x => x.GradId == Model.GradId).SingleOrDefault().Naziv;
+            return Model;
         }
     }
 }
