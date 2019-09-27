@@ -44,11 +44,12 @@ namespace RS2_Booking.WebAPI
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
+            services.AddScoped<IService<InventarModel, InventarSearchRequest>, InventarService>();
 
+            services.AddScoped<IService<SobaModel, SobaSearchRequest>, SobaService>();
             services.AddScoped<IService<SmjestajModel, SmjestajSearchRequest>, SmjestajService>();
             services.AddScoped<IKorisnikService, KorisnikService>();
             services.AddScoped<IService<GradModel, object>, BaseService<GradModel, object, Grad>>();
-            services.AddScoped<IService<SobaModel, object>, BaseService<SobaModel, object, Soba>>();
 
         }
 

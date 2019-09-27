@@ -21,9 +21,12 @@ namespace RS2_Booking.WebAPI.Mapper
             CreateMap<Korisnik, KorisnikEditRequest>();
             CreateMap<SmjestajInsertRequest, Smjestaj>();
             CreateMap<Smjestaj, Model.SmjestajModel>();
+            CreateMap<Model.SmjestajModel,Smjestaj>();
             CreateMap<Grad, Model.GradModel>();
             CreateMap<Soba, Model.SobaModel>();
             CreateMap<Model.SobaModel, Soba>();
+            CreateMap<Model.InventarModel, Inventar>();
+            CreateMap<Inventar, Model.InventarModel>();
         }
     }
 }

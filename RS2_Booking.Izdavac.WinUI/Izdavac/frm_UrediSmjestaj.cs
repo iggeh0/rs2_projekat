@@ -14,11 +14,14 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
     public partial class frm_UrediSmjestaj : Form
     {
         private int _SmjestajId = 0;
+        private int _IzdavacId;
         private readonly APIService _APIService = new APIService("smjestaj");
+        SmjestajModel Model = new SmjestajModel();
 
-        public frm_UrediSmjestaj(int SmjestajId)
+        public frm_UrediSmjestaj(int SmjestajId, int IzdavacId)
         {
             _SmjestajId = SmjestajId;
+            _IzdavacId = IzdavacId;
             InitializeComponent();         
         }
 
@@ -34,6 +37,8 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
                 tb_Email.Text = S.Email;
                 tb_Telefon.Text = S.KontaktTelefon;
                 tb_Opis.Text = S.Opis;
+
+                Model = S;
             }
         }
 
@@ -45,6 +50,11 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             request.Opis = tb_Opis.Text;
             request.KontaktTelefon = tb_Telefon.Text;
             request.SmjestajId = _SmjestajId;
+            request.Adresa = Model.Adresa;
+            request.Distanca = Model.Distanca;
+            request.GradId = Model.GradId;
+            request.IzdavacId = _IzdavacId;
+
             await _APIService.Update<SmjestajModel>(_SmjestajId, request);
         }
 
@@ -52,6 +62,13 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
         {
             frm_SmjestajSobe Form = new frm_SmjestajSobe(_SmjestajId);
             Form.Show();
+        }
+
+        private void btn_Nazad_Click(object sender, EventArgs e)
+        {
+            frm_Smjestaj Form = new frm_Smjestaj(_IzdavacId);
+            Form.Show();
+            Close();
         }
     }
 }

@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using RS2_Booking.WebAPI.Services;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace RS2_Booking.WebAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -27,10 +25,28 @@ namespace RS2_Booking.WebAPI.Controllers
             return _Service.Get(search);
         }
 
+        [HttpDelete("{id}")]
+        public void Remove(int id)
+        {
+            _Service.Remove(id);
+        }
+
         [HttpGet("{id}")]
         public TModel GetById(int id)
         {
             return _Service.GetById(id);
+        }
+
+        [HttpPost]
+        public virtual TModel Insert(TModel Model)
+        {
+            return _Service.Insert(Model);
+        }
+
+        [HttpPut("{id}")]
+        public TModel Update(TModel Model, int id)
+        {
+            return _Service.Update(Model, id);
         }
     }
 }

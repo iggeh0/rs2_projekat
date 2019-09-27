@@ -45,6 +45,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lbl_Adresa = new System.Windows.Forms.Label();
             this.btn_Slike = new System.Windows.Forms.Button();
+            this.btn_Nazad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_SmjestajSobe
@@ -195,11 +196,23 @@
             this.btn_Slike.Text = "Upravljanje slikama";
             this.btn_Slike.UseVisualStyleBackColor = true;
             // 
+            // btn_Nazad
+            // 
+            this.btn_Nazad.Location = new System.Drawing.Point(74, 328);
+            this.btn_Nazad.Name = "btn_Nazad";
+            this.btn_Nazad.Size = new System.Drawing.Size(75, 23);
+            this.btn_Nazad.TabIndex = 20;
+            this.btn_Nazad.Text = "Nazad";
+            this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
+            // 
             // frm_UrediSmjestaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btn_Nazad;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_Nazad);
             this.Controls.Add(this.btn_Slike);
             this.Controls.Add(this.lbl_Adresa);
             this.Controls.Add(this.label7);
@@ -243,5 +256,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lbl_Adresa;
         private System.Windows.Forms.Button btn_Slike;
+        private System.Windows.Forms.Button btn_Nazad;
     }
 }

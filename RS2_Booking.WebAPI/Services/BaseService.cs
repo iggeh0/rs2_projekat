@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using RS2_Booking.WebAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -18,16 +19,44 @@ namespace RS2_Booking.WebAPI.Services
             _mapper = mapper;
         }
 
-         virtual public List<TModel> Get(TSearch search)
+         public virtual List<TModel> Get(TSearch search)
         {
             var lista = _context.Set<TDatabase>().ToList();
             return _mapper.Map<List<TModel>>(lista);
         }
 
-        virtual public TModel GetById(int id)
+        public virtual TModel GetById(int id)
         {
             var target = _context.Set<TDatabase>().Find(id);
             return _mapper.Map<TModel>(target);
+        }
+
+        public virtual TModel Insert(TModel model)
+        {
+            TDatabase entity = _mapper.Map<TDatabase>(model);
+            _context.Set<TDatabase>().Add(entity);
+            _context.SaveChanges();
+            return model;
+        }
+
+        public virtual void Remove(int id)
+        {
+            var entity = _context.Set<TDatabase>().Find(id);
+            _context.Set<TDatabase>().Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public virtual TModel Update(TModel model, int id)
+        {
+            var entity = _context.Set<TDatabase>().Find(id);
+
+            _context.Set<TDatabase>().Attach(entity);
+            _context.Set<TDatabase>().Update(entity);
+            _mapper.Map(model, entity);
+
+
+            _context.SaveChanges();
+            return _mapper.Map<TModel>(entity);
         }
     }
 }

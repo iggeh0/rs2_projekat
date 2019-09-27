@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tb_BrojKreveta = new System.Windows.Forms.TextBox();
             this.tb_Cijena = new System.Windows.Forms.TextBox();
             this.tb_Vrsta = new System.Windows.Forms.TextBox();
@@ -38,12 +39,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btn_Dodaj = new System.Windows.Forms.Button();
             this.btn_Nazad = new System.Windows.Forms.Button();
             this.tb_Opis = new System.Windows.Forms.RichTextBox();
-            this.dgv_Sobe = new System.Windows.Forms.DataGridView();
             this.btn_Snimi = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Sobe)).BeginInit();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // tb_BrojKreveta
@@ -52,6 +52,7 @@
             this.tb_BrojKreveta.Name = "tb_BrojKreveta";
             this.tb_BrojKreveta.Size = new System.Drawing.Size(100, 20);
             this.tb_BrojKreveta.TabIndex = 0;
+            this.tb_BrojKreveta.Validating += new System.ComponentModel.CancelEventHandler(this.tb_BrojKreveta_Validating);
             // 
             // tb_Cijena
             // 
@@ -59,6 +60,7 @@
             this.tb_Cijena.Name = "tb_Cijena";
             this.tb_Cijena.Size = new System.Drawing.Size(100, 20);
             this.tb_Cijena.TabIndex = 1;
+            this.tb_Cijena.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Cijena_Validating);
             // 
             // tb_Vrsta
             // 
@@ -66,6 +68,7 @@
             this.tb_Vrsta.Name = "tb_Vrsta";
             this.tb_Vrsta.Size = new System.Drawing.Size(100, 20);
             this.tb_Vrsta.TabIndex = 2;
+            this.tb_Vrsta.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Vrsta_Validating);
             // 
             // tb_Velicina
             // 
@@ -73,6 +76,7 @@
             this.tb_Velicina.Name = "tb_Velicina";
             this.tb_Velicina.Size = new System.Drawing.Size(100, 20);
             this.tb_Velicina.TabIndex = 4;
+            this.tb_Velicina.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Velicina_Validating);
             // 
             // cb_Kupaonica
             // 
@@ -129,20 +133,11 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Veličina sobe (m²)";
             // 
-            // btn_Dodaj
-            // 
-            this.btn_Dodaj.Location = new System.Drawing.Point(15, 177);
-            this.btn_Dodaj.Name = "btn_Dodaj";
-            this.btn_Dodaj.Size = new System.Drawing.Size(75, 23);
-            this.btn_Dodaj.TabIndex = 11;
-            this.btn_Dodaj.Text = "Dodaj";
-            this.btn_Dodaj.UseVisualStyleBackColor = true;
-            this.btn_Dodaj.Click += new System.EventHandler(this.btn_Dodaj_Click);
-            // 
             // btn_Nazad
             // 
+            this.btn_Nazad.CausesValidation = false;
             this.btn_Nazad.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Nazad.Location = new System.Drawing.Point(363, 391);
+            this.btn_Nazad.Location = new System.Drawing.Point(15, 229);
             this.btn_Nazad.Name = "btn_Nazad";
             this.btn_Nazad.Size = new System.Drawing.Size(75, 23);
             this.btn_Nazad.TabIndex = 12;
@@ -157,24 +152,21 @@
             this.tb_Opis.Size = new System.Drawing.Size(100, 96);
             this.tb_Opis.TabIndex = 13;
             this.tb_Opis.Text = "";
-            // 
-            // dgv_Sobe
-            // 
-            this.dgv_Sobe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Sobe.Location = new System.Drawing.Point(12, 206);
-            this.dgv_Sobe.Name = "dgv_Sobe";
-            this.dgv_Sobe.Size = new System.Drawing.Size(739, 100);
-            this.dgv_Sobe.TabIndex = 14;
+            this.tb_Opis.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Opis_Validating);
             // 
             // btn_Snimi
             // 
-            this.btn_Snimi.Location = new System.Drawing.Point(363, 358);
+            this.btn_Snimi.Location = new System.Drawing.Point(14, 200);
             this.btn_Snimi.Name = "btn_Snimi";
             this.btn_Snimi.Size = new System.Drawing.Size(75, 23);
             this.btn_Snimi.TabIndex = 15;
             this.btn_Snimi.Text = "Snimi";
             this.btn_Snimi.UseVisualStyleBackColor = true;
             this.btn_Snimi.Click += new System.EventHandler(this.btn_Snimi_Click);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // frm_DodajSobe
             // 
@@ -183,10 +175,8 @@
             this.CancelButton = this.btn_Nazad;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btn_Snimi);
-            this.Controls.Add(this.dgv_Sobe);
             this.Controls.Add(this.tb_Opis);
             this.Controls.Add(this.btn_Nazad);
-            this.Controls.Add(this.btn_Dodaj);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -199,7 +189,7 @@
             this.Controls.Add(this.tb_BrojKreveta);
             this.Name = "frm_DodajSobe";
             this.Text = "Dodaj Sobu";
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Sobe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,10 +207,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btn_Dodaj;
         private System.Windows.Forms.Button btn_Nazad;
         private System.Windows.Forms.RichTextBox tb_Opis;
-        private System.Windows.Forms.DataGridView dgv_Sobe;
         private System.Windows.Forms.Button btn_Snimi;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
