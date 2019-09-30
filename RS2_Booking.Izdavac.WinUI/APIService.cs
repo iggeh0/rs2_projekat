@@ -50,5 +50,12 @@ namespace RS2_Booking.Izdavac.WinUI
 
             return await url.PutJsonAsync(request).ReceiveJson<T>();
         }
+
+        public async void Delete<T>(object id)
+        {
+            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
+
+            await url.DeleteAsync();
+        }
     }
 }

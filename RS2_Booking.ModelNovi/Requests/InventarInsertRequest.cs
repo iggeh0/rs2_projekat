@@ -7,7 +7,9 @@ namespace RS2_Booking.Model.Requests
 {
     public class InventarInsertRequest
     {
-        [Required]
-        public InventarModel Inventar { get; set; }
+        public int InventarId { get; set; }
+        public string Naziv { get; set; }
+        public int SobaId { get; set; }
+        public int InventarSobaId { get; set; }
     }
 }

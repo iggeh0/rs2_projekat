@@ -49,7 +49,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
                     var id = int.Parse(dgv_Smjestaj[e.ColumnIndex + 2, e.RowIndex].Value.ToString());
                     frm_UrediSmjestaj Form = new frm_UrediSmjestaj(id, _IzdavacId);
                     Form.Show();
-                    Close();
+                    //Close();
                 }
                     
                 }

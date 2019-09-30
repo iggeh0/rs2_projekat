@@ -11,12 +11,10 @@ using RS2_Booking.WebAPI.Services;
 
 namespace RS2_Booking.WebAPI.Controllers
 {
-
-    public class SobaController : BaseController<SobaModel, SobaSearchRequest, SobaInsertRequest>
+    public class OkolinaController : BaseController<OkolinaModel, OkolinaSearchRequest, OkolinaInsertRequest>
     {
-        public SobaController(IService<SobaModel, SobaSearchRequest, SobaInsertRequest> Service) : base(Service)
+        public OkolinaController(IService<OkolinaModel, OkolinaSearchRequest, OkolinaInsertRequest> Service) : base(Service)
         {
-
         }
     }
 }

@@ -12,9 +12,9 @@ using RS2_Booking.WebAPI.Services;
 
 namespace RS2_Booking.WebAPI.Controllers
 {
-    public class InventarController : BaseController<InventarModel, InventarSearchRequest>
+    public class InventarController : BaseController<InventarModel, InventarSearchRequest, InventarInsertRequest>
     {
-        public InventarController(IService<InventarModel, InventarSearchRequest> Service) : base(Service)
+        public InventarController(IService<InventarModel, InventarSearchRequest, InventarInsertRequest> Service) : base(Service)
         {
         }       
 

@@ -9,12 +9,12 @@ namespace RS2_Booking.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseController<TModel, TSearch> : ControllerBase
+    public class BaseController<TModel, TSearch, TInsertModel> : ControllerBase
     {
 
-        private IService<TModel, TSearch> _Service;
+        private IService<TModel, TSearch, TInsertModel> _Service;
 
-        public BaseController(IService<TModel, TSearch> Service)
+        public BaseController(IService<TModel, TSearch, TInsertModel> Service)
         {
             _Service = Service;
         }
@@ -26,9 +26,9 @@ namespace RS2_Booking.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public void Remove(int id)
+        public void Delete(int id)
         {
-            _Service.Remove(id);
+            _Service.Delete(id);
         }
 
         [HttpGet("{id}")]
@@ -38,7 +38,7 @@ namespace RS2_Booking.WebAPI.Controllers
         }
 
         [HttpPost]
-        public virtual TModel Insert(TModel Model)
+        public virtual TInsertModel Insert(TInsertModel Model)
         {
             return _Service.Insert(Model);
         }

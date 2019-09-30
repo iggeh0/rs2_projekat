@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace RS2_Booking.WebAPI.Services
 {
-    public class InventarService : BaseService<InventarModel, InventarSearchRequest, Inventar>
+    public class InventarService : BaseService<InventarModel, InventarSearchRequest, InventarInsertRequest, Inventar>
     {
         public InventarService(Online_BookingContext context, IMapper mapper) : base(context, mapper)
         {
         }
 
-        public override InventarModel Insert(InventarModel model)
+        public override InventarInsertRequest Insert(InventarInsertRequest model)
         {
             Inventar i = new Inventar
             {
@@ -23,21 +23,39 @@ namespace RS2_Booking.WebAPI.Services
             };
             _context.Inventar.Add(i);
             _context.SaveChanges();
-            InventarSoba obj = new InventarSoba();
-            obj.InventarId = i.InventarId;
-            obj.SobaId = model.SobaId;
+            InventarSoba obj = new InventarSoba
+            {
+                InventarId = i.InventarId,
+                SobaId = model.SobaId
+            };
             _context.InventarSoba.Add(obj);
             _context.SaveChanges();
+            model.InventarSobaId = obj.InventarSobaId;
             return model;
         }
         public override List<InventarModel> Get(InventarSearchRequest request)
         {
 
-            var query = from inventar in _context.Inventar
-                        join inventarsoba in _context.InventarSoba.Where(x=> x.SobaId == request.SobaId)
-                        on inventar.InventarId equals inventarsoba.InventarId
-                        select inventar;
-            return _mapper.Map<List<InventarModel>>(query);
+            var query = (from inventar in _context.Inventar
+                         join inventarsoba in _context.InventarSoba.Where(x => x.SobaId == request.SobaId)
+                         on inventar.InventarId equals inventarsoba.InventarId
+                         select new InventarModel()
+                         {
+                             InventarId = inventar.InventarId,
+                             Naziv = inventar.Naziv,
+                             SobaId = request.SobaId,
+                             InventarSobaId = inventarsoba.InventarSobaId
+                         }).ToList();
+                   
+            return query;
         }
+
+        public override void Delete(int id)
+        {
+            var entity = _context.InventarSoba.Find(id);
+            _context.InventarSoba.Remove(entity);
+            _context.SaveChanges();
+        }
+
     }
 }

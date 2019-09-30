@@ -27,6 +27,10 @@ namespace RS2_Booking.WebAPI.Mapper
             CreateMap<Model.SobaModel, Soba>();
             CreateMap<Model.InventarModel, Inventar>();
             CreateMap<Inventar, Model.InventarModel>();
+            CreateMap<Model.OkolinaModel, Okolina>();
+            CreateMap<Okolina, Model.OkolinaModel>();
+            CreateMap<Okolina, OkolinaInsertRequest>();
+            CreateMap<OkolinaInsertRequest, Okolina>();
         }
     }
 }

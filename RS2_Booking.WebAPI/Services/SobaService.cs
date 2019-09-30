@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RS2_Booking.WebAPI.Services
 {
-    public class SobaService : BaseService<SobaModel, SobaSearchRequest, Soba>
+    public class SobaService : BaseService<SobaModel, SobaSearchRequest, SobaInsertRequest, Soba>
     {
         public SobaService(Online_BookingContext context, IMapper mapper) : base(context, mapper)
         {

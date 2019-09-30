@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RS2_Booking.WebAPI.Services
 {
-    public class SmjestajService : BaseService<SmjestajModel, SmjestajSearchRequest, Smjestaj>
+    public class SmjestajService : BaseService<SmjestajModel, SmjestajSearchRequest,  SmjestajInsertRequest, Smjestaj>
     {
         public SmjestajService(Online_BookingContext context, IMapper mapper) : base(context, mapper)
         {

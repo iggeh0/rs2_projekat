@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.btn_SmjestajSobe = new System.Windows.Forms.Button();
-            this.btn_SmjestajOkolina = new System.Windows.Forms.Button();
-            this.btn_SmjestajUsluge = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_Naziv = new System.Windows.Forms.TextBox();
             this.tb_Telefon = new System.Windows.Forms.TextBox();
@@ -46,35 +44,26 @@
             this.lbl_Adresa = new System.Windows.Forms.Label();
             this.btn_Slike = new System.Windows.Forms.Button();
             this.btn_Nazad = new System.Windows.Forms.Button();
+            this.dgv_Okolina = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tb_OkolinaDodaj = new System.Windows.Forms.TextBox();
+            this.btn_OkolinaDodaj = new System.Windows.Forms.Button();
+            this.dgv_Usluge = new System.Windows.Forms.DataGridView();
+            this.tb_UslugaDodaj = new System.Windows.Forms.TextBox();
+            this.btn_UslugaDodaj = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Okolina)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Usluge)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_SmjestajSobe
             // 
-            this.btn_SmjestajSobe.Location = new System.Drawing.Point(196, 8);
+            this.btn_SmjestajSobe.Location = new System.Drawing.Point(74, 10);
             this.btn_SmjestajSobe.Name = "btn_SmjestajSobe";
             this.btn_SmjestajSobe.Size = new System.Drawing.Size(147, 66);
             this.btn_SmjestajSobe.TabIndex = 1;
             this.btn_SmjestajSobe.Text = "Upravljanje sobama";
             this.btn_SmjestajSobe.UseVisualStyleBackColor = true;
             this.btn_SmjestajSobe.Click += new System.EventHandler(this.btn_SmjestajSobe_Click);
-            // 
-            // btn_SmjestajOkolina
-            // 
-            this.btn_SmjestajOkolina.Location = new System.Drawing.Point(74, 8);
-            this.btn_SmjestajOkolina.Name = "btn_SmjestajOkolina";
-            this.btn_SmjestajOkolina.Size = new System.Drawing.Size(100, 66);
-            this.btn_SmjestajOkolina.TabIndex = 2;
-            this.btn_SmjestajOkolina.Text = "Upravljanje okolinom";
-            this.btn_SmjestajOkolina.UseVisualStyleBackColor = true;
-            // 
-            // btn_SmjestajUsluge
-            // 
-            this.btn_SmjestajUsluge.Location = new System.Drawing.Point(349, 8);
-            this.btn_SmjestajUsluge.Name = "btn_SmjestajUsluge";
-            this.btn_SmjestajUsluge.Size = new System.Drawing.Size(138, 66);
-            this.btn_SmjestajUsluge.TabIndex = 3;
-            this.btn_SmjestajUsluge.Text = "Upravljanje uslugama";
-            this.btn_SmjestajUsluge.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -127,7 +116,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(292, 108);
+            this.label5.Location = new System.Drawing.Point(259, 108);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(28, 13);
             this.label5.TabIndex = 12;
@@ -135,7 +124,7 @@
             // 
             // tb_Opis
             // 
-            this.tb_Opis.Location = new System.Drawing.Point(295, 131);
+            this.tb_Opis.Location = new System.Drawing.Point(262, 125);
             this.tb_Opis.Name = "tb_Opis";
             this.tb_Opis.Size = new System.Drawing.Size(239, 117);
             this.tb_Opis.TabIndex = 13;
@@ -189,7 +178,7 @@
             // 
             // btn_Slike
             // 
-            this.btn_Slike.Location = new System.Drawing.Point(503, 12);
+            this.btn_Slike.Location = new System.Drawing.Point(262, 10);
             this.btn_Slike.Name = "btn_Slike";
             this.btn_Slike.Size = new System.Drawing.Size(118, 62);
             this.btn_Slike.TabIndex = 19;
@@ -198,6 +187,7 @@
             // 
             // btn_Nazad
             // 
+            this.btn_Nazad.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Nazad.Location = new System.Drawing.Point(74, 328);
             this.btn_Nazad.Name = "btn_Nazad";
             this.btn_Nazad.Size = new System.Drawing.Size(75, 23);
@@ -206,12 +196,77 @@
             this.btn_Nazad.UseVisualStyleBackColor = true;
             this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
+            // dgv_Okolina
+            // 
+            this.dgv_Okolina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Okolina.Location = new System.Drawing.Point(537, 125);
+            this.dgv_Okolina.Name = "dgv_Okolina";
+            this.dgv_Okolina.Size = new System.Drawing.Size(369, 117);
+            this.dgv_Okolina.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(537, 91);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Okolna mjesta:";
+            // 
+            // tb_OkolinaDodaj
+            // 
+            this.tb_OkolinaDodaj.Location = new System.Drawing.Point(540, 265);
+            this.tb_OkolinaDodaj.Name = "tb_OkolinaDodaj";
+            this.tb_OkolinaDodaj.Size = new System.Drawing.Size(100, 20);
+            this.tb_OkolinaDodaj.TabIndex = 23;
+            // 
+            // btn_OkolinaDodaj
+            // 
+            this.btn_OkolinaDodaj.Location = new System.Drawing.Point(646, 262);
+            this.btn_OkolinaDodaj.Name = "btn_OkolinaDodaj";
+            this.btn_OkolinaDodaj.Size = new System.Drawing.Size(75, 23);
+            this.btn_OkolinaDodaj.TabIndex = 24;
+            this.btn_OkolinaDodaj.Text = "Dodaj";
+            this.btn_OkolinaDodaj.UseVisualStyleBackColor = true;
+            this.btn_OkolinaDodaj.Click += new System.EventHandler(this.btn_OkolinaDodaj_Click);
+            // 
+            // dgv_Usluge
+            // 
+            this.dgv_Usluge.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Usluge.Location = new System.Drawing.Point(262, 365);
+            this.dgv_Usluge.Name = "dgv_Usluge";
+            this.dgv_Usluge.Size = new System.Drawing.Size(240, 150);
+            this.dgv_Usluge.TabIndex = 25;
+            // 
+            // tb_UslugaDodaj
+            // 
+            this.tb_UslugaDodaj.Location = new System.Drawing.Point(262, 521);
+            this.tb_UslugaDodaj.Name = "tb_UslugaDodaj";
+            this.tb_UslugaDodaj.Size = new System.Drawing.Size(100, 20);
+            this.tb_UslugaDodaj.TabIndex = 26;
+            // 
+            // btn_UslugaDodaj
+            // 
+            this.btn_UslugaDodaj.Location = new System.Drawing.Point(368, 518);
+            this.btn_UslugaDodaj.Name = "btn_UslugaDodaj";
+            this.btn_UslugaDodaj.Size = new System.Drawing.Size(75, 23);
+            this.btn_UslugaDodaj.TabIndex = 27;
+            this.btn_UslugaDodaj.Text = "Dodaj";
+            this.btn_UslugaDodaj.UseVisualStyleBackColor = true;
+            // 
             // frm_UrediSmjestaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Nazad;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.btn_UslugaDodaj);
+            this.Controls.Add(this.tb_UslugaDodaj);
+            this.Controls.Add(this.dgv_Usluge);
+            this.Controls.Add(this.btn_OkolinaDodaj);
+            this.Controls.Add(this.tb_OkolinaDodaj);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.dgv_Okolina);
             this.Controls.Add(this.btn_Nazad);
             this.Controls.Add(this.btn_Slike);
             this.Controls.Add(this.lbl_Adresa);
@@ -227,12 +282,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tb_Naziv);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btn_SmjestajUsluge);
-            this.Controls.Add(this.btn_SmjestajOkolina);
             this.Controls.Add(this.btn_SmjestajSobe);
             this.Name = "frm_UrediSmjestaj";
             this.Text = "Uredi Smještaj";
             this.Load += new System.EventHandler(this.frm_UrediSmjestaj_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Okolina)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Usluge)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,8 +295,6 @@
 
         #endregion
         private System.Windows.Forms.Button btn_SmjestajSobe;
-        private System.Windows.Forms.Button btn_SmjestajOkolina;
-        private System.Windows.Forms.Button btn_SmjestajUsluge;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_Naziv;
         private System.Windows.Forms.TextBox tb_Telefon;
@@ -257,5 +310,12 @@
         private System.Windows.Forms.Label lbl_Adresa;
         private System.Windows.Forms.Button btn_Slike;
         private System.Windows.Forms.Button btn_Nazad;
+        private System.Windows.Forms.DataGridView dgv_Okolina;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tb_OkolinaDodaj;
+        private System.Windows.Forms.Button btn_OkolinaDodaj;
+        private System.Windows.Forms.DataGridView dgv_Usluge;
+        private System.Windows.Forms.TextBox tb_UslugaDodaj;
+        private System.Windows.Forms.Button btn_UslugaDodaj;
     }
 }

@@ -141,7 +141,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             InventarModel request = new InventarModel();
             request.Naziv = tb_Inventar.Text;
             request.SobaId = _SobaId;
-
+            request.InventarSobaId = 0;
             await _InventarService.Insert<InventarInsertRequest>(request);
 
             InventarSearchRequest request2 = new InventarSearchRequest
@@ -152,6 +152,27 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
             dgv_Inventar.DataSource = lista;
 
+        }
+
+        private async void dgv_Inventar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv_Inventar.CurrentCell.ColumnIndex.Equals(2) && e.RowIndex != -1)
+            {
+                if (dgv_Inventar.CurrentCell != null)
+                {
+                    var id = int.Parse(dgv_Inventar[e.ColumnIndex + 1, e.RowIndex].Value.ToString());
+                    _InventarService.Delete<InventarModel>(id);
+
+                    InventarSearchRequest request2 = new InventarSearchRequest
+                    {
+                        SobaId = _SobaId
+                    };
+                    var lista = await _InventarService.Get<List<InventarModel>>(request2);
+
+                    dgv_Inventar.DataSource = lista;
+
+                }
+            }
         }
     }
 }

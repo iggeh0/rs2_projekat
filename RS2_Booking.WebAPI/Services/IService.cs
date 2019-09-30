@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 
 namespace RS2_Booking.WebAPI.Services
 {
-    public interface IService<TModel, TSearch>
+    public interface IService<TModel, TSearch, TInsertModel>
     {
         List<TModel> Get(TSearch search);
 
         TModel GetById(int id);
 
-        TModel Insert(TModel model);
+        TInsertModel Insert(TInsertModel model);
 
         TModel Update(TModel model, int id);
 
-        void Remove(int id);
+        void Delete(int id);
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RS2_Booking.WebAPI.Services
 {
-    public class BaseService<TModel, TSearch, TDatabase> : IService<TModel, TSearch> where TDatabase: class
+    public class BaseService<TModel, TSearch, TInsertModel, TDatabase> : IService<TModel, TSearch, TInsertModel> where TDatabase: class
     {
         public readonly Online_BookingContext _context;
         public readonly IMapper _mapper;
@@ -31,7 +31,7 @@ namespace RS2_Booking.WebAPI.Services
             return _mapper.Map<TModel>(target);
         }
 
-        public virtual TModel Insert(TModel model)
+        public virtual TInsertModel Insert(TInsertModel model)
         {
             TDatabase entity = _mapper.Map<TDatabase>(model);
             _context.Set<TDatabase>().Add(entity);
@@ -39,7 +39,7 @@ namespace RS2_Booking.WebAPI.Services
             return model;
         }
 
-        public virtual void Remove(int id)
+        public virtual void Delete(int id)
         {
             var entity = _context.Set<TDatabase>().Find(id);
             _context.Set<TDatabase>().Remove(entity);

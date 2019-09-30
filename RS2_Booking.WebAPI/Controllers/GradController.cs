@@ -11,10 +11,10 @@ using RS2_Booking.WebAPI.Services;
 namespace RS2_Booking.WebAPI.Controllers
 {
 
-    public class GradController : BaseController<Model.GradModel, object>
+    public class GradController : BaseController<GradModel, object, GradModel>
     {
 
-        public GradController(IService<GradModel, object> Service) : base(Service)
+        public GradController(IService<GradModel, object, GradModel> Service) : base(Service)
         {
         }
 

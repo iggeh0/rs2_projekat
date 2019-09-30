@@ -51,6 +51,7 @@
             this.InventarId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ukloni = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.InventarSobaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Inventar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -180,12 +181,14 @@
             this.dgv_Inventar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.InventarId,
             this.Naziv,
-            this.Ukloni});
+            this.Ukloni,
+            this.InventarSobaId});
             this.dgv_Inventar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Inventar.Location = new System.Drawing.Point(3, 16);
             this.dgv_Inventar.Name = "dgv_Inventar";
             this.dgv_Inventar.Size = new System.Drawing.Size(415, 132);
             this.dgv_Inventar.TabIndex = 0;
+            this.dgv_Inventar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Inventar_CellContentClick);
             // 
             // label6
             // 
@@ -247,6 +250,13 @@
             this.Ukloni.Text = "Ukloni";
             this.Ukloni.UseColumnTextForButtonValue = true;
             // 
+            // InventarSobaId
+            // 
+            this.InventarSobaId.DataPropertyName = "InventarSobaId";
+            this.InventarSobaId.HeaderText = "InventarSobaId";
+            this.InventarSobaId.Name = "InventarSobaId";
+            this.InventarSobaId.Visible = false;
+            // 
             // frm_UrediSobe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,5 +315,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn InventarId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewButtonColumn Ukloni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InventarSobaId;
     }
 }

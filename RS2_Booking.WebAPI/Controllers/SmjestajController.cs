@@ -12,9 +12,9 @@ namespace RS2_Booking.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SmjestajController : BaseController<SmjestajModel, SmjestajSearchRequest>
+    public class SmjestajController : BaseController<SmjestajModel, SmjestajSearchRequest, SmjestajInsertRequest>
     {
-        public SmjestajController(IService<SmjestajModel, SmjestajSearchRequest> Service) : base(Service)
+        public SmjestajController(IService<SmjestajModel, SmjestajSearchRequest, SmjestajInsertRequest> Service) : base(Service)
         {
         }
 

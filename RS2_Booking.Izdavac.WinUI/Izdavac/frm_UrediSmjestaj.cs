@@ -1,4 +1,5 @@
 ﻿using RS2_Booking.Model;
+using RS2_Booking.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,9 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
     {
         private int _SmjestajId = 0;
         private int _IzdavacId;
-        private readonly APIService _APIService = new APIService("smjestaj");
+        private readonly APIService _SmjestajService = new APIService("smjestaj");
+        private readonly APIService _OkolinaService = new APIService("okolina");
+        private readonly APIService _UslugaService = new APIService("usluga");
         SmjestajModel Model = new SmjestajModel();
 
         public frm_UrediSmjestaj(int SmjestajId, int IzdavacId)
@@ -29,7 +32,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
         {
             if ( _SmjestajId > 0 )
             {
-                var S = await _APIService.GetById<SmjestajModel>(_SmjestajId);
+                var S = await _SmjestajService.GetById<SmjestajModel>(_SmjestajId);
 
                 tb_Naziv.Text = S.Naziv;
                 lbl_Adresa.Text = S.Adresa;
@@ -40,6 +43,8 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
                 Model = S;
             }
+
+
         }
 
         private async void btn_Snimi_Click(object sender, EventArgs e)
@@ -55,7 +60,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             request.GradId = Model.GradId;
             request.IzdavacId = _IzdavacId;
 
-            await _APIService.Update<SmjestajModel>(_SmjestajId, request);
+            await _SmjestajService.Update<SmjestajModel>(_SmjestajId, request);
         }
 
         private void btn_SmjestajSobe_Click(object sender, EventArgs e)
@@ -66,9 +71,27 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private void btn_Nazad_Click(object sender, EventArgs e)
         {
-            frm_Smjestaj Form = new frm_Smjestaj(_IzdavacId);
-            Form.Show();
+            //frm_Smjestaj Form = new frm_Smjestaj(_IzdavacId);
+            //Form.Show();
             Close();
+        }
+
+        private async void btn_OkolinaDodaj_Click(object sender, EventArgs e)
+        {
+            OkolinaInsertRequest request = new OkolinaInsertRequest();
+            request.Naziv = tb_OkolinaDodaj.Text;
+            request.OkolinaId = 0;
+            request.SmjestajId = _SmjestajId;
+ 
+            await _OkolinaService.Insert<OkolinaInsertRequest>(request);
+
+            OkolinaSearchRequest request2 = new OkolinaSearchRequest
+            {
+                SmjestajId = _SmjestajId
+            };
+            var lista = await _OkolinaService.Get<List<OkolinaModel>>(request2);
+
+            dgv_Okolina.DataSource = lista;
         }
     }
 }
