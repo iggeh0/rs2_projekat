@@ -17,6 +17,11 @@ namespace RS2_Booking.WebAPI.Controllers
         public SmjestajController(IService<SmjestajModel, SmjestajSearchRequest, SmjestajInsertRequest> Service) : base(Service)
         {
         }
-
+        //[HttpGet]
+        //[Route("GetGrad")]
+        //public List<GradModel> Get()
+        //{
+        //    return new List<GradModel>();
+        //}
     }
 }

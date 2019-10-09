@@ -45,12 +45,22 @@
             this.btn_Slike = new System.Windows.Forms.Button();
             this.btn_Nazad = new System.Windows.Forms.Button();
             this.dgv_Okolina = new System.Windows.Forms.DataGridView();
+            this.OkolinaSmjestajId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NazivOkoline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UkloniOkolinu = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.tb_OkolinaDodaj = new System.Windows.Forms.TextBox();
             this.btn_OkolinaDodaj = new System.Windows.Forms.Button();
             this.dgv_Usluge = new System.Windows.Forms.DataGridView();
-            this.tb_UslugaDodaj = new System.Windows.Forms.TextBox();
+            this.UslugaSmjestajId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ukloni = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tb_UslugaNaziv = new System.Windows.Forms.TextBox();
             this.btn_UslugaDodaj = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tb_UslugaOpis = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Okolina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Usluge)).BeginInit();
             this.SuspendLayout();
@@ -199,10 +209,36 @@
             // dgv_Okolina
             // 
             this.dgv_Okolina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Okolina.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.OkolinaSmjestajId,
+            this.NazivOkoline,
+            this.UkloniOkolinu});
             this.dgv_Okolina.Location = new System.Drawing.Point(537, 125);
             this.dgv_Okolina.Name = "dgv_Okolina";
             this.dgv_Okolina.Size = new System.Drawing.Size(369, 117);
             this.dgv_Okolina.TabIndex = 21;
+            this.dgv_Okolina.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Okolina_CellContentClick);
+            // 
+            // OkolinaSmjestajId
+            // 
+            this.OkolinaSmjestajId.DataPropertyName = "OkolinaSmjestajId";
+            this.OkolinaSmjestajId.HeaderText = "OkolinaSmjestajId";
+            this.OkolinaSmjestajId.Name = "OkolinaSmjestajId";
+            this.OkolinaSmjestajId.Visible = false;
+            // 
+            // NazivOkoline
+            // 
+            this.NazivOkoline.DataPropertyName = "Naziv";
+            this.NazivOkoline.HeaderText = "Naziv Okoline";
+            this.NazivOkoline.Name = "NazivOkoline";
+            // 
+            // UkloniOkolinu
+            // 
+            this.UkloniOkolinu.HeaderText = "Ukloni";
+            this.UkloniOkolinu.Name = "UkloniOkolinu";
+            this.UkloniOkolinu.Text = "Ukloni";
+            this.UkloniOkolinu.ToolTipText = "Ukloni";
+            this.UkloniOkolinu.UseColumnTextForButtonValue = true;
             // 
             // label6
             // 
@@ -233,26 +269,86 @@
             // dgv_Usluge
             // 
             this.dgv_Usluge.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Usluge.Location = new System.Drawing.Point(262, 365);
+            this.dgv_Usluge.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.UslugaSmjestajId,
+            this.Naziv,
+            this.Opis,
+            this.Ukloni});
+            this.dgv_Usluge.Location = new System.Drawing.Point(275, 357);
             this.dgv_Usluge.Name = "dgv_Usluge";
             this.dgv_Usluge.Size = new System.Drawing.Size(240, 150);
             this.dgv_Usluge.TabIndex = 25;
+            this.dgv_Usluge.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Usluge_CellContentClick);
             // 
-            // tb_UslugaDodaj
+            // UslugaSmjestajId
             // 
-            this.tb_UslugaDodaj.Location = new System.Drawing.Point(262, 521);
-            this.tb_UslugaDodaj.Name = "tb_UslugaDodaj";
-            this.tb_UslugaDodaj.Size = new System.Drawing.Size(100, 20);
-            this.tb_UslugaDodaj.TabIndex = 26;
+            this.UslugaSmjestajId.DataPropertyName = "UslugaSmjestajId";
+            this.UslugaSmjestajId.HeaderText = "UslugaSmjestajId";
+            this.UslugaSmjestajId.Name = "UslugaSmjestajId";
+            this.UslugaSmjestajId.Visible = false;
+            // 
+            // Naziv
+            // 
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naziv";
+            this.Naziv.Name = "Naziv";
+            // 
+            // Opis
+            // 
+            this.Opis.DataPropertyName = "Opis";
+            this.Opis.HeaderText = "Opis";
+            this.Opis.Name = "Opis";
+            // 
+            // Ukloni
+            // 
+            this.Ukloni.HeaderText = "Ukloni";
+            this.Ukloni.Name = "Ukloni";
+            this.Ukloni.Text = "Ukloni";
+            this.Ukloni.ToolTipText = "Ukloni";
+            this.Ukloni.UseColumnTextForButtonValue = true;
+            // 
+            // tb_UslugaNaziv
+            // 
+            this.tb_UslugaNaziv.Location = new System.Drawing.Point(262, 542);
+            this.tb_UslugaNaziv.Name = "tb_UslugaNaziv";
+            this.tb_UslugaNaziv.Size = new System.Drawing.Size(100, 20);
+            this.tb_UslugaNaziv.TabIndex = 26;
             // 
             // btn_UslugaDodaj
             // 
-            this.btn_UslugaDodaj.Location = new System.Drawing.Point(368, 518);
+            this.btn_UslugaDodaj.Location = new System.Drawing.Point(426, 542);
             this.btn_UslugaDodaj.Name = "btn_UslugaDodaj";
             this.btn_UslugaDodaj.Size = new System.Drawing.Size(75, 23);
             this.btn_UslugaDodaj.TabIndex = 27;
             this.btn_UslugaDodaj.Text = "Dodaj";
             this.btn_UslugaDodaj.UseVisualStyleBackColor = true;
+            this.btn_UslugaDodaj.Click += new System.EventHandler(this.btn_UslugaDodaj_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(259, 526);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(71, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Naziv usluge:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(259, 578);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 13);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Opis usluge:";
+            // 
+            // tb_UslugaOpis
+            // 
+            this.tb_UslugaOpis.Location = new System.Drawing.Point(262, 604);
+            this.tb_UslugaOpis.Name = "tb_UslugaOpis";
+            this.tb_UslugaOpis.Size = new System.Drawing.Size(100, 96);
+            this.tb_UslugaOpis.TabIndex = 30;
+            this.tb_UslugaOpis.Text = "";
             // 
             // frm_UrediSmjestaj
             // 
@@ -260,8 +356,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Nazad;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.tb_UslugaOpis);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btn_UslugaDodaj);
-            this.Controls.Add(this.tb_UslugaDodaj);
+            this.Controls.Add(this.tb_UslugaNaziv);
             this.Controls.Add(this.dgv_Usluge);
             this.Controls.Add(this.btn_OkolinaDodaj);
             this.Controls.Add(this.tb_OkolinaDodaj);
@@ -315,7 +414,17 @@
         private System.Windows.Forms.TextBox tb_OkolinaDodaj;
         private System.Windows.Forms.Button btn_OkolinaDodaj;
         private System.Windows.Forms.DataGridView dgv_Usluge;
-        private System.Windows.Forms.TextBox tb_UslugaDodaj;
+        private System.Windows.Forms.TextBox tb_UslugaNaziv;
         private System.Windows.Forms.Button btn_UslugaDodaj;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RichTextBox tb_UslugaOpis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OkolinaSmjestajId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NazivOkoline;
+        private System.Windows.Forms.DataGridViewButtonColumn UkloniOkolinu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UslugaSmjestajId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
+        private System.Windows.Forms.DataGridViewButtonColumn Ukloni;
     }
 }

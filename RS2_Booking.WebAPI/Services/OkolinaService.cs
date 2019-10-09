@@ -26,8 +26,12 @@ namespace RS2_Booking.WebAPI.Services
                              Naziv = okolina.Naziv,
                              OkolinaSmjestajId = okolinasmjestaj.OkolinaSmjestajId
                          }).ToList();
-
-            return query;
+            if (query.Any())
+            {
+                return query;
+            }
+            else
+                return null;
         }
         public override OkolinaInsertRequest Insert(OkolinaInsertRequest model)
         {
@@ -43,6 +47,12 @@ namespace RS2_Booking.WebAPI.Services
             _context.OkolinaSmjestaj.Add(os);
             _context.SaveChanges();
             return model;
+        }
+        public override void Delete(int id)
+        {
+            OkolinaSmjestaj os = _context.OkolinaSmjestaj.Find(id);
+            _context.OkolinaSmjestaj.Remove(os);
+            _context.SaveChanges();
         }
     }
 }

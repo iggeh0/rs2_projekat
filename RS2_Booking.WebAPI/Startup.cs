@@ -46,6 +46,7 @@ namespace RS2_Booking.WebAPI
             });
             services.AddScoped<IService<InventarModel, InventarSearchRequest, InventarInsertRequest>, InventarService>();
             services.AddScoped<IService<OkolinaModel, OkolinaSearchRequest, OkolinaInsertRequest>, OkolinaService>();
+            services.AddScoped<IService<UslugaModel, UslugaSearchRequest, UslugaInsertRequest>, UslugaService>();
             services.AddScoped<IService<SobaModel, SobaSearchRequest, SobaInsertRequest>, SobaService>();
             services.AddScoped<IService<SmjestajModel, SmjestajSearchRequest, SmjestajInsertRequest>, SmjestajService>();
             services.AddScoped<IKorisnikService, KorisnikService>();

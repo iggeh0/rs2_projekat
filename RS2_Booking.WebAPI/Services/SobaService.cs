@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using RS2_Booking.Model;
 using RS2_Booking.Model.Requests;
+using RS2_Booking.WebAPI.Exceptions;
 using RS2_Booking.WebAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,20 @@ namespace RS2_Booking.WebAPI.Services
             }
             else
                 return null;
+        }
+        public override void Delete(int id)
+        {
+            Soba S = _context.Soba.Find(id);
+            if (_context.RezervacijaSoba.Where(x => x.SobaId == S.SobaId).Any())
+            {
+                throw new UserException("Nije dozvoljeno ukloniti rezervisane sobe");
+            }
+            else
+            {
+                _context.InventarSoba.RemoveRange(_context.InventarSoba.Where(x => x.SobaId == S.SobaId));
+                _context.Soba.Remove(S);
+                _context.SaveChanges();
+            }
         }
     }
 }

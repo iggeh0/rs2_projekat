@@ -235,17 +235,16 @@ namespace RS2_Booking.WebAPI.Models
             });
 
             modelBuilder.Entity<Soba>(entity =>
-            {
+            {              
                 entity.Property(e => e.Opis).IsRequired();
-
                 entity.Property(e => e.VrstaSmjestaja).IsRequired();
-
                 entity.HasOne(d => d.Smjestaj)
                     .WithMany(p => p.Soba)
                     .HasForeignKey(d => d.SmjestajId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Soba__SmjestajId__47DBAE45");
             });
+
 
             modelBuilder.Entity<StatusRezervacije>(entity =>
             {

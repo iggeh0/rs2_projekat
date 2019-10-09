@@ -13,5 +13,6 @@ namespace RS2_Booking.Model.Requests
         public string Opis { get; set; }
         public int VelicinaSobe { get; set; }
         public bool VlastitaKupoanica { get; set; }
+        public int SobaId { get; set; }
     }
 }

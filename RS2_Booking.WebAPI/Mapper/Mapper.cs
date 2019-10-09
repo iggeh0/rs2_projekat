@@ -25,12 +25,16 @@ namespace RS2_Booking.WebAPI.Mapper
             CreateMap<Grad, Model.GradModel>();
             CreateMap<Soba, Model.SobaModel>();
             CreateMap<Model.SobaModel, Soba>();
+            CreateMap<SobaInsertRequest, Soba>();
+            CreateMap<Soba, SobaInsertRequest>();
             CreateMap<Model.InventarModel, Inventar>();
             CreateMap<Inventar, Model.InventarModel>();
             CreateMap<Model.OkolinaModel, Okolina>();
             CreateMap<Okolina, Model.OkolinaModel>();
             CreateMap<Okolina, OkolinaInsertRequest>();
             CreateMap<OkolinaInsertRequest, Okolina>();
+            CreateMap<Usluga, UslugaInsertRequest>();
+            CreateMap<UslugaInsertRequest, Usluga>();
         }
     }
 }

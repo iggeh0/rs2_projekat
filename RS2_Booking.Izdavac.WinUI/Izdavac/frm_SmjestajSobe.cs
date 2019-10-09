@@ -34,8 +34,10 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private async void frm_SmjestajSobe_Load(object sender, EventArgs e)
         {
-            SobaSearchRequest request = new SobaSearchRequest();
-            request.SmjestajId = _SmjestajId;
+            SobaSearchRequest request = new SobaSearchRequest
+            {
+                SmjestajId = _SmjestajId
+            };
             var result = await _SobaService.Get<List<SobaModel>>(request);
 
             dgv_Sobe.AutoGenerateColumns = false;
@@ -47,7 +49,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             this.Close();
         }
 
-        private void dgv_Sobe_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgv_Sobe_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgv_Sobe.CurrentCell.ColumnIndex.Equals(6) && e.RowIndex != -1)
             {
@@ -63,7 +65,15 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             else if (dgv_Sobe.CurrentCell.ColumnIndex.Equals(7))
             {
                 var id = int.Parse(dgv_Sobe[e.ColumnIndex - 7, e.RowIndex].Value.ToString());
-         
+                await _SobaService.Delete<SobaModel>(id);
+
+                SobaSearchRequest request = new SobaSearchRequest
+                {
+                    SmjestajId = _SmjestajId
+                };
+                var result = await _SobaService.Get<List<SobaModel>>(request);
+
+                dgv_Sobe.DataSource = result;
             }
         }
     }

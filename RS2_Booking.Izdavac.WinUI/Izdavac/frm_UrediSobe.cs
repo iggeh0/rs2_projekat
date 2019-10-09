@@ -53,9 +53,21 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             this.Close();
         }
 
-        private void btn_Snimi_Click(object sender, EventArgs e)
+        private async void btn_Snimi_Click(object sender, EventArgs e)
         {
+            SobaInsertRequest request = new SobaInsertRequest
+            {
+                BrojKreveta = int.Parse(tb_BrojKreveta.Text.ToString()),
+                VelicinaSobe = int.Parse(tb_Velicina.Text.ToString()),
+                Opis = tb_Opis.Text,
+                SmjestajId = _SmjestajId,
+                VlastitaKupoanica = cb_Kupaonica.Checked,
+                VrstaSmjestaja = tb_VrstaSmjestaja.Text,
+                Cijena = float.Parse(tb_Cijena.Text.ToString()),
+                SobaId = _SobaId              
+            };
 
+            await _SobaService.Update<SobaModel>(_SobaId, request);
         }
 
         private void tb_BrojKreveta_Validating(object sender, CancelEventArgs e)
@@ -138,10 +150,12 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private async void btn_Inventar_Click(object sender, EventArgs e)
         {
-            InventarModel request = new InventarModel();
-            request.Naziv = tb_Inventar.Text;
-            request.SobaId = _SobaId;
-            request.InventarSobaId = 0;
+            InventarModel request = new InventarModel
+            {
+                Naziv = tb_Inventar.Text,
+                SobaId = _SobaId,
+                InventarSobaId = 0
+            };
             await _InventarService.Insert<InventarInsertRequest>(request);
 
             InventarSearchRequest request2 = new InventarSearchRequest
@@ -161,7 +175,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
                 if (dgv_Inventar.CurrentCell != null)
                 {
                     var id = int.Parse(dgv_Inventar[e.ColumnIndex + 1, e.RowIndex].Value.ToString());
-                    _InventarService.Delete<InventarModel>(id);
+                    await _InventarService.Delete<InventarModel>(id);
 
                     InventarSearchRequest request2 = new InventarSearchRequest
                     {

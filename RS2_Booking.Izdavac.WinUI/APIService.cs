@@ -11,7 +11,7 @@ namespace RS2_Booking.Izdavac.WinUI
 {
     public class APIService
     {
-        private string _route = null;
+        private readonly string _route = null;
         public APIService(string route)
         {
             _route = route;
@@ -51,7 +51,7 @@ namespace RS2_Booking.Izdavac.WinUI
             return await url.PutJsonAsync(request).ReceiveJson<T>();
         }
 
-        public async void Delete<T>(object id)
+        public async Task Delete<T>(object id)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
 
@@ -59,3 +59,5 @@ namespace RS2_Booking.Izdavac.WinUI
         }
     }
 }
+
+
