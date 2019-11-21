@@ -9,11 +9,16 @@ namespace RS2_Booking.WebAPI.Services
 {
     public interface IKorisnikService
     {
-        List<Model.KorisnikModel> Get();
+        List<Model.KorisnikModel> Get(KorisnikSearchRequest request);
+        List<Model.KorisnikModel> GetIzdavaci(KorisnikSearchRequest request);
 
-        Model.KorisnikModel Insert(KorisnikInsertRequest request);
+        KorisnikInsertRequest Insert(KorisnikInsertRequest request);
 
         Model.KorisnikModel GetById(int id);
         KorisnikEditRequest GetKorisnikEdit(int id);
+
+        Model.KorisnikModel Update(Model.KorisnikModel model, int id);
+
+        void Delete(int id);
     }
 }

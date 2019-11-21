@@ -48,70 +48,70 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             }
         }
 
-        private void tb_BrojKreveta_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(tb_BrojKreveta.Text) || int.Parse(tb_BrojKreveta.Text) <= 0)
-            {
-                errorProvider.SetError(tb_BrojKreveta, Properties.Resources.Validation_Required);
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider.SetError(tb_BrojKreveta, null);
-            }
+        //private void tb_BrojKreveta_Validating(object sender, CancelEventArgs e)
+        //{
+        //    if (string.IsNullOrWhiteSpace(tb_BrojKreveta.Text) || int.Parse(tb_BrojKreveta.Text) <= 0)
+        //    {
+        //        errorProvider.SetError(tb_BrojKreveta, Properties.Resources.Validation_Required);
+        //        e.Cancel = true;
+        //    }
+        //    else
+        //    {
+        //        errorProvider.SetError(tb_BrojKreveta, null);
+        //    }
 
-        }
+        //}
 
-        private void tb_Cijena_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(tb_Cijena.Text) || float.Parse(tb_Cijena.Text) <= 0)
-            {
-                errorProvider.SetError(tb_Cijena, Properties.Resources.Validation_Required);
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider.SetError(tb_Cijena, null);
-            }
-        }
+        //private void tb_Cijena_Validating(object sender, CancelEventArgs e)
+        //{
+        //    if (string.IsNullOrWhiteSpace(tb_Cijena.Text) || float.Parse(tb_Cijena.Text) <= 0)
+        //    {
+        //        errorProvider.SetError(tb_Cijena, Properties.Resources.Validation_Required);
+        //        e.Cancel = true;
+        //    }
+        //    else
+        //    {
+        //        errorProvider.SetError(tb_Cijena, null);
+        //    }
+        //}
 
-        private void tb_Vrsta_Validating(object sender, CancelEventArgs e)
-        {
-            if (tb_Vrsta.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_Vrsta.Text))
-            {
-                errorProvider.SetError(tb_Vrsta, Properties.Resources.Validation_Required);
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider.SetError(tb_Vrsta, null);
-            }
-        }
+        //private void tb_Vrsta_Validating(object sender, CancelEventArgs e)
+        //{
+        //    if (tb_Vrsta.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_Vrsta.Text))
+        //    {
+        //        errorProvider.SetError(tb_Vrsta, Properties.Resources.Validation_Required);
+        //        e.Cancel = true;
+        //    }
+        //    else
+        //    {
+        //        errorProvider.SetError(tb_Vrsta, null);
+        //    }
+        //}
 
-        private void tb_Velicina_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(tb_Velicina.Text) || int.Parse(tb_Velicina.Text) <= 0)
-            {
-                errorProvider.SetError(tb_Velicina, Properties.Resources.Validation_Required);
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider.SetError(tb_Velicina, null);
-            }
-        }
+        //private void tb_Velicina_Validating(object sender, CancelEventArgs e)
+        //{
+        //    if (string.IsNullOrWhiteSpace(tb_Velicina.Text) || int.Parse(tb_Velicina.Text) <= 0)
+        //    {
+        //        errorProvider.SetError(tb_Velicina, Properties.Resources.Validation_Required);
+        //        e.Cancel = true;
+        //    }
+        //    else
+        //    {
+        //        errorProvider.SetError(tb_Velicina, null);
+        //    }
+        //}
 
-        private void tb_Opis_Validating(object sender, CancelEventArgs e)
-        {
-            if (tb_Opis.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_Opis.Text))
-            {
-                errorProvider.SetError(tb_Opis, Properties.Resources.Validation_Required);
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider.SetError(tb_Opis, null);
-            }
-        }
+        //private void tb_Opis_Validating(object sender, CancelEventArgs e)
+        //{
+        //    if (tb_Opis.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_Opis.Text))
+        //    {
+        //        errorProvider.SetError(tb_Opis, Properties.Resources.Validation_Required);
+        //        e.Cancel = true;
+        //    }
+        //    else
+        //    {
+        //        errorProvider.SetError(tb_Opis, null);
+        //    }
+        //}
     }
 }

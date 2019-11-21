@@ -71,6 +71,18 @@
     <Compile Include="Administrator\frm_AdminIndex.Designer.cs">
       <DependentUpon>frm_AdminIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrator\frm_AdminKorisnici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\frm_AdminKorisnici.Designer.cs">
+      <DependentUpon>frm_AdminKorisnici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\frm_AdminSmjestaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\frm_AdminSmjestaj.Designer.cs">
+      <DependentUpon>frm_AdminSmjestaj.cs</DependentUpon>
+    </Compile>
     <Compile Include="APIService.cs" />
     <Compile Include="frm_Korisnik.cs">
       <SubType>Form</SubType>
@@ -148,6 +160,12 @@
     </Compile>
     <EmbeddedResource Include="Administrator\frm_AdminIndex.resx">
       <DependentUpon>frm_AdminIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\frm_AdminKorisnici.resx">
+      <DependentUpon>frm_AdminKorisnici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\frm_AdminSmjestaj.resx">
+      <DependentUpon>frm_AdminSmjestaj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Korisnik.resx">
       <DependentUpon>frm_Korisnik.cs</DependentUpon>

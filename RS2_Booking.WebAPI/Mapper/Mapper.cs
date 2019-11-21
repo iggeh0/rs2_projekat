@@ -13,6 +13,7 @@ namespace RS2_Booking.WebAPI.Mapper
         public Mapper()
         {
             CreateMap<Korisnik, Model.KorisnikModel>();
+            CreateMap<Model.KorisnikModel, Korisnik>();
             CreateMap<KorisnikInsertRequest, Korisnik>()
             .ForMember(dest => dest.Klijent, opt => opt.Ignore())
             .ForMember(dest => dest.SifraHash, opt => opt.Ignore())

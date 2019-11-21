@@ -39,7 +39,7 @@ namespace RS2_Booking.Izdavac.WinUI
 
         public async Task<T> Insert<T>(object request)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
+            var url = $"{Properties.Settings.Default.APIUrl}{_route}";
 
             return await url.PostJsonAsync(request).ReceiveJson<T>();
         }
@@ -53,7 +53,7 @@ namespace RS2_Booking.Izdavac.WinUI
 
         public async Task Delete<T>(object id)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
+            var url = $"{Properties.Settings.Default.APIUrl}{_route}/{id}";
 
             await url.DeleteAsync();
         }

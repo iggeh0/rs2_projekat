@@ -1,4 +1,5 @@
-﻿using RS2_Booking.Izdavac.WinUI.Smjestaj;
+﻿using RS2_Booking.Izdavac.WinUI.Administrator;
+using RS2_Booking.Izdavac.WinUI.Smjestaj;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace RS2_Booking.Izdavac.WinUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_Smjestaj(1));
+            Application.Run(new frm_AdminSmjestaj());
         }
     }
 }

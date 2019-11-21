@@ -61,6 +61,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tb_UslugaOpis = new System.Windows.Forms.RichTextBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Okolina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Usluge)).BeginInit();
             this.SuspendLayout();
@@ -350,12 +351,22 @@
             this.tb_UslugaOpis.TabIndex = 30;
             this.tb_UslugaOpis.Text = "";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(275, 328);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(40, 13);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Usluge";
+            // 
             // frm_UrediSmjestaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Nazad;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.tb_UslugaOpis);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -426,5 +437,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
         private System.Windows.Forms.DataGridViewButtonColumn Ukloni;
+        private System.Windows.Forms.Label label10;
     }
 }

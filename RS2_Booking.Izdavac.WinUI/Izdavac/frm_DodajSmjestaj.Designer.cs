@@ -168,6 +168,7 @@
             this.btn_Dodaj.TabIndex = 16;
             this.btn_Dodaj.Text = "Dodaj";
             this.btn_Dodaj.UseVisualStyleBackColor = true;
+            this.btn_Dodaj.Click += new System.EventHandler(this.btn_Dodaj_Click);
             // 
             // btn_Nazad
             // 
@@ -177,6 +178,7 @@
             this.btn_Nazad.TabIndex = 17;
             this.btn_Nazad.Text = "Nazad";
             this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
             // frm_DodajSmjestaj
             // 

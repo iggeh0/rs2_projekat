@@ -37,7 +37,7 @@ namespace RS2_Booking.WebAPI
 
             services.AddMvc(x=> x.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAutoMapper();
-            var connection = @"Server=localhost;Database=Online_Booking;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=localhost;Database=IB130107;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<Online_BookingContext>(options => options.UseSqlServer(connection));
 
             services.AddSwaggerGen(c =>
@@ -49,7 +49,7 @@ namespace RS2_Booking.WebAPI
             services.AddScoped<IService<UslugaModel, UslugaSearchRequest, UslugaInsertRequest>, UslugaService>();
             services.AddScoped<IService<SobaModel, SobaSearchRequest, SobaInsertRequest>, SobaService>();
             services.AddScoped<IService<SmjestajModel, SmjestajSearchRequest, SmjestajInsertRequest>, SmjestajService>();
-            services.AddScoped<IKorisnikService, KorisnikService>();
+            services.AddScoped<IKorisnikService, KorisnikService>(); 
             services.AddScoped<IService<GradModel, object, GradModel>, BaseService<GradModel, object, GradModel, Grad>>();
 
         }

@@ -20,7 +20,7 @@ namespace RS2_Booking.Izdavac.WinUI
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frm_Smjestaj form = new frm_Smjestaj(1);
+            frm_Smjestaj form = new frm_Smjestaj(1, 1);
             form.Show();
             this.Close();
         }

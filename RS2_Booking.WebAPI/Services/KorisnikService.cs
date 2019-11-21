@@ -20,6 +20,36 @@ namespace RS2_Booking.WebAPI.Services
             _mapper = mapper;
         }
 
+        public void Delete(int id)
+        {
+            var entity = _context.Set<Korisnik>().Find(id);
+
+            Klijent cascade_entity = _context.Klijent.Where(x => x.KorisnikId == entity.KorisnikId).FirstOrDefault();
+            if ( cascade_entity != null )
+            _context.Klijent.Remove(cascade_entity);
+
+            Izdavac cascade_entity_2 = _context.Izdavac.Where(x => x.KorisnikId == entity.KorisnikId).FirstOrDefault();
+
+            if (cascade_entity_2 != null)
+                _context.Izdavac.Remove(cascade_entity_2);
+
+            _context.Set<Korisnik>().Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public KorisnikModel Update(KorisnikModel model, int id)
+        {
+            var entity = _context.Set<Korisnik>().Find(id);
+
+            _context.Set<Korisnik>().Attach(entity);
+            _context.Set<Korisnik>().Update(entity);
+            _mapper.Map(model, entity);
+
+
+            _context.SaveChanges();
+            return _mapper.Map<KorisnikModel>(entity);
+        }
+
         public KorisnikModel GetById(int id)
         {
             var entity = _context.Korisnik.Find(id);
@@ -44,7 +74,7 @@ namespace RS2_Booking.WebAPI.Services
                 return null;
         }
 
-        public Model.KorisnikModel Insert(KorisnikInsertRequest request)
+        public KorisnikInsertRequest Insert(KorisnikInsertRequest request)
         {
             var k = _mapper.Map<Models.Korisnik>(request);
             k.SifraSalt = "implementiraj";
@@ -66,15 +96,77 @@ namespace RS2_Booking.WebAPI.Services
                 _context.Izdavac.Add(novi);
                 _context.SaveChanges();
             }
-            return _mapper.Map<KorisnikModel>(k);
+            return request;
         }
 
-        List<Model.KorisnikModel> IKorisnikService.Get()
+        List<Model.KorisnikModel> IKorisnikService.Get(KorisnikSearchRequest request)
         {
-            var lista = _context.Korisnik.ToList();
 
-            return _mapper.Map<List<Model.KorisnikModel>>(lista);
-           
+            if (request.KorisnikId > 0)
+            {
+                Korisnik k = _context.Korisnik.Where(x => x.KorisnikId == request.KorisnikId).FirstOrDefault();
+                List<KorisnikModel> lista = new List<KorisnikModel>();
+                lista.Add(_mapper.Map<KorisnikModel>(k));
+                return lista;
+            }
+            else
+            {
+                var query = _context.Korisnik.AsQueryable();
+                if (!string.IsNullOrEmpty(request.Ime))
+                {
+                    query = query.Where(x => x.Ime.Contains(request.Ime));
+                }
+                if (!string.IsNullOrEmpty(request.Prezime))
+                {
+                    query = query.Where(x => x.Prezime.Contains(request.Prezime));
+                }
+                if (!string.IsNullOrEmpty(request.KorisnickoIme))
+                {
+                    query = query.Where(x => x.KorisnickoIme.Contains(request.KorisnickoIme));
+                }
+                List<Korisnik> lista;
+                if (!query.Any())
+                {
+                    lista = _context.Korisnik.ToList();
+                }
+                else
+                {
+                    lista = query.ToList();
+                }
+
+                var novalista = _mapper.Map<List<KorisnikModel>>(lista);
+                return novalista;
+            }
+          
+
+        }
+
+        public List<KorisnikModel> GetIzdavaci(KorisnikSearchRequest request)
+        {
+            var query = (from korisnik in _context.Korisnik
+                         join izdavac in _context.Izdavac
+                         on korisnik.KorisnikId equals izdavac.KorisnikId
+                         select new KorisnikModel()                                                                                                                                                                                                                          
+                         {
+                             KorisnikId = korisnik.KorisnikId,
+                             Ime = korisnik.Ime,
+                             Prezime = korisnik.Prezime,
+                             KorisnickoIme = korisnik.KorisnickoIme
+                         }).ToList();
+            if (!string.IsNullOrEmpty(request.Ime))                                                                                                                                                                                                                                                                                                                                         
+            {
+                query = query.Where(x => x.Ime.Contains(request.Ime)).ToList();
+            }
+            if (!string.IsNullOrEmpty(request.Prezime))
+            {
+                query = query.Where(x => x.Prezime.Contains(request.Prezime)).ToList();
+            }
+            if (!string.IsNullOrEmpty(request.KorisnickoIme))
+            {
+                query = query.Where(x => x.KorisnickoIme.Contains(request.KorisnickoIme)).ToList();
+            }
+
+            return query;
         }
     }
 }

@@ -35,16 +35,35 @@ namespace RS2_Booking.WebAPI.Controllers
 
 
         [HttpGet]
-        public ActionResult<List<Model.KorisnikModel>> Get()
+        public List<KorisnikModel> Get([FromQuery]KorisnikSearchRequest search)
         {
-            return _korisnikService.Get();
+            return _korisnikService.Get(search);
+        }
+
+        [HttpGet]
+        [Route("GetIzdavaci")]
+        public List<KorisnikModel> GetIzdavaci([FromQuery]KorisnikSearchRequest search )
+        {
+            return _korisnikService.GetIzdavaci(search);
+        }
+
+        [HttpPost]
+        public KorisnikInsertRequest Insert(KorisnikInsertRequest Model)
+        {
+            return _korisnikService.Insert(Model);
         }
 
 
-        [HttpPost]
-        public void Insert(KorisnikInsertRequest request)
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
-           _korisnikService.Insert(request);
+            _korisnikService.Delete(id);
+        }
+
+        [HttpPut("{id}")]
+        public KorisnikModel Update(KorisnikModel Model, int id)
+        {
+            return _korisnikService.Update(Model, id);
         }
     }
 }

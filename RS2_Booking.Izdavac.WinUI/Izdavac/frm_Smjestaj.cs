@@ -19,10 +19,14 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
     {
         private readonly APIService _SmjestajService = new APIService("smjestaj");
         private readonly APIService _GradService = new APIService("grad");
+
         private readonly int _IzdavacId;
-        public frm_Smjestaj(int IzdavacId)
+        private readonly int _KorisnikId;
+
+        public frm_Smjestaj(int IzdavacId, int KorisnikId)
         {
             _IzdavacId = IzdavacId;
+            _KorisnikId = KorisnikId;
             InitializeComponent();
         }
 
@@ -40,7 +44,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             dgv_Smjestaj.DataSource = result;
         }
 
-        private void dgv_Smjestaj_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgv_Smjestaj_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgv_Smjestaj.CurrentCell.ColumnIndex.Equals(3) && e.RowIndex != -1)
             {
@@ -55,18 +59,15 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
                 }
                 else if (dgv_Smjestaj.CurrentCell.ColumnIndex.Equals(4))
                 {
-                    MessageBox.Show("Kliknut je izbriši");
-                }
+                   var id = int.Parse(dgv_Smjestaj[e.ColumnIndex + 1, e.RowIndex].Value.ToString());
+                   await _SmjestajService.Delete<SmjestajModel>(id);
+            }
         }
 
         private void btn_DodajSmjestaj_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btn_Uredi_Click(object sender, EventArgs e)
-        {
-
+            frm_DodajSmjestaj form = new frm_DodajSmjestaj(_IzdavacId);
+            form.Show();
         }
 
         private void btn_Report_Click(object sender, EventArgs e)
@@ -76,7 +77,8 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private void btn_UrediProfil_Click(object sender, EventArgs e)
         {
-
+            frm_Korisnik form = new frm_Korisnik(_KorisnikId, 1);
+            form.Show();
         }
 
         private void btn_Rezervacije_Click(object sender, EventArgs e)

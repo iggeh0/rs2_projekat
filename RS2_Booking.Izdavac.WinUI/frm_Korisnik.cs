@@ -14,16 +14,22 @@ namespace RS2_Booking.Izdavac.WinUI
 {
     public partial class frm_Korisnik : Form
     {
-        private readonly APIService _APIService = new APIService("korisnik");
-        private readonly int? _KorisnikId = null;
-        public frm_Korisnik(int role, int KorisnikId = 1)
+        private readonly APIService _KorisnikService = new APIService("korisnik");
+        private readonly int _KorisnikId;
+        private readonly int _Role;
+        public frm_Korisnik(int KorisnikId = 0, int role = 0)
         {
             if (KorisnikId > 0)
             {
                 _KorisnikId = KorisnikId;
             }
+
+            _Role = role;
             InitializeComponent();
 
+            cb_Uloga.Items.Add("Izaberite ulogu:");
+            cb_Uloga.Items.Add("Korisnik");
+            cb_Uloga.Items.Add("Izdavač");
             #region layout
             lbl_Ime.Left = (this.ClientSize.Width - lbl_Ime.Width) / 2;
             tb_Ime.Left = (this.ClientSize.Width - tb_Ime.Width) / 2;
@@ -47,16 +53,14 @@ namespace RS2_Booking.Izdavac.WinUI
             btn_Save.Left = (this.ClientSize.Width - btn_Save.Width) / 2;
 
             #endregion
-            tb_Role.Text = role.ToString();
-
-
         }
+
 
         private async void frm_Korisnik_Load(object sender, EventArgs e)
         {
-            if (_KorisnikId.HasValue)
+            if (_KorisnikId > 0)
             {
-                var k = await _APIService.GetById<KorisnikEditRequest>(_KorisnikId);
+                var k = await _KorisnikService.GetById<KorisnikEditRequest>(_KorisnikId);
 
                 if (k.KorisnikId == _KorisnikId)
                 {
@@ -69,6 +73,53 @@ namespace RS2_Booking.Izdavac.WinUI
                     tb_Datum.Text = k.DatumRodjenja.ToShortDateString();
                     tb_Username.Text = k.KorisnickoIme;
                 }
+            }
+            if ( _Role > 0 )
+            {
+                cb_Uloga.Visible = false;
+                lbl_Uloga.Visible = false;
+            }
+        }
+
+        private async void btn_Save_Click(object sender, EventArgs e)
+        {
+            if (cb_Uloga.Visible == false)
+            {
+                if (_KorisnikId > 0 && _Role > 0)
+                {
+                    KorisnikEditRequest request = new KorisnikEditRequest
+                    {
+                        Ime = tb_Ime.Text,
+                        Prezime = tb_Prezime.Text,
+                        Jmbg = tb_JMBG.Text,
+                        Sifra = tb_Password.Text,
+                        Email = tb_Email.Text,
+                        BrojTelefona = tb_Telefon.Text,
+                        DatumRodjenja = Convert.ToDateTime(tb_Datum.Text),
+                        KorisnickoIme = tb_Username.Text,
+                        KorisnikId = _KorisnikId
+                    };
+                    await _KorisnikService.Update<KorisnikEditRequest>(_KorisnikId, request);
+                    Close();
+                }
+               
+            }
+            else if (_Role == 0 && cb_Uloga.SelectedIndex > 0)
+            {
+                KorisnikInsertRequest request = new KorisnikInsertRequest
+                {
+                    Ime = tb_Ime.Text,
+                    Prezime = tb_Prezime.Text,
+                    Jmbg = tb_JMBG.Text,
+                    Sifra = tb_Password.Text,
+                    Email = tb_Email.Text,
+                    BrojTelefona = tb_Telefon.Text,
+                    DatumRodjenja = Convert.ToDateTime(tb_Datum.Text),
+                    KorisnickoIme = tb_Username.Text,
+                    Role = cb_Uloga.SelectedIndex
+                };
+                await _KorisnikService.Insert<KorisnikInsertRequest>(request);
+                Close();
             }
         }
     }

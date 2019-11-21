@@ -139,7 +139,7 @@
             this.tb_VrstaSmjestaja.Name = "tb_VrstaSmjestaja";
             this.tb_VrstaSmjestaja.Size = new System.Drawing.Size(100, 20);
             this.tb_VrstaSmjestaja.TabIndex = 15;
-            this.tb_VrstaSmjestaja.Validating += new System.ComponentModel.CancelEventHandler(this.tb_VrstaSmjestaja_Validating);
+            //this.tb_VrstaSmjestaja.Validating += new System.ComponentModel.CancelEventHandler(this.tb_VrstaSmjestaja_Validating);
             // 
             // tb_Cijena
             // 
@@ -147,7 +147,7 @@
             this.tb_Cijena.Name = "tb_Cijena";
             this.tb_Cijena.Size = new System.Drawing.Size(100, 20);
             this.tb_Cijena.TabIndex = 14;
-            this.tb_Cijena.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Cijena_Validating);
+            //this.tb_Cijena.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Cijena_Validating);
             // 
             // tb_BrojKreveta
             // 
@@ -155,7 +155,7 @@
             this.tb_BrojKreveta.Name = "tb_BrojKreveta";
             this.tb_BrojKreveta.Size = new System.Drawing.Size(100, 20);
             this.tb_BrojKreveta.TabIndex = 13;
-            this.tb_BrojKreveta.Validating += new System.ComponentModel.CancelEventHandler(this.tb_BrojKreveta_Validating);
+            //this.tb_BrojKreveta.Validating += new System.ComponentModel.CancelEventHandler(this.tb_BrojKreveta_Validating);
             // 
             // tb_Velicina
             // 
@@ -163,7 +163,7 @@
             this.tb_Velicina.Name = "tb_Velicina";
             this.tb_Velicina.Size = new System.Drawing.Size(100, 20);
             this.tb_Velicina.TabIndex = 25;
-            this.tb_Velicina.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Velicina_Validating);
+            //this.tb_Velicina.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Velicina_Validating);
             // 
             // groupBox1
             // 
@@ -205,7 +205,7 @@
             this.tb_Inventar.Name = "tb_Inventar";
             this.tb_Inventar.Size = new System.Drawing.Size(100, 20);
             this.tb_Inventar.TabIndex = 27;
-            this.tb_Inventar.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Inventar_Validating);
+            //this.tb_Inventar.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Inventar_Validating);
             // 
             // btn_Inventar
             // 
@@ -224,7 +224,7 @@
             this.tb_Opis.Size = new System.Drawing.Size(100, 96);
             this.tb_Opis.TabIndex = 30;
             this.tb_Opis.Text = "";
-            this.tb_Opis.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Opis_Validating);
+            //this.tb_Opis.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Opis_Validating);
             // 
             // errorProvider
             // 

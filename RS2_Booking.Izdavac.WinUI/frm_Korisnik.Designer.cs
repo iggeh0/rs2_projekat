@@ -48,7 +48,8 @@
             this.btn_Save = new System.Windows.Forms.Button();
             this.tb_Datum = new System.Windows.Forms.DateTimePicker();
             this.btn_Nazad = new System.Windows.Forms.Button();
-            this.tb_Role = new System.Windows.Forms.TextBox();
+            this.lbl_Uloga = new System.Windows.Forms.Label();
+            this.cb_Uloga = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lbl_Ime
@@ -209,12 +210,13 @@
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(425, 593);
+            this.btn_Save.Location = new System.Drawing.Point(418, 627);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(101, 42);
             this.btn_Save.TabIndex = 18;
             this.btn_Save.Text = "Sačuvaj";
             this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // tb_Datum
             // 
@@ -227,20 +229,30 @@
             // btn_Nazad
             // 
             this.btn_Nazad.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Nazad.Location = new System.Drawing.Point(426, 641);
+            this.btn_Nazad.Location = new System.Drawing.Point(418, 675);
             this.btn_Nazad.Name = "btn_Nazad";
             this.btn_Nazad.Size = new System.Drawing.Size(101, 42);
             this.btn_Nazad.TabIndex = 21;
             this.btn_Nazad.Text = "Nazad";
             this.btn_Nazad.UseVisualStyleBackColor = true;
             // 
-            // tb_Role
+            // lbl_Uloga
             // 
-            this.tb_Role.Location = new System.Drawing.Point(76, 450);
-            this.tb_Role.Name = "tb_Role";
-            this.tb_Role.Size = new System.Drawing.Size(100, 20);
-            this.tb_Role.TabIndex = 22;
-            this.tb_Role.Visible = false;
+            this.lbl_Uloga.AutoSize = true;
+            this.lbl_Uloga.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Uloga.Location = new System.Drawing.Point(445, 572);
+            this.lbl_Uloga.Name = "lbl_Uloga";
+            this.lbl_Uloga.Size = new System.Drawing.Size(51, 20);
+            this.lbl_Uloga.TabIndex = 23;
+            this.lbl_Uloga.Text = "Uloga";
+            // 
+            // cb_Uloga
+            // 
+            this.cb_Uloga.FormattingEnabled = true;
+            this.cb_Uloga.Location = new System.Drawing.Point(410, 600);
+            this.cb_Uloga.Name = "cb_Uloga";
+            this.cb_Uloga.Size = new System.Drawing.Size(121, 21);
+            this.cb_Uloga.TabIndex = 24;
             // 
             // frm_Korisnik
             // 
@@ -248,7 +260,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Nazad;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.tb_Role);
+            this.Controls.Add(this.cb_Uloga);
+            this.Controls.Add(this.lbl_Uloga);
             this.Controls.Add(this.btn_Nazad);
             this.Controls.Add(this.tb_Datum);
             this.Controls.Add(this.btn_Save);
@@ -302,6 +315,7 @@
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.DateTimePicker tb_Datum;
         private System.Windows.Forms.Button btn_Nazad;
-        private System.Windows.Forms.TextBox tb_Role;
+        private System.Windows.Forms.Label lbl_Uloga;
+        private System.Windows.Forms.ComboBox cb_Uloga;
     }
 }

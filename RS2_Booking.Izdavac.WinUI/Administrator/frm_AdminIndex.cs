@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RS2_Booking.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,36 @@ namespace RS2_Booking.Izdavac.WinUI.Administrator
 {
     public partial class frm_AdminIndex : Form
     {
-        public frm_AdminIndex()
+        private readonly APIService _KorisnikService = new APIService("korisnik");
+        private readonly int _KorisnikId;
+        public frm_AdminIndex(int KorisnikId)
         {
             InitializeComponent();
+            _KorisnikId = KorisnikId;
+        }
+
+        private async void frm_AdminIndex_Load(object sender, EventArgs e)
+        {
+            KorisnikModel Korisnik = await _KorisnikService.GetById<KorisnikModel>(_KorisnikId);
+            lbl_Ime.Text = Korisnik.Ime + " " + Korisnik.Prezime;
+        }
+
+        private void btn_UrediProfil_Click(object sender, EventArgs e)
+        {
+            frm_Korisnik form = new frm_Korisnik(_KorisnikId, 2);
+            form.Show();
+        }
+
+        private void btn_Korisnici_Click(object sender, EventArgs e)
+        {
+            frm_AdminKorisnici form = new frm_AdminKorisnici();
+            form.Show();
+        }
+
+        private void btn_Smjestaj_Click(object sender, EventArgs e)
+        {
+            frm_AdminSmjestaj form = new frm_AdminSmjestaj();
+            form.Show();
         }
     }
 }
