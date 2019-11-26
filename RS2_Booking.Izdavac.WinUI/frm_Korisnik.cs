@@ -27,9 +27,10 @@ namespace RS2_Booking.Izdavac.WinUI
             _Role = role;
             InitializeComponent();
 
-            cb_Uloga.Items.Add("Izaberite ulogu:");
-            cb_Uloga.Items.Add("Korisnik");
+            cb_Uloga.Items.Add("Izaberite ulogu");
             cb_Uloga.Items.Add("Izdavač");
+            cb_Uloga.Items.Add("Korisnik");
+
             #region layout
             lbl_Ime.Left = (this.ClientSize.Width - lbl_Ime.Width) / 2;
             tb_Ime.Left = (this.ClientSize.Width - tb_Ime.Width) / 2;
@@ -58,6 +59,7 @@ namespace RS2_Booking.Izdavac.WinUI
 
         private async void frm_Korisnik_Load(object sender, EventArgs e)
         {
+            cb_Uloga.SelectedIndex = 0;
             if (_KorisnikId > 0)
             {
                 var k = await _KorisnikService.GetById<KorisnikEditRequest>(_KorisnikId);
@@ -97,7 +99,8 @@ namespace RS2_Booking.Izdavac.WinUI
                         BrojTelefona = tb_Telefon.Text,
                         DatumRodjenja = Convert.ToDateTime(tb_Datum.Text),
                         KorisnickoIme = tb_Username.Text,
-                        KorisnikId = _KorisnikId
+                        KorisnikId = _KorisnikId,
+                       SifraPonovo = tb_Passwordrepeat.Text
                     };
                     await _KorisnikService.Update<KorisnikEditRequest>(_KorisnikId, request);
                     Close();
@@ -118,9 +121,19 @@ namespace RS2_Booking.Izdavac.WinUI
                     KorisnickoIme = tb_Username.Text,
                     Role = cb_Uloga.SelectedIndex
                 };
-                await _KorisnikService.Insert<KorisnikInsertRequest>(request);
-                Close();
+                request = await _KorisnikService.Insert<KorisnikInsertRequest>(request);
+                if (request.Response == null)
+                {
+                    Close();
+                }
+                else
+                    MessageBox.Show(request.Response);
             }
+        }
+
+        private void btn_Nazad_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

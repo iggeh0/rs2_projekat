@@ -16,10 +16,9 @@ namespace RS2_Booking.WebAPI.Mapper
             CreateMap<Model.KorisnikModel, Korisnik>();
             CreateMap<KorisnikInsertRequest, Korisnik>()
             .ForMember(dest => dest.Klijent, opt => opt.Ignore())
-            .ForMember(dest => dest.SifraHash, opt => opt.Ignore())
-            .ForMember(dest => dest.SifraSalt, opt => opt.Ignore())
             .ForMember(dest => dest.Izdavac, opt => opt.Ignore());
             CreateMap<Korisnik, KorisnikEditRequest>();
+            CreateMap<KorisnikEditRequest, Korisnik>();
             CreateMap<SmjestajInsertRequest, Smjestaj>();
             CreateMap<Smjestaj, Model.SmjestajModel>();
             CreateMap<Model.SmjestajModel,Smjestaj>();

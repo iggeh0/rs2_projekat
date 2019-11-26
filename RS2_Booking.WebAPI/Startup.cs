@@ -18,6 +18,8 @@ using RS2_Booking.WebAPI.Models;
 using RS2_Booking.WebAPI.Filters;
 using RS2_Booking.Model;
 using RS2_Booking.Model.Requests;
+using Microsoft.AspNetCore.Authentication;
+using RS2_Booking.WebAPI.Security;
 
 namespace RS2_Booking.WebAPI
 {
@@ -39,6 +41,10 @@ namespace RS2_Booking.WebAPI
             services.AddAutoMapper();
             var connection = @"Server=localhost;Database=IB130107;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<Online_BookingContext>(options => options.UseSqlServer(connection));
+
+
+            services.AddAuthentication("BasicAuthentication")
+               .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
             services.AddSwaggerGen(c =>
             {
@@ -76,6 +82,8 @@ namespace RS2_Booking.WebAPI
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
             app.UseMvc();

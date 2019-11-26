@@ -235,6 +235,7 @@
             this.btn_Nazad.TabIndex = 21;
             this.btn_Nazad.Text = "Nazad";
             this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
             // lbl_Uloga
             // 

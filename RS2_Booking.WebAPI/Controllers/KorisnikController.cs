@@ -61,9 +61,16 @@ namespace RS2_Booking.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public KorisnikModel Update(KorisnikModel Model, int id)
+        public KorisnikEditRequest Update(KorisnikEditRequest Model, int id)
         {
             return _korisnikService.Update(Model, id);
+        }
+
+        [HttpGet]
+        [Route("Login")]
+        public KorisnikModel Login([FromQuery]LoginRequest request)
+        {
+            return _korisnikService.Login(request);
         }
     }
 }

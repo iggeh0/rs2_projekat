@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tb_KorisnickoIme = new System.Windows.Forms.TextBox();
+            this.tb_Lozinka = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.cb_Uloga = new System.Windows.Forms.ComboBox();
+            this.btn_Login = new System.Windows.Forms.Button();
+            this.btn_Registracija = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -46,67 +47,80 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Korisničko Ime:";
             // 
-            // textBox1
+            // tb_KorisnickoIme
             // 
-            this.textBox1.Location = new System.Drawing.Point(247, 142);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.tb_KorisnickoIme.Location = new System.Drawing.Point(247, 142);
+            this.tb_KorisnickoIme.Name = "tb_KorisnickoIme";
+            this.tb_KorisnickoIme.Size = new System.Drawing.Size(100, 20);
+            this.tb_KorisnickoIme.TabIndex = 1;
             // 
-            // textBox2
+            // tb_Lozinka
             // 
-            this.textBox2.Location = new System.Drawing.Point(247, 165);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
+            this.tb_Lozinka.Location = new System.Drawing.Point(247, 165);
+            this.tb_Lozinka.Name = "tb_Lozinka";
+            this.tb_Lozinka.PasswordChar = '*';
+            this.tb_Lozinka.Size = new System.Drawing.Size(100, 20);
+            this.tb_Lozinka.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(162, 168);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Lozinka";
+            this.label2.Text = "Lozinka:";
             // 
-            // comboBox1
+            // cb_Uloga
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(165, 191);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 4;
+            this.cb_Uloga.FormattingEnabled = true;
+            this.cb_Uloga.Location = new System.Drawing.Point(247, 191);
+            this.cb_Uloga.Name = "cb_Uloga";
+            this.cb_Uloga.Size = new System.Drawing.Size(121, 21);
+            this.cb_Uloga.TabIndex = 4;
             // 
-            // button1
+            // btn_Login
             // 
-            this.button1.Location = new System.Drawing.Point(247, 229);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Login.Location = new System.Drawing.Point(247, 229);
+            this.btn_Login.Name = "btn_Login";
+            this.btn_Login.Size = new System.Drawing.Size(75, 23);
+            this.btn_Login.TabIndex = 5;
+            this.btn_Login.Text = "Login";
+            this.btn_Login.UseVisualStyleBackColor = true;
+            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
-            // button2
+            // btn_Registracija
             // 
-            this.button2.Location = new System.Drawing.Point(247, 259);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Registracija";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_Registracija.Location = new System.Drawing.Point(247, 259);
+            this.btn_Registracija.Name = "btn_Registracija";
+            this.btn_Registracija.Size = new System.Drawing.Size(75, 23);
+            this.btn_Registracija.TabIndex = 6;
+            this.btn_Registracija.Text = "Registracija";
+            this.btn_Registracija.UseVisualStyleBackColor = true;
+            this.btn_Registracija.Click += new System.EventHandler(this.btn_Registracija_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(165, 198);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Uloga:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // frm_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btn_Registracija);
+            this.Controls.Add(this.btn_Login);
+            this.Controls.Add(this.cb_Uloga);
+            this.Controls.Add(this.tb_Lozinka);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_KorisnickoIme);
             this.Controls.Add(this.label1);
             this.Name = "frm_Login";
             this.Text = "Login";
@@ -118,11 +132,12 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tb_KorisnickoIme;
+        private System.Windows.Forms.TextBox tb_Lozinka;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cb_Uloga;
+        private System.Windows.Forms.Button btn_Login;
+        private System.Windows.Forms.Button btn_Registracija;
+        private System.Windows.Forms.Label label3;
     }
 }

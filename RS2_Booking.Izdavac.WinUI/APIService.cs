@@ -11,6 +11,8 @@ namespace RS2_Booking.Izdavac.WinUI
 {
     public class APIService
     {
+        public static string Username { get; set; }
+        public static string Password { get; set; }
         private readonly string _route = null;
         public APIService(string route)
         {

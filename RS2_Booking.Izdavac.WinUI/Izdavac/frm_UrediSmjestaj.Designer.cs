@@ -42,28 +42,12 @@
             this.lbl_Grad = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lbl_Adresa = new System.Windows.Forms.Label();
-            this.btn_Slike = new System.Windows.Forms.Button();
             this.btn_Nazad = new System.Windows.Forms.Button();
-            this.dgv_Okolina = new System.Windows.Forms.DataGridView();
-            this.OkolinaSmjestajId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NazivOkoline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UkloniOkolinu = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tb_OkolinaDodaj = new System.Windows.Forms.TextBox();
-            this.btn_OkolinaDodaj = new System.Windows.Forms.Button();
-            this.dgv_Usluge = new System.Windows.Forms.DataGridView();
-            this.UslugaSmjestajId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ukloni = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.tb_UslugaNaziv = new System.Windows.Forms.TextBox();
-            this.btn_UslugaDodaj = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tb_UslugaOpis = new System.Windows.Forms.RichTextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Okolina)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Usluge)).BeginInit();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_Usluge = new System.Windows.Forms.Button();
+            this.btn_Okoline = new System.Windows.Forms.Button();
+            this.btn_Slike = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_SmjestajSobe
@@ -79,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(71, 108);
+            this.label1.Location = new System.Drawing.Point(6, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 4;
@@ -87,14 +71,14 @@
             // 
             // tb_Naziv
             // 
-            this.tb_Naziv.Location = new System.Drawing.Point(74, 125);
+            this.tb_Naziv.Location = new System.Drawing.Point(9, 36);
             this.tb_Naziv.Name = "tb_Naziv";
             this.tb_Naziv.Size = new System.Drawing.Size(100, 20);
             this.tb_Naziv.TabIndex = 5;
             // 
             // tb_Telefon
             // 
-            this.tb_Telefon.Location = new System.Drawing.Point(74, 167);
+            this.tb_Telefon.Location = new System.Drawing.Point(9, 75);
             this.tb_Telefon.Name = "tb_Telefon";
             this.tb_Telefon.Size = new System.Drawing.Size(100, 20);
             this.tb_Telefon.TabIndex = 9;
@@ -102,7 +86,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(71, 151);
+            this.label3.Location = new System.Drawing.Point(6, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 13);
             this.label3.TabIndex = 8;
@@ -110,7 +94,7 @@
             // 
             // tb_Email
             // 
-            this.tb_Email.Location = new System.Drawing.Point(74, 206);
+            this.tb_Email.Location = new System.Drawing.Point(9, 118);
             this.tb_Email.Name = "tb_Email";
             this.tb_Email.Size = new System.Drawing.Size(100, 20);
             this.tb_Email.TabIndex = 11;
@@ -118,7 +102,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(71, 190);
+            this.label4.Location = new System.Drawing.Point(6, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 10;
@@ -127,7 +111,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(259, 108);
+            this.label5.Location = new System.Drawing.Point(6, 143);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(28, 13);
             this.label5.TabIndex = 12;
@@ -135,7 +119,7 @@
             // 
             // tb_Opis
             // 
-            this.tb_Opis.Location = new System.Drawing.Point(262, 125);
+            this.tb_Opis.Location = new System.Drawing.Point(6, 159);
             this.tb_Opis.Name = "tb_Opis";
             this.tb_Opis.Size = new System.Drawing.Size(239, 117);
             this.tb_Opis.TabIndex = 13;
@@ -143,18 +127,17 @@
             // 
             // btn_Snimi
             // 
-            this.btn_Snimi.Location = new System.Drawing.Point(74, 298);
+            this.btn_Snimi.Location = new System.Drawing.Point(305, 486);
             this.btn_Snimi.Name = "btn_Snimi";
             this.btn_Snimi.Size = new System.Drawing.Size(75, 23);
             this.btn_Snimi.TabIndex = 14;
             this.btn_Snimi.Text = "Snimi";
             this.btn_Snimi.UseVisualStyleBackColor = true;
-            this.btn_Snimi.Click += new System.EventHandler(this.btn_Snimi_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(190, 108);
+            this.label2.Location = new System.Drawing.Point(77, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 15;
@@ -163,7 +146,7 @@
             // lbl_Grad
             // 
             this.lbl_Grad.AutoSize = true;
-            this.lbl_Grad.Location = new System.Drawing.Point(193, 131);
+            this.lbl_Grad.Location = new System.Drawing.Point(79, 112);
             this.lbl_Grad.Name = "lbl_Grad";
             this.lbl_Grad.Size = new System.Drawing.Size(35, 13);
             this.lbl_Grad.TabIndex = 16;
@@ -172,7 +155,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(193, 151);
+            this.label7.Location = new System.Drawing.Point(80, 136);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 17;
@@ -181,184 +164,67 @@
             // lbl_Adresa
             // 
             this.lbl_Adresa.AutoSize = true;
-            this.lbl_Adresa.Location = new System.Drawing.Point(193, 173);
+            this.lbl_Adresa.Location = new System.Drawing.Point(80, 158);
             this.lbl_Adresa.Name = "lbl_Adresa";
             this.lbl_Adresa.Size = new System.Drawing.Size(35, 13);
             this.lbl_Adresa.TabIndex = 18;
             this.lbl_Adresa.Text = "label8";
             // 
-            // btn_Slike
-            // 
-            this.btn_Slike.Location = new System.Drawing.Point(262, 10);
-            this.btn_Slike.Name = "btn_Slike";
-            this.btn_Slike.Size = new System.Drawing.Size(118, 62);
-            this.btn_Slike.TabIndex = 19;
-            this.btn_Slike.Text = "Upravljanje slikama";
-            this.btn_Slike.UseVisualStyleBackColor = true;
-            // 
             // btn_Nazad
             // 
             this.btn_Nazad.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Nazad.Location = new System.Drawing.Point(74, 328);
+            this.btn_Nazad.Location = new System.Drawing.Point(305, 515);
             this.btn_Nazad.Name = "btn_Nazad";
             this.btn_Nazad.Size = new System.Drawing.Size(75, 23);
             this.btn_Nazad.TabIndex = 20;
             this.btn_Nazad.Text = "Nazad";
             this.btn_Nazad.UseVisualStyleBackColor = true;
-            this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
-            // dgv_Okolina
+            // groupBox1
             // 
-            this.dgv_Okolina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Okolina.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.OkolinaSmjestajId,
-            this.NazivOkoline,
-            this.UkloniOkolinu});
-            this.dgv_Okolina.Location = new System.Drawing.Point(537, 125);
-            this.dgv_Okolina.Name = "dgv_Okolina";
-            this.dgv_Okolina.Size = new System.Drawing.Size(369, 117);
-            this.dgv_Okolina.TabIndex = 21;
-            this.dgv_Okolina.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Okolina_CellContentClick);
+            this.groupBox1.Controls.Add(this.tb_Opis);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.tb_Email);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.tb_Telefon);
+            this.groupBox1.Controls.Add(this.tb_Naziv);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(74, 189);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(598, 291);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Izmjeni informacije";
             // 
-            // OkolinaSmjestajId
+            // btn_Usluge
             // 
-            this.OkolinaSmjestajId.DataPropertyName = "OkolinaSmjestajId";
-            this.OkolinaSmjestajId.HeaderText = "OkolinaSmjestajId";
-            this.OkolinaSmjestajId.Name = "OkolinaSmjestajId";
-            this.OkolinaSmjestajId.Visible = false;
+            this.btn_Usluge.Location = new System.Drawing.Point(231, 10);
+            this.btn_Usluge.Name = "btn_Usluge";
+            this.btn_Usluge.Size = new System.Drawing.Size(147, 66);
+            this.btn_Usluge.TabIndex = 14;
+            this.btn_Usluge.Text = "Upravljanje Uslugama";
+            this.btn_Usluge.UseVisualStyleBackColor = true;
+            this.btn_Usluge.Click += new System.EventHandler(this.btn_Usluge_Click);
             // 
-            // NazivOkoline
+            // btn_Okoline
             // 
-            this.NazivOkoline.DataPropertyName = "Naziv";
-            this.NazivOkoline.HeaderText = "Naziv Okoline";
-            this.NazivOkoline.Name = "NazivOkoline";
+            this.btn_Okoline.Location = new System.Drawing.Point(386, 10);
+            this.btn_Okoline.Name = "btn_Okoline";
+            this.btn_Okoline.Size = new System.Drawing.Size(147, 66);
+            this.btn_Okoline.TabIndex = 22;
+            this.btn_Okoline.Text = "Upravljanje okolinama";
+            this.btn_Okoline.UseVisualStyleBackColor = true;
+            this.btn_Okoline.Click += new System.EventHandler(this.btn_Okoline_Click);
             // 
-            // UkloniOkolinu
+            // btn_Slike
             // 
-            this.UkloniOkolinu.HeaderText = "Ukloni";
-            this.UkloniOkolinu.Name = "UkloniOkolinu";
-            this.UkloniOkolinu.Text = "Ukloni";
-            this.UkloniOkolinu.ToolTipText = "Ukloni";
-            this.UkloniOkolinu.UseColumnTextForButtonValue = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(537, 91);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 13);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Okolna mjesta:";
-            // 
-            // tb_OkolinaDodaj
-            // 
-            this.tb_OkolinaDodaj.Location = new System.Drawing.Point(540, 265);
-            this.tb_OkolinaDodaj.Name = "tb_OkolinaDodaj";
-            this.tb_OkolinaDodaj.Size = new System.Drawing.Size(100, 20);
-            this.tb_OkolinaDodaj.TabIndex = 23;
-            // 
-            // btn_OkolinaDodaj
-            // 
-            this.btn_OkolinaDodaj.Location = new System.Drawing.Point(646, 262);
-            this.btn_OkolinaDodaj.Name = "btn_OkolinaDodaj";
-            this.btn_OkolinaDodaj.Size = new System.Drawing.Size(75, 23);
-            this.btn_OkolinaDodaj.TabIndex = 24;
-            this.btn_OkolinaDodaj.Text = "Dodaj";
-            this.btn_OkolinaDodaj.UseVisualStyleBackColor = true;
-            this.btn_OkolinaDodaj.Click += new System.EventHandler(this.btn_OkolinaDodaj_Click);
-            // 
-            // dgv_Usluge
-            // 
-            this.dgv_Usluge.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Usluge.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.UslugaSmjestajId,
-            this.Naziv,
-            this.Opis,
-            this.Ukloni});
-            this.dgv_Usluge.Location = new System.Drawing.Point(275, 357);
-            this.dgv_Usluge.Name = "dgv_Usluge";
-            this.dgv_Usluge.Size = new System.Drawing.Size(240, 150);
-            this.dgv_Usluge.TabIndex = 25;
-            this.dgv_Usluge.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Usluge_CellContentClick);
-            // 
-            // UslugaSmjestajId
-            // 
-            this.UslugaSmjestajId.DataPropertyName = "UslugaSmjestajId";
-            this.UslugaSmjestajId.HeaderText = "UslugaSmjestajId";
-            this.UslugaSmjestajId.Name = "UslugaSmjestajId";
-            this.UslugaSmjestajId.Visible = false;
-            // 
-            // Naziv
-            // 
-            this.Naziv.DataPropertyName = "Naziv";
-            this.Naziv.HeaderText = "Naziv";
-            this.Naziv.Name = "Naziv";
-            // 
-            // Opis
-            // 
-            this.Opis.DataPropertyName = "Opis";
-            this.Opis.HeaderText = "Opis";
-            this.Opis.Name = "Opis";
-            // 
-            // Ukloni
-            // 
-            this.Ukloni.HeaderText = "Ukloni";
-            this.Ukloni.Name = "Ukloni";
-            this.Ukloni.Text = "Ukloni";
-            this.Ukloni.ToolTipText = "Ukloni";
-            this.Ukloni.UseColumnTextForButtonValue = true;
-            // 
-            // tb_UslugaNaziv
-            // 
-            this.tb_UslugaNaziv.Location = new System.Drawing.Point(262, 542);
-            this.tb_UslugaNaziv.Name = "tb_UslugaNaziv";
-            this.tb_UslugaNaziv.Size = new System.Drawing.Size(100, 20);
-            this.tb_UslugaNaziv.TabIndex = 26;
-            // 
-            // btn_UslugaDodaj
-            // 
-            this.btn_UslugaDodaj.Location = new System.Drawing.Point(426, 542);
-            this.btn_UslugaDodaj.Name = "btn_UslugaDodaj";
-            this.btn_UslugaDodaj.Size = new System.Drawing.Size(75, 23);
-            this.btn_UslugaDodaj.TabIndex = 27;
-            this.btn_UslugaDodaj.Text = "Dodaj";
-            this.btn_UslugaDodaj.UseVisualStyleBackColor = true;
-            this.btn_UslugaDodaj.Click += new System.EventHandler(this.btn_UslugaDodaj_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(259, 526);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 13);
-            this.label8.TabIndex = 28;
-            this.label8.Text = "Naziv usluge:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(259, 578);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 13);
-            this.label9.TabIndex = 29;
-            this.label9.Text = "Opis usluge:";
-            // 
-            // tb_UslugaOpis
-            // 
-            this.tb_UslugaOpis.Location = new System.Drawing.Point(262, 604);
-            this.tb_UslugaOpis.Name = "tb_UslugaOpis";
-            this.tb_UslugaOpis.Size = new System.Drawing.Size(100, 96);
-            this.tb_UslugaOpis.TabIndex = 30;
-            this.tb_UslugaOpis.Text = "";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(275, 328);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 13);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "Usluge";
+            this.btn_Slike.Location = new System.Drawing.Point(539, 12);
+            this.btn_Slike.Name = "btn_Slike";
+            this.btn_Slike.Size = new System.Drawing.Size(147, 66);
+            this.btn_Slike.TabIndex = 23;
+            this.btn_Slike.Text = "Upravljanje Slikama";
+            this.btn_Slike.UseVisualStyleBackColor = true;
             // 
             // frm_UrediSmjestaj
             // 
@@ -366,38 +232,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Nazad;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.tb_UslugaOpis);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.btn_UslugaDodaj);
-            this.Controls.Add(this.tb_UslugaNaziv);
-            this.Controls.Add(this.dgv_Usluge);
-            this.Controls.Add(this.btn_OkolinaDodaj);
-            this.Controls.Add(this.tb_OkolinaDodaj);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.dgv_Okolina);
-            this.Controls.Add(this.btn_Nazad);
             this.Controls.Add(this.btn_Slike);
+            this.Controls.Add(this.btn_Okoline);
+            this.Controls.Add(this.btn_Usluge);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btn_Nazad);
             this.Controls.Add(this.lbl_Adresa);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lbl_Grad);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_Snimi);
-            this.Controls.Add(this.tb_Opis);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.tb_Email);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.tb_Telefon);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.tb_Naziv);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_SmjestajSobe);
             this.Name = "frm_UrediSmjestaj";
             this.Text = "Uredi Smještaj";
             this.Load += new System.EventHandler(this.frm_UrediSmjestaj_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Okolina)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Usluge)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,23 +270,8 @@
         private System.Windows.Forms.Label lbl_Adresa;
         private System.Windows.Forms.Button btn_Slike;
         private System.Windows.Forms.Button btn_Nazad;
-        private System.Windows.Forms.DataGridView dgv_Okolina;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tb_OkolinaDodaj;
-        private System.Windows.Forms.Button btn_OkolinaDodaj;
-        private System.Windows.Forms.DataGridView dgv_Usluge;
-        private System.Windows.Forms.TextBox tb_UslugaNaziv;
-        private System.Windows.Forms.Button btn_UslugaDodaj;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RichTextBox tb_UslugaOpis;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OkolinaSmjestajId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NazivOkoline;
-        private System.Windows.Forms.DataGridViewButtonColumn UkloniOkolinu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UslugaSmjestajId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
-        private System.Windows.Forms.DataGridViewButtonColumn Ukloni;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btn_Usluge;
+        private System.Windows.Forms.Button btn_Okoline;
     }
 }

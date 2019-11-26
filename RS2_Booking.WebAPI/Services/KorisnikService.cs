@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using RS2_Booking.Model;
 using RS2_Booking.Model.Requests;
+using RS2_Booking.WebAPI.Exceptions;
+using System.Security.Cryptography;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace RS2_Booking.WebAPI.Services
 {
@@ -37,17 +41,37 @@ namespace RS2_Booking.WebAPI.Services
             _context.SaveChanges();
         }
 
-        public KorisnikModel Update(KorisnikModel model, int id)
+        public KorisnikEditRequest Update(KorisnikEditRequest model, int id)
         {
-            var entity = _context.Set<Korisnik>().Find(id);
+            if (model.Sifra == model.SifraPonovo)
+            {
+                var user = _context.Korisnik.FirstOrDefault(x => x.KorisnickoIme == model.KorisnickoIme);
 
-            _context.Set<Korisnik>().Attach(entity);
-            _context.Set<Korisnik>().Update(entity);
-            _mapper.Map(model, entity);
+                if (user != null)
+                {
+                    user.Ime = model.Ime;
+                    user.Prezime = model.Prezime;
+                    user.BrojTelefona = model.BrojTelefona;
+                    user.Email = model.Email;
+                    user.KorisnickoIme = model.KorisnickoIme;
 
 
-            _context.SaveChanges();
-            return _mapper.Map<KorisnikModel>(entity);
+                    var newHash = GenerateHash(user.SifraSalt, model.Sifra);
+
+                    if (newHash == user.SifraHash)
+                    {
+                        user.SifraSalt = GenerateSalt();
+                        user.SifraHash = GenerateHash(user.SifraSalt, model.Sifra);
+                        _context.Set<Korisnik>().Attach(user);
+                        _context.Set<Korisnik>().Update(user);
+
+                        _context.SaveChanges();
+                    }
+                }
+                return model;
+            }
+            else
+                return null;
         }
 
         public KorisnikModel GetById(int id)
@@ -70,32 +94,42 @@ namespace RS2_Booking.WebAPI.Services
                 KorisnikEditRequest k = _mapper.Map<KorisnikEditRequest>(entity);
                 return k;
             }
-            else
+            else            
                 return null;
         }
 
         public KorisnikInsertRequest Insert(KorisnikInsertRequest request)
         {
             var k = _mapper.Map<Models.Korisnik>(request);
-            k.SifraSalt = "implementiraj";
-            k.SifraHash = "implemantiraj";
-            _context.Korisnik.Add(k);
-            _context.SaveChanges();
-            if ( request.Role == 1 )
+
+            k.SifraSalt = GenerateSalt();
+            k.SifraHash = GenerateHash(k.SifraSalt, request.Sifra);
+            if ( request.Role == 2 )
             {
-                Klijent novi = new Klijent
+                k.IsAdmin = true;
+            }
+            if (!_context.Korisnik.Any(x => x.KorisnickoIme == request.KorisnickoIme && x.Email == request.Email))
+            {
+                _context.Korisnik.Add(k);
+                _context.SaveChanges();
+                if (request.Role == 3)
                 {
-                    KorisnikId = k.KorisnikId
-                };
-                _context.Klijent.Add(novi);
-                _context.SaveChanges();
+                    Klijent novi = new Klijent
+                    {
+                        KorisnikId = k.KorisnikId
+                    };
+                    _context.Klijent.Add(novi);
+                    _context.SaveChanges();
+                }
+                else if (request.Role == 1)
+                {
+                    Izdavac novi = new Izdavac { KorisnikId = k.KorisnikId };
+                    _context.Izdavac.Add(novi);
+                    _context.SaveChanges();
+                }
             }
-            else if ( request.Role == 2 )
-            {
-                Izdavac novi = new Izdavac { KorisnikId = k.KorisnikId };
-                _context.Izdavac.Add(novi);
-                _context.SaveChanges();
-            }
+            else
+                request.Response = "Korisničko ime ili e-mail je zauzet!";
             return request;
         }
 
@@ -151,7 +185,8 @@ namespace RS2_Booking.WebAPI.Services
                              KorisnikId = korisnik.KorisnikId,
                              Ime = korisnik.Ime,
                              Prezime = korisnik.Prezime,
-                             KorisnickoIme = korisnik.KorisnickoIme
+                             KorisnickoIme = korisnik.KorisnickoIme,
+                             Uloga = 2
                          }).ToList();
             if (!string.IsNullOrEmpty(request.Ime))                                                                                                                                                                                                                                                                                                                                         
             {
@@ -167,6 +202,73 @@ namespace RS2_Booking.WebAPI.Services
             }
 
             return query;
+
+           
+        }
+
+        public static string GenerateSalt()
+        {
+            var buf = new byte[16];
+            (new RNGCryptoServiceProvider()).GetBytes(buf);
+            return Convert.ToBase64String(buf);
+        }
+
+        public static string GenerateHash(string salt, string password)
+        {
+            byte[] src = Convert.FromBase64String(salt);
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] dst = new byte[src.Length + bytes.Length];
+
+            System.Buffer.BlockCopy(src, 0, dst, 0, src.Length);
+            System.Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
+
+            HashAlgorithm algorithm = HashAlgorithm.Create("SHA1");
+            byte[] inArray = algorithm.ComputeHash(dst);
+            return Convert.ToBase64String(inArray);
+        }
+
+        public Model.KorisnikModel Authenticiraj(string username, string pass)
+        {
+            var user = _context.Korisnik.FirstOrDefault(x => x.KorisnickoIme == username);
+
+            if (user != null)
+            {
+                var newHash = GenerateHash(user.SifraSalt, pass);
+
+                if (newHash == user.SifraHash)
+                {
+                    return _mapper.Map<Model.KorisnikModel>(user);
+                }
+            }
+            return null;
+        }
+
+        public KorisnikModel Login(LoginRequest request)
+        {
+            KorisnikModel k = Authenticiraj(request.KorisnickoIme, request.Lozinka);
+            if ( request.Uloga == 1 )
+            {
+               Izdavac Izdavac = _context.Izdavac.Where(x => x.KorisnikId == k.KorisnikId).FirstOrDefault();
+                if (Izdavac == null)
+                    return null;
+                else
+                {
+                    k.Uloga = 1;
+                    k.IzdavacId = Izdavac.IzdavacId;
+                    return k;
+                }
+            }
+            if ( request.Uloga == 2 )
+            {
+                if (_context.Korisnik.Find(k.KorisnikId).IsAdmin == true)
+                {
+                    k.Uloga = 2;
+                    return k;
+                }
+                else
+                    return null;
+            }
+            return k;
         }
     }
 }

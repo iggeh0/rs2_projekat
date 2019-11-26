@@ -16,8 +16,12 @@ namespace RS2_Booking.WebAPI.Services
 
         Model.KorisnikModel GetById(int id);
         KorisnikEditRequest GetKorisnikEdit(int id);
+        Model.KorisnikModel Login(LoginRequest request);
 
-        Model.KorisnikModel Update(Model.KorisnikModel model, int id);
+        Model.KorisnikModel Authenticiraj(string username, string pass);
+
+
+        KorisnikEditRequest Update(KorisnikEditRequest model, int id);
 
         void Delete(int id);
     }

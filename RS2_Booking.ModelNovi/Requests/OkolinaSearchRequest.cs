@@ -8,5 +8,6 @@ namespace RS2_Booking.Model.Requests
     {
         public int OkolinaId { get; set; }
         public int SmjestajId { get; set; }
+        public int GradId { get; set; }
     }
 }

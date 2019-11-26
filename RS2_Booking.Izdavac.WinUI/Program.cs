@@ -15,7 +15,7 @@ namespace RS2_Booking.Izdavac.WinUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_AdminSmjestaj());
+            Application.Run(new frm_Login());
         }
     }
 }

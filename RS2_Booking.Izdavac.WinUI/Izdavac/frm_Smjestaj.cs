@@ -20,18 +20,20 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
         private readonly APIService _SmjestajService = new APIService("smjestaj");
         private readonly APIService _GradService = new APIService("grad");
 
+
         private readonly int _IzdavacId;
         private readonly int _KorisnikId;
 
-        public frm_Smjestaj(int IzdavacId, int KorisnikId)
+        public frm_Smjestaj(int KorisnikId, int IzdavacId)
         {
-            _IzdavacId = IzdavacId;
             _KorisnikId = KorisnikId;
+            _IzdavacId = IzdavacId;
             InitializeComponent();
         }
 
         private async void btn_Filtriraj_Click(object sender, EventArgs e)
         {
+
             var search = new SmjestajSearchRequest
             {
                 GradId = cb_GradPretraga.SelectedIndex,
