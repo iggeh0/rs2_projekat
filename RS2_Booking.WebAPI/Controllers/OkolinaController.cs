@@ -11,10 +11,34 @@ using RS2_Booking.WebAPI.Services;
 
 namespace RS2_Booking.WebAPI.Controllers
 {
-    public class OkolinaController : BaseController<OkolinaModel, OkolinaSearchRequest, OkolinaInsertRequest>
+    [Route("api/[controller]")]
+    [ApiController]
+    public class OkolinaController : ControllerBase
     {
-        public OkolinaController(IService<OkolinaModel, OkolinaSearchRequest, OkolinaInsertRequest> Service) : base(Service)
+        private readonly IOkolinaService _Service;
+
+        public OkolinaController(IOkolinaService okolinaService)
         {
+            _Service = okolinaService;
         }
+        [HttpGet]
+        public List<OkolinaModel> Get([FromQuery]OkolinaSearchRequest search)
+        {
+            return _Service.Get(search);
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            _Service.Delete(id);
+        }
+
+
+        [HttpPost]
+        public virtual OkolinaInsertRequest Insert(OkolinaInsertRequest Model)
+        {
+            return _Service.Insert(Model);
+        }
+
     }
 }

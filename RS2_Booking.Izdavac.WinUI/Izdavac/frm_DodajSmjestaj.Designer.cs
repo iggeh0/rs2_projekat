@@ -44,6 +44,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btn_Dodaj = new System.Windows.Forms.Button();
             this.btn_Nazad = new System.Windows.Forms.Button();
+            this.lbl_NazivErr = new System.Windows.Forms.Label();
+            this.lbl_UdaljenostErr = new System.Windows.Forms.Label();
+            this.lbl_GradErr = new System.Windows.Forms.Label();
+            this.lbl_OpisErr = new System.Windows.Forms.Label();
+            this.lbl_AdresaErr = new System.Windows.Forms.Label();
+            this.lbl_TelefonErr = new System.Windows.Forms.Label();
+            this.lbl_EmailErr = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tb_Naziv
@@ -180,11 +187,95 @@
             this.btn_Nazad.UseVisualStyleBackColor = true;
             this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
+            // lbl_NazivErr
+            // 
+            this.lbl_NazivErr.AutoSize = true;
+            this.lbl_NazivErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_NazivErr.Location = new System.Drawing.Point(472, 33);
+            this.lbl_NazivErr.Name = "lbl_NazivErr";
+            this.lbl_NazivErr.Size = new System.Drawing.Size(35, 13);
+            this.lbl_NazivErr.TabIndex = 18;
+            this.lbl_NazivErr.Text = "label7";
+            this.lbl_NazivErr.Visible = false;
+            // 
+            // lbl_UdaljenostErr
+            // 
+            this.lbl_UdaljenostErr.AutoSize = true;
+            this.lbl_UdaljenostErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_UdaljenostErr.Location = new System.Drawing.Point(472, 62);
+            this.lbl_UdaljenostErr.Name = "lbl_UdaljenostErr";
+            this.lbl_UdaljenostErr.Size = new System.Drawing.Size(35, 13);
+            this.lbl_UdaljenostErr.TabIndex = 19;
+            this.lbl_UdaljenostErr.Text = "label8";
+            this.lbl_UdaljenostErr.Visible = false;
+            // 
+            // lbl_GradErr
+            // 
+            this.lbl_GradErr.AutoSize = true;
+            this.lbl_GradErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_GradErr.Location = new System.Drawing.Point(472, 88);
+            this.lbl_GradErr.Name = "lbl_GradErr";
+            this.lbl_GradErr.Size = new System.Drawing.Size(35, 13);
+            this.lbl_GradErr.TabIndex = 20;
+            this.lbl_GradErr.Text = "label9";
+            this.lbl_GradErr.Visible = false;
+            // 
+            // lbl_OpisErr
+            // 
+            this.lbl_OpisErr.AutoSize = true;
+            this.lbl_OpisErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_OpisErr.Location = new System.Drawing.Point(471, 115);
+            this.lbl_OpisErr.Name = "lbl_OpisErr";
+            this.lbl_OpisErr.Size = new System.Drawing.Size(41, 13);
+            this.lbl_OpisErr.TabIndex = 21;
+            this.lbl_OpisErr.Text = "label10";
+            this.lbl_OpisErr.Visible = false;
+            // 
+            // lbl_AdresaErr
+            // 
+            this.lbl_AdresaErr.AutoSize = true;
+            this.lbl_AdresaErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_AdresaErr.Location = new System.Drawing.Point(472, 214);
+            this.lbl_AdresaErr.Name = "lbl_AdresaErr";
+            this.lbl_AdresaErr.Size = new System.Drawing.Size(41, 13);
+            this.lbl_AdresaErr.TabIndex = 22;
+            this.lbl_AdresaErr.Text = "label11";
+            this.lbl_AdresaErr.Visible = false;
+            // 
+            // lbl_TelefonErr
+            // 
+            this.lbl_TelefonErr.AutoSize = true;
+            this.lbl_TelefonErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_TelefonErr.Location = new System.Drawing.Point(472, 243);
+            this.lbl_TelefonErr.Name = "lbl_TelefonErr";
+            this.lbl_TelefonErr.Size = new System.Drawing.Size(41, 13);
+            this.lbl_TelefonErr.TabIndex = 23;
+            this.lbl_TelefonErr.Text = "label12";
+            this.lbl_TelefonErr.Visible = false;
+            // 
+            // lbl_EmailErr
+            // 
+            this.lbl_EmailErr.AutoSize = true;
+            this.lbl_EmailErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_EmailErr.Location = new System.Drawing.Point(472, 269);
+            this.lbl_EmailErr.Name = "lbl_EmailErr";
+            this.lbl_EmailErr.Size = new System.Drawing.Size(41, 13);
+            this.lbl_EmailErr.TabIndex = 24;
+            this.lbl_EmailErr.Text = "label13";
+            this.lbl_EmailErr.Visible = false;
+            // 
             // frm_DodajSmjestaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_EmailErr);
+            this.Controls.Add(this.lbl_TelefonErr);
+            this.Controls.Add(this.lbl_AdresaErr);
+            this.Controls.Add(this.lbl_OpisErr);
+            this.Controls.Add(this.lbl_GradErr);
+            this.Controls.Add(this.lbl_UdaljenostErr);
+            this.Controls.Add(this.lbl_NazivErr);
             this.Controls.Add(this.btn_Nazad);
             this.Controls.Add(this.btn_Dodaj);
             this.Controls.Add(this.label6);
@@ -227,5 +318,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btn_Dodaj;
         private System.Windows.Forms.Button btn_Nazad;
+        private System.Windows.Forms.Label lbl_NazivErr;
+        private System.Windows.Forms.Label lbl_UdaljenostErr;
+        private System.Windows.Forms.Label lbl_GradErr;
+        private System.Windows.Forms.Label lbl_OpisErr;
+        private System.Windows.Forms.Label lbl_AdresaErr;
+        private System.Windows.Forms.Label lbl_TelefonErr;
+        private System.Windows.Forms.Label lbl_EmailErr;
     }
 }

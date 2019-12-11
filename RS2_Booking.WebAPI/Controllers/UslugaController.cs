@@ -11,10 +11,34 @@ using RS2_Booking.WebAPI.Services;
 
 namespace RS2_Booking.WebAPI.Controllers
 {
-    public class UslugaController : BaseController<UslugaModel, UslugaSearchRequest, UslugaInsertRequest>
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UslugaController : ControllerBase
     {
-        public UslugaController(IService<UslugaModel, UslugaSearchRequest, UslugaInsertRequest> Service) : base(Service)
+        private readonly IUslugaService _Service;
+
+        public UslugaController(IUslugaService okolinaService)
         {
+            _Service = okolinaService;
         }
+        [HttpGet]
+        public List<UslugaModel> Get([FromQuery]UslugaSearchRequest search)
+        {
+            return _Service.Get(search);
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            _Service.Delete(id);
+        }
+
+
+        [HttpPost]
+        public virtual UslugaInsertRequest Insert(UslugaInsertRequest Model)
+        {
+            return _Service.Insert(Model);
+        }
+
     }
 }

@@ -9,49 +9,97 @@ using System.Threading.Tasks;
 
 namespace RS2_Booking.WebAPI.Services
 {
-    public class UslugaService : BaseService<UslugaModel, UslugaSearchRequest, UslugaInsertRequest, Usluga>
+    public class UslugaService : IUslugaService
     {
-        public UslugaService(Online_BookingContext context, IMapper mapper) : base(context, mapper)
+        private readonly Online_BookingContext _context;
+        private readonly IMapper _mapper;
+
+        public UslugaService(Online_BookingContext context, IMapper mapper)
         {
+            _context = context;
+            _mapper = mapper;
         }
-        public override List<UslugaModel> Get(UslugaSearchRequest search)
+        public List<UslugaModel> Get(UslugaSearchRequest search)
         {
-            var query = (from usluga in _context.Usluga
-                         join uslugasmjestaj in _context.UslugaSmjestaj.Where(x => x.SmjestajId == search.SmjestajId)
-                         on usluga.UslugaId equals uslugasmjestaj.UslugaId
-                         select new UslugaModel()
-                         {
-                             UslugaId = usluga.UslugaId,
-                             Naziv = usluga.Naziv,
-                             UslugaSmjestajId = uslugasmjestaj.UslugaSmjestajId,
-                             Opis = usluga.Opis
-                         }).ToList();
-            if (query.Any())
+            if (search.Preporucene)
             {
-                return query;
+                var query = (from usluga in _context.Usluga
+                             join uslugasmjestaj in _context.UslugaSmjestaj.Where(x => x.SmjestajId != search.SmjestajId)
+                             on usluga.UslugaId equals uslugasmjestaj.UslugaId
+                             select new UslugaModel()
+                             {
+                                 UslugaId = usluga.UslugaId,
+                                 Naziv = usluga.Naziv,
+                                 UslugaSmjestajId = uslugasmjestaj.UslugaSmjestajId,
+                                 Opis = usluga.Opis
+                             }).ToList();
+                if (query.Any())
+                {
+                    return query;
+                }
+                else
+                    return null;
             }
             else
-                return null;
-        }
-        public override UslugaInsertRequest Insert(UslugaInsertRequest model)
-        {
-            Usluga u = _mapper.Map<Usluga>(model);
-            _context.Usluga.Add(u);
-            _context.SaveChanges();
-            UslugaSmjestaj us = new UslugaSmjestaj()
             {
-                SmjestajId = model.SmjestajId,
-                UslugaId = u.UslugaId
-            };
-
-            _context.UslugaSmjestaj.Add(us);
-            _context.SaveChanges();
-            return model;
+                var query = (from usluga in _context.Usluga
+                             join uslugasmjestaj in _context.UslugaSmjestaj.Where(x => x.SmjestajId == search.SmjestajId)
+                             on usluga.UslugaId equals uslugasmjestaj.UslugaId
+                             select new UslugaModel()
+                             {
+                                 UslugaId = usluga.UslugaId,
+                                 Naziv = usluga.Naziv,
+                                 UslugaSmjestajId = uslugasmjestaj.UslugaSmjestajId,
+                                 Opis = usluga.Opis
+                             }).ToList();
+                if (query.Any())
+                {
+                    return query;
+                }
+                else
+                    return null;
+            }
         }
-        public override void Delete(int id)
+        public UslugaInsertRequest Insert(UslugaInsertRequest model)
+        {
+            if (model.Nova)
+            {
+                Usluga u = _mapper.Map<Usluga>(model);
+                _context.Usluga.Add(u);
+                _context.SaveChanges();
+                UslugaSmjestaj us = new UslugaSmjestaj()
+                {
+                    SmjestajId = model.SmjestajId,
+                    UslugaId = u.UslugaId
+                };
+
+                _context.UslugaSmjestaj.Add(us);
+                _context.SaveChanges();
+                return model;
+            }
+            else
+            {
+                UslugaSmjestaj us = new UslugaSmjestaj
+                {
+                    SmjestajId = model.SmjestajId,
+                    UslugaId = model.UslugaId
+                };
+                _context.UslugaSmjestaj.Add(us);
+                _context.SaveChanges();
+                return model;
+            }
+        }
+        public void Delete(int id)
         {
             UslugaSmjestaj us = _context.UslugaSmjestaj.Find(id);
+            int UslugaId = us.UslugaId;
             _context.UslugaSmjestaj.Remove(us);
+            if (!_context.UslugaSmjestaj.Where(x => x.UslugaId == UslugaId).Any())
+            {
+                Usluga u = _context.Usluga.Find(UslugaId);
+                _context.Usluga.Remove(u);
+
+            }
             _context.SaveChanges();
         }
     }

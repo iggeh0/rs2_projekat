@@ -17,5 +17,8 @@ namespace RS2_Booking.Model
         public string KorisnickoIme { get; set; }
         public int Uloga { get; set; } //1 - izdavač, 2 - admin, 3 - klijent
         public int IzdavacId { get; set; }
+
+        public bool OK { get; set; }
+        public string Poruka { get; set; }
     }
 }

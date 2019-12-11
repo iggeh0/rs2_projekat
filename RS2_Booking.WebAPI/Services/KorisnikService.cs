@@ -35,7 +35,14 @@ namespace RS2_Booking.WebAPI.Services
             Izdavac cascade_entity_2 = _context.Izdavac.Where(x => x.KorisnikId == entity.KorisnikId).FirstOrDefault();
 
             if (cascade_entity_2 != null)
+            {
+                SmjestajService smjestajService = new SmjestajService(_context, _mapper);
+                foreach ( Smjestaj s in _context.Smjestaj.Where(x=> x.IzdavacId ==cascade_entity_2.IzdavacId ))
+                    {
+                         smjestajService.Delete(s.SmjestajId);
+                     }
                 _context.Izdavac.Remove(cascade_entity_2);
+            }
 
             _context.Set<Korisnik>().Remove(entity);
             _context.SaveChanges();
@@ -237,36 +244,55 @@ namespace RS2_Booking.WebAPI.Services
 
                 if (newHash == user.SifraHash)
                 {
-                    return _mapper.Map<Model.KorisnikModel>(user);
+                    KorisnikModel korisnik = _mapper.Map<Model.KorisnikModel>(user);
+                    korisnik.OK = true;
+                    return korisnik;
                 }
             }
-            return null;
+            KorisnikModel k = new KorisnikModel
+            {
+                OK = false,
+                Poruka = "Korisnik nije pronađen"
+            };
+            return k;
         }
 
         public KorisnikModel Login(LoginRequest request)
         {
             KorisnikModel k = Authenticiraj(request.KorisnickoIme, request.Lozinka);
-            if ( request.Uloga == 1 )
+            if (k.OK)
             {
-               Izdavac Izdavac = _context.Izdavac.Where(x => x.KorisnikId == k.KorisnikId).FirstOrDefault();
-                if (Izdavac == null)
-                    return null;
-                else
+                if (request.Uloga == 1)
                 {
-                    k.Uloga = 1;
-                    k.IzdavacId = Izdavac.IzdavacId;
-                    return k;
+                    Izdavac Izdavac = _context.Izdavac.Where(x => x.KorisnikId == k.KorisnikId).FirstOrDefault();
+                    if (Izdavac == null)
+                    {
+                        k.OK = false;
+                        k.Poruka = "Pronađeni korisnik nije izdavač!";
+                        return k;
+                    }
+                    else
+                    {
+                        k.Uloga = 1;
+                        k.IzdavacId = Izdavac.IzdavacId;
+                        return k;
+                    }
                 }
-            }
-            if ( request.Uloga == 2 )
-            {
-                if (_context.Korisnik.Find(k.KorisnikId).IsAdmin == true)
+                if (request.Uloga == 2)
                 {
-                    k.Uloga = 2;
-                    return k;
+                    Korisnik korisnik = _context.Korisnik.Find(k.KorisnikId);
+                    if (korisnik.IsAdmin != null && korisnik.IsAdmin == true)
+                    {
+                        k.Uloga = 2;
+                        return k;
+                    }
+                    else
+                    {
+                        k.OK = false;
+                        k.Poruka = "Pronađeni korisnik nema administratorske privilegije!";
+                    }
                 }
-                else
-                    return null;
+
             }
             return k;
         }

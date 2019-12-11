@@ -38,6 +38,7 @@ namespace RS2_Booking.Izdavac.WinUI
             cb_Uloga.DataSource = lista;
             cb_Uloga.ValueMember = "GradId";
             cb_Uloga.DisplayMember = "Naziv";
+            cb_Uloga.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private async void btn_Login_Click(object sender, EventArgs e)
@@ -47,7 +48,9 @@ namespace RS2_Booking.Izdavac.WinUI
                 request.Lozinka = tb_Lozinka.Text;
                 request.Uloga = Int32.Parse(cb_Uloga.SelectedValue.ToString());
                 var k = await _service.Get<KorisnikModel>(request);
-                if ( k.Uloga == Int32.Parse(cb_Uloga.SelectedValue.ToString()) && k.Uloga == 2)
+            if (k.OK)
+            {
+                if (k.Uloga == Int32.Parse(cb_Uloga.SelectedValue.ToString()) && k.Uloga == 2)
                 {
                     frm_AdminIndex form = new frm_AdminIndex(k.KorisnikId);
                     form.Show();
@@ -59,6 +62,9 @@ namespace RS2_Booking.Izdavac.WinUI
                     form.Show();
                     Hide();
                 }
+            }
+            else
+                MessageBox.Show(k.Poruka);
         }
 
         private void btn_Registracija_Click(object sender, EventArgs e)

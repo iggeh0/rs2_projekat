@@ -7,5 +7,6 @@ namespace RS2_Booking.Model.Requests
     public class UslugaSearchRequest
     {
         public int SmjestajId { get; set; }
+        public bool Preporucene { get; set; }
     }
 }

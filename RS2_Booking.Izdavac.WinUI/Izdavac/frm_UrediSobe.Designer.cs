@@ -43,15 +43,15 @@
             this.tb_Velicina = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_Inventar = new System.Windows.Forms.DataGridView();
+            this.InventarId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ukloni = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.InventarSobaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.tb_Inventar = new System.Windows.Forms.TextBox();
             this.btn_Inventar = new System.Windows.Forms.Button();
             this.tb_Opis = new System.Windows.Forms.RichTextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.InventarId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ukloni = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.InventarSobaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Inventar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -90,7 +90,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 154);
+            this.label4.Location = new System.Drawing.Point(38, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 21;
@@ -126,7 +126,7 @@
             // cb_Kupaonica
             // 
             this.cb_Kupaonica.AutoSize = true;
-            this.cb_Kupaonica.Location = new System.Drawing.Point(41, 134);
+            this.cb_Kupaonica.Location = new System.Drawing.Point(41, 141);
             this.cb_Kupaonica.Name = "cb_Kupaonica";
             this.cb_Kupaonica.Size = new System.Drawing.Size(113, 17);
             this.cb_Kupaonica.TabIndex = 17;
@@ -139,7 +139,6 @@
             this.tb_VrstaSmjestaja.Name = "tb_VrstaSmjestaja";
             this.tb_VrstaSmjestaja.Size = new System.Drawing.Size(100, 20);
             this.tb_VrstaSmjestaja.TabIndex = 15;
-            //this.tb_VrstaSmjestaja.Validating += new System.ComponentModel.CancelEventHandler(this.tb_VrstaSmjestaja_Validating);
             // 
             // tb_Cijena
             // 
@@ -147,7 +146,6 @@
             this.tb_Cijena.Name = "tb_Cijena";
             this.tb_Cijena.Size = new System.Drawing.Size(100, 20);
             this.tb_Cijena.TabIndex = 14;
-            //this.tb_Cijena.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Cijena_Validating);
             // 
             // tb_BrojKreveta
             // 
@@ -155,7 +153,6 @@
             this.tb_BrojKreveta.Name = "tb_BrojKreveta";
             this.tb_BrojKreveta.Size = new System.Drawing.Size(100, 20);
             this.tb_BrojKreveta.TabIndex = 13;
-            //this.tb_BrojKreveta.Validating += new System.ComponentModel.CancelEventHandler(this.tb_BrojKreveta_Validating);
             // 
             // tb_Velicina
             // 
@@ -163,7 +160,6 @@
             this.tb_Velicina.Name = "tb_Velicina";
             this.tb_Velicina.Size = new System.Drawing.Size(100, 20);
             this.tb_Velicina.TabIndex = 25;
-            //this.tb_Velicina.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Velicina_Validating);
             // 
             // groupBox1
             // 
@@ -177,6 +173,8 @@
             // 
             // dgv_Inventar
             // 
+            this.dgv_Inventar.AllowUserToAddRows = false;
+            this.dgv_Inventar.AllowUserToDeleteRows = false;
             this.dgv_Inventar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Inventar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.InventarId,
@@ -186,9 +184,41 @@
             this.dgv_Inventar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Inventar.Location = new System.Drawing.Point(3, 16);
             this.dgv_Inventar.Name = "dgv_Inventar";
+            this.dgv_Inventar.ReadOnly = true;
             this.dgv_Inventar.Size = new System.Drawing.Size(415, 132);
             this.dgv_Inventar.TabIndex = 0;
             this.dgv_Inventar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Inventar_CellContentClick);
+            // 
+            // InventarId
+            // 
+            this.InventarId.DataPropertyName = "InventarId";
+            this.InventarId.HeaderText = "InventarId";
+            this.InventarId.Name = "InventarId";
+            this.InventarId.ReadOnly = true;
+            this.InventarId.Visible = false;
+            // 
+            // Naziv
+            // 
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naziv";
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
+            // 
+            // Ukloni
+            // 
+            this.Ukloni.HeaderText = "Ukloni";
+            this.Ukloni.Name = "Ukloni";
+            this.Ukloni.ReadOnly = true;
+            this.Ukloni.Text = "Ukloni";
+            this.Ukloni.UseColumnTextForButtonValue = true;
+            // 
+            // InventarSobaId
+            // 
+            this.InventarSobaId.DataPropertyName = "InventarSobaId";
+            this.InventarSobaId.HeaderText = "InventarSobaId";
+            this.InventarSobaId.Name = "InventarSobaId";
+            this.InventarSobaId.ReadOnly = true;
+            this.InventarSobaId.Visible = false;
             // 
             // label6
             // 
@@ -205,7 +235,6 @@
             this.tb_Inventar.Name = "tb_Inventar";
             this.tb_Inventar.Size = new System.Drawing.Size(100, 20);
             this.tb_Inventar.TabIndex = 27;
-            //this.tb_Inventar.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Inventar_Validating);
             // 
             // btn_Inventar
             // 
@@ -219,43 +248,15 @@
             // 
             // tb_Opis
             // 
-            this.tb_Opis.Location = new System.Drawing.Point(132, 157);
+            this.tb_Opis.Location = new System.Drawing.Point(122, 171);
             this.tb_Opis.Name = "tb_Opis";
             this.tb_Opis.Size = new System.Drawing.Size(100, 96);
             this.tb_Opis.TabIndex = 30;
             this.tb_Opis.Text = "";
-            //this.tb_Opis.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Opis_Validating);
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // InventarId
-            // 
-            this.InventarId.DataPropertyName = "InventarId";
-            this.InventarId.HeaderText = "InventarId";
-            this.InventarId.Name = "InventarId";
-            this.InventarId.Visible = false;
-            // 
-            // Naziv
-            // 
-            this.Naziv.DataPropertyName = "Naziv";
-            this.Naziv.HeaderText = "Naziv";
-            this.Naziv.Name = "Naziv";
-            // 
-            // Ukloni
-            // 
-            this.Ukloni.HeaderText = "Ukloni";
-            this.Ukloni.Name = "Ukloni";
-            this.Ukloni.Text = "Ukloni";
-            this.Ukloni.UseColumnTextForButtonValue = true;
-            // 
-            // InventarSobaId
-            // 
-            this.InventarSobaId.DataPropertyName = "InventarSobaId";
-            this.InventarSobaId.HeaderText = "InventarSobaId";
-            this.InventarSobaId.Name = "InventarSobaId";
-            this.InventarSobaId.Visible = false;
             // 
             // frm_UrediSobe
             // 

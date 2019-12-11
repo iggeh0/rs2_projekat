@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,6 +21,18 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
         {
             InitializeComponent();
             _IzdavacId = IzdavacId;
+            cb_Grad.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void ClearErrors()
+        {
+            lbl_AdresaErr.Visible = false;
+            lbl_EmailErr.Visible = false;
+            lbl_GradErr.Visible = false;
+            lbl_NazivErr.Visible = false;
+            lbl_OpisErr.Visible = false;
+            lbl_TelefonErr.Visible = false;
+            lbl_UdaljenostErr.Visible = false;
         }
 
         private async void frm_DodajSmjestaj_Load(object sender, EventArgs e)
@@ -44,18 +57,90 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private async void btn_Dodaj_Click(object sender, EventArgs e)
         {
+            ClearErrors();
+            bool valid = true;
             SmjestajModel Model = new SmjestajModel();
             Model.Adresa = tb_Adresa.Text;
-            Model.Distanca = Int32.Parse(tb_Udaljenost.Text);
             Model.KontaktTelefon = tb_Telefon.Text;
             Model.Naziv = tb_Naziv.Text;
             Model.Email = tb_Email.Text;
-            Model.GradId = (int)(cb_Grad.SelectedValue);
             Model.IzdavacId = _IzdavacId;
             Model.Opis = rtb_Opis.Text;
 
-           await _SmjestajService.Insert<SmjestajModel>(Model);
-            Close();
+            if ( Model.Adresa.Length < 2 || String.IsNullOrEmpty(Model.Adresa) )
+            {
+                lbl_AdresaErr.Text = "Adresa mora biti duža od 2 karaktera!";
+                lbl_AdresaErr.Visible = true;
+                valid = false;
+            }
+
+            if (Model.KontaktTelefon.Length < 2 || String.IsNullOrEmpty(Model.KontaktTelefon))
+            {
+                valid = !Regex.Match(Model.KontaktTelefon, @"^(\+[0-9])$").Success;
+                if (valid == false)
+                {
+                    lbl_TelefonErr.Text = "Broj telefona nije validan!";
+                    lbl_TelefonErr.Visible = true;
+                }
+            
+            //}
+
+            if (Model.Naziv.Length < 2 || String.IsNullOrEmpty(Model.Naziv))
+            {
+                lbl_NazivErr.Text = "Naziv mora biti duži od 2 karaktera!";
+                lbl_NazivErr.Visible = true;
+                valid = false;
+
+            }
+
+            if (Model.Opis.Length < 2 || String.IsNullOrEmpty(Model.Opis))
+            {
+                lbl_OpisErr.Text = "Naziv mora biti duži od 2 karaktera!";
+                lbl_OpisErr.Visible = true;
+                valid = false;
+
+            }
+
+            if (Model.Email.Length < 2 || String.IsNullOrEmpty(Model.Email))
+            {
+                lbl_EmailErr.Text = "E-mail mora biti duži od 2 karaktera!";
+                lbl_EmailErr.Visible = true;
+                valid = false;
+
+            }
+            else
+            {
+                var addr = new System.Net.Mail.MailAddress(Model.Email);
+                if ( addr.Address != Model.Email)
+                {
+                    lbl_EmailErr.Text = "E-mail nije validan!";
+                    lbl_EmailErr.Visible = true;
+                    valid = false;
+
+                }
+            }
+
+            if ( (int)(cb_Grad.SelectedValue) == 0 )
+            {
+                lbl_GradErr.Text = "Morate odabrati grad!";
+                lbl_GradErr.Visible = true;
+                valid = false;
+            }
+
+            if ( string.IsNullOrEmpty(tb_Udaljenost.Text))
+            {
+                lbl_UdaljenostErr.Text = "Morate unijeti udaljenost od centra grada!";
+                lbl_UdaljenostErr.Visible = true;
+                valid = false;
+            }
+
+            if (valid)
+            {
+                Model.Distanca = Int32.Parse(tb_Udaljenost.Text);
+                Model.GradId = (int)(cb_Grad.SelectedValue);
+                await _SmjestajService.Insert<SmjestajModel>(Model);
+                Close();
+            }
         }
     }
 }

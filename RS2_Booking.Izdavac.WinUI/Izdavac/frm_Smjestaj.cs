@@ -42,7 +42,6 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             };
           
             var result = await _SmjestajService.Get<List<SmjestajModel>>(search);          
-            dgv_Smjestaj.AutoGenerateColumns = false;
             dgv_Smjestaj.DataSource = result;
         }
 
@@ -95,6 +94,18 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private async void frm_Smjestaj_Load(object sender, EventArgs e)
         {
+            dgv_Smjestaj.AutoGenerateColumns = false;
+
+            var search = new SmjestajSearchRequest
+            {
+                GradId = 0,
+                Naziv = null,
+                IzdavacId = _IzdavacId
+            };
+
+            var result = await _SmjestajService.Get<List<SmjestajModel>>(search);
+            dgv_Smjestaj.DataSource = result;
+
             var lista = await _GradService.Get<List<GradModel>>(null);
             GradModel prazan = new GradModel
             {

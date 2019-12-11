@@ -31,18 +31,19 @@
             this.dgv_Okolina = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_DodajNovo = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_NovaUdaljenost = new System.Windows.Forms.TextBox();
             this.tb_NovaNaziv = new System.Windows.Forms.TextBox();
             this.cb_PostojecaNaziv = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_DodajPostojece = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_PostojecaUdaljenost = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btn_DodajNovo = new System.Windows.Forms.Button();
-            this.btn_DodajPostojece = new System.Windows.Forms.Button();
             this.OkolinaSmjestajId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OkolinaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Udaljenost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ukloni = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -53,16 +54,21 @@
             // 
             // dgv_Okolina
             // 
+            this.dgv_Okolina.AllowUserToAddRows = false;
+            this.dgv_Okolina.AllowUserToDeleteRows = false;
             this.dgv_Okolina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Okolina.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OkolinaSmjestajId,
+            this.OkolinaId,
             this.Naziv,
             this.Udaljenost,
             this.Ukloni});
             this.dgv_Okolina.Location = new System.Drawing.Point(53, 140);
             this.dgv_Okolina.Name = "dgv_Okolina";
+            this.dgv_Okolina.ReadOnly = true;
             this.dgv_Okolina.Size = new System.Drawing.Size(618, 150);
             this.dgv_Okolina.TabIndex = 0;
+            this.dgv_Okolina.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Okolina_CellContentClick);
             // 
             // label1
             // 
@@ -86,6 +92,16 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dodaj novo okolno mjesto";
+            // 
+            // btn_DodajNovo
+            // 
+            this.btn_DodajNovo.Location = new System.Drawing.Point(9, 71);
+            this.btn_DodajNovo.Name = "btn_DodajNovo";
+            this.btn_DodajNovo.Size = new System.Drawing.Size(75, 23);
+            this.btn_DodajNovo.TabIndex = 4;
+            this.btn_DodajNovo.Text = "Dodaj";
+            this.btn_DodajNovo.UseVisualStyleBackColor = true;
+            this.btn_DodajNovo.Click += new System.EventHandler(this.btn_DodajNovo_Click);
             // 
             // label3
             // 
@@ -123,6 +139,7 @@
             // 
             this.cb_PostojecaNaziv.FormattingEnabled = true;
             this.cb_PostojecaNaziv.Location = new System.Drawing.Point(73, 19);
+            this.cb_PostojecaNaziv.MaxDropDownItems = 20;
             this.cb_PostojecaNaziv.Name = "cb_PostojecaNaziv";
             this.cb_PostojecaNaziv.Size = new System.Drawing.Size(121, 21);
             this.cb_PostojecaNaziv.TabIndex = 3;
@@ -141,6 +158,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dodaj postojeće okolno mjesto";
             // 
+            // btn_DodajPostojece
+            // 
+            this.btn_DodajPostojece.Location = new System.Drawing.Point(6, 77);
+            this.btn_DodajPostojece.Name = "btn_DodajPostojece";
+            this.btn_DodajPostojece.Size = new System.Drawing.Size(75, 23);
+            this.btn_DodajPostojece.TabIndex = 7;
+            this.btn_DodajPostojece.Text = "Dodaj";
+            this.btn_DodajPostojece.UseVisualStyleBackColor = true;
+            this.btn_DodajPostojece.Click += new System.EventHandler(this.btn_DodajPostojece_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(34, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Naziv";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -157,58 +193,44 @@
             this.tb_PostojecaUdaljenost.Size = new System.Drawing.Size(121, 20);
             this.tb_PostojecaUdaljenost.TabIndex = 4;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Naziv";
-            // 
-            // btn_DodajNovo
-            // 
-            this.btn_DodajNovo.Location = new System.Drawing.Point(9, 71);
-            this.btn_DodajNovo.Name = "btn_DodajNovo";
-            this.btn_DodajNovo.Size = new System.Drawing.Size(75, 23);
-            this.btn_DodajNovo.TabIndex = 4;
-            this.btn_DodajNovo.Text = "Dodaj";
-            this.btn_DodajNovo.UseVisualStyleBackColor = true;
-            this.btn_DodajNovo.Click += new System.EventHandler(this.btn_DodajNovo_Click);
-            // 
-            // btn_DodajPostojece
-            // 
-            this.btn_DodajPostojece.Location = new System.Drawing.Point(6, 77);
-            this.btn_DodajPostojece.Name = "btn_DodajPostojece";
-            this.btn_DodajPostojece.Size = new System.Drawing.Size(75, 23);
-            this.btn_DodajPostojece.TabIndex = 7;
-            this.btn_DodajPostojece.Text = "Dodaj";
-            this.btn_DodajPostojece.UseVisualStyleBackColor = true;
-            // 
             // OkolinaSmjestajId
             // 
             this.OkolinaSmjestajId.DataPropertyName = "OkolinaSmjestajId";
-            this.OkolinaSmjestajId.HeaderText = "Column1";
+            this.OkolinaSmjestajId.HeaderText = "OkolinaSmjestajId";
             this.OkolinaSmjestajId.Name = "OkolinaSmjestajId";
+            this.OkolinaSmjestajId.ReadOnly = true;
+            this.OkolinaSmjestajId.Visible = false;
+            // 
+            // OkolinaId
+            // 
+            this.OkolinaId.DataPropertyName = "OkolinaId";
+            this.OkolinaId.HeaderText = "OkolinaId";
+            this.OkolinaId.Name = "OkolinaId";
+            this.OkolinaId.ReadOnly = true;
+            this.OkolinaId.Visible = false;
             // 
             // Naziv
             // 
             this.Naziv.DataPropertyName = "Naziv";
             this.Naziv.HeaderText = "Naziv";
             this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
             // 
             // Udaljenost
             // 
             this.Udaljenost.DataPropertyName = "Udaljenost";
             this.Udaljenost.HeaderText = "Udaljenost";
             this.Udaljenost.Name = "Udaljenost";
+            this.Udaljenost.ReadOnly = true;
             // 
             // Ukloni
             // 
             this.Ukloni.HeaderText = "Ukloni";
             this.Ukloni.Name = "Ukloni";
+            this.Ukloni.ReadOnly = true;
             this.Ukloni.Text = "Ukloni";
             this.Ukloni.ToolTipText = "Ukloni";
+            this.Ukloni.UseColumnTextForButtonValue = true;
             // 
             // frm_SmjestajOkoline
             // 
@@ -249,6 +271,7 @@
         private System.Windows.Forms.Button btn_DodajPostojece;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn OkolinaSmjestajId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OkolinaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Udaljenost;
         private System.Windows.Forms.DataGridViewButtonColumn Ukloni;

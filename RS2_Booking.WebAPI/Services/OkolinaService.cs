@@ -9,42 +9,40 @@ using System.Threading.Tasks;
 
 namespace RS2_Booking.WebAPI.Services
 {
-    public class OkolinaService : BaseService<OkolinaModel, OkolinaSearchRequest, OkolinaInsertRequest, Okolina>
+    public class OkolinaService : IOkolinaService
     {
-        public OkolinaService(Online_BookingContext context, IMapper mapper) : base(context, mapper)
+        private readonly Online_BookingContext _context;
+        private readonly IMapper _mapper;
+
+        public OkolinaService(Online_BookingContext context, IMapper mapper)
         {
+            _context = context;
+            _mapper = mapper;
         }
 
-        public override List<OkolinaModel> Get(OkolinaSearchRequest search)
+        public List<OkolinaModel> Get(OkolinaSearchRequest search)
         {
             if (search.GradId > 0)
             {
-
-
-
-              var query = (from okolina in _context.Okolina
-                             join okolinasmjestaj in _context.OkolinaSmjestaj
+                var query = (from okolina in _context.Okolina
+                             join okolinasmjestaj in _context.OkolinaSmjestaj.Where(x => x.SmjestajId != search.SmjestajId)
                              on okolina.OkolinaId equals okolinasmjestaj.OkolinaId
                              join smjestaj in _context.Smjestaj
                              on okolinasmjestaj.SmjestajId equals smjestaj.SmjestajId
-                           join grad in _context.Grad
-                             on smjestaj.GradId equals grad.GradId
-                           where smjestaj.GradId == search.GradId && smjestaj.SmjestajId != search.SmjestajId
+                             join grad in _context.Grad
+                               on smjestaj.GradId equals grad.GradId
+                             where smjestaj.GradId == search.GradId
                              select new OkolinaModel()
                              {
                                  OkolinaId = okolina.OkolinaId,
                                  Naziv = okolina.Naziv,
                                  OkolinaSmjestajId = okolinasmjestaj.OkolinaSmjestajId,
                                  GradId = grad.GradId,
-                                 SmjestajId = smjestaj.SmjestajId                                
+                                 SmjestajId = smjestaj.SmjestajId,
+                                 Udaljenost = okolinasmjestaj.Udaljenost
                              }).ToList();
 
-                //foreach ( OkolinaModel obj in query )
-                //{
-                //    if (obj.GradId != search.GradId || obj.SmjestajId == search.SmjestajId)
-                //        query.Remove(obj);
-                //}
-                              
+
                 if (query.Any())
                 {
 
@@ -62,7 +60,9 @@ namespace RS2_Booking.WebAPI.Services
                              {
                                  OkolinaId = okolina.OkolinaId,
                                  Naziv = okolina.Naziv,
-                                 OkolinaSmjestajId = okolinasmjestaj.OkolinaSmjestajId
+                                 OkolinaSmjestajId = okolinasmjestaj.OkolinaSmjestajId,
+                                 Udaljenost = okolinasmjestaj.Udaljenost,
+                                 SmjestajId = okolinasmjestaj.SmjestajId
                              }).ToList();
                 if (query.Any())
                 {
@@ -72,25 +72,46 @@ namespace RS2_Booking.WebAPI.Services
                     return null;
             }         
         }
-        public override OkolinaInsertRequest Insert(OkolinaInsertRequest model)
+        public OkolinaInsertRequest Insert(OkolinaInsertRequest model)
         {
-            Okolina o = _mapper.Map<Okolina>(model);
-            _context.Okolina.Add(o);
-            _context.SaveChanges();
-            OkolinaSmjestaj os = new OkolinaSmjestaj()
+            if (model.Nova)
             {
-                SmjestajId = model.SmjestajId,
-                OkolinaId = o.OkolinaId
-            };
-
-            _context.OkolinaSmjestaj.Add(os);
-            _context.SaveChanges();
+                Okolina o = _mapper.Map<Okolina>(model);
+                _context.Okolina.Add(o);
+                _context.SaveChanges();
+                OkolinaSmjestaj os = new OkolinaSmjestaj()
+                {
+                    SmjestajId = model.SmjestajId,
+                    OkolinaId = o.OkolinaId,
+                    Udaljenost = model.Udaljenost
+                };
+                _context.OkolinaSmjestaj.Add(os);
+                _context.SaveChanges();
+            }
+            else
+            {
+                OkolinaSmjestaj os = new OkolinaSmjestaj()
+                {
+                    SmjestajId = model.SmjestajId,
+                    OkolinaId = model.OkolinaId,
+                    Udaljenost = model.Udaljenost
+                };
+                _context.OkolinaSmjestaj.Add(os);
+                _context.SaveChanges();
+            }
             return model;
         }
-        public override void Delete(int id)
+        public void Delete(int request)
         {
-            OkolinaSmjestaj os = _context.OkolinaSmjestaj.Find(id);
+            OkolinaSmjestaj os = _context.OkolinaSmjestaj.Find(request);
+            int OkolinaId = os.OkolinaId;
             _context.OkolinaSmjestaj.Remove(os);
+            if ( !_context.OkolinaSmjestaj.Where(x=> x.OkolinaId == OkolinaId).Any())
+            {
+                Okolina o = _context.Okolina.Find(OkolinaId);
+                _context.Okolina.Remove(o);
+
+            }
             _context.SaveChanges();
         }
     }

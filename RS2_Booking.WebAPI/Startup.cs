@@ -51,13 +51,12 @@ namespace RS2_Booking.WebAPI
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
             services.AddScoped<IService<InventarModel, InventarSearchRequest, InventarInsertRequest>, InventarService>();
-            services.AddScoped<IService<OkolinaModel, OkolinaSearchRequest, OkolinaInsertRequest>, OkolinaService>();
-            services.AddScoped<IService<UslugaModel, UslugaSearchRequest, UslugaInsertRequest>, UslugaService>();
             services.AddScoped<IService<SobaModel, SobaSearchRequest, SobaInsertRequest>, SobaService>();
             services.AddScoped<IService<SmjestajModel, SmjestajSearchRequest, SmjestajInsertRequest>, SmjestajService>();
             services.AddScoped<IKorisnikService, KorisnikService>(); 
             services.AddScoped<IService<GradModel, object, GradModel>, BaseService<GradModel, object, GradModel, Grad>>();
-
+            services.AddScoped<IOkolinaService, OkolinaService>();
+            services.AddScoped<IUslugaService, UslugaService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

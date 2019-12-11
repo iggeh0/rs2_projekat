@@ -11,5 +11,6 @@ namespace RS2_Booking.Model
         public int OkolinaSmjestajId { get; set; }
         public int SmjestajId { get; set; }
         public int GradId { get; set; }
+        public double Udaljenost { get; set; }
     }
 }
