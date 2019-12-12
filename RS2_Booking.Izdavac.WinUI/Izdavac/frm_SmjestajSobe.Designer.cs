@@ -30,8 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_Sobe = new System.Windows.Forms.DataGridView();
-            this.btn_DodajSobu = new System.Windows.Forms.Button();
-            this.btn_Nazad = new System.Windows.Forms.Button();
             this.SobaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojKreveta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +38,8 @@
             this.VlastitaKupoanica = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Izmjeni = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Ukloni = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btn_DodajSobu = new System.Windows.Forms.Button();
+            this.btn_Nazad = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Sobe)).BeginInit();
             this.SuspendLayout();
@@ -47,9 +47,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgv_Sobe);
-            this.groupBox1.Location = new System.Drawing.Point(12, 155);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(856, 178);
+            this.groupBox1.Size = new System.Drawing.Size(856, 273);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Trenutno dostupne sobe u smještaju";
@@ -73,30 +73,9 @@
             this.dgv_Sobe.Location = new System.Drawing.Point(3, 16);
             this.dgv_Sobe.MultiSelect = false;
             this.dgv_Sobe.Name = "dgv_Sobe";
-            this.dgv_Sobe.Size = new System.Drawing.Size(850, 159);
+            this.dgv_Sobe.Size = new System.Drawing.Size(850, 254);
             this.dgv_Sobe.TabIndex = 0;
             this.dgv_Sobe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Sobe_CellClick);
-            // 
-            // btn_DodajSobu
-            // 
-            this.btn_DodajSobu.Location = new System.Drawing.Point(27, 13);
-            this.btn_DodajSobu.Name = "btn_DodajSobu";
-            this.btn_DodajSobu.Size = new System.Drawing.Size(126, 60);
-            this.btn_DodajSobu.TabIndex = 1;
-            this.btn_DodajSobu.Text = "Dodaj novu sobu";
-            this.btn_DodajSobu.UseVisualStyleBackColor = true;
-            this.btn_DodajSobu.Click += new System.EventHandler(this.btn_DodajSobu_Click);
-            // 
-            // btn_Nazad
-            // 
-            this.btn_Nazad.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Nazad.Location = new System.Drawing.Point(78, 374);
-            this.btn_Nazad.Name = "btn_Nazad";
-            this.btn_Nazad.Size = new System.Drawing.Size(75, 23);
-            this.btn_Nazad.TabIndex = 2;
-            this.btn_Nazad.Text = "Nazad";
-            this.btn_Nazad.UseVisualStyleBackColor = true;
-            this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
             // SobaId
             // 
@@ -158,16 +137,38 @@
             this.Ukloni.Text = "Ukloni";
             this.Ukloni.UseColumnTextForButtonValue = true;
             // 
+            // btn_DodajSobu
+            // 
+            this.btn_DodajSobu.Location = new System.Drawing.Point(15, 291);
+            this.btn_DodajSobu.Name = "btn_DodajSobu";
+            this.btn_DodajSobu.Size = new System.Drawing.Size(101, 38);
+            this.btn_DodajSobu.TabIndex = 1;
+            this.btn_DodajSobu.Text = "Dodaj novu sobu";
+            this.btn_DodajSobu.UseVisualStyleBackColor = true;
+            this.btn_DodajSobu.Click += new System.EventHandler(this.btn_DodajSobu_Click);
+            // 
+            // btn_Nazad
+            // 
+            this.btn_Nazad.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_Nazad.Location = new System.Drawing.Point(767, 291);
+            this.btn_Nazad.Name = "btn_Nazad";
+            this.btn_Nazad.Size = new System.Drawing.Size(101, 38);
+            this.btn_Nazad.TabIndex = 2;
+            this.btn_Nazad.Text = "Nazad";
+            this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
+            // 
             // frm_SmjestajSobe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Nazad;
-            this.ClientSize = new System.Drawing.Size(941, 450);
+            this.ClientSize = new System.Drawing.Size(887, 338);
             this.Controls.Add(this.btn_Nazad);
             this.Controls.Add(this.btn_DodajSobu);
             this.Controls.Add(this.groupBox1);
             this.Name = "frm_SmjestajSobe";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Uredi Sobe";
             this.Load += new System.EventHandler(this.frm_SmjestajSobe_Load);
             this.groupBox1.ResumeLayout(false);

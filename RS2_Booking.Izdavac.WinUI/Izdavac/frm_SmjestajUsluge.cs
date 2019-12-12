@@ -124,12 +124,14 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
         private async void btn_Dodaj_Postojecu_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(cb_Usluge.SelectedValue.ToString());
-            if ( id > 0 )
+            if (id > 0)
             {
-                UslugaInsertRequest request = new UslugaInsertRequest();
-                request.Nova = false;
-                request.UslugaId = id;
-                request.SmjestajId = _SmjestajId;
+                UslugaInsertRequest request = new UslugaInsertRequest
+                {
+                    Nova = false,
+                    UslugaId = id,
+                    SmjestajId = _SmjestajId
+                };
 
                 await _UslugaService.Insert<UslugaInsertRequest>(request);
 
@@ -145,6 +147,13 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
                     dgv_Usluge.DataSource = lista;
                 }
             }
+            else
+                MessageBox.Show("Odaberite neku od usluga na listi");
+        }
+
+        private void btn_Nazad_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
     }

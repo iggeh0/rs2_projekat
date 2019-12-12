@@ -29,6 +29,14 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             InitializeComponent();
         }
 
+        private void ClearErrors()
+        {
+            lbl_EmailErr.Visible = false;
+            lbl_NazivErr.Visible = false;
+            lbl_OpisErr.Visible = false;
+            lbl_TelefonErr.Visible = false;
+        }
+
         private async void frm_UrediSmjestaj_Load(object sender, EventArgs e)
         {
             if (_SmjestajId > 0)
@@ -44,103 +52,9 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
                 _GradId = S.GradId;
                 Model = S;
 
-
-
-                //    UslugaSearchRequest UslugaRequest = new UslugaSearchRequest
-                //    {
-                //        SmjestajId = _SmjestajId
-                //    };
-                //    var lista2 = await _UslugaService.Get<List<UslugaModel>>(UslugaRequest);
-                //    if (lista2 != null)
-                //    {
-                //        dgv_Usluge.DataSource = lista2;
-                //    }   
-                //}
-
             }
         }
-        private async Task<bool> btn_Snimi_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(tb_Email.Text))
-            {
-                MessageBox.Show("E-mail ne smije biti prazan!");
-                return false;
-            }
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(tb_Email.Text);
-            }
-            catch
-            {
-                MessageBox.Show("E-mail je neispravan!");
-                return false;
-            }
 
-            if (string.IsNullOrEmpty(tb_Naziv.Text))
-            {
-                MessageBox.Show("Naziv ne smije biti prazan!");
-                return false;
-            }
-            if (string.IsNullOrEmpty(tb_Telefon.Text))
-            {
-                MessageBox.Show("Telefon ne smije biti prazan!");
-                return false;
-            }
-
-            if (!Regex.Match(tb_Telefon.Text, @"^(\+[0-9]{9})$").Success)
-            {
-                MessageBox.Show("Broj telefona nije ispravan!");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(tb_Opis.Text))
-            {
-                MessageBox.Show("Opis ne smije biti prazan!");
-                return false;
-            }
-
-            SmjestajModel request = new SmjestajModel
-            {
-                Email = tb_Email.Text,
-                Naziv = tb_Naziv.Text,
-                Opis = tb_Opis.Text,
-                KontaktTelefon = tb_Telefon.Text,
-                SmjestajId = _SmjestajId,
-                Adresa = Model.Adresa,
-                Distanca = Model.Distanca,
-                GradId = Model.GradId,
-                IzdavacId = _IzdavacId
-            };
-            await _SmjestajService.Update<SmjestajModel>(_SmjestajId, request);
-            return true;
-
-            //private async void dgv_Okolina_CellContentClick(object sender, DataGridViewCellEventArgs e)
-            //{
-            //    if (dgv_Okolina.CurrentCell.ColumnIndex.Equals(2) && e.RowIndex != -1)
-            //    {
-            //        if (dgv_Okolina.CurrentCell != null)
-            //        {
-            //            var id = int.Parse(dgv_Okolina[e.ColumnIndex - 2, e.RowIndex].Value.ToString());
-            //            await _OkolinaService.Delete<OkolinaModel>(id);
-
-            //            OkolinaSearchRequest OkolinaRequest = new OkolinaSearchRequest
-            //            {
-            //                SmjestajId = _SmjestajId
-            //            };
-            //            var lista = await _OkolinaService.Get<List<OkolinaModel>>(OkolinaRequest);
-            //            if (lista != null)
-            //            {
-            //                dgv_Okolina.DataSource = lista;
-            //            }
-
-            //        }
-            //    }
-            //}
-
-
-
-
-        }
 
         private void btn_Usluge_Click(object sender, EventArgs e)
         {
@@ -158,6 +72,72 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
         {
             frm_SmjestajSobe form = new frm_SmjestajSobe(_SmjestajId);
             form.Show();
+        }
+
+        private async void btn_Snimi_Click_1(object sender, EventArgs e)
+        {
+            ClearErrors();
+            bool valid = true;
+            if (tb_Email.Text.Length < 2 || String.IsNullOrEmpty(tb_Email.Text))
+            {
+                lbl_EmailErr.Text = "E-mail mora biti duži od 2 karaktera!";
+                lbl_EmailErr.Visible = true;
+                valid = false;
+            }
+            else
+            {
+                string regex = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+                if (!Regex.Match(tb_Email.Text, regex).Success)
+                {
+                    lbl_EmailErr.Text = "E-mail nije validan!";
+                    lbl_EmailErr.Visible = true;
+                    valid = false;
+
+                }
+            }
+
+            if (string.IsNullOrEmpty(tb_Naziv.Text) || tb_Naziv.Text.Length < 2)
+            {
+                lbl_NazivErr.Text = "Naziv mora biti duži od 2 karaktera!";
+                lbl_NazivErr.Visible = true;
+                valid = false;
+            }
+
+            if (tb_Telefon.Text.Length < 7 || String.IsNullOrEmpty(tb_Telefon.Text) || !Regex.Match(tb_Telefon.Text, @"^[0-9*#+]+$").Success)
+            {
+                lbl_TelefonErr.Text = "Broj telefona nije validan!";
+                lbl_TelefonErr.Visible = true;
+            }
+
+            if (tb_Opis.Text.Length < 2 || String.IsNullOrEmpty(tb_Opis.Text))
+            {
+                lbl_OpisErr.Text = "Naziv mora biti duži od 2 karaktera!";
+                lbl_OpisErr.Visible = true;
+                valid = false;
+
+            }
+
+            if (valid)
+            {
+                SmjestajModel request = new SmjestajModel
+                {
+                    Email = tb_Email.Text,
+                    Naziv = tb_Naziv.Text,
+                    Opis = tb_Opis.Text,
+                    KontaktTelefon = tb_Telefon.Text,
+                    SmjestajId = _SmjestajId,
+                    Adresa = Model.Adresa,
+                    Distanca = Model.Distanca,
+                    GradId = Model.GradId,
+                    IzdavacId = _IzdavacId
+                };
+                await _SmjestajService.Update<SmjestajModel>(_SmjestajId, request);
+            }
+        }
+
+        private void btn_Nazad_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

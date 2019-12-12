@@ -30,7 +30,9 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private async void btn_Snimi_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren())
+            HideError();
+            bool valid = Validacija();
+            if (valid)
             {
                 SobaInsertRequest nova = new SobaInsertRequest
                 {
@@ -42,76 +44,60 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
                     VlastitaKupoanica = cb_Kupaonica.Checked,
                     SmjestajId = _SmjestajId
                 };
-
                 await _SobaService.Insert<SobaInsertRequest>(nova);
                 Close();
-            }
+            }         
         }
 
-        //private void tb_BrojKreveta_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(tb_BrojKreveta.Text) || int.Parse(tb_BrojKreveta.Text) <= 0)
-        //    {
-        //        errorProvider.SetError(tb_BrojKreveta, Properties.Resources.Validation_Required);
-        //        e.Cancel = true;
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(tb_BrojKreveta, null);
-        //    }
+        private void HideError()
+        {
+            lbl_brKrevetaError.Visible = false;
+            lbl_cijenaErr.Visible = false;
+            lbl_VrstaErr.Visible = false;
+            lbl_VelicinaErr.Visible = false;
+            lbl_OpisErr.Visible = false;
+        }
 
-        //}
+        private bool Validacija()
+        {
+            bool valid = true;
+            if (string.IsNullOrWhiteSpace(tb_BrojKreveta.Text) || int.Parse(tb_BrojKreveta.Text) <= 0 || int.Parse(tb_BrojKreveta.Text) > 10)
+            {
+                lbl_brKrevetaError.Visible = true;
+                lbl_brKrevetaError.Text = "Unesen neispravan broj kreveta!";
+                valid = false;
+            }
 
-        //private void tb_Cijena_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(tb_Cijena.Text) || float.Parse(tb_Cijena.Text) <= 0)
-        //    {
-        //        errorProvider.SetError(tb_Cijena, Properties.Resources.Validation_Required);
-        //        e.Cancel = true;
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(tb_Cijena, null);
-        //    }
-        //}
+            if (string.IsNullOrWhiteSpace(tb_Cijena.Text) || float.Parse(tb_Cijena.Text) <= 0)
+            {
+                lbl_cijenaErr.Visible = true;
+                lbl_cijenaErr.Text = "Cijena mora biti veća od 0!";
+                valid = false;
+            }
 
-        //private void tb_Vrsta_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (tb_Vrsta.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_Vrsta.Text))
-        //    {
-        //        errorProvider.SetError(tb_Vrsta, Properties.Resources.Validation_Required);
-        //        e.Cancel = true;
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(tb_Vrsta, null);
-        //    }
-        //}
+            if (tb_Vrsta.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_Vrsta.Text))
+            {
+                lbl_VrstaErr.Visible = true;
+                lbl_VrstaErr.Text = "Neispravna vrsta unesena!";
+                valid = false;
+            }
 
-        //private void tb_Velicina_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(tb_Velicina.Text) || int.Parse(tb_Velicina.Text) <= 0)
-        //    {
-        //        errorProvider.SetError(tb_Velicina, Properties.Resources.Validation_Required);
-        //        e.Cancel = true;
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(tb_Velicina, null);
-        //    }
-        //}
+            if (string.IsNullOrWhiteSpace(tb_Velicina.Text) || int.Parse(tb_Velicina.Text) <= 0)
+            {
+                lbl_VelicinaErr.Visible = true;
+                lbl_VelicinaErr.Text = "Neispravna veličina unesena!";
+                valid = false;
+            }
 
-        //private void tb_Opis_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (tb_Opis.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_Opis.Text))
-        //    {
-        //        errorProvider.SetError(tb_Opis, Properties.Resources.Validation_Required);
-        //        e.Cancel = true;
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(tb_Opis, null);
-        //    }
-        //}
+            if (tb_Opis.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_Opis.Text))
+            {
+                lbl_OpisErr.Visible = true;
+                lbl_OpisErr.Text = "Neispravan opis unesen!";
+                valid = false;
+            }
+
+            return valid;
+        }
+
     }
 }

@@ -104,6 +104,7 @@
             this.btn_Logout.TabIndex = 6;
             this.btn_Logout.Text = "Izloguj se";
             this.btn_Logout.UseVisualStyleBackColor = true;
+            this.btn_Logout.Click += new System.EventHandler(this.btn_Logout_Click);
             // 
             // frm_AdminIndex
             // 

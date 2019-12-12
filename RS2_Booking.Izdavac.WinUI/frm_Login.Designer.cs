@@ -41,7 +41,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(162, 145);
+            this.label1.Location = new System.Drawing.Point(30, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 0;
@@ -49,14 +49,14 @@
             // 
             // tb_KorisnickoIme
             // 
-            this.tb_KorisnickoIme.Location = new System.Drawing.Point(247, 142);
+            this.tb_KorisnickoIme.Location = new System.Drawing.Point(115, 19);
             this.tb_KorisnickoIme.Name = "tb_KorisnickoIme";
             this.tb_KorisnickoIme.Size = new System.Drawing.Size(100, 20);
             this.tb_KorisnickoIme.TabIndex = 1;
             // 
             // tb_Lozinka
             // 
-            this.tb_Lozinka.Location = new System.Drawing.Point(247, 165);
+            this.tb_Lozinka.Location = new System.Drawing.Point(115, 42);
             this.tb_Lozinka.Name = "tb_Lozinka";
             this.tb_Lozinka.PasswordChar = '*';
             this.tb_Lozinka.Size = new System.Drawing.Size(100, 20);
@@ -65,7 +65,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(162, 168);
+            this.label2.Location = new System.Drawing.Point(30, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 2;
@@ -74,14 +74,14 @@
             // cb_Uloga
             // 
             this.cb_Uloga.FormattingEnabled = true;
-            this.cb_Uloga.Location = new System.Drawing.Point(247, 191);
+            this.cb_Uloga.Location = new System.Drawing.Point(115, 68);
             this.cb_Uloga.Name = "cb_Uloga";
             this.cb_Uloga.Size = new System.Drawing.Size(121, 21);
             this.cb_Uloga.TabIndex = 4;
             // 
             // btn_Login
             // 
-            this.btn_Login.Location = new System.Drawing.Point(247, 229);
+            this.btn_Login.Location = new System.Drawing.Point(115, 106);
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(75, 23);
             this.btn_Login.TabIndex = 5;
@@ -91,7 +91,7 @@
             // 
             // btn_Registracija
             // 
-            this.btn_Registracija.Location = new System.Drawing.Point(247, 259);
+            this.btn_Registracija.Location = new System.Drawing.Point(115, 136);
             this.btn_Registracija.Name = "btn_Registracija";
             this.btn_Registracija.Size = new System.Drawing.Size(75, 23);
             this.btn_Registracija.TabIndex = 6;
@@ -102,7 +102,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(165, 198);
+            this.label3.Location = new System.Drawing.Point(33, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 7;
@@ -113,7 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(305, 176);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_Registracija);
             this.Controls.Add(this.btn_Login);
@@ -123,6 +123,7 @@
             this.Controls.Add(this.tb_KorisnickoIme);
             this.Controls.Add(this.label1);
             this.Name = "frm_Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();

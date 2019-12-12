@@ -17,9 +17,11 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 {
     public partial class frm_Smjestaj : Form
     {
+
         private readonly APIService _SmjestajService = new APIService("smjestaj");
         private readonly APIService _GradService = new APIService("grad");
 
+     
 
         private readonly int _IzdavacId;
         private readonly int _KorisnikId;
@@ -29,6 +31,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             _KorisnikId = KorisnikId;
             _IzdavacId = IzdavacId;
             InitializeComponent();
+
         }
 
         private async void btn_Filtriraj_Click(object sender, EventArgs e)
@@ -62,6 +65,15 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
                 {
                    var id = int.Parse(dgv_Smjestaj[e.ColumnIndex + 1, e.RowIndex].Value.ToString());
                    await _SmjestajService.Delete<SmjestajModel>(id);
+                    var search = new SmjestajSearchRequest
+                    {
+                        GradId = 0,
+                        Naziv = null,
+                        IzdavacId = _IzdavacId
+                    };
+
+                    var result = await _SmjestajService.Get<List<SmjestajModel>>(search);
+                    dgv_Smjestaj.DataSource = result;
             }
         }
 
@@ -89,7 +101,17 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private void btn_Logout_Click(object sender, EventArgs e)
         {
+            APIService.Username = "";
+            APIService.Password = "";
+            frm_Login form = new frm_Login();
+            form.FormClosed += new FormClosedEventHandler(form_FormClosed);
+            form.Show();
+            Hide();
+        }
 
+        private void form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Close();
         }
 
         private async void frm_Smjestaj_Load(object sender, EventArgs e)

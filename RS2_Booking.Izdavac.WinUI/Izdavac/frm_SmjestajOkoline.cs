@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -30,14 +31,19 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private async void btn_DodajNovo_Click(object sender, EventArgs e)
         {
-                if (string.IsNullOrEmpty(tb_NovaNaziv.Text))
-                {
-                    MessageBox.Show("Naziv okoline ne smije biti prazan!");
-                return;
-                }
-            if (string.IsNullOrEmpty(tb_NovaUdaljenost.Text))
+            HideErrors();
+            if (string.IsNullOrEmpty(tb_NovaNaziv.Text))
             {
-                MessageBox.Show("Naziv okoline ne smije biti prazan!");
+                lbl_novaNazivErr.Text = "Naziv okoline ne smije biti prazan!";
+                lbl_novaNazivErr.Visible = true;
+                return;
+            }
+
+
+            if (string.IsNullOrEmpty(tb_NovaUdaljenost.Text) || Regex.IsMatch(tb_NovaUdaljenost.Text, "[^0-9]"))
+            {
+                lbl_novaUdaljenostErr.Text ="Neispravnau daljenost!";
+                lbl_novaUdaljenostErr.Visible = true;
                 return;
             }
             OkolinaInsertRequest request = new OkolinaInsertRequest
@@ -61,6 +67,13 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
                 dgv_Okolina.DataSource = lista;
             }
 
+        }
+
+        private void HideErrors()
+        {
+            lbl_novaNazivErr.Visible = false;
+            lbl_novaUdaljenostErr.Visible = false;
+            lbl_postojecaUdaljenaErr.Visible = false;
         }
 
         private async void frm_SmjestajOkoline_Load(object sender, EventArgs e)
@@ -99,7 +112,9 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private async void btn_DodajPostojece_Click(object sender, EventArgs e)
         {
-            if ( cb_PostojecaNaziv.SelectedIndex > 0 && !string.IsNullOrEmpty(tb_PostojecaUdaljenost.Text) )
+            HideErrors();
+            bool test = Regex.IsMatch(tb_PostojecaUdaljenost.Text, "[^0-9]");
+            if ( cb_PostojecaNaziv.SelectedIndex > 0 && !string.IsNullOrEmpty(tb_PostojecaUdaljenost.Text) && !Regex.IsMatch(tb_PostojecaUdaljenost.Text, "[^0-9]"))
             {
                 OkolinaInsertRequest request = new OkolinaInsertRequest
                 {
@@ -130,6 +145,11 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
                 cb_PostojecaNaziv.DataSource = datasource;
             }
+            else
+            {
+                lbl_postojecaUdaljenaErr.Text = "Neispravna udaljenost!";
+                lbl_postojecaUdaljenaErr.Visible = true;
+            }
         }
 
         private async void dgv_Okolina_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -155,6 +175,11 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
                 }
             }
+        }
+
+        private void btn_Nazad_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

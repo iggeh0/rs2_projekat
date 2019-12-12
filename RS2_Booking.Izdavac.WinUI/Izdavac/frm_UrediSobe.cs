@@ -55,116 +55,54 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private async void btn_Snimi_Click(object sender, EventArgs e)
         {
-            SobaInsertRequest request = new SobaInsertRequest
+            HideError();
+            if (Validacija())
             {
-                BrojKreveta = int.Parse(tb_BrojKreveta.Text.ToString()),
-                VelicinaSobe = int.Parse(tb_Velicina.Text.ToString()),
-                Opis = tb_Opis.Text,
-                SmjestajId = _SmjestajId,
-                VlastitaKupoanica = cb_Kupaonica.Checked,
-                VrstaSmjestaja = tb_VrstaSmjestaja.Text,
-                Cijena = float.Parse(tb_Cijena.Text.ToString()),
-                SobaId = _SobaId              
-            };
+                SobaInsertRequest request = new SobaInsertRequest
+                {
+                    BrojKreveta = int.Parse(tb_BrojKreveta.Text.ToString()),
+                    VelicinaSobe = int.Parse(tb_Velicina.Text.ToString()),
+                    Opis = tb_Opis.Text,
+                    SmjestajId = _SmjestajId,
+                    VlastitaKupoanica = cb_Kupaonica.Checked,
+                    VrstaSmjestaja = tb_VrstaSmjestaja.Text,
+                    Cijena = float.Parse(tb_Cijena.Text.ToString()),
+                    SobaId = _SobaId
+                };
 
-            await _SobaService.Update<SobaModel>(_SobaId, request);
+                await _SobaService.Update<SobaModel>(_SobaId, request);
+            }
         }
 
-        //private void tb_BrojKreveta_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(tb_BrojKreveta.Text) || int.Parse(tb_BrojKreveta.Text) <= 0)
-        //    {
-        //        errorProvider.SetError(tb_BrojKreveta, Properties.Resources.Validation_Required);
-        //        e.Cancel = true;
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(tb_BrojKreveta, null);
-        //    }
-        //}
-
-        //private void tb_Cijena_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(tb_Cijena.Text) || float.Parse(tb_Cijena.Text) <= 0)
-        //    {
-        //        errorProvider.SetError(tb_Cijena, Properties.Resources.Validation_Required);
-        //        e.Cancel = true;
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(tb_Cijena, null);
-        //    }
-        //}
-
-        //private void tb_VrstaSmjestaja_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (tb_VrstaSmjestaja.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_VrstaSmjestaja.Text))
-        //    {
-        //        errorProvider.SetError(tb_VrstaSmjestaja, Properties.Resources.Validation_Required);
-        //        e.Cancel = true;
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(tb_VrstaSmjestaja, null);
-        //    }
-        //}
-
-        //private void tb_Velicina_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(tb_Velicina.Text) || int.Parse(tb_Velicina.Text) <= 0)
-        //    {
-        //        errorProvider.SetError(tb_Velicina, Properties.Resources.Validation_Required);
-        //        e.Cancel = true;
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(tb_Velicina, null);
-        //    }
-        //}
-
-        //private void tb_Opis_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (tb_Opis.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_Opis.Text))
-        //    {
-        //        errorProvider.SetError(tb_Opis, Properties.Resources.Validation_Required);
-        //        e.Cancel = true;
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(tb_Opis, null);
-        //    }
-        //}
-
-        //private void tb_Inventar_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (tb_Inventar.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_Inventar.Text))
-        //    {
-        //        errorProvider.SetError(tb_Inventar, Properties.Resources.Validation_Required);
-        //        e.Cancel = true;
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(tb_Inventar, null);
-        //    }
-        //}
+      
 
         private async void btn_Inventar_Click(object sender, EventArgs e)
         {
-            InventarModel request = new InventarModel
+            if (tb_Inventar.Text.Length > 2 && !string.IsNullOrEmpty(tb_Inventar.Text))
             {
-                Naziv = tb_Inventar.Text,
-                SobaId = _SobaId,
-                InventarSobaId = 0
-            };
-            await _InventarService.Insert<InventarInsertRequest>(request);
 
-            InventarSearchRequest request2 = new InventarSearchRequest
+                InventarModel request = new InventarModel
+                {
+                    Naziv = tb_Inventar.Text,
+                    SobaId = _SobaId,
+                    InventarSobaId = 0
+                };
+                await _InventarService.Insert<InventarInsertRequest>(request);
+
+                InventarSearchRequest request2 = new InventarSearchRequest
+                {
+                    SobaId = _SobaId
+                };
+                var lista = await _InventarService.Get<List<InventarModel>>(request2);
+
+                dgv_Inventar.DataSource = lista;
+            }
+            else
             {
-                SobaId = _SobaId
-            };
-            var lista = await _InventarService.Get<List<InventarModel>>(request2);
+                lbl_inventarError.Visible = true;
+                lbl_inventarError.Text = "Naziv mora biti najmanje 2 karaktera!";
+            }
 
-            dgv_Inventar.DataSource = lista;
 
         }
 
@@ -187,6 +125,55 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
                 }
             }
+        }
+        private bool Validacija()
+        {
+            bool valid = true;
+            if (string.IsNullOrWhiteSpace(tb_BrojKreveta.Text) || int.Parse(tb_BrojKreveta.Text) <= 0 || int.Parse(tb_BrojKreveta.Text) > 10)
+            {
+                lbl_brKrevetaError.Visible = true;
+                lbl_brKrevetaError.Text = "Unesen neispravan broj kreveta!";
+                valid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(tb_Cijena.Text) || float.Parse(tb_Cijena.Text) <= 0)
+            {
+                lbl_cijenaErr.Visible = true;
+                lbl_cijenaErr.Text = "Cijena mora biti veća od 0!";
+                valid = false;
+            }
+
+            if (tb_VrstaSmjestaja.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_VrstaSmjestaja.Text))
+            {
+                lbl_VrstaErr.Visible = true;
+                lbl_VrstaErr.Text = "Neispravna vrsta unesena!";
+                valid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(tb_Velicina.Text) || int.Parse(tb_Velicina.Text) <= 0)
+            {
+                lbl_VelicinaErr.Visible = true;
+                lbl_VelicinaErr.Text = "Neispravna veličina unesena!";
+                valid = false;
+            }
+
+            if (tb_Opis.Text.Length < 2 || string.IsNullOrWhiteSpace(tb_Opis.Text))
+            {
+                lbl_OpisErr.Visible = true;
+                lbl_OpisErr.Text = "Neispravan opis unesen!";
+                valid = false;
+            }
+
+            return valid;
+        }
+        private void HideError()
+        {
+            lbl_brKrevetaError.Visible = false;
+            lbl_cijenaErr.Visible = false;
+            lbl_VrstaErr.Visible = false;
+            lbl_VelicinaErr.Visible = false;
+            lbl_OpisErr.Visible = false;
+            lbl_inventarError.Visible = false;
         }
     }
 }

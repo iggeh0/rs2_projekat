@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RS2_Booking.Model;
 using RS2_Booking.Model.Requests;
@@ -21,19 +22,21 @@ namespace RS2_Booking.WebAPI.Controllers
         {
             _Service = okolinaService;
         }
+
         [HttpGet]
         public List<UslugaModel> Get([FromQuery]UslugaSearchRequest search)
         {
             return _Service.Get(search);
         }
 
+        [Authorize(Roles = "Izdavac")]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             _Service.Delete(id);
         }
 
-
+        [Authorize(Roles ="Izdavac")]
         [HttpPost]
         public virtual UslugaInsertRequest Insert(UslugaInsertRequest Model)
         {

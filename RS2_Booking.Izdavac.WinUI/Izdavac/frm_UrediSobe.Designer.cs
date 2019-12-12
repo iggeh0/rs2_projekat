@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btn_Nazad = new System.Windows.Forms.Button();
             this.btn_Snimi = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,16 +50,20 @@
             this.tb_Inventar = new System.Windows.Forms.TextBox();
             this.btn_Inventar = new System.Windows.Forms.Button();
             this.tb_Opis = new System.Windows.Forms.RichTextBox();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lbl_brKrevetaError = new System.Windows.Forms.Label();
+            this.lbl_cijenaErr = new System.Windows.Forms.Label();
+            this.lbl_VrstaErr = new System.Windows.Forms.Label();
+            this.lbl_VelicinaErr = new System.Windows.Forms.Label();
+            this.lbl_OpisErr = new System.Windows.Forms.Label();
+            this.lbl_inventarError = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Inventar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Nazad
             // 
             this.btn_Nazad.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Nazad.Location = new System.Drawing.Point(41, 298);
+            this.btn_Nazad.Location = new System.Drawing.Point(302, 353);
             this.btn_Nazad.Name = "btn_Nazad";
             this.btn_Nazad.Size = new System.Drawing.Size(75, 23);
             this.btn_Nazad.TabIndex = 24;
@@ -70,7 +73,7 @@
             // 
             // btn_Snimi
             // 
-            this.btn_Snimi.Location = new System.Drawing.Point(41, 269);
+            this.btn_Snimi.Location = new System.Drawing.Point(302, 324);
             this.btn_Snimi.Name = "btn_Snimi";
             this.btn_Snimi.Size = new System.Drawing.Size(75, 23);
             this.btn_Snimi.TabIndex = 23;
@@ -81,7 +84,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 118);
+            this.label5.Location = new System.Drawing.Point(38, 114);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 13);
             this.label5.TabIndex = 22;
@@ -90,7 +93,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 171);
+            this.label4.Location = new System.Drawing.Point(40, 227);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 21;
@@ -99,7 +102,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 92);
+            this.label3.Location = new System.Drawing.Point(37, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 13);
             this.label3.TabIndex = 20;
@@ -108,16 +111,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 65);
+            this.label2.Location = new System.Drawing.Point(37, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Cijena";
+            this.label2.Text = "Cijena (KM)";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 38);
+            this.label1.Location = new System.Drawing.Point(38, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 18;
@@ -126,7 +129,7 @@
             // cb_Kupaonica
             // 
             this.cb_Kupaonica.AutoSize = true;
-            this.cb_Kupaonica.Location = new System.Drawing.Point(41, 141);
+            this.cb_Kupaonica.Location = new System.Drawing.Point(41, 179);
             this.cb_Kupaonica.Name = "cb_Kupaonica";
             this.cb_Kupaonica.Size = new System.Drawing.Size(113, 17);
             this.cb_Kupaonica.TabIndex = 17;
@@ -135,30 +138,30 @@
             // 
             // tb_VrstaSmjestaja
             // 
-            this.tb_VrstaSmjestaja.Location = new System.Drawing.Point(142, 92);
+            this.tb_VrstaSmjestaja.Location = new System.Drawing.Point(140, 147);
             this.tb_VrstaSmjestaja.Name = "tb_VrstaSmjestaja";
             this.tb_VrstaSmjestaja.Size = new System.Drawing.Size(100, 20);
             this.tb_VrstaSmjestaja.TabIndex = 15;
             // 
             // tb_Cijena
             // 
-            this.tb_Cijena.Location = new System.Drawing.Point(142, 65);
+            this.tb_Cijena.Location = new System.Drawing.Point(142, 71);
             this.tb_Cijena.Name = "tb_Cijena";
-            this.tb_Cijena.Size = new System.Drawing.Size(100, 20);
+            this.tb_Cijena.Size = new System.Drawing.Size(21, 20);
             this.tb_Cijena.TabIndex = 14;
             // 
             // tb_BrojKreveta
             // 
-            this.tb_BrojKreveta.Location = new System.Drawing.Point(142, 38);
+            this.tb_BrojKreveta.Location = new System.Drawing.Point(142, 32);
             this.tb_BrojKreveta.Name = "tb_BrojKreveta";
-            this.tb_BrojKreveta.Size = new System.Drawing.Size(100, 20);
+            this.tb_BrojKreveta.Size = new System.Drawing.Size(21, 20);
             this.tb_BrojKreveta.TabIndex = 13;
             // 
             // tb_Velicina
             // 
-            this.tb_Velicina.Location = new System.Drawing.Point(142, 118);
+            this.tb_Velicina.Location = new System.Drawing.Point(140, 114);
             this.tb_Velicina.Name = "tb_Velicina";
-            this.tb_Velicina.Size = new System.Drawing.Size(100, 20);
+            this.tb_Velicina.Size = new System.Drawing.Size(21, 20);
             this.tb_Velicina.TabIndex = 25;
             // 
             // groupBox1
@@ -223,7 +226,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(267, 204);
+            this.label6.Location = new System.Drawing.Point(278, 206);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(99, 13);
             this.label6.TabIndex = 28;
@@ -231,16 +234,16 @@
             // 
             // tb_Inventar
             // 
-            this.tb_Inventar.Location = new System.Drawing.Point(372, 201);
+            this.tb_Inventar.Location = new System.Drawing.Point(390, 206);
             this.tb_Inventar.Name = "tb_Inventar";
             this.tb_Inventar.Size = new System.Drawing.Size(100, 20);
             this.tb_Inventar.TabIndex = 27;
             // 
             // btn_Inventar
             // 
-            this.btn_Inventar.Location = new System.Drawing.Point(270, 227);
+            this.btn_Inventar.Location = new System.Drawing.Point(390, 232);
             this.btn_Inventar.Name = "btn_Inventar";
-            this.btn_Inventar.Size = new System.Drawing.Size(110, 38);
+            this.btn_Inventar.Size = new System.Drawing.Size(100, 30);
             this.btn_Inventar.TabIndex = 29;
             this.btn_Inventar.Text = "Dodaj Inventar";
             this.btn_Inventar.UseVisualStyleBackColor = true;
@@ -248,22 +251,90 @@
             // 
             // tb_Opis
             // 
-            this.tb_Opis.Location = new System.Drawing.Point(122, 171);
+            this.tb_Opis.Location = new System.Drawing.Point(125, 227);
             this.tb_Opis.Name = "tb_Opis";
             this.tb_Opis.Size = new System.Drawing.Size(100, 96);
             this.tb_Opis.TabIndex = 30;
             this.tb_Opis.Text = "";
             // 
-            // errorProvider
+            // lbl_brKrevetaError
             // 
-            this.errorProvider.ContainerControl = this;
+            this.lbl_brKrevetaError.AutoSize = true;
+            this.lbl_brKrevetaError.ForeColor = System.Drawing.Color.Red;
+            this.lbl_brKrevetaError.Location = new System.Drawing.Point(142, 13);
+            this.lbl_brKrevetaError.Name = "lbl_brKrevetaError";
+            this.lbl_brKrevetaError.Size = new System.Drawing.Size(35, 13);
+            this.lbl_brKrevetaError.TabIndex = 31;
+            this.lbl_brKrevetaError.Text = "label7";
+            this.lbl_brKrevetaError.Visible = false;
+            // 
+            // lbl_cijenaErr
+            // 
+            this.lbl_cijenaErr.AutoSize = true;
+            this.lbl_cijenaErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_cijenaErr.Location = new System.Drawing.Point(139, 56);
+            this.lbl_cijenaErr.Name = "lbl_cijenaErr";
+            this.lbl_cijenaErr.Size = new System.Drawing.Size(35, 13);
+            this.lbl_cijenaErr.TabIndex = 32;
+            this.lbl_cijenaErr.Text = "label8";
+            this.lbl_cijenaErr.Visible = false;
+            // 
+            // lbl_VrstaErr
+            // 
+            this.lbl_VrstaErr.AutoSize = true;
+            this.lbl_VrstaErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_VrstaErr.Location = new System.Drawing.Point(205, 131);
+            this.lbl_VrstaErr.Name = "lbl_VrstaErr";
+            this.lbl_VrstaErr.Size = new System.Drawing.Size(35, 13);
+            this.lbl_VrstaErr.TabIndex = 33;
+            this.lbl_VrstaErr.Text = "label9";
+            this.lbl_VrstaErr.Visible = false;
+            // 
+            // lbl_VelicinaErr
+            // 
+            this.lbl_VelicinaErr.AutoSize = true;
+            this.lbl_VelicinaErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_VelicinaErr.Location = new System.Drawing.Point(139, 99);
+            this.lbl_VelicinaErr.Name = "lbl_VelicinaErr";
+            this.lbl_VelicinaErr.Size = new System.Drawing.Size(41, 13);
+            this.lbl_VelicinaErr.TabIndex = 34;
+            this.lbl_VelicinaErr.Text = "label10";
+            this.lbl_VelicinaErr.Visible = false;
+            // 
+            // lbl_OpisErr
+            // 
+            this.lbl_OpisErr.AutoSize = true;
+            this.lbl_OpisErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_OpisErr.Location = new System.Drawing.Point(122, 206);
+            this.lbl_OpisErr.Name = "lbl_OpisErr";
+            this.lbl_OpisErr.Size = new System.Drawing.Size(41, 13);
+            this.lbl_OpisErr.TabIndex = 35;
+            this.lbl_OpisErr.Text = "label11";
+            this.lbl_OpisErr.Visible = false;
+            // 
+            // lbl_inventarError
+            // 
+            this.lbl_inventarError.AutoSize = true;
+            this.lbl_inventarError.ForeColor = System.Drawing.Color.Red;
+            this.lbl_inventarError.Location = new System.Drawing.Point(387, 192);
+            this.lbl_inventarError.Name = "lbl_inventarError";
+            this.lbl_inventarError.Size = new System.Drawing.Size(41, 13);
+            this.lbl_inventarError.TabIndex = 36;
+            this.lbl_inventarError.Text = "label12";
+            this.lbl_inventarError.Visible = false;
             // 
             // frm_UrediSobe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Nazad;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(698, 379);
+            this.Controls.Add(this.lbl_inventarError);
+            this.Controls.Add(this.lbl_OpisErr);
+            this.Controls.Add(this.lbl_VelicinaErr);
+            this.Controls.Add(this.lbl_VrstaErr);
+            this.Controls.Add(this.lbl_cijenaErr);
+            this.Controls.Add(this.lbl_brKrevetaError);
             this.Controls.Add(this.tb_Opis);
             this.Controls.Add(this.btn_Inventar);
             this.Controls.Add(this.label6);
@@ -282,11 +353,11 @@
             this.Controls.Add(this.tb_Cijena);
             this.Controls.Add(this.tb_BrojKreveta);
             this.Name = "frm_UrediSobe";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Uredi Sobu";
             this.Load += new System.EventHandler(this.frm_UrediSobe_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Inventar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,10 +383,15 @@
         private System.Windows.Forms.TextBox tb_Inventar;
         private System.Windows.Forms.Button btn_Inventar;
         private System.Windows.Forms.RichTextBox tb_Opis;
-        private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.DataGridViewTextBoxColumn InventarId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewButtonColumn Ukloni;
         private System.Windows.Forms.DataGridViewTextBoxColumn InventarSobaId;
+        private System.Windows.Forms.Label lbl_brKrevetaError;
+        private System.Windows.Forms.Label lbl_cijenaErr;
+        private System.Windows.Forms.Label lbl_VrstaErr;
+        private System.Windows.Forms.Label lbl_VelicinaErr;
+        private System.Windows.Forms.Label lbl_OpisErr;
+        private System.Windows.Forms.Label lbl_inventarError;
     }
 }

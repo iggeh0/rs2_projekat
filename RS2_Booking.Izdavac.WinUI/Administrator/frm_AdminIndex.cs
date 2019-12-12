@@ -44,5 +44,20 @@ namespace RS2_Booking.Izdavac.WinUI.Administrator
             frm_AdminSmjestaj form = new frm_AdminSmjestaj();
             form.Show();
         }
+
+        private void btn_Logout_Click(object sender, EventArgs e)
+        {
+            APIService.Username = "";
+            APIService.Password = "";
+            frm_Login form = new frm_Login();
+            form.FormClosed += new FormClosedEventHandler(form_FormClosed);
+            form.Show();
+            Hide();
+        }
+
+        private void form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Close();
+        }
     }
 }

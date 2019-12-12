@@ -20,9 +20,23 @@ using RS2_Booking.Model;
 using RS2_Booking.Model.Requests;
 using Microsoft.AspNetCore.Authentication;
 using RS2_Booking.WebAPI.Security;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace RS2_Booking.WebAPI
 {
+        public class BasicAuthDocumentFilter : IDocumentFilter
+    {
+        public void Apply(SwaggerDocument swaggerDoc, DocumentFilterContext context)
+        {
+            var securityRequirements = new Dictionary<string, IEnumerable<string>>()
+        {
+            { "basic", new string[] { } }  // in swagger you specify empty list unless using OAuth2 scopes
+        };
+
+            swaggerDoc.Security = new[] { securityRequirements };
+        }
+    }
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -49,6 +63,8 @@ namespace RS2_Booking.WebAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.AddSecurityDefinition("basic", new BasicAuthScheme() { Type = "basic" });
+                c.DocumentFilter<BasicAuthDocumentFilter>();
             });
             services.AddScoped<IService<InventarModel, InventarSearchRequest, InventarInsertRequest>, InventarService>();
             services.AddScoped<IService<SobaModel, SobaSearchRequest, SobaInsertRequest>, SobaService>();

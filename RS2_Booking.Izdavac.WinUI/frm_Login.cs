@@ -16,7 +16,7 @@ namespace RS2_Booking.Izdavac.WinUI
 {
     public partial class frm_Login : Form
     {
-        private readonly APIService _service = new APIService("korisnik/Login");
+        APIService _service = new APIService("korisnik/Login");
 
         public frm_Login()
         {
@@ -40,31 +40,41 @@ namespace RS2_Booking.Izdavac.WinUI
             cb_Uloga.DisplayMember = "Naziv";
             cb_Uloga.DropDownStyle = ComboBoxStyle.DropDownList;
         }
-
         private async void btn_Login_Click(object sender, EventArgs e)
         {
-                LoginRequest request = new LoginRequest();
-                request.KorisnickoIme = tb_KorisnickoIme.Text;
-                request.Lozinka = tb_Lozinka.Text;
-                request.Uloga = Int32.Parse(cb_Uloga.SelectedValue.ToString());
-                var k = await _service.Get<KorisnikModel>(request);
-            if (k.OK)
+            APIService.Username = tb_KorisnickoIme.Text;
+            APIService.Password = tb_Lozinka.Text;
+            try
             {
-                if (k.Uloga == Int32.Parse(cb_Uloga.SelectedValue.ToString()) && k.Uloga == 2)
+                LoginRequest request = new LoginRequest
                 {
-                    frm_AdminIndex form = new frm_AdminIndex(k.KorisnikId);
-                    form.Show();
-                    Hide();
-                }
-                else if (k.Uloga == Int32.Parse(cb_Uloga.SelectedValue.ToString()) && k.Uloga == 1)
+                    KorisnickoIme = tb_KorisnickoIme.Text,
+                    Lozinka = tb_Lozinka.Text,
+                    Uloga = Int32.Parse(cb_Uloga.SelectedValue.ToString())
+                };
+
+                var k = await _service.Get<KorisnikModel>(request);
+                if (k.OK)
                 {
-                    frm_Smjestaj form = new frm_Smjestaj(k.KorisnikId, k.IzdavacId);
-                    form.Show();
-                    Hide();
+                    if (k.Uloga == Int32.Parse(cb_Uloga.SelectedValue.ToString()) && k.Uloga == 2)
+                    {
+                        frm_AdminIndex form = new frm_AdminIndex(k.KorisnikId);
+                        form.Show();
+                        Hide();
+                    }
+                    else if (k.Uloga == Int32.Parse(cb_Uloga.SelectedValue.ToString()) && k.Uloga == 1)
+                    {
+                        frm_Smjestaj form = new frm_Smjestaj(k.KorisnikId, k.IzdavacId);
+                        form.Show();
+                        Hide();
+                    }
                 }
             }
-            else
-                MessageBox.Show(k.Poruka);
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_Registracija_Click(object sender, EventArgs e)

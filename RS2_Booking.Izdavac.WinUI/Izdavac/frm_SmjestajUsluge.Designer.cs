@@ -30,6 +30,11 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_Usluge = new System.Windows.Forms.DataGridView();
+            this.Usluga_SmjestajId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UslugaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ukloni = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,14 +42,10 @@
             this.tb_Naziv_Nova = new System.Windows.Forms.TextBox();
             this.btn_Dodaj_Novu = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cb_Usluge = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.btn_Dodaj_Postojecu = new System.Windows.Forms.Button();
-            this.Usluga_SmjestajId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UslugaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ukloni = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cb_Usluge = new System.Windows.Forms.ComboBox();
+            this.btn_Nazad = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Usluge)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -55,7 +56,7 @@
             // 
             this.groupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.groupBox1.Controls.Add(this.dgv_Usluge);
-            this.groupBox1.Location = new System.Drawing.Point(90, 153);
+            this.groupBox1.Location = new System.Drawing.Point(9, 153);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(540, 147);
             this.groupBox1.TabIndex = 0;
@@ -81,6 +82,45 @@
             this.dgv_Usluge.TabIndex = 0;
             this.dgv_Usluge.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Usluge_CellContentClick);
             // 
+            // Usluga_SmjestajId
+            // 
+            this.Usluga_SmjestajId.DataPropertyName = "UslugaSmjestajId";
+            this.Usluga_SmjestajId.HeaderText = "Us_SmId";
+            this.Usluga_SmjestajId.Name = "Usluga_SmjestajId";
+            this.Usluga_SmjestajId.ReadOnly = true;
+            this.Usluga_SmjestajId.Visible = false;
+            // 
+            // Naziv
+            // 
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naziv";
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
+            // 
+            // Opis
+            // 
+            this.Opis.DataPropertyName = "Opis";
+            this.Opis.HeaderText = "Opis";
+            this.Opis.Name = "Opis";
+            this.Opis.ReadOnly = true;
+            // 
+            // UslugaId
+            // 
+            this.UslugaId.DataPropertyName = "UslugaId";
+            this.UslugaId.HeaderText = "UslugaId";
+            this.UslugaId.Name = "UslugaId";
+            this.UslugaId.ReadOnly = true;
+            this.UslugaId.Visible = false;
+            // 
+            // Ukloni
+            // 
+            this.Ukloni.HeaderText = "Ukloni";
+            this.Ukloni.Name = "Ukloni";
+            this.Ukloni.ReadOnly = true;
+            this.Ukloni.Text = "Ukloni";
+            this.Ukloni.ToolTipText = "Ukloni";
+            this.Ukloni.UseColumnTextForButtonValue = true;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label2);
@@ -88,7 +128,7 @@
             this.groupBox2.Controls.Add(this.tb_Opis_Nova);
             this.groupBox2.Controls.Add(this.tb_Naziv_Nova);
             this.groupBox2.Controls.Add(this.btn_Dodaj_Novu);
-            this.groupBox2.Location = new System.Drawing.Point(93, 12);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(293, 135);
             this.groupBox2.TabIndex = 1;
@@ -142,29 +182,12 @@
             this.groupBox3.Controls.Add(this.btn_Dodaj_Postojecu);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.cb_Usluge);
-            this.groupBox3.Location = new System.Drawing.Point(392, 12);
+            this.groupBox3.Location = new System.Drawing.Point(311, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(235, 135);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dodaj postojeću uslugu";
-            // 
-            // cb_Usluge
-            // 
-            this.cb_Usluge.FormattingEnabled = true;
-            this.cb_Usluge.Location = new System.Drawing.Point(7, 38);
-            this.cb_Usluge.Name = "cb_Usluge";
-            this.cb_Usluge.Size = new System.Drawing.Size(121, 21);
-            this.cb_Usluge.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Naziv usluge";
             // 
             // btn_Dodaj_Postojecu
             // 
@@ -176,50 +199,39 @@
             this.btn_Dodaj_Postojecu.UseVisualStyleBackColor = true;
             this.btn_Dodaj_Postojecu.Click += new System.EventHandler(this.btn_Dodaj_Postojecu_Click);
             // 
-            // Usluga_SmjestajId
+            // label3
             // 
-            this.Usluga_SmjestajId.DataPropertyName = "UslugaSmjestajId";
-            this.Usluga_SmjestajId.HeaderText = "Us_SmId";
-            this.Usluga_SmjestajId.Name = "Usluga_SmjestajId";
-            this.Usluga_SmjestajId.ReadOnly = true;
-            this.Usluga_SmjestajId.Visible = false;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Naziv usluge";
             // 
-            // Naziv
+            // cb_Usluge
             // 
-            this.Naziv.DataPropertyName = "Naziv";
-            this.Naziv.HeaderText = "Naziv";
-            this.Naziv.Name = "Naziv";
-            this.Naziv.ReadOnly = true;
+            this.cb_Usluge.FormattingEnabled = true;
+            this.cb_Usluge.Location = new System.Drawing.Point(7, 38);
+            this.cb_Usluge.Name = "cb_Usluge";
+            this.cb_Usluge.Size = new System.Drawing.Size(121, 21);
+            this.cb_Usluge.TabIndex = 0;
             // 
-            // Opis
+            // btn_Nazad
             // 
-            this.Opis.DataPropertyName = "Opis";
-            this.Opis.HeaderText = "Opis";
-            this.Opis.Name = "Opis";
-            this.Opis.ReadOnly = true;
-            // 
-            // UslugaId
-            // 
-            this.UslugaId.DataPropertyName = "UslugaId";
-            this.UslugaId.HeaderText = "UslugaId";
-            this.UslugaId.Name = "UslugaId";
-            this.UslugaId.ReadOnly = true;
-            this.UslugaId.Visible = false;
-            // 
-            // Ukloni
-            // 
-            this.Ukloni.HeaderText = "Ukloni";
-            this.Ukloni.Name = "Ukloni";
-            this.Ukloni.ReadOnly = true;
-            this.Ukloni.Text = "Ukloni";
-            this.Ukloni.ToolTipText = "Ukloni";
-            this.Ukloni.UseColumnTextForButtonValue = true;
+            this.btn_Nazad.Location = new System.Drawing.Point(230, 315);
+            this.btn_Nazad.Name = "btn_Nazad";
+            this.btn_Nazad.Size = new System.Drawing.Size(75, 23);
+            this.btn_Nazad.TabIndex = 3;
+            this.btn_Nazad.Text = "Nazad";
+            this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
             // frm_SmjestajUsluge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(566, 350);
+            this.Controls.Add(this.btn_Nazad);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -255,5 +267,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
         private System.Windows.Forms.DataGridViewTextBoxColumn UslugaId;
         private System.Windows.Forms.DataGridViewButtonColumn Ukloni;
+        private System.Windows.Forms.Button btn_Nazad;
     }
 }
