@@ -28,14 +28,14 @@ namespace RS2_Booking.WebAPI.Controllers
             return _Service.Get(search);
         }
 
-        [Authorize(Roles ="Izdavac")]
+        [Authorize(Roles ="Izdavac, Administrator")]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             _Service.Delete(id);
         }
 
-        [Authorize(Roles = "Izdavac")]
+        [Authorize(Roles = "Izdavac, Administrator")]
         [HttpPost]
         public virtual OkolinaInsertRequest Insert(OkolinaInsertRequest Model)
         {

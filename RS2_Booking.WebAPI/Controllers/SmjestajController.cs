@@ -11,7 +11,7 @@ using RS2_Booking.WebAPI.Services;
 
 namespace RS2_Booking.WebAPI.Controllers
 {
-    [Authorize(Roles = "Izdavac, Administrator")]
+
     [Route("api/[controller]")]
     [ApiController]
     public class SmjestajController : BaseController<SmjestajModel, SmjestajSearchRequest, SmjestajInsertRequest>
