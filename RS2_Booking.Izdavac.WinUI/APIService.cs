@@ -23,7 +23,7 @@ namespace RS2_Booking.Izdavac.WinUI
 
         public async Task<T> Get<T>(object search)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
+            var url = $"{Properties.Settings.Default.APIUrl}{_route}";
 
             try
             {
@@ -47,14 +47,14 @@ namespace RS2_Booking.Izdavac.WinUI
 
         public async Task<T> GetById<T>(object id)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
+            var url = $"{Properties.Settings.Default.APIUrl}{_route}/{id}";
 
             return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
         }
 
         public async Task<T> Insert<T>(object request)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
+            var url = $"{Properties.Settings.Default.APIUrl}{_route}";
 
             try
             {

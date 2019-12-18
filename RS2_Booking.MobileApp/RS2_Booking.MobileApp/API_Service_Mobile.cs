@@ -23,7 +23,7 @@ namespace RS2_Booking.MobileApp
 
 
 #if DEBUG
-        string _apiUrl = "https://localhost:44367/api/";
+        string _apiUrl = "http://localhost:52170/api/";
         #endif
 #if RELEASE
 
@@ -31,7 +31,7 @@ namespace RS2_Booking.MobileApp
 
         public async Task<T> Get<T>(object search)
         {
-            var url = $"{_apiUrl}/{_route}";
+            var url = $"{_apiUrl}{_route}";
 
             try
             {
@@ -55,7 +55,7 @@ namespace RS2_Booking.MobileApp
 
         public async Task<T> GetById<T>(object id)
         {
-            var url = $"{_apiUrl}/{_route}/{id}";
+            var url = $"{_apiUrl}{_route}/{id}";
 
             return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
         }
@@ -88,7 +88,7 @@ namespace RS2_Booking.MobileApp
         {
             try
             {
-                var url = $"{_apiUrl}/{_route}/{id}";
+                var url = $"{_apiUrl}{_route}/{id}";
 
                 return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
             }

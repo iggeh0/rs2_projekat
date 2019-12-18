@@ -100,7 +100,7 @@ namespace RS2_Booking.WebAPI
 
             app.UseAuthentication();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
