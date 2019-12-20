@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ViewModels="clr-namespace:RS2_Booking.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="RS2_Booking.MobileApp.Views.PocetnaPage">
+    <ContentPage.BindingContext>
+        <ViewModels:PocetnaVM></ViewModels:PocetnaVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Picker ItemsSource="{Binding ListaGradova}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding SelectedGrad}"></Picker>
+            <ListView ItemsSource="{Binding ListaSmjestaja}" ItemTapped="ListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Naziv}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                                <Label Text="{Binding GradNaziv}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

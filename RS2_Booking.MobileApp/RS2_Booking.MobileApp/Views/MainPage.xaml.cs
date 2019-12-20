@@ -32,6 +32,9 @@ namespace RS2_Booking.MobileApp.Views
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
+                    case (int)MenuItemType.Smjestaj:
+                        MenuPages.Add(id, new NavigationPage(new PocetnaPage()));
+                        break;
                 }
             }
 
