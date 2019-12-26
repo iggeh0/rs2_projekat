@@ -12,10 +12,10 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="{Binding SmjestajId}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Naziv}"></Label>
+            <Label Text="{Binding Model.Naziv}"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

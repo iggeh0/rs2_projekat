@@ -13,8 +13,8 @@ namespace RS2_Booking.MobileApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SmjestajViewPage : ContentPage
     {
-        private int _Id;
-        SmjestajVM viewmodel = null;
+        public int _Id;
+        public SmjestajVM viewmodel = null;
         public SmjestajViewPage()
         {
             InitializeComponent();
@@ -24,7 +24,17 @@ namespace RS2_Booking.MobileApp.Views
         {
             InitializeComponent();
             _Id = id;
-            BindingContext = viewmodel = new SmjestajVM(id);           
+            viewmodel = new SmjestajVM();
+            viewmodel = BindingContext as SmjestajVM;
+
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewmodel._SmjestajId = _Id;
+            viewmodel.SmjestajId = _Id;
+            await viewmodel.Ucitaj();
         }
     }
 }

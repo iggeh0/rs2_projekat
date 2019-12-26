@@ -11,9 +11,14 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="{Binding Korisnik}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="{Binding KorisnickoIme}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
             <Picker ItemsSource="{Binding ListaGradova}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding SelectedGrad}"></Picker>
             <ListView ItemsSource="{Binding ListaSmjestaja}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>

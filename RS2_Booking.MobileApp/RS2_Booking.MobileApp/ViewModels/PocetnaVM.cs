@@ -14,6 +14,8 @@ namespace RS2_Booking.MobileApp.ViewModels
     {
         private readonly API_Service_Mobile _smjestajService = new API_Service_Mobile("smjestaj");
         private readonly API_Service_Mobile _gradService = new API_Service_Mobile("grad");
+        private readonly API_Service_Mobile _korisnikService = new API_Service_Mobile("korisnik/login");
+
         GradModel _odabraniGrad = null;
 
         public PocetnaVM()
@@ -32,16 +34,32 @@ namespace RS2_Booking.MobileApp.ViewModels
             }
         }
 
+        public string KorisnickoIme
+        {
+            get { return _KorisnickoIme; }
+            set { SetProperty(ref _KorisnickoIme, value);  }
+        }
+
         public ObservableCollection<SmjestajModel> ListaSmjestaja { get; set; } = new ObservableCollection<SmjestajModel>();
         public ObservableCollection<GradModel> ListaGradova { get; set; } = new ObservableCollection<GradModel>();
 
         public KorisnikModel Korisnik { get; set; }
 
+        public string _KorisnickoIme = null;
         public ICommand UcitajCommand { get; set; }
-
 
         public async Task Ucitaj()
         {
+            if (Korisnik == null || Korisnik.KorisnikId == 0 )
+            {
+                LoginRequest request = new LoginRequest();
+                request.KorisnickoIme = API_Service_Mobile.Username;
+                request.Lozinka = API_Service_Mobile.Password;
+                request.Uloga = 2;
+                Korisnik = await _korisnikService.Get<KorisnikModel>(request);
+                KorisnickoIme = Korisnik.KorisnickoIme;
+            }
+
             if (ListaGradova.Count == 0)
             {
                 var sourceGrad = await _gradService.Get<List<GradModel>>(null);
