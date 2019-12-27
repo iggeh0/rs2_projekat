@@ -38,5 +38,12 @@ namespace RS2_Booking.MobileApp.Views
             int id = Convert.ToInt32(pi.GetValue(Odabrani,null).ToString());
             Application.Current.MainPage = new SmjestajViewPage(id);
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            API_Service_Mobile.Username = "";
+            API_Service_Mobile.Password = "";
+            Application.Current.MainPage = new LoginPage();
+        }
     }
 }

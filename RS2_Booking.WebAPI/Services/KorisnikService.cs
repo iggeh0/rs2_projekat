@@ -142,12 +142,13 @@ namespace RS2_Booking.WebAPI.Services
 
         List<Model.KorisnikModel> IKorisnikService.Get(KorisnikSearchRequest request)
         {
-
             if (request.KorisnikId > 0)
             {
                 Korisnik k = _context.Korisnik.Where(x => x.KorisnikId == request.KorisnikId).FirstOrDefault();
-                List<KorisnikModel> lista = new List<KorisnikModel>();
-                lista.Add(_mapper.Map<KorisnikModel>(k));
+                List<KorisnikModel> lista = new List<KorisnikModel>
+                {
+                    _mapper.Map<KorisnikModel>(k)
+                };
                 return lista;
             }
             else
@@ -307,6 +308,22 @@ namespace RS2_Booking.WebAPI.Services
 
             }
             return k;
+        }
+
+        public KorisnikModel GetSingleKorisnik(KorisnikSearchRequest request)
+        {
+            
+            if (request.Uloga == 1)
+            {
+                Izdavac i = _context.Izdavac.Find(request.KorisnikId);
+                Korisnik k = _context.Korisnik.Find(i.KorisnikId);
+                return _mapper.Map<KorisnikModel>(k);
+            }
+            else
+            {
+                Korisnik k = _context.Korisnik.Find(request.KorisnikId);
+                return _mapper.Map<KorisnikModel>(k);
+            }
         }
     }
 }

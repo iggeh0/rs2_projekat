@@ -47,6 +47,13 @@ namespace RS2_Booking.WebAPI.Controllers
             return _korisnikService.GetIzdavaci(search);
         }
 
+        [HttpGet]
+        [Route("GetSingleKorisnik")]
+        public KorisnikModel GetSingleKorisnik([FromQuery]KorisnikSearchRequest search)
+        {
+            return _korisnikService.GetSingleKorisnik(search);
+        }
+
         [HttpPost]
         public KorisnikInsertRequest Insert(KorisnikInsertRequest Model)
         {

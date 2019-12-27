@@ -1,4 +1,5 @@
-﻿using RS2_Booking.Model.Requests;
+﻿using RS2_Booking.Model;
+using RS2_Booking.Model.Requests;
 using RS2_Booking.WebAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -24,5 +25,6 @@ namespace RS2_Booking.WebAPI.Services
         KorisnikEditRequest Update(KorisnikEditRequest model, int id);
 
         void Delete(int id);
+        KorisnikModel GetSingleKorisnik(KorisnikSearchRequest search);
     }
 }

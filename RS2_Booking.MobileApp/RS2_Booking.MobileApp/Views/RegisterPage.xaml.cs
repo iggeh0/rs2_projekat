@@ -16,5 +16,10 @@ namespace RS2_Booking.MobileApp.Views
 		{
 			InitializeComponent ();
 		}
+
+		private void Button_Clicked(object sender, EventArgs e)
+		{
+			Application.Current.MainPage = new LoginPage();
+		}
 	}
 }

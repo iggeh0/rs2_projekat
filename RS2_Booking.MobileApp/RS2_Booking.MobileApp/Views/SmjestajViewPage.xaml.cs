@@ -24,17 +24,24 @@ namespace RS2_Booking.MobileApp.Views
         {
             InitializeComponent();
             _Id = id;
-            viewmodel = new SmjestajVM();
-            viewmodel = BindingContext as SmjestajVM;
+            viewmodel = new SmjestajVM
+            {
+                SmjestajId = id
+            };
+            BindingContext = viewmodel;
 
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            viewmodel._SmjestajId = _Id;
-            viewmodel.SmjestajId = _Id;
             await viewmodel.Ucitaj();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new PocetnaPage();
+
         }
     }
 }

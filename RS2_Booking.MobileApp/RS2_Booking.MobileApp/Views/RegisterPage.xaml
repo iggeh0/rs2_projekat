@@ -4,9 +4,35 @@
              x:Class="RS2_Booking.MobileApp.Views.RegisterPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Ime:" HorizontalOptions="Center">
+            </Label>
+            <Entry Text="{Binding Ime}"></Entry>
+            <Label Text="Prezime:" HorizontalOptions="Center">
+            </Label>
+            <Entry Text="{Binding Prezime}"></Entry>
+            <Label Text="JMBG:" HorizontalOptions="Center">
+            </Label>
+            <Entry Text="{Binding JMBG}"></Entry>
+            <Label Text="Broj Telefona:" HorizontalOptions="Center">
+            </Label>
+            <Entry Text="{Binding BrojTelefona}"></Entry>
+            <Label Text="Datum Rođenja:" HorizontalOptions="Center">
+            </Label>
+            <DatePicker DateSelected="{Binding DatumRodjenja}" HorizontalOptions="Center"></DatePicker>
+            <Label Text="E-Mail:" HorizontalOptions="Center">
+            </Label>
+            <Entry Text="{Binding Email}"></Entry>
+            <Label Text="Korisničko Ime:" HorizontalOptions="Center">
+            </Label>
+            <Entry Text="{Binding KorisnickoIme}"></Entry>
+            <Label Text="Lozinka:" HorizontalOptions="Center">
+            </Label>
+            <Entry Text="{Binding Lozinka}"></Entry>
+            <Label Text="Lozinka Ponovo:" HorizontalOptions="Center">
+            </Label>
+            <Entry Text="{Binding LozinkaPonovo}"></Entry>
+            <Button Text="Registruj se" Command="{Binding RegisterCommand}"></Button>
+            <Button Text="Nazad" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

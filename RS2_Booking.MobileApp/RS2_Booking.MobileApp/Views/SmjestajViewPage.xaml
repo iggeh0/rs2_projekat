@@ -12,10 +12,21 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding SmjestajId}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Model.Naziv}"></Label>
+            <Label Text="Ime izdavača:"></Label>
+            <Label Text="{Binding ImeIzdavaca}"></Label>
+            <Label Text="Naziv:"></Label>
+            <Label Text="{Binding Naziv}" Padding="10"></Label>
+            <Label Text="Grad:"></Label>
+            <Label Text="{Binding GradNaziv}" Padding="10"></Label>
+            <Label Text="Adresa:"></Label>
+            <Label Text="{Binding Adresa}" Padding="10"></Label>
+            <Label Text="Udaljenost od centra:"></Label>
+            <Label Text="{Binding Distanca}" Padding="10"></Label>
+            <Label Text="Kontakt Telefon:"></Label>
+            <Label Text="{Binding KontaktTelefon}" Padding="10"></Label>
+            <Label Text="Kontakt Email:"></Label>
+            <Label Text="{Binding Email}" Padding="10"></Label>
+            <Button Text="Nazad" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
