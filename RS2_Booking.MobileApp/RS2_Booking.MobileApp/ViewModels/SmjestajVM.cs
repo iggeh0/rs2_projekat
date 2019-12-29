@@ -109,10 +109,16 @@ namespace RS2_Booking.MobileApp.ViewModels
         public SmjestajVM()
         {
             UcitajCommand = new Command(async () => await Ucitaj());
+            IzdavacCommand = new Command(async () => await GetIzdavac());
+        }
 
+        private async Task GetIzdavac()
+        {
+            throw new NotImplementedException();
         }
 
         public ICommand UcitajCommand { get; set; }
+        public ICommand IzdavacCommand { get; set; }
 
         public async Task Ucitaj()
         {

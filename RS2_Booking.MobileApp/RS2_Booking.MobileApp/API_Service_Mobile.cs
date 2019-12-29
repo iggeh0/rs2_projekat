@@ -60,9 +60,30 @@ namespace RS2_Booking.MobileApp
             return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
         }
 
+        public async Task<T> Register<T>(object request)
+        {
+            var url = $"{_apiUrl}{_route}";
+            try
+            {
+                return await url.PostJsonAsync(request).ReceiveJson<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Greška", stringBuilder.ToString(), "Ok");
+                return default(T);
+            }
+        }
         public async Task<T> Insert<T>(object request)
         {
-            var url = $"{_apiUrl}/{_route}";
+            var url = $"{_apiUrl}{_route}";
 
             try
             {

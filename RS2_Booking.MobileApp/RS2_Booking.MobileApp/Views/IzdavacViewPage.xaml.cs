@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace RS2_Booking.MobileApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class IzdavacViewPage : ContentPage
     {
-        public LoginPage()
+        public IzdavacViewPage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Application.Current.MainPage = new RegisterPage();
         }
     }
 }

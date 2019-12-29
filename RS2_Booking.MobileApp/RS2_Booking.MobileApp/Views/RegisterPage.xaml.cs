@@ -12,9 +12,9 @@ namespace RS2_Booking.MobileApp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RegisterPage : ContentPage
 	{
-		public RegisterPage ()
+		public RegisterPage()
 		{
-			InitializeComponent ();
+			InitializeComponent();
 		}
 
 		private void Button_Clicked(object sender, EventArgs e)

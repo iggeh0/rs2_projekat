@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:RS2_Booking.MobileApp.ViewModels"
              x:Class="RS2_Booking.MobileApp.Views.RegisterPage">
+    <ContentPage.BindingContext>
+        <ViewModels:RegisterVM></ViewModels:RegisterVM>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Ime:" HorizontalOptions="Center">
@@ -18,7 +22,7 @@
             <Entry Text="{Binding BrojTelefona}"></Entry>
             <Label Text="Datum Rođenja:" HorizontalOptions="Center">
             </Label>
-            <DatePicker DateSelected="{Binding DatumRodjenja}" HorizontalOptions="Center"></DatePicker>
+            <DatePicker Date="{Binding DatumRodjenja}" HorizontalOptions="Center"></DatePicker>
             <Label Text="E-Mail:" HorizontalOptions="Center">
             </Label>
             <Entry Text="{Binding Email}"></Entry>
@@ -27,11 +31,11 @@
             <Entry Text="{Binding KorisnickoIme}"></Entry>
             <Label Text="Lozinka:" HorizontalOptions="Center">
             </Label>
-            <Entry Text="{Binding Lozinka}"></Entry>
+            <Entry Text="{Binding Sifra}"></Entry>
             <Label Text="Lozinka Ponovo:" HorizontalOptions="Center">
             </Label>
-            <Entry Text="{Binding LozinkaPonovo}"></Entry>
-            <Button Text="Registruj se" Command="{Binding RegisterCommand}"></Button>
+            <Entry Text="{Binding SifraPonovo}"></Entry>
+            <Button Command="{Binding RegisterCommand}" Text="Registruj se"></Button>
             <Button Text="Nazad" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>

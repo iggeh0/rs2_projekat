@@ -11,9 +11,14 @@
         <ViewModels:SmjestajVM></ViewModels:SmjestajVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
+        
         <StackLayout>
             <Label Text="Ime izdavača:"></Label>
-            <Label Text="{Binding ImeIzdavaca}"></Label>
+            <Label Text="{Binding ImeIzdavaca}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IzdavacCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
             <Label Text="Naziv:"></Label>
             <Label Text="{Binding Naziv}" Padding="10"></Label>
             <Label Text="Grad:"></Label>
