@@ -5,13 +5,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ViewModels="clr-namespace:RS2_Booking.MobileApp.ViewModels"
              mc:Ignorable="d"
-             x:Class="RS2_Booking.MobileApp.Views.SmjestajViewPage"
-            >
+             x:Class="RS2_Booking.MobileApp.Views.SmjestajViewPage">
     <ContentPage.BindingContext>
         <ViewModels:SmjestajVM></ViewModels:SmjestajVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        
         <StackLayout>
             <Label Text="Ime izdavača:"></Label>
             <Label Text="{Binding ImeIzdavaca}">

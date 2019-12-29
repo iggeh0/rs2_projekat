@@ -56,6 +56,11 @@ namespace RS2_Booking.WebAPI.Services
 
                 if (user != null)
                 {
+                    if ( _context.Korisnik.Where(x=> x.KorisnickoIme == model.KorisnickoIme).Any() )
+                    {
+                        model.Response = "Korisničko ime je zauzeto";
+                        return model;
+                    }
                     user.Ime = model.Ime;
                     user.Prezime = model.Prezime;
                     user.BrojTelefona = model.BrojTelefona;

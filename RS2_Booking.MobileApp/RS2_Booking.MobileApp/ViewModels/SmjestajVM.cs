@@ -1,4 +1,5 @@
-﻿using RS2_Booking.Model;
+﻿using RS2_Booking.MobileApp.Views;
+using RS2_Booking.Model;
 using RS2_Booking.Model.Requests;
 using System;
 using System.Collections.Generic;
@@ -109,12 +110,12 @@ namespace RS2_Booking.MobileApp.ViewModels
         public SmjestajVM()
         {
             UcitajCommand = new Command(async () => await Ucitaj());
-            IzdavacCommand = new Command(async () => await GetIzdavac());
+            IzdavacCommand = new Command(() => GetIzdavac());
         }
 
-        private async Task GetIzdavac()
+        private void GetIzdavac()
         {
-            throw new NotImplementedException();
+            Application.Current.MainPage = new IzdavacViewPage(IzdavacId);
         }
 
         public ICommand UcitajCommand { get; set; }

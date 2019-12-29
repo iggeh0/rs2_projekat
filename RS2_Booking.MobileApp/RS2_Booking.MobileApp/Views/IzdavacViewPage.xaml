@@ -3,13 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ViewModels="clr-namespace:RS2_Booking.MobileApp.ViewModels"
              mc:Ignorable="d"
              x:Class="RS2_Booking.MobileApp.Views.IzdavacViewPage">
+    <ContentPage.BindingContext>
+        <ViewModels:IzdavacVM></ViewModels:IzdavacVM>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Korisničko ime: "></Label>
+            <Label Text="{Binding KorisnickoIme}"></Label>
+            <Label Text="Broj telefona: "></Label>
+            <Label Text="{Binding BrojTelefona}"></Label>
+            <Label Text="E-Mail: "></Label>
+            <Label Text="{Binding Email}"></Label>
+            <ListView ItemsSource="{Binding ListaSmjestaja}" ItemTapped="ListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Naziv}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                                <Label Text="{Binding GradNaziv}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Clicked="Button_Clicked" Text="Nazad"></Button>
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

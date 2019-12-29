@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -85,11 +86,102 @@ namespace RS2_Booking.Izdavac.WinUI
 
         private async void btn_Save_Click(object sender, EventArgs e)
         {
-            if (cb_Uloga.Visible == false)
+            bool valid = true;
+            if (tb_Ime.Text == null || tb_Ime.Text.Length < 3)
             {
-                if (_KorisnikId > 0 && _Role > 0)
+                MessageBox.Show("Ime nije pravilno uneseno","Greška", MessageBoxButtons.OK);
+                valid = false;
+            }
+            if (tb_Prezime.Text == null || tb_Prezime.Text.Length < 3)
+            {
+                MessageBox.Show("Prezime nije pravilno uneseno", "Greška", MessageBoxButtons.OK);
+                valid = false;
+            }
+            Regex regex = new Regex(@"^\d+$");
+
+            if (!regex.Match(tb_JMBG.Text).Success || tb_JMBG.Text.Length != 13)
+            {
+                MessageBox.Show("JMBG nije pravilno unesen", "Greška", MessageBoxButtons.OK);
+                valid = false;
+            }
+
+            bool isPhone = Regex.IsMatch(tb_Telefon.Text, @"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
+
+            if (isPhone || tb_Telefon.Text.Length < 8)
+            {
+                MessageBox.Show("Telefon nije pravilno unesen", "Greška", MessageBoxButtons.OK);
+                valid = false;
+            }
+
+            if (tb_Datum.Text != null)
+            {
+                if (Convert.ToDateTime(tb_Datum.Text) > DateTime.Today)
                 {
-                    KorisnikEditRequest request = new KorisnikEditRequest
+                    MessageBox.Show("Datum nije pravilno unesen", "Greška", MessageBoxButtons.OK);
+                    valid = false;
+                }
+            }
+
+            bool isEmail = Regex.IsMatch(tb_Email.Text, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+
+            if (!isEmail || tb_Email.Text.Length < 6)
+            {
+                MessageBox.Show("E-Mail nije pravilno unesen", "Greška", MessageBoxButtons.OK);
+                valid = false;
+            }
+
+            if (tb_Username.Text == null || tb_Username.Text.Length < 3)
+            {
+                MessageBox.Show("Korisničko ime nije pravilno uneseno", "Greška", MessageBoxButtons.OK);
+                valid = false;
+            }
+
+            if (tb_Password.Text == null || tb_Password.Text.Length < 6)
+            {
+                MessageBox.Show("Šifra nije pravilno unesena", "Greška", MessageBoxButtons.OK);
+                valid = false;
+            }
+
+            if ( tb_Password.Text != tb_Passwordrepeat.Text )
+            {
+                MessageBox.Show("Šifre se ne poklapaju", "Greška", MessageBoxButtons.OK);
+                valid = false;
+            }
+
+            if (valid)
+            {
+                if (cb_Uloga.Visible == false)
+                {
+                    if (_KorisnikId > 0 && _Role > 0)
+                    {
+                        KorisnikEditRequest request = new KorisnikEditRequest
+                        {
+                            Ime = tb_Ime.Text,
+                            Prezime = tb_Prezime.Text,
+                            Jmbg = tb_JMBG.Text,
+                            Sifra = tb_Password.Text,
+                            Email = tb_Email.Text,
+                            BrojTelefona = tb_Telefon.Text,
+                            DatumRodjenja = Convert.ToDateTime(tb_Datum.Text),
+                            KorisnickoIme = tb_Username.Text,
+                            KorisnikId = _KorisnikId,
+                            SifraPonovo = tb_Passwordrepeat.Text
+                        };
+                        request = await _KorisnikService.Update<KorisnikEditRequest>(_KorisnikId, request);
+                        if (request.Response == string.Empty)
+                        {
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show(request.Response);
+                        }
+                    }
+
+                }
+                else if (_Role == 0 && cb_Uloga.SelectedIndex > 0)
+                {
+                    KorisnikInsertRequest request = new KorisnikInsertRequest
                     {
                         Ime = tb_Ime.Text,
                         Prezime = tb_Prezime.Text,
@@ -99,35 +191,16 @@ namespace RS2_Booking.Izdavac.WinUI
                         BrojTelefona = tb_Telefon.Text,
                         DatumRodjenja = Convert.ToDateTime(tb_Datum.Text),
                         KorisnickoIme = tb_Username.Text,
-                        KorisnikId = _KorisnikId,
-                       SifraPonovo = tb_Passwordrepeat.Text
+                        Role = cb_Uloga.SelectedIndex
                     };
-                    await _KorisnikService.Update<KorisnikEditRequest>(_KorisnikId, request);
-                    Close();
+                    request = await _KorisnikService.Insert<KorisnikInsertRequest>(request);
+                    if (request.Response == null)
+                    {
+                        Close();
+                    }
+                    else
+                        MessageBox.Show(request.Response);
                 }
-               
-            }
-            else if (_Role == 0 && cb_Uloga.SelectedIndex > 0)
-            {
-                KorisnikInsertRequest request = new KorisnikInsertRequest
-                {
-                    Ime = tb_Ime.Text,
-                    Prezime = tb_Prezime.Text,
-                    Jmbg = tb_JMBG.Text,
-                    Sifra = tb_Password.Text,
-                    Email = tb_Email.Text,
-                    BrojTelefona = tb_Telefon.Text,
-                    DatumRodjenja = Convert.ToDateTime(tb_Datum.Text),
-                    KorisnickoIme = tb_Username.Text,
-                    Role = cb_Uloga.SelectedIndex
-                };
-                request = await _KorisnikService.Insert<KorisnikInsertRequest>(request);
-                if (request.Response == null)
-                {
-                    Close();
-                }
-                else
-                    MessageBox.Show(request.Response);
             }
         }
 

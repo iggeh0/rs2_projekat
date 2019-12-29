@@ -52,10 +52,12 @@ namespace RS2_Booking.MobileApp.ViewModels
         {
             if (Korisnik == null || Korisnik.KorisnikId == 0 )
             {
-                LoginRequest request = new LoginRequest();
-                request.KorisnickoIme = API_Service_Mobile.Username;
-                request.Lozinka = API_Service_Mobile.Password;
-                request.Uloga = 2;
+                LoginRequest request = new LoginRequest
+                {
+                    KorisnickoIme = API_Service_Mobile.Username,
+                    Lozinka = API_Service_Mobile.Password,
+                    Uloga = 2
+                };
                 Korisnik = await _korisnikService.Get<KorisnikModel>(request);
                 KorisnickoIme = Korisnik.KorisnickoIme;
             }

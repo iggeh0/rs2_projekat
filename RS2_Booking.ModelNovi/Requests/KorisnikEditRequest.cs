@@ -17,5 +17,7 @@ namespace RS2_Booking.Model.Requests
         public string KorisnickoIme { get; set; }
         public string Sifra { get; set; }
         public string SifraPonovo { get; set; }
+
+        public string Response { get; set; }
     }
 }
