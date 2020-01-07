@@ -3,6 +3,7 @@ using RS2_Booking.Model;
 using RS2_Booking.Model.Requests;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,11 +14,8 @@ namespace RS2_Booking.MobileApp.ViewModels
     public class SmjestajVM : BaseViewModel
     {
 
-        private readonly API_Service_Mobile _smjestajService = new API_Service_Mobile("smjestaj");
-        private readonly API_Service_Mobile _korisnikService = new API_Service_Mobile("korisnik/GetSingleKorisnik");
-
+        private readonly API_Service_Mobile _smjestajService = new API_Service_Mobile("smjestaj/GetFullSmjestaj");
         public int _SmjestajId = 0;
-
 
         #region Model
         public int SmjestajId
@@ -105,6 +103,10 @@ namespace RS2_Booking.MobileApp.ViewModels
             set { SetProperty(ref _GradNaziv, value); }
         }
 
+        public ObservableCollection<UslugaModel> Usluge { get; set; } = new ObservableCollection<UslugaModel>();
+        public ObservableCollection<SobaModel> Sobe { get; set; } = new ObservableCollection<SobaModel>();
+
+
         #endregion
 
         public SmjestajVM()
@@ -123,13 +125,17 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         public async Task Ucitaj()
         {
-            SmjestajModel Model = await _smjestajService.GetById<SmjestajModel>(_SmjestajId);
-            Naziv = Model.Naziv;
+            SmjestajSearchRequest request = new SmjestajSearchRequest
+            {
+                SmjestajId = _SmjestajId
+            };
+            SmjestajModelFull Model = await _smjestajService.Get<SmjestajModelFull>(request);
             Distanca = Model.Distanca.Value;
             Opis = Model.Opis;
             Adresa = Model.Adresa;
             KontaktTelefon = Model.KontaktTelefon;
             Email = Model.Email;
+            Naziv = Model.Naziv;
             if (Model.Zvijezde != null)
             {
                 Zvijezde = Model.Zvijezde.Value;
@@ -138,13 +144,22 @@ namespace RS2_Booking.MobileApp.ViewModels
 
             IzdavacId = Model.IzdavacId;
 
-            KorisnikSearchRequest request = new KorisnikSearchRequest
+            ImeIzdavaca = Model.IzdavacIme;
+
+            if (Model.ListaUsluga != null && Model.ListaUsluga.Count > 0)
             {
-                Uloga = 1,
-                KorisnikId = IzdavacId
-            };
-            KorisnikModel Izdavac = await _korisnikService.Get<KorisnikModel>(request);
-            ImeIzdavaca = Izdavac.KorisnickoIme;
+                foreach (UslugaModel u in Model.ListaUsluga)
+                {
+                    Usluge.Add(u);
+                }
+            }
+            if (Model.ListaSoba != null && Model.ListaSoba.Count > 0)
+            {
+                foreach (SobaModel s in Model.ListaSoba)
+                {
+                    Sobe.Add(s);
+                }
+            }
         }
 
     }

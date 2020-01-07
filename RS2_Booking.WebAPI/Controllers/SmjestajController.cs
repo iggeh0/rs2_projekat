@@ -14,16 +14,43 @@ namespace RS2_Booking.WebAPI.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class SmjestajController : BaseController<SmjestajModel, SmjestajSearchRequest, SmjestajInsertRequest>
+    public class SmjestajController : ControllerBase
     {
-        public SmjestajController(IService<SmjestajModel, SmjestajSearchRequest, SmjestajInsertRequest> Service) : base(Service)
+        private readonly ISmjestajService _smjestajService;
+
+        public SmjestajController(ISmjestajService smjestajService)
         {
+            _smjestajService = smjestajService;
         }
-        //[HttpGet]
-        //[Route("GetGrad")]
-        //public List<GradModel> Get()
-        //{
-        //    return new List<GradModel>();
-        //}
+
+        [HttpGet]
+        [Route("GetFullSmjestaj")]
+        public SmjestajModelFull GetFullSmjestaj([FromQuery]SmjestajSearchRequest request)
+        {
+            return _smjestajService.GetFullSmjestaj(request.SmjestajId);
+        }
+
+        [HttpPost]
+        public SmjestajInsertRequest Insert(SmjestajInsertRequest Model)
+        {
+            return _smjestajService.Insert(Model);
+        }
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            _smjestajService.Delete(id);
+        }
+
+        [HttpPut("{id}")]
+        public SmjestajModel Update(SmjestajModel Model)
+        {
+            return _smjestajService.Update(Model);
+        }
+
+        [HttpGet]
+        public List<SmjestajModel> Get([FromQuery]SmjestajSearchRequest search)
+        {
+            return _smjestajService.Get(search);
+        }
     }
 }

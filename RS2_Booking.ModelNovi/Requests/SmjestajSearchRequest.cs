@@ -9,5 +9,7 @@ namespace RS2_Booking.Model.Requests
         public int? GradId { get; set; }
         public string Naziv { get; set; }
         public int IzdavacId { get; set; }
+
+        public int SmjestajId { get; set; }
     }
 }

@@ -12,13 +12,71 @@ using System.Threading.Tasks;
 
 namespace RS2_Booking.WebAPI.Services
 {
-    public class SmjestajService : BaseService<SmjestajModel, SmjestajSearchRequest,  SmjestajInsertRequest, Smjestaj>
+    public class SmjestajService : ISmjestajService
     {
-        public SmjestajService(Online_BookingContext context, IMapper mapper) : base(context, mapper)
+        private readonly Online_BookingContext _context;
+        private readonly IMapper _mapper;
+
+        public SmjestajService(Online_BookingContext context, IMapper mapper)
         {
+            _context = context;
+            _mapper = mapper;
         }
 
-        public override List<SmjestajModel> Get(SmjestajSearchRequest request)
+        public SmjestajModelFull GetFullSmjestaj(int id)
+        {
+            Smjestaj s = _context.Smjestaj.Find(id);
+            if ( s != null )
+            {
+                SmjestajModelFull model = new SmjestajModelFull
+                {
+                    Naziv = s.Naziv,
+                    IzdavacId = s.IzdavacId,
+                    GradId = s.GradId,
+                    GradNaziv = _context.Grad.Find(s.GradId).Naziv,
+                    Adresa = s.Adresa,
+                    Distanca = s.Distanca,
+                    Email = s.Email,
+                    KontaktTelefon = s.KontaktTelefon,
+                    Opis = s.Opis,
+                    Zvijezde = s.Zvijezde
+                };
+
+                UslugaService uslugaService = new UslugaService(_context, _mapper);
+
+                UslugaSearchRequest uslugaSearch = new UslugaSearchRequest
+                {
+                    SmjestajId = id
+                };
+                model.ListaUsluga = uslugaService.Get(uslugaSearch);
+
+                SobaService sobaService = new SobaService(_context, _mapper);
+
+                SobaSearchRequest sobaSearch = new SobaSearchRequest
+                {
+                    SmjestajId = id
+                };
+
+                model.ListaSoba = sobaService.Get(sobaSearch);
+
+                Korisnik k = (from izdavac in _context.Izdavac.Where(x => x.IzdavacId == s.IzdavacId)
+                                    join korisnik in _context.Korisnik
+                                    on izdavac.KorisnikId equals korisnik.KorisnikId
+                                    select new Korisnik()
+                                    {
+                                        KorisnickoIme = korisnik.KorisnickoIme
+                                    }).FirstOrDefault();
+                model.IzdavacIme = k.KorisnickoIme;
+                return model;
+            }
+            SmjestajModelFull PrazanModel = new SmjestajModelFull
+            {
+                Response = "Smještaj nije pronađen!"
+            };
+            return PrazanModel;
+        }
+
+        public List<SmjestajModel> Get(SmjestajSearchRequest request)
         {
             var query = _context.Smjestaj.AsQueryable();
             if (request.GradId > 0)
@@ -47,7 +105,7 @@ namespace RS2_Booking.WebAPI.Services
             return novalista;
         }
 
-        public override SmjestajModel GetById(int id)
+        public SmjestajModel GetById(int id)
         {
             var m = _context.Smjestaj.Find(id);
            var nova = _mapper.Map<SmjestajModel>(m);
@@ -56,7 +114,19 @@ namespace RS2_Booking.WebAPI.Services
             Model.GradNaziv = _context.Grad.Where(x => x.GradId == Model.GradId).SingleOrDefault().Naziv;
             return Model;
         }
-        public override void Delete(int id)
+
+        public SmjestajInsertRequest Insert(SmjestajInsertRequest request)
+        {
+            if ( request.IzdavacId > 0 )
+            {
+                Smjestaj s = _mapper.Map<Smjestaj>(request);
+                _context.Smjestaj.Add(s);
+                _context.SaveChanges();
+            }
+            return request;
+        }
+
+        public void Delete(int id)
         {
             var query = (from smjestaj in _context.Smjestaj.Where(x=> x.SmjestajId == id)
                         join soba in _context.Soba
@@ -97,6 +167,18 @@ namespace RS2_Booking.WebAPI.Services
                 _context.Smjestaj.Remove(obj);
                 _context.SaveChanges();
             }
+        }
+
+        public SmjestajModel Update(SmjestajModel request)
+        {
+            Smjestaj s = _context.Smjestaj.Find(request.SmjestajId);
+
+            s.Naziv = request.Naziv;
+            s.Opis = request.Opis;
+            s.KontaktTelefon = request.KontaktTelefon;
+            s.Email = request.Email;
+            _context.SaveChanges();
+            return request;
         }
     }
 }

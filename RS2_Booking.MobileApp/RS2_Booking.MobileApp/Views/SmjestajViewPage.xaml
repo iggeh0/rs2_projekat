@@ -10,26 +10,105 @@
         <ViewModels:SmjestajVM></ViewModels:SmjestajVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Ime izdavača:"></Label>
-            <Label Text="{Binding ImeIzdavaca}">
+        <StackLayout BackgroundColor="DodgerBlue" Spacing="0">
+            <Label Text="{Binding Naziv}" HorizontalOptions="Center" TextColor="White" FontSize="50" FontAttributes="Bold"></Label>
+            <Label Margin="10,5,0,5" FontSize="Large" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Adresa: "></Span>
+                        <Span Text="{Binding Adresa}"/>
+                        <Span Text=", "/>
+                        <Span Text="{Binding GradNaziv}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Large" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Udaljenost od centra: "/>
+                        <Span Text="{Binding Distanca}"/>
+                        <Span Text=" km" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Large" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Ime izdavača: "/>
+                        <Span Text="{Binding ImeIzdavaca}" />
+                    </FormattedString>
+                </Label.FormattedText>
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding IzdavacCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
                 </Label.GestureRecognizers>
             </Label>
-            <Label Text="Naziv:"></Label>
-            <Label Text="{Binding Naziv}" Padding="10"></Label>
-            <Label Text="Grad:"></Label>
-            <Label Text="{Binding GradNaziv}" Padding="10"></Label>
-            <Label Text="Adresa:"></Label>
-            <Label Text="{Binding Adresa}" Padding="10"></Label>
-            <Label Text="Udaljenost od centra:"></Label>
-            <Label Text="{Binding Distanca}" Padding="10"></Label>
-            <Label Text="Kontakt Telefon:"></Label>
-            <Label Text="{Binding KontaktTelefon}" Padding="10"></Label>
-            <Label Text="Kontakt Email:"></Label>
-            <Label Text="{Binding Email}" Padding="10"></Label>
-            <Button Text="Nazad" Clicked="Button_Clicked"></Button>
+            <Label Margin="10,5,0,5" FontSize="Large" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Kontakt Telefon: "/>
+                        <Span Text="{Binding KontaktTelefon}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Large" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Kontakt Email: "/>
+                        <Span Text="{Binding Email}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Text="Usluge: " TextColor="White"  Margin="10,5,0,5" FontAttributes="Bold"></Label>
+            <ListView ItemsSource="{Binding Usluge}" BackgroundColor="CadetBlue" Margin="0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                <Label Text="{Binding Naziv}" TextColor="White"
+                                LineBreakMode="NoWrap"
+                                FontSize="16" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+             </ListView>
+            <Label Text="Sobe: " TextColor="White"  Margin="10,5,0,5" FontAttributes="Bold"></Label>
+            <Grid BackgroundColor="CadetBlue" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="30*" />
+                </Grid.ColumnDefinitions>
+                <Label  Grid.Column="0" Grid.Row="0" Text="Vrsta smještaja" TextColor="White"/>
+                <Label  Grid.Column="1" Grid.Row="0" Text="Broj Kreveta" TextColor="White"/>
+                <Label  Grid.Column="2" Grid.Row="0" Text="Broj Kvadrata" TextColor="White"/>
+            </Grid>
+            <ListView ItemsSource="{Binding Sobe}" BackgroundColor="CadetBlue" Margin="0,0,0,5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="30*" />
+                                </Grid.ColumnDefinitions>
+                                <Label TextColor="White" Grid.Column="0" Text="{Binding VrstaSmjestaja}"/>
+                                <Label TextColor="White" Grid.Column="1" Text="{Binding BrojKreveta}"/>
+                                <Label TextColor="White" Grid.Column="2" Text="{Binding VelicinaSobe}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Rezerviši" Clicked="Button_Clicked_1" BackgroundColor="MediumAquamarine" TextColor="White"></Button>
+            <Button Text="Nazad" Clicked="Button_Clicked" BackgroundColor="PaleVioletRed" TextColor="White"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

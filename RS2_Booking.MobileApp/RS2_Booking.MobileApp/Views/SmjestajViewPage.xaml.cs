@@ -43,5 +43,10 @@ namespace RS2_Booking.MobileApp.Views
             Application.Current.MainPage = new PocetnaPage();
 
         }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
