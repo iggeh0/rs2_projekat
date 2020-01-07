@@ -34,6 +34,13 @@ namespace RS2_Booking.MobileApp.ViewModels
             }
         }
 
+        public int _KorisnikId;
+
+        public int KorisnikId
+        {
+            get { return _KorisnikId; }
+            set { SetProperty(ref _KorisnikId, value); }
+        }
         public string KorisnickoIme
         {
             get { return _KorisnickoIme; }
@@ -60,6 +67,7 @@ namespace RS2_Booking.MobileApp.ViewModels
                 };
                 Korisnik = await _korisnikService.Get<KorisnikModel>(request);
                 KorisnickoIme = Korisnik.KorisnickoIme;
+                KorisnikId = Korisnik.KorisnikId;
             }
 
             if (ListaGradova.Count == 0)

@@ -20,13 +20,14 @@ namespace RS2_Booking.MobileApp.Views
             InitializeComponent();
         }
 
-        public SmjestajViewPage(int id)
+        public SmjestajViewPage(int SmjestajId, int KorisnikId)
         {
             InitializeComponent();
-            _Id = id;
+            _Id = SmjestajId;
             viewmodel = new SmjestajVM
             {
-                SmjestajId = id
+                SmjestajId = SmjestajId,
+                KorisnikId = KorisnikId
             };
             BindingContext = viewmodel;
 
@@ -41,11 +42,6 @@ namespace RS2_Booking.MobileApp.Views
         private void Button_Clicked(object sender, EventArgs e)
         {
             Application.Current.MainPage = new PocetnaPage();
-
-        }
-
-        private void Button_Clicked_1(object sender, EventArgs e)
-        {
 
         }
     }

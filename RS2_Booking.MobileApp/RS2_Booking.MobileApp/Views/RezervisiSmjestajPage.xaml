@@ -3,13 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
-             x:Class="RS2_Booking.MobileApp.Views.RezervisiSmjestajPage">
+             x:Class="RS2_Booking.MobileApp.Views.RezervisiSmjestajPage"
+             xmlns:ViewModels="clr-namespace:RS2_Booking.MobileApp.ViewModels">
+    <ContentPage.BindingContext>
+        <ViewModels:RezervisiSmjestajVM></ViewModels:RezervisiSmjestajVM>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Rezervacija" FontSize="Title" HorizontalOptions="Center"></Label>
+            <Label Text="Početni datum:"></Label>
+            <DatePicker MinimumDate="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:dd MMMM, yyyy}'}" Date="{Binding DatumOd}"></DatePicker>
+            <Label Text="Datum odlaska:"></Label>
+            <DatePicker MinimumDate="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:dd MMMM, yyyy}'}" Date="{Binding DatumDo}"></DatePicker>
+            <Label Text="Broj soba"></Label>
+            <Entry Text="{Binding BrojSoba}"></Entry>
+            <Label Text="Broj odraslih osoba"></Label>
+            <Entry Text="{Binding BrojOdraslih}"></Entry>
+            <Label Text="Broj djece"></Label>
+            <Entry Text="{Binding BrojDjece}"></Entry>
+            <Button Text="Provjeri dostupnost"></Button>
+            <Button Text="Nazad" Command="{Binding NazadCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

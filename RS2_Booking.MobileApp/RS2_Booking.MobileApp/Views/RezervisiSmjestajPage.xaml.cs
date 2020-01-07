@@ -13,7 +13,7 @@ namespace RS2_Booking.MobileApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RezervisiSmjestajPage : ContentPage
     {
-        RezervisiSmjestajVM viewmodel = null;
+        public RezervisiSmjestajVM viewmodel = null;
         public RezervisiSmjestajPage(int KorisnikId, int SmjestajId)
         {
             viewmodel = new RezervisiSmjestajVM

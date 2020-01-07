@@ -32,6 +32,13 @@ namespace RS2_Booking.MobileApp.ViewModels
             set { SetProperty(ref _IzdavacId, value); }
         }
 
+        public int _KorisnikId;
+        public int KorisnikId
+        {
+            get { return _KorisnikId; }
+            set { SetProperty(ref _KorisnikId, value); }
+        }
+
         public string _ImeIzdavaca;
 
         public string ImeIzdavaca
@@ -113,6 +120,7 @@ namespace RS2_Booking.MobileApp.ViewModels
         {
             UcitajCommand = new Command(async () => await Ucitaj());
             IzdavacCommand = new Command(() => GetIzdavac());
+            RezervisiCommand = new Command(() => Rezervisi());
         }
 
         private void GetIzdavac()
@@ -122,6 +130,8 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         public ICommand UcitajCommand { get; set; }
         public ICommand IzdavacCommand { get; set; }
+        public ICommand RezervisiCommand { get; set; }
+
 
         public async Task Ucitaj()
         {
@@ -160,7 +170,15 @@ namespace RS2_Booking.MobileApp.ViewModels
                     Sobe.Add(s);
                 }
             }
+
+
         }
 
+
+        public void Rezervisi()
+        {
+            Application.Current.MainPage = new RezervisiSmjestajPage(KorisnikId, SmjestajId);
+
+        }
     }
 }

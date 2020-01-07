@@ -34,7 +34,7 @@ namespace RS2_Booking.MobileApp.ViewModels
             KorisnickoIme = korisnik.KorisnickoIme;
             Email = korisnik.Email;
             BrojTelefona = korisnik.BrojTelefona;
-
+            KorisnikId = korisnik.KorisnikId;
             SmjestajSearchRequest request2 = new SmjestajSearchRequest
             {
                 IzdavacId = IzdavacId
@@ -70,6 +70,14 @@ namespace RS2_Booking.MobileApp.ViewModels
         }
 
         public string _KorisnickoIme = null;
+
+
+        public int _KorisnikId;
+        public int KorisnikId
+        {
+            get { return _KorisnikId; }
+            set { SetProperty(ref _KorisnikId, value); }
+        }
 
         public string _Email = string.Empty;
         public string Email

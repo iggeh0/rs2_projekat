@@ -1,11 +1,22 @@
-﻿using System;
+﻿using RS2_Booking.MobileApp.Views;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace RS2_Booking.MobileApp.ViewModels
 {
     public class RezervisiSmjestajVM : BaseViewModel
     {
+        public int KorisnikId;
+        public RezervisiSmjestajVM()
+        {
+            NazadCommand = new Command(() => Nazad());
+
+        }
+
         #region Model
 
         public int _SmjestajId = 0;
@@ -60,6 +71,11 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         #endregion
 
+        public ICommand NazadCommand { get; set; }
 
+        public void Nazad()
+        {
+           Application.Current.MainPage = new SmjestajViewPage(SmjestajId, KorisnikId);
+        }
     }
 }

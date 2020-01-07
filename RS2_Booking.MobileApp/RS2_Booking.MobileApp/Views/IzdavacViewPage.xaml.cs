@@ -48,7 +48,7 @@ namespace RS2_Booking.MobileApp.Views
 
             PropertyInfo pi = Odabrani.GetType().GetProperty("SmjestajId");
             int id = Convert.ToInt32(pi.GetValue(Odabrani, null).ToString());
-            Application.Current.MainPage = new SmjestajViewPage(id);
+            Application.Current.MainPage = new SmjestajViewPage(id, Model.KorisnikId);
         }
     }
 }
