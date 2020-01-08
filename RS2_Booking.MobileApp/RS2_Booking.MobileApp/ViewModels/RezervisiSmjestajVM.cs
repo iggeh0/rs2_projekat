@@ -11,10 +11,11 @@ namespace RS2_Booking.MobileApp.ViewModels
     public class RezervisiSmjestajVM : BaseViewModel
     {
         public int KorisnikId;
+
+
         public RezervisiSmjestajVM()
         {
             NazadCommand = new Command(() => Nazad());
-
         }
 
         #region Model
@@ -71,11 +72,22 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         #endregion
 
+        #region NazadCommand
         public ICommand NazadCommand { get; set; }
 
         public void Nazad()
         {
-           Application.Current.MainPage = new SmjestajViewPage(SmjestajId, KorisnikId);
+            Application.Current.MainPage = new SmjestajViewPage(SmjestajId, KorisnikId);
         }
-    }
+        #endregion
+
+
+        public string _Text;
+        public string Text
+        {
+            get { return _Text; }
+            set { SetProperty(ref _Text, value); }
+        }
+    }  
+    
 }

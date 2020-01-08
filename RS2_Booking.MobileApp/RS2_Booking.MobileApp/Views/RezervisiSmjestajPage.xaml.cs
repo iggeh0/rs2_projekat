@@ -21,8 +21,13 @@ namespace RS2_Booking.MobileApp.Views
                 SmjestajId = SmjestajId,
                 KlijentId = KorisnikId
             };
-            InitializeComponent();
             BindingContext = viewmodel;
+            InitializeComponent();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            var obj = this.FindByName<RefreshView>("NekiId");
         }
     }
 }
