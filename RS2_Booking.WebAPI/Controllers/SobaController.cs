@@ -11,12 +11,46 @@ using RS2_Booking.WebAPI.Services;
 
 namespace RS2_Booking.WebAPI.Controllers
 {
-
-    public class SobaController : BaseController<SobaModel, SobaSearchRequest, SobaInsertRequest>
+    [Route("api/[controller]")]
+    [ApiController]
+    public class SobaController : ControllerBase
     {
-        public SobaController(IService<SobaModel, SobaSearchRequest, SobaInsertRequest> Service) : base(Service)
+        private ISobaService _sobaService;
+        public SobaController(ISobaService sobaService)
         {
-
+            _sobaService = sobaService;
         }
+
+        [HttpGet]
+        public List<SobaModel> Get([FromQuery]SobaSearchRequest search)
+        {
+            return _sobaService.Get(search);
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            _sobaService.Delete(id);
+        }
+
+        [HttpGet("{id}")]
+        public SobaModel GetById(int id)
+        {
+            return _sobaService.GetById(id);
+        }
+
+        [HttpPost]
+        public virtual SobaInsertRequest Insert(SobaInsertRequest Model)
+        {
+            return _sobaService.Insert(Model);
+        }
+
+        [HttpPut("{id}")]
+        public SobaModel Update(SobaModel Model, int id)
+        {
+            return _sobaService.Update(Model, id);
+        }
+
+ 
     }
 }

@@ -1,6 +1,8 @@
 ﻿using RS2_Booking.MobileApp.Views;
+using RS2_Booking.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -72,6 +74,8 @@ namespace RS2_Booking.MobileApp.ViewModels
             get { return _BrojSoba; }
             set { SetProperty(ref _BrojSoba, value); }
         }
+
+        public ObservableCollection<SobaModel> ListaSoba { get; set; } = new ObservableCollection<SobaModel>();
 
         #endregion
 

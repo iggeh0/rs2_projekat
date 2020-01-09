@@ -4,15 +4,13 @@ using System.Text;
 
 namespace RS2_Booking.Model.Requests
 {
-    public class SobaSearchRequest
+    public class RezervacijaSearchRequest
     {
-        public int SmjestajId { get; set; }
+        public int KlijentId { get; set; }
         public DateTime DatumOd { get; set; }
         public DateTime DatumDo { get; set; }
-        public int BrojDjece { get; set; }
-        public int BrojOdraslih { get; set; }
-        public int BrojSoba { get; set; }
-
+        public DateTime DatumRezervacije { get; set; }
+        public int StatusRezervacijeId { get; set; }
 
     }
 }

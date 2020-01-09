@@ -67,12 +67,13 @@ namespace RS2_Booking.WebAPI
                 c.DocumentFilter<BasicAuthDocumentFilter>();
             });
             services.AddScoped<IService<InventarModel, InventarSearchRequest, InventarInsertRequest>, InventarService>();
-            services.AddScoped<IService<SobaModel, SobaSearchRequest, SobaInsertRequest>, SobaService>();
+            services.AddScoped<ISobaService,SobaService>();
             services.AddScoped<ISmjestajService, SmjestajService>();
             services.AddScoped<IKorisnikService, KorisnikService>(); 
             services.AddScoped<IService<GradModel, object, GradModel>, BaseService<GradModel, object, GradModel, Grad>>();
             services.AddScoped<IOkolinaService, OkolinaService>();
             services.AddScoped<IUslugaService, UslugaService>();
+            services.AddScoped<IRezervacijaService, RezervacijaService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
