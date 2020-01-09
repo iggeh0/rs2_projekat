@@ -6,8 +6,7 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              x:Class="RS2_Booking.MobileApp.Views.RezervisiSmjestajPage"
-             xmlns:ViewModels="clr-namespace:RS2_Booking.MobileApp.ViewModels"
-             xmlns:views="clr-namespace:RS2_Booking.MobileApp.Views">
+             xmlns:ViewModels="clr-namespace:RS2_Booking.MobileApp.ViewModels">
     <ContentPage.BindingContext>
         <ViewModels:RezervisiSmjestajVM></ViewModels:RezervisiSmjestajVM>
     </ContentPage.BindingContext>
@@ -26,10 +25,11 @@
             <Entry Text="{Binding BrojDjece}"></Entry>
             <Button Text="Provjeri dostupnost" Clicked="Button_Clicked"></Button>
             <Button Text="Nazad" Command="{Binding NazadCommand}"></Button>
-            <RefreshView x:Name="NekiId" IsVisible="True">
-                <Label Text="Test"></Label>
-            </RefreshView>
+            <FlexLayout x:Name="NekiId" IsVisible="True">
+                <ListView>
+                    
+                </ListView>
+            </FlexLayout>
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>

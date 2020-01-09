@@ -1,6 +1,7 @@
 ﻿using RS2_Booking.MobileApp.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -11,6 +12,8 @@ namespace RS2_Booking.MobileApp.ViewModels
     public class RezervisiSmjestajVM : BaseViewModel
     {
         public int KorisnikId;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
 
         public RezervisiSmjestajVM()
@@ -81,12 +84,24 @@ namespace RS2_Booking.MobileApp.ViewModels
         }
         #endregion
 
+        public async Task Ucitavanje()
+        {
+            Text = "UcitanTekst";
+        }
 
         public string _Text;
         public string Text
         {
             get { return _Text; }
-            set { SetProperty(ref _Text, value); }
+            set {
+                SetProperty(ref _Text, value);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Text"));
+            }
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }  
     

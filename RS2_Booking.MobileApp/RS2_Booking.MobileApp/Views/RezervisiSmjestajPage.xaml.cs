@@ -16,18 +16,31 @@ namespace RS2_Booking.MobileApp.Views
         public RezervisiSmjestajVM viewmodel = null;
         public RezervisiSmjestajPage(int KorisnikId, int SmjestajId)
         {
+            InitializeComponent();
             viewmodel = new RezervisiSmjestajVM
             {
                 SmjestajId = SmjestajId,
                 KlijentId = KorisnikId
             };
             BindingContext = viewmodel;
-            InitializeComponent();
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await viewmodel.Ucitavanje();
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            var obj = this.FindByName<RefreshView>("NekiId");
+            var obj = this.FindByName<FlexLayout>("NekiId");
+            if (obj.IsVisible)
+            {
+                obj.IsVisible = false;
+            }
+            else
+                obj.IsVisible = true;
+            
         }
     }
 }
