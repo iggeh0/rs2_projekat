@@ -1,9 +1,11 @@
 ﻿using RS2_Booking.MobileApp.Views;
 using RS2_Booking.Model;
+using RS2_Booking.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -15,13 +17,67 @@ namespace RS2_Booking.MobileApp.ViewModels
     {
         public int KorisnikId;
 
+        private readonly API_Service_Mobile service = new API_Service_Mobile("Soba");
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
 
         public RezervisiSmjestajVM()
         {
             NazadCommand = new Command(() => Nazad());
+            DodajCommand = new Command<int>(Dodaj);
+            KompletirajCommand = new Command(() => Kompletiraj());
+
         }
+
+        public ICommand KompletirajCommand { get; set; }
+
+        public Task Kompletiraj()
+        {
+            if (Rezervacija.Sobe != null && Rezervacija.Sobe.Count > 0)
+            {
+                Rezervacija.SmjestajId = SmjestajId;
+                Rezervacija.KlijentId = KlijentId;
+                Rezervacija.DatumRezervacije = DateTime.Now;
+                Rezervacija.RezervacijaDo = DatumDo;
+                Rezervacija.RezervacijaOd = DatumOd;
+                Rezervacija.BrojDjece = BrojDjece;
+                Rezervacija.BrojOdraslih = BrojOdraslih;
+                Rezervacija.Uplate = null;
+                Rezervacija.StatusRezervacijeId = 1;
+                Rezervacija.NazivSmjestaja = SmjestajNaziv;
+                Rezervacija.AdresaSmjestaja = Adresa + ", " + GradNaziv;
+            }
+            else
+                return null;
+             
+           Application.Current.MainPage = new PotvrdiRezervaciju(Rezervacija);
+            return null;
+        }
+
+        public void Dodaj(int SobaId)
+        {
+            if (Rezervacija.Sobe != null)
+            {
+                foreach (SobaModel s in Rezervacija.Sobe)
+                {
+                    if (s.SobaId == SobaId)
+                    {
+                        Application.Current.MainPage.DisplayAlert("Greška", "Soba je već dodana", "Ok");
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                Rezervacija.Sobe = new List<SobaModel>();
+            }
+            SobaModel OdabranaSoba = ListaSoba.Where(x => x.SobaId == SobaId).FirstOrDefault();
+            Rezervacija.Sobe.Add(OdabranaSoba);
+        }
+
+        public ICommand DodajCommand { get; set; }
 
         #region Model
 
@@ -30,6 +86,27 @@ namespace RS2_Booking.MobileApp.ViewModels
         {
             get { return _SmjestajId; }
             set { SetProperty(ref _SmjestajId, value); }
+        }
+
+        public string _SmjestajNaziv;
+        public string SmjestajNaziv
+        {
+            get { return _SmjestajNaziv; }
+            set { SetProperty(ref _SmjestajNaziv, value); }
+        }
+
+        public string _GradNaziv;
+        public string GradNaziv
+        {
+            get { return _GradNaziv; }
+            set { SetProperty(ref _GradNaziv, value); }
+        }
+
+        public string _Adresa;
+        public string Adresa
+        {
+            get { return _Adresa; }
+            set { SetProperty(ref _Adresa, value); }
         }
 
         public int _KlijentId = 0;
@@ -76,7 +153,7 @@ namespace RS2_Booking.MobileApp.ViewModels
         }
 
         public ObservableCollection<SobaModel> ListaSoba { get; set; } = new ObservableCollection<SobaModel>();
-
+        public RezervacijaModel Rezervacija { get; set; } = new RezervacijaModel();
         #endregion
 
         #region NazadCommand
@@ -88,11 +165,40 @@ namespace RS2_Booking.MobileApp.ViewModels
         }
         #endregion
 
-        public async Task Ucitavanje()
+        public async Task SearchSmjestaj()
         {
-            Text = "UcitanTekst";
+            ListaSoba.Clear();
+            SobaSearchRequest request = new SobaSearchRequest
+            {
+                SmjestajId = SmjestajId,
+                BrojDjece = BrojDjece,
+                BrojOdraslih = BrojOdraslih,
+                BrojSoba = BrojSoba,
+                DatumDo = DatumDo,
+                DatumOd = DatumOd
+            };
+
+            List<SobaModel> PronadjeniLista = await service.Get<List<SobaModel>>(request);
+            if (PronadjeniLista.Count > 0)
+            {
+                foreach (SobaModel s in PronadjeniLista)
+                {
+                    ListaSoba.Add(s);
+                }
+            }
+            else
+            {
+                SobaModel prazan = new SobaModel
+                {
+                    SobaId = 0,
+                    VrstaSmjestaja = "Nisu pronađene sobe po vašim kriterijumima"
+                };
+                ListaSoba.Add(prazan);
+            }
+             
         }
 
+        
         public string _Text;
         public string Text
         {

@@ -25,11 +25,49 @@
             <Entry Text="{Binding BrojDjece}"></Entry>
             <Button Text="Provjeri dostupnost" Clicked="Button_Clicked"></Button>
             <Button Text="Nazad" Command="{Binding NazadCommand}"></Button>
-            <FlexLayout x:Name="NekiId" IsVisible="True">
-                <ListView ItemsSource="{Binding }">
-                    
+            <StackLayout x:Name="NekiId" IsVisible="False">
+                <Label Text="Pronađene sobe: " TextColor="White"  Margin="10,5,0,5" FontAttributes="Bold"></Label>
+                <Grid BackgroundColor="CadetBlue" Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*" />
+                        <ColumnDefinition Width="25*" />
+                        <ColumnDefinition Width="25*" />
+                        <ColumnDefinition Width="25*" />
+                    </Grid.ColumnDefinitions>                                   
+                    <Label  Grid.Column="0" Grid.Row="0" Text="Vrsta smještaja" TextColor="White"/>
+                    <Label  Grid.Column="1" Grid.Row="0" Text="Broj Kreveta" TextColor="White"/>
+                    <Label  Grid.Column="2" Grid.Row="0" Text="Broj Kvadrata" TextColor="White"/>
+                    <Label  Grid.Column="3" Grid.Row="0" Text="Rezerviši" TextColor="White" />
+                </Grid>
+                <ListView ItemsSource="{Binding ListaSoba}" BackgroundColor="CadetBlue" Margin="0,0,0,5">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="25*" />
+                                        <ColumnDefinition Width="25*" />
+                                        <ColumnDefinition Width="25*" />
+                                        <ColumnDefinition Width="25*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label TextColor="White" Grid.Column="0" Text="{Binding VrstaSmjestaja}">
+                                    </Label>
+                                    <Label TextColor="White" Grid.Column="1" Text="{Binding BrojKreveta}"/>
+                                    <Label TextColor="White" Grid.Column="2" Text="{Binding VelicinaSobe}"/>
+                                    <Button Text="Dodaj Sobu" Grid.Column="3" Command="{Binding DodajCommand}" CommandParameter="{Binding SobaId}" Clicked="Button_Clicked_1"></Button>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
-            </FlexLayout>
+                <Button Text="Završi rezervisanje" Command="{Binding KompletirajCommand}"></Button>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

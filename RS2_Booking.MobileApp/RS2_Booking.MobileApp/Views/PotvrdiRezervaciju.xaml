@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ViewModels="clr-namespace:RS2_Booking.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="RS2_Booking.MobileApp.Views.PotvrdiRezervaciju">
+    <ContentPage.BindingContext>
+        <ViewModels:PotvrdiRezervacijuVM></ViewModels:PotvrdiRezervacijuVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Naziv Smještaja : "/>
+                        <Span Text="{Binding NazivSmjestaja}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Adresa Smještaja: "/>
+                        <Span Text="{Binding AdresaSmjestaja}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Ime korisnika: "/>
+                        <Span Text="{Binding KorisnickoImeKlijenta}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Ime korisnika: "/>
+                        <Span Text="{Binding ImeKlijenta}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Ime korisnika: "/>
+                        <Span Text="{Binding PrezimeKlijenta}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Datum Rezervacije: "/>
+                        <Span Text="{Binding DatumRezervacije}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="RezervacijaOd: "/>
+                        <Span Text="{Binding RezervacijaOd}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="RezervacijaDo: "/>
+                        <Span Text="{Binding RezervacijaDo}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="RezervacijaDo: "/>
+                        <Span Text="{Binding RezervacijaDo}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="RezervacijaDo: "/>
+                        <Span Text="{Binding RezervacijaDo}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="BrojDjece: "/>
+                        <Span Text="{Binding BrojDjece}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="BrojOdraslih: "/>
+                        <Span Text="{Binding BrojOdraslih}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button Text="Nazad" Clicked="Button_Clicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

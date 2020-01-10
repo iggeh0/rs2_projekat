@@ -177,7 +177,12 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         public void Rezervisi()
         {
-            Application.Current.MainPage = new RezervisiSmjestajPage(KorisnikId, SmjestajId);
+            SmjestajModel s = new SmjestajModel();
+            s.Naziv = Naziv;
+            s.SmjestajId = SmjestajId;
+            s.GradNaziv = GradNaziv;
+            s.Adresa = Adresa;
+            Application.Current.MainPage = new RezervisiSmjestajPage(KorisnikId, s);
 
         }
     }

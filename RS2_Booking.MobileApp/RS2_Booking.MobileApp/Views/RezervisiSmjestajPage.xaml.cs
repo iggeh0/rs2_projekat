@@ -1,4 +1,5 @@
 ﻿using RS2_Booking.MobileApp.ViewModels;
+using RS2_Booking.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,33 +15,38 @@ namespace RS2_Booking.MobileApp.Views
     public partial class RezervisiSmjestajPage : ContentPage
     {
         public RezervisiSmjestajVM viewmodel = null;
-        public RezervisiSmjestajPage(int KorisnikId, int SmjestajId)
+        public RezervisiSmjestajPage(int KorisnikId, SmjestajModel Smjestaj)
         {
             InitializeComponent();
             viewmodel = new RezervisiSmjestajVM
             {
-                SmjestajId = SmjestajId,
-                KlijentId = KorisnikId
-            };
+                SmjestajId = Smjestaj.SmjestajId,
+                KlijentId = KorisnikId,
+                SmjestajNaziv = Smjestaj.Naziv,
+                GradNaziv = Smjestaj.GradNaziv,
+                Adresa = Smjestaj.Adresa
+            };       
             BindingContext = viewmodel;
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await viewmodel.Ucitavanje();
+
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-            var obj = this.FindByName<FlexLayout>("NekiId");
-            if (obj.IsVisible)
-            {
-                obj.IsVisible = false;
-            }
-            else
-                obj.IsVisible = true;
-            
+            var obj = this.FindByName<StackLayout>("NekiId");
+            obj.IsVisible = true;
+            await viewmodel.SearchSmjestaj();
+        }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            Button obj = (Button)sender;
+            int id = (int)obj.CommandParameter;
+            viewmodel.Dodaj(id);
         }
     }
 }

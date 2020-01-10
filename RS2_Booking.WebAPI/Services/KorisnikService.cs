@@ -317,18 +317,26 @@ namespace RS2_Booking.WebAPI.Services
 
         public KorisnikModel GetSingleKorisnik(KorisnikSearchRequest request)
         {
-            
+
             if (request.Uloga == 1)
             {
                 Izdavac i = _context.Izdavac.Find(request.KorisnikId);
                 Korisnik k = _context.Korisnik.Find(i.KorisnikId);
                 return _mapper.Map<KorisnikModel>(k);
             }
-            else
+            else if (request.Uloga == 2)
             {
+
                 Korisnik k = _context.Korisnik.Find(request.KorisnikId);
                 return _mapper.Map<KorisnikModel>(k);
             }
+            else if (request.Uloga == 3)
+            {
+                Klijent k = _context.Klijent.Find(request.KorisnikId);
+                Korisnik korisnik = _context.Korisnik.Find(k.KorisnikId);
+                return _mapper.Map<KorisnikModel>(korisnik);
+            }
+            else return null;
         }
     }
 }
