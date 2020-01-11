@@ -18,10 +18,10 @@ namespace RS2_Booking.MobileApp.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                new HomeMenuItem {Id = MenuItemType.Smjestaj, Title="Smjestaj" }
-
+                new HomeMenuItem {Id = MenuItemType.PretragaSmjestaja, Title="Pretraga smještaja" },
+                new HomeMenuItem {Id = MenuItemType.Rezervacije, Title="Rezervacije" },
+                new HomeMenuItem {Id = MenuItemType.Profil, Title="Uredi profil" },
+                new HomeMenuItem {Id = MenuItemType.Odjava, Title="Odjavi se" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
@@ -33,6 +33,11 @@ namespace RS2_Booking.MobileApp.Views
                     return;
 
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
+                if ( id == 3 )
+                {
+                    Application.Current.MainPage = new LoginPage();
+                }
+                else
                 await RootPage.NavigateFromMenu(id);
             };
         }

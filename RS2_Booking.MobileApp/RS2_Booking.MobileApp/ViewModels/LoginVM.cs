@@ -16,6 +16,8 @@ namespace RS2_Booking.MobileApp.ViewModels
         public LoginVM()
         {
             LoginCommand = new Command(async () => await Login());
+            API_Service_Mobile.Username = "";
+            API_Service_Mobile.Password = "";
         }
 
         public string _username = string.Empty;
@@ -49,7 +51,7 @@ namespace RS2_Booking.MobileApp.ViewModels
 
                 if (k.OK)
                 {
-                    Application.Current.MainPage = new MainPage();
+                    Application.Current.MainPage = new MainPage(k);
                 }
 
             }

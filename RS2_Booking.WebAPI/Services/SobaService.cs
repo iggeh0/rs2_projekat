@@ -33,15 +33,13 @@ namespace RS2_Booking.WebAPI.Services
             if ( search.BrojOdraslih > 0 )
             {
                 var lista = (from soba in _context.Soba.Where(x => x.SmjestajId == search.SmjestajId)
-                             join smjestaj in _context.Smjestaj
-                             on soba.SmjestajId equals smjestaj.SmjestajId
                              join rezervacijasoba in _context.RezervacijaSoba
                              on soba.SobaId equals rezervacijasoba.SobaId
                              join rezervacija in _context.Rezervacija
                              on rezervacijasoba.RezervacijaId equals rezervacija.RezervacijaId
                              join statusrezervacije in _context.StatusRezervacije
                             on rezervacija.StatusRezervacijeId equals statusrezervacije.StatusRezervacijeId
-                             where rezervacija.RezervacijaOd >= search.DatumDo || rezervacija.RezervacijaDo <= search.DatumOd && statusrezervacije.StatusRezervacijeId != 2
+                             where ((rezervacija.RezervacijaOd >= search.DatumDo) || (rezervacija.RezervacijaDo <= search.DatumOd)) && statusrezervacije.StatusRezervacijeId != 2
                              select new SobaModel()
                              {
                                  Cijena = soba.Cijena,

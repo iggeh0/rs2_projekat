@@ -1,4 +1,6 @@
 ﻿using RS2_Booking.MobileApp.Models;
+using RS2_Booking.Model;
+using RS2_Booking.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,13 +13,14 @@ namespace RS2_Booking.MobileApp.Views
     public partial class MainPage : MasterDetailPage
     {
         Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
-        public MainPage()
+        KorisnikModel Model = null;
+        public MainPage(KorisnikModel k)
         {
             InitializeComponent();
-
+            Model = k;
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            //MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -26,14 +29,18 @@ namespace RS2_Booking.MobileApp.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
+                    case (int)MenuItemType.PretragaSmjestaja:
+                        MenuPages.Add(id, new NavigationPage(new PocetnaPage(Model)));
+                        break;
+                    case (int)MenuItemType.Rezervacije:
                         MenuPages.Add(id, new NavigationPage(new ItemsPage()));
                         break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    case (int)MenuItemType.Profil:
+                        KorisnikInsertRequest request = new KorisnikInsertRequest();
+                        MenuPages.Add(id, new NavigationPage(new RegisterPage()));
                         break;
-                    case (int)MenuItemType.Smjestaj:
-                        MenuPages.Add(id, new NavigationPage(new PocetnaPage()));
+                    case (int)MenuItemType.Odjava:
+                        Application.Current.MainPage = new LoginPage();
                         break;
                 }
             }

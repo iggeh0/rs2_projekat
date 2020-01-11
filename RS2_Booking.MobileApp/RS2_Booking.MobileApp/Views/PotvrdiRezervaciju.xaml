@@ -10,7 +10,7 @@
         <ViewModels:PotvrdiRezervacijuVM></ViewModels:PotvrdiRezervacijuVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="DodgerBlue" Spacing="0">
             <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
                 <Label.FormattedText>
                     <FormattedString>
@@ -30,7 +30,7 @@
             <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="Ime korisnika: "/>
+                        <Span Text="Korisničko ime korisnika: "/>
                         <Span Text="{Binding KorisnickoImeKlijenta}"/>
                     </FormattedString>
                 </Label.FormattedText>
@@ -46,7 +46,7 @@
             <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="Ime korisnika: "/>
+                        <Span Text="Prezime korisnika: "/>
                         <Span Text="{Binding PrezimeKlijenta}"/>
                     </FormattedString>
                 </Label.FormattedText>
@@ -78,22 +78,6 @@
             <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="RezervacijaDo: "/>
-                        <Span Text="{Binding RezervacijaDo}"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="RezervacijaDo: "/>
-                        <Span Text="{Binding RezervacijaDo}"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
-                <Label.FormattedText>
-                    <FormattedString>
                         <Span Text="BrojDjece: "/>
                         <Span Text="{Binding BrojDjece}"/>
                     </FormattedString>
@@ -107,7 +91,51 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Button Text="Nazad" Clicked="Button_Clicked"></Button>
+            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Broj soba: "/>
+                        <Span Text="{Binding BrojSoba}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" Text="Lista soba:" FontSize="Medium" TextColor="White"></Label>
+            <Grid BackgroundColor="CadetBlue" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                </Grid.ColumnDefinitions>
+                <Label  Grid.Column="0" Grid.Row="0" Text="Vrsta smještaja" TextColor="White"/>
+                <Label  Grid.Column="1" Grid.Row="0" Text="Broj Kreveta" TextColor="White"/>
+                <Label  Grid.Column="2" Grid.Row="0" Text="Broj Kvadrata" TextColor="White"/>
+            </Grid>
+            <ListView ItemsSource="{Binding Sobe}" BackgroundColor="CadetBlue" Margin="0,0,0,5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25*" />
+                                    <ColumnDefinition Width="25*" />
+                                    <ColumnDefinition Width="25*" />
+                                </Grid.ColumnDefinitions>
+                                <Label TextColor="White" Grid.Column="0" Text="{Binding VrstaSmjestaja}" />
+                                <Label TextColor="White" Grid.Column="1" Text="{Binding BrojKreveta}"/>
+                                <Label TextColor="White" Grid.Column="2" Text="{Binding VelicinaSobe}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Potvrdi rezervaciju" BackgroundColor="ForestGreen" TextColor="White" Command="{Binding PotvrdiCommand}"></Button>
+            <Button Text="Nazad" Clicked="Button_Clicked" BackgroundColor="Red" TextColor="White"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

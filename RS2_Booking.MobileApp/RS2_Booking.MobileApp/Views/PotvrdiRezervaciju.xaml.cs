@@ -2,6 +2,7 @@
 using RS2_Booking.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +15,12 @@ namespace RS2_Booking.MobileApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PotvrdiRezervaciju : ContentPage
     {
-        PotvrdiRezervacijuVM viewmodel = null;
-        public PotvrdiRezervaciju(RezervacijaModel model)
+        public PotvrdiRezervacijuVM viewmodel = null;
+        public SmjestajModel _returnmodel = null;
+        public PotvrdiRezervaciju(RezervacijaModel model, SmjestajModel returnmodel)
         {
             InitializeComponent();
-
+            _returnmodel = returnmodel;
             viewmodel = new PotvrdiRezervacijuVM
             {
                 KlijentId = model.KlijentId,
@@ -28,25 +30,28 @@ namespace RS2_Booking.MobileApp.Views
                 RezervacijaOd = model.RezervacijaOd,
                 StatusRezervacijeId = 1,
                 BrojDjece = model.BrojDjece,
-                BrojOdraslih = model.BrojOdraslih
+                BrojOdraslih = model.BrojOdraslih,
+                AdresaSmjestaja = model.AdresaSmjestaja,
+                NazivSmjestaja = model.NazivSmjestaja,                
             };
-            viewmodel.Sobe = new List<SobaModel>();
+            viewmodel.Sobe = new ObservableCollection<SobaModel>();
             foreach ( SobaModel s in model.Sobe )
             {
                 viewmodel.Sobe.Add(s);
             }
+            viewmodel.BrojSoba = viewmodel.Sobe.Count;
             BindingContext = viewmodel;
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            viewmodel.Ucitaj();
+            await viewmodel.Ucitaj();
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new RezervisiSmjestajPage(viewmodel.KlijentId, viewmodel.SmjestajId);
+            Application.Current.MainPage = new RezervisiSmjestajPage(viewmodel.KlijentId, _returnmodel);       
         }
     }
 }

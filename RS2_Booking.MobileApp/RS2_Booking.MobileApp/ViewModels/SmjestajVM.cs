@@ -16,6 +16,7 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         private readonly API_Service_Mobile _smjestajService = new API_Service_Mobile("smjestaj/GetFullSmjestaj");
         public int _SmjestajId = 0;
+        public KorisnikModel sacuvani = null;
 
         #region Model
         public int SmjestajId
@@ -122,6 +123,13 @@ namespace RS2_Booking.MobileApp.ViewModels
             IzdavacCommand = new Command(() => GetIzdavac());
             RezervisiCommand = new Command(() => Rezervisi());
         }
+        public SmjestajVM(KorisnikModel k)
+        {
+            UcitajCommand = new Command(async () => await Ucitaj());
+            IzdavacCommand = new Command(() => GetIzdavac());
+            RezervisiCommand = new Command(() => Rezervisi());
+            sacuvani = k;
+        }
 
         private void GetIzdavac()
         {
@@ -177,11 +185,13 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         public void Rezervisi()
         {
-            SmjestajModel s = new SmjestajModel();
-            s.Naziv = Naziv;
-            s.SmjestajId = SmjestajId;
-            s.GradNaziv = GradNaziv;
-            s.Adresa = Adresa;
+            SmjestajModel s = new SmjestajModel
+            {
+                Naziv = Naziv,
+                SmjestajId = SmjestajId,
+                GradNaziv = GradNaziv,
+                Adresa = Adresa
+            };
             Application.Current.MainPage = new RezervisiSmjestajPage(KorisnikId, s);
 
         }

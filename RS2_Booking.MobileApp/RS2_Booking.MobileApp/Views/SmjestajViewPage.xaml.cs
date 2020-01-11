@@ -41,7 +41,7 @@ namespace RS2_Booking.MobileApp.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new PocetnaPage();
+            Application.Current.MainPage = new PocetnaPage(viewmodel.sacuvani);
 
         }
     }

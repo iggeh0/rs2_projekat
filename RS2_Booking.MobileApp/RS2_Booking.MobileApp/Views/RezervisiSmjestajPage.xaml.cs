@@ -15,9 +15,11 @@ namespace RS2_Booking.MobileApp.Views
     public partial class RezervisiSmjestajPage : ContentPage
     {
         public RezervisiSmjestajVM viewmodel = null;
+        public SmjestajModel sacuvani = null;
         public RezervisiSmjestajPage(int KorisnikId, SmjestajModel Smjestaj)
         {
             InitializeComponent();
+            sacuvani = Smjestaj;
             viewmodel = new RezervisiSmjestajVM
             {
                 SmjestajId = Smjestaj.SmjestajId,
@@ -29,10 +31,10 @@ namespace RS2_Booking.MobileApp.Views
             BindingContext = viewmodel;
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            viewmodel.UcitajSmjestaj(sacuvani);
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

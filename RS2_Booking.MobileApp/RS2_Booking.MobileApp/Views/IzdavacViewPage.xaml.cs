@@ -39,7 +39,7 @@ namespace RS2_Booking.MobileApp.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new PocetnaPage();
+            Application.Current.MainPage = new PocetnaPage(Model.sacuvani);
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)

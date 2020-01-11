@@ -18,10 +18,10 @@ namespace RS2_Booking.MobileApp.Views
         PocetnaVM Model = null;
 
         
-        public PocetnaPage()
+        public PocetnaPage(KorisnikModel k)
         {
             InitializeComponent();
-            BindingContext = Model = new PocetnaVM();
+            BindingContext = Model = new PocetnaVM(k);
         }
       
         protected async override void OnAppearing()

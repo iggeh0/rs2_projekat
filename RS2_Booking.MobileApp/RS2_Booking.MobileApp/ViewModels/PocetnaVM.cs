@@ -18,9 +18,11 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         GradModel _odabraniGrad = null;
 
-        public PocetnaVM()
+        public PocetnaVM(KorisnikModel k)
         {
             UcitajCommand = new Command(async () => await Ucitaj());
+            KorisnikId = k.KorisnikId;
+            KorisnickoIme = k.KorisnickoIme;
         }
 
         public GradModel SelectedGrad
@@ -50,25 +52,23 @@ namespace RS2_Booking.MobileApp.ViewModels
         public ObservableCollection<SmjestajModel> ListaSmjestaja { get; set; } = new ObservableCollection<SmjestajModel>();
         public ObservableCollection<GradModel> ListaGradova { get; set; } = new ObservableCollection<GradModel>();
 
-        public KorisnikModel Korisnik { get; set; }
-
         public string _KorisnickoIme = null;
         public ICommand UcitajCommand { get; set; }
 
         public async Task Ucitaj()
         {
-            if (Korisnik == null || Korisnik.KorisnikId == 0 )
-            {
-                LoginRequest request = new LoginRequest
-                {
-                    KorisnickoIme = API_Service_Mobile.Username,
-                    Lozinka = API_Service_Mobile.Password,
-                    Uloga = 2
-                };
-                Korisnik = await _korisnikService.Get<KorisnikModel>(request);
-                KorisnickoIme = Korisnik.KorisnickoIme;
-                KorisnikId = Korisnik.KorisnikId;
-            }
+            //if (Korisnik == null || Korisnik.KorisnikId == 0 )
+            //{
+            //    LoginRequest request = new LoginRequest
+            //    {
+            //        KorisnickoIme = API_Service_Mobile.Username,
+            //        Lozinka = API_Service_Mobile.Password,
+            //        Uloga = 2
+            //    };
+            //    Korisnik = await _korisnikService.Get<KorisnikModel>(request);
+            //    KorisnickoIme = Korisnik.KorisnickoIme;
+            //    KorisnikId = Korisnik.KorisnikId;
+            //}
 
             if (ListaGradova.Count == 0)
             {

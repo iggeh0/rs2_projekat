@@ -6,9 +6,10 @@ namespace RS2_Booking.MobileApp.Models
 {
     public enum MenuItemType
     {
-        Browse,
-        About,
-        Smjestaj
+        PretragaSmjestaja,
+        Rezervacije,
+        Profil,
+        Odjava
     }
     public class HomeMenuItem
     {

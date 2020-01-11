@@ -1,5 +1,6 @@
 ﻿using Nest;
 using RS2_Booking.MobileApp.Views;
+using RS2_Booking.Model;
 using RS2_Booking.Model.Requests;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,6 @@ namespace RS2_Booking.MobileApp.ViewModels
     public class RegisterVM : BaseViewModel
     {
         private readonly API_Service_Mobile service = new API_Service_Mobile("korisnik");
-
 
         #region Podaci
         public string _Ime = string.Empty;
@@ -90,10 +90,32 @@ namespace RS2_Booking.MobileApp.ViewModels
             get { return _KorisnickoIme; }
             set { SetProperty(ref _KorisnickoIme, value); }
         }
+
+        public bool Postojeci { get; set; }
+        public int KorisnikId { get; set; }
         #endregion
+        public RegisterVM(KorisnikInsertRequest model)
+        {
+            RegisterCommand = new Command(async () => await Register());
+            if ( model.Postojeci )
+            {
+                KorisnickoIme = model.KorisnickoIme;
+                Ime = model.Ime;
+                Prezime = model.Prezime;
+                Sifra = model.Sifra;
+                Email = model.Email;
+                BrojTelefona = model.BrojTelefona;
+                DatumRodjenja = model.DatumRodjenja;
+                KorisnickoIme = model.KorisnickoIme;
+                JMBG = model.Jmbg;
+                Postojeci = true;
+                KorisnikId = model.KorisnikId;
+            }
+        }
         public RegisterVM()
         {
             RegisterCommand = new Command(async () => await Register());
+            Postojeci = false;
         }
 
         public ICommand RegisterCommand { get; set; }
@@ -102,95 +124,179 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         async Task Register()
         {
-            if ( Ime == null || Ime.Length < 3 )
+            if (!Postojeci)
             {
-               await Application.Current.MainPage.DisplayAlert("Greška", "Ime nije pravilno uneseno!", "Ok");
-               return;
-            }
-            if (Prezime == null || Prezime.Length < 3)
-            {
-                await Application.Current.MainPage.DisplayAlert("Greška", "Prezime nije pravilno uneseno!", "Ok");
-                return;
-            }
-            Regex regex = new Regex(@"^\d+$");
-
-            if ( !regex.Match(JMBG).Success || JMBG.Length != 13 )
-            {
-                await Application.Current.MainPage.DisplayAlert("Greška", "JMBG nije pravilno unesen!", "Ok");
-                return;
-            }
-
-            bool isPhone = Regex.IsMatch(BrojTelefona, @"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
-
-            if (isPhone || BrojTelefona.Length < 8)
-            {
-                await Application.Current.MainPage.DisplayAlert("Greška", "Telefon je neispravno unesen!", "Ok");
-                return;
-            }
-
-            if (DatumRodjenja != null)
-            {
-                if (DatumRodjenja > DateTime.Today)
+                if (Ime == null || Ime.Length < 3)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Greška", "Datum je neispravno unesen!", "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Ime nije pravilno uneseno!", "Ok");
+                    return;
+                }
+                if (Prezime == null || Prezime.Length < 3)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Prezime nije pravilno uneseno!", "Ok");
+                    return;
+                }
+                Regex regex = new Regex(@"^\d+$");
+
+                if (!regex.Match(JMBG).Success || JMBG.Length != 13)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "JMBG nije pravilno unesen!", "Ok");
+                    return;
+                }
+
+                bool isPhone = Regex.IsMatch(BrojTelefona, @"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
+
+                if (isPhone || BrojTelefona.Length < 8)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Telefon je neispravno unesen!", "Ok");
+                    return;
+                }
+
+                if (DatumRodjenja != null)
+                {
+                    if (DatumRodjenja > DateTime.Today)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Greška", "Datum je neispravno unesen!", "Ok");
+                        return;
+                    }
+                }
+
+                bool isEmail = Regex.IsMatch(Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+
+                if (!isEmail || Email.Length < 6)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "E-Mail je neispravno unesen!", "Ok");
+                    return;
+                }
+
+                if (KorisnickoIme == null || KorisnickoIme.Length < 3)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Korisnicko Ime nije pravilno uneseno!", "Ok");
+                    return;
+                }
+
+                if (Sifra == null || Sifra.Length < 6)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Šifra mora biti duža od 6 karaktera!", "Ok");
+                    return;
+                }
+
+                if (SifraPonovo == Sifra && Sifra != null)
+                {
+                    KorisnikInsertRequest request = new KorisnikInsertRequest
+                    {
+                        Ime = Ime,
+                        Prezime = Prezime,
+                        Jmbg = JMBG,
+                        KorisnickoIme = KorisnickoIme,
+                        IsAdmin = false,
+                        Sifra = Sifra,
+                        Role = 3,
+                        Email = Email,
+                        BrojTelefona = BrojTelefona,
+                        DatumRodjenja = DatumRodjenja
+                    };
+                    request = await service.Register<KorisnikInsertRequest>(request);
+                    if (request.Response == null)
+                    {
+                        Application.Current.MainPage = new LoginPage();
+                    }
+                    else
+                        await Application.Current.MainPage.DisplayAlert("Greška", request.Response, "OK");
+                    return;
+
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Šifre nisu iste", "Ok");
                     return;
                 }
             }
-
-            bool isEmail = Regex.IsMatch(Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
-
-            if (!isEmail || Email.Length < 6)
-            {
-                await Application.Current.MainPage.DisplayAlert("Greška", "E-Mail je neispravno unesen!", "Ok");
-                return;
-            }
-
-            if (KorisnickoIme == null || KorisnickoIme.Length < 3)
-            {
-                await Application.Current.MainPage.DisplayAlert("Greška", "Korisnicko Ime nije pravilno uneseno!", "Ok");
-                return;
-            }
-
-            if (Sifra == null || Sifra.Length < 6)
-            {
-                await Application.Current.MainPage.DisplayAlert("Greška", "Šifra mora biti duža od 6 karaktera!", "Ok");
-                return;
-            }
-
-            if ( SifraPonovo == Sifra && Sifra != null)
-            {
-                KorisnikInsertRequest request = new KorisnikInsertRequest
-                {
-                    Ime = Ime,
-                    Prezime = Prezime,
-                    Jmbg = JMBG,
-                    KorisnickoIme = KorisnickoIme,
-                    IsAdmin = false,
-                    Sifra = Sifra,
-                    Role = 3,
-                    Email = Email,
-                    BrojTelefona = BrojTelefona,
-                    DatumRodjenja = DatumRodjenja
-                };
-                request = await service.Register<KorisnikInsertRequest>(request);
-                if (request.Response == null)
-                {
-                    Application.Current.MainPage = new LoginPage();
-                }
-                else
-                   await Application.Current.MainPage.DisplayAlert("Greška", request.Response, "OK");
-                return;
-               
-            }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Greška", "Šifre nisu iste", "Ok");
-                return;
+                if (Ime == null || Ime.Length < 3)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Ime nije pravilno uneseno!", "Ok");
+                    return;
+                }
+                if (Prezime == null || Prezime.Length < 3)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Prezime nije pravilno uneseno!", "Ok");
+                    return;
+                }
+                Regex regex = new Regex(@"^\d+$");
+
+                if (!regex.Match(JMBG).Success || JMBG.Length != 13)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "JMBG nije pravilno unesen!", "Ok");
+                    return;
+                }
+
+                bool isPhone = Regex.IsMatch(BrojTelefona, @"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
+
+                if (isPhone || BrojTelefona.Length < 8)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Telefon je neispravno unesen!", "Ok");
+                    return;
+                }
+
+                if (DatumRodjenja != null)
+                {
+                    if (DatumRodjenja > DateTime.Today)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Greška", "Datum je neispravno unesen!", "Ok");
+                        return;
+                    }
+                }
+
+                bool isEmail = Regex.IsMatch(Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+
+                if (!isEmail || Email.Length < 6)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "E-Mail je neispravno unesen!", "Ok");
+                    return;
+                }
+
+                if (KorisnickoIme == null || KorisnickoIme.Length < 3)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Korisnicko Ime nije pravilno uneseno!", "Ok");
+                    return;
+                }
+
+                if (Sifra == null || Sifra.Length < 6)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Šifra mora biti duža od 6 karaktera!", "Ok");
+                    return;
+                }
+
+                if (SifraPonovo == Sifra && Sifra != null)
+                {
+                    KorisnikEditRequest request = new KorisnikEditRequest
+                    {
+                        KorisnikId = KorisnikId,
+                        Ime = Ime,
+                        Prezime = Prezime,
+                        Jmbg = JMBG,
+                        KorisnickoIme = KorisnickoIme,
+                        Sifra = Sifra,
+                        Email = Email,
+                        BrojTelefona = BrojTelefona,
+                        DatumRodjenja = DatumRodjenja
+                    };
+                    await service.Update<KorisnikEditRequest>(KorisnikId, request);
+                    KorisnikModel k = new KorisnikModel
+                    {
+                        Ime = Ime,
+                        Prezime = Prezime,
+                        KorisnickoIme = KorisnickoIme
+                    };
+                    Application.Current.MainPage = new PocetnaPage(k);
+                }
+
             }
+
+
         }
-
-        
-
 
     }
 }

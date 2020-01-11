@@ -19,10 +19,6 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         private readonly API_Service_Mobile service = new API_Service_Mobile("Soba");
 
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-
         public RezervisiSmjestajVM()
         {
             NazadCommand = new Command(() => Nazad());
@@ -31,6 +27,14 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         }
 
+        SmjestajModel Smjestaj = null;
+
+        public void UcitajSmjestaj(SmjestajModel smjestajModel)
+        {
+            Smjestaj = smjestajModel;
+            DatumOd = DateTime.Now;
+            DatumDo = DateTime.Now;
+        }
         public ICommand KompletirajCommand { get; set; }
 
         public Task Kompletiraj()
@@ -51,8 +55,8 @@ namespace RS2_Booking.MobileApp.ViewModels
             }
             else
                 return null;
-             
-           Application.Current.MainPage = new PotvrdiRezervaciju(Rezervacija);
+            IsBusy = true;
+           Application.Current.MainPage = new PotvrdiRezervaciju(Rezervacija, Smjestaj);
             return null;
         }
 
@@ -196,22 +200,6 @@ namespace RS2_Booking.MobileApp.ViewModels
                 ListaSoba.Add(prazan);
             }
              
-        }
-
-        
-        public string _Text;
-        public string Text
-        {
-            get { return _Text; }
-            set {
-                SetProperty(ref _Text, value);
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Text"));
-            }
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }  
     

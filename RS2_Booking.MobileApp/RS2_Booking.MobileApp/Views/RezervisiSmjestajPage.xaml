@@ -14,9 +14,9 @@
         <StackLayout>
             <Label Text="Rezervacija" FontSize="Title" HorizontalOptions="Center"></Label>
             <Label Text="Početni datum:"></Label>
-            <DatePicker MinimumDate="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:dd MMMM, yyyy}'}" Date="{Binding DatumOd}"></DatePicker>
+            <DatePicker MinimumDate="{Binding Source={x:Static sys:DateTime.Now}}" Date="{Binding DatumOd}"></DatePicker>
             <Label Text="Datum odlaska:"></Label>
-            <DatePicker MinimumDate="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:dd MMMM, yyyy}'}" Date="{Binding DatumDo}"></DatePicker>
+            <DatePicker MinimumDate="{Binding Source={x:Static sys:DateTime.Now}}" Date="{Binding DatumDo}"></DatePicker>
             <Label Text="Broj soba"></Label>
             <Entry Text="{Binding BrojSoba}"></Entry>
             <Label Text="Broj odraslih osoba"></Label>

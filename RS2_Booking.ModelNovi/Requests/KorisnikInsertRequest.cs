@@ -7,6 +7,7 @@ namespace RS2_Booking.Model.Requests
 {
     public class KorisnikInsertRequest
     {
+        public int KorisnikId { get; set; }
         public string Ime { get; set; }
 
         public string Prezime { get; set; }
@@ -26,9 +27,9 @@ namespace RS2_Booking.Model.Requests
 
         //role 1 = izdavac, 2 = klijent
         public int? Role { get; set; }
-
         public string Sifra { get; set; }
+      public string Response { get; set; }
 
-        public string Response { get; set; }
+        public bool Postojeci = false;
     }
 }

@@ -14,11 +14,17 @@ namespace RS2_Booking.MobileApp.ViewModels
     {
         private readonly API_Service_Mobile _smjestajService = new API_Service_Mobile("smjestaj");
         private readonly API_Service_Mobile _korisnikService = new API_Service_Mobile("korisnik/GetSingleKorisnik");
+        public KorisnikModel sacuvani = null;
         public IzdavacVM()
         {
             UcitajCommand = new Command(async () => await Ucitaj());
         }
 
+        public IzdavacVM(KorisnikModel k)
+        {
+            UcitajCommand = new Command(async () => await Ucitaj());
+            sacuvani = k;
+        }
 
         public ICommand UcitajCommand { get; set; }
 
