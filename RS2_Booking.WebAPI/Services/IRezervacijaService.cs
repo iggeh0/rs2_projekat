@@ -9,7 +9,7 @@ namespace RS2_Booking.WebAPI.Services
 {
     public interface IRezervacijaService
     {
-        List<RezervacijaModelShort> Get(RezervacijaSearchRequest search);
+        List<RezervacijaModel> Get(RezervacijaSearchRequest search);
 
         RezervacijaModel GetById(int id);
 

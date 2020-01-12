@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ViewModels="clr-namespace:RS2_Booking.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="RS2_Booking.MobileApp.Views.RezervacijeViewPage">
+    <ContentPage.BindingContext>
+        <ViewModels:RezervacijeVM></ViewModels:RezervacijeVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="DodgerBlue">
+            <ListView ItemsSource="{Binding Rezervacije}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Datum rezervacije: "/>
+                                            <Span Text="{Binding DatumRezervacije}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Početak rezervacije: "/>
+                                            <Span Text="{Binding RezervacijaOd}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Završetak rezervacije: "/>
+                                            <Span Text="{Binding RezervacijaDo}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Naziv smještaja: "/>
+                                            <Span Text="{Binding NazivSmjestaja}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Adresa smještaja: "/>
+                                            <Span Text="{Binding AdresaSmjestaja}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Status rezervacije: "/>
+                                            <Span Text="{Binding StatusRezervacijeNaziv}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

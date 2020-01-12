@@ -1,4 +1,5 @@
 ﻿using RS2_Booking.MobileApp.ViewModels;
+using RS2_Booking.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,17 +21,17 @@ namespace RS2_Booking.MobileApp.Views
             InitializeComponent();
         }
 
-        public SmjestajViewPage(int SmjestajId, int KorisnikId)
+        public SmjestajViewPage(int SmjestajId, KorisnikModel korisnikModel)
         {
             InitializeComponent();
             _Id = SmjestajId;
             viewmodel = new SmjestajVM
             {
                 SmjestajId = SmjestajId,
-                KorisnikId = KorisnikId
+                KorisnikId = korisnikModel.KorisnikId
             };
-            BindingContext = viewmodel;
-
+            viewmodel.sacuvani = korisnikModel;
+            BindingContext = viewmodel;   
         }
 
         protected async override void OnAppearing()
@@ -41,7 +42,7 @@ namespace RS2_Booking.MobileApp.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new PocetnaPage(viewmodel.sacuvani);
+            Application.Current.MainPage = new MainPage(viewmodel.sacuvani);
 
         }
     }

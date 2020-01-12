@@ -193,7 +193,7 @@ namespace RS2_Booking.Izdavac.WinUI
                         KorisnickoIme = tb_Username.Text,
                         Role = cb_Uloga.SelectedIndex
                     };
-                    request = await _KorisnikService.Insert<KorisnikInsertRequest>(request);
+                    request = await _KorisnikService.Register<KorisnikInsertRequest>(request);
                     if (request.Response == null)
                     {
                         Close();

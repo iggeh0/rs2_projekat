@@ -150,13 +150,19 @@ namespace RS2_Booking.MobileApp.ViewModels
             }
 
             await _rezervacijaService.Insert<RezervacijaInsertRequest>(request);
+            KorisnikModel k = returnKorisnik();
+            Application.Current.MainPage = new PocetnaPage(k);
+        }
+        public KorisnikModel returnKorisnik()
+        {
             KorisnikModel k = new KorisnikModel
             {
+                KorisnikId = KlijentId,
                 KorisnickoIme = KorisnickoImeKlijenta,
                 Ime = ImeKlijenta,
                 Prezime = PrezimeKlijenta
             };
-            Application.Current.MainPage = new PocetnaPage(k);
+            return k;
         }
     }
 }

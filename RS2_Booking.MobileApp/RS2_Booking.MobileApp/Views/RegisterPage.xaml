@@ -35,7 +35,7 @@
             <Label Text="Lozinka Ponovo:" HorizontalOptions="Center">
             </Label>
             <Entry Text="{Binding SifraPonovo}"></Entry>
-            <Button Command="{Binding RegisterCommand}" Text="Registruj se"></Button>
+            <Button Command="{Binding RegisterCommand}" Text="Potvrdi izmjene"></Button>
             <Button Text="Nazad" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>

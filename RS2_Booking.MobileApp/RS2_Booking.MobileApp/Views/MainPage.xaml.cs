@@ -20,6 +20,8 @@ namespace RS2_Booking.MobileApp.Views
             Model = k;
             MasterBehavior = MasterBehavior.Popover;
 
+            this.NavigateFromMenu(0);
+
             //MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
         }
 
@@ -33,11 +35,11 @@ namespace RS2_Booking.MobileApp.Views
                         MenuPages.Add(id, new NavigationPage(new PocetnaPage(Model)));
                         break;
                     case (int)MenuItemType.Rezervacije:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                        MenuPages.Add(id, new NavigationPage(new RezervacijeViewPage(Model)));
                         break;
                     case (int)MenuItemType.Profil:
                         KorisnikInsertRequest request = new KorisnikInsertRequest();
-                        MenuPages.Add(id, new NavigationPage(new RegisterPage()));
+                        MenuPages.Add(id, new NavigationPage(new RegisterPage(Model)));
                         break;
                     case (int)MenuItemType.Odjava:
                         Application.Current.MainPage = new LoginPage();

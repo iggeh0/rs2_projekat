@@ -16,12 +16,18 @@ namespace RS2_Booking.MobileApp.Views
     public partial class PocetnaPage : ContentPage
     {
         PocetnaVM Model = null;
-
+        public KorisnikModel _KorisnikModel = null;
         
         public PocetnaPage(KorisnikModel k)
         {
             InitializeComponent();
-            BindingContext = Model = new PocetnaVM(k);
+            Model = new PocetnaVM
+            {
+                sacuvani = k
+            };
+            _KorisnikModel = k;
+            BindingContext = Model;
+          
         }
       
         protected async override void OnAppearing()
@@ -36,7 +42,7 @@ namespace RS2_Booking.MobileApp.Views
 
             PropertyInfo pi = Odabrani.GetType().GetProperty("SmjestajId");
             int id = Convert.ToInt32(pi.GetValue(Odabrani,null).ToString());
-            Application.Current.MainPage = new SmjestajViewPage(id, Model.KorisnikId);
+            Application.Current.MainPage = new SmjestajViewPage(id, _KorisnikModel);
         }
 
         private void Button_Clicked(object sender, EventArgs e)

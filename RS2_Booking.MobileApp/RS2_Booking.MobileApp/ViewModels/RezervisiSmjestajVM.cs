@@ -15,7 +15,7 @@ namespace RS2_Booking.MobileApp.ViewModels
 {
     public class RezervisiSmjestajVM : BaseViewModel
     {
-        public int KorisnikId;
+        public KorisnikModel sacuvani = null;
 
         private readonly API_Service_Mobile service = new API_Service_Mobile("Soba");
 
@@ -56,7 +56,7 @@ namespace RS2_Booking.MobileApp.ViewModels
             else
                 return null;
             IsBusy = true;
-           Application.Current.MainPage = new PotvrdiRezervaciju(Rezervacija, Smjestaj);
+           Application.Current.MainPage = new PotvrdiRezervaciju(Rezervacija, Smjestaj, sacuvani);
             return null;
         }
 
@@ -165,7 +165,7 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         public void Nazad()
         {
-            Application.Current.MainPage = new SmjestajViewPage(SmjestajId, KorisnikId);
+            Application.Current.MainPage = new SmjestajViewPage(SmjestajId, sacuvani);
         }
         #endregion
 

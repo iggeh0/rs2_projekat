@@ -32,24 +32,22 @@ namespace RS2_Booking.WebAPI.Services
             else
             if ( search.BrojOdraslih > 0 )
             {
-                var lista = (from soba in _context.Soba.Where(x => x.SmjestajId == search.SmjestajId)
-                             join rezervacijasoba in _context.RezervacijaSoba
-                             on soba.SobaId equals rezervacijasoba.SobaId
-                             join rezervacija in _context.Rezervacija
-                             on rezervacijasoba.RezervacijaId equals rezervacija.RezervacijaId
-                             join statusrezervacije in _context.StatusRezervacije
-                            on rezervacija.StatusRezervacijeId equals statusrezervacije.StatusRezervacijeId
-                             where ((rezervacija.RezervacijaOd >= search.DatumDo) || (rezervacija.RezervacijaDo <= search.DatumOd)) && statusrezervacije.StatusRezervacijeId != 2
-                             select new SobaModel()
-                             {
-                                 Cijena = soba.Cijena,
-                                 BrojKreveta = soba.BrojKreveta,
-                                 Opis = soba.Opis,
-                                 VelicinaSobe = soba.VelicinaSobe,
-                                 VlastitaKupoanica = soba.VlastitaKupoanica,
-                                 VrstaSmjestaja = soba.VrstaSmjestaja
-                             }).ToList();
-                return lista;
+                List<Soba> lista = _context.Soba.Where(x => x.SmjestajId == search.SmjestajId).ToList();
+
+                foreach ( Soba s in lista )
+                {
+                    List<RezervacijaSoba> rs = _context.RezervacijaSoba.Where(x => x.SobaId == s.SobaId).ToList();
+                    foreach ( RezervacijaSoba rezervacijaSoba in rs )
+                    {
+                        Rezervacija r = _context.Rezervacija.Find(rezervacijaSoba.RezervacijaId);
+                        if ( r.StatusRezervacijeId == 2 && (r.RezervacijaDo > search.DatumOd && r.RezervacijaOd < search.DatumDo) )
+                        {
+                            lista.Remove(s);
+                        }
+                    }
+                }
+
+                return _mapper.Map<List<SobaModel>>(lista);
             }
             return null;
         }

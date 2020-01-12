@@ -30,33 +30,27 @@ namespace RS2_Booking.WebAPI.Services
             _context.SaveChanges();
         }
 
-        public List<RezervacijaModelShort> Get(RezervacijaSearchRequest search)
+        public List<RezervacijaModel> Get(RezervacijaSearchRequest search)
         {
-            var query = _context.Rezervacija.AsQueryable();
-            if (search.KlijentId > 0)
+            Klijent k = _context.Klijent.Where(x => x.KorisnikId == search.KlijentId).FirstOrDefault();
+            var lista = _context.Rezervacija.Where(x => x.KlijentId == k.KlijentId).ToList();
+
+            List<RezervacijaModel> Konacna = new List<RezervacijaModel>();
+
+            foreach ( Rezervacija r in lista )
             {
-                query = query.Where(x => x.KlijentId == search.KlijentId);
+                RezervacijaModel model = _mapper.Map<RezervacijaModel>(r);
+                model.StatusRezervacijeNaziv = _context.StatusRezervacije.Find(r.StatusRezervacijeId).Naziv;
+                RezervacijaSoba rs = _context.RezervacijaSoba.Where(x => x.RezervacijaId == r.RezervacijaId).SingleOrDefault();
+                Soba soba = _context.Soba.Find(rs.SobaId);
+                Smjestaj s = _context.Smjestaj.Find(soba.SmjestajId);
+                model.NazivSmjestaja = s.Naziv;
+                model.AdresaSmjestaja = s.Adresa + ", " + _context.Grad.Find(s.GradId).Naziv;
+
+                Konacna.Add(model);
             }
-            if (search.DatumDo > new DateTime())
-            {
-                query = query.Where(x => x.RezervacijaDo == search.DatumDo);
-            }
+            return Konacna;
 
-            if (search.DatumOd > new DateTime())
-            {
-                query = query.Where(x => x.RezervacijaOd == search.DatumOd);
-            }
-
-            if ( search.StatusRezervacijeId > 0 )
-            {
-                query = query.Where(x => x.StatusRezervacijeId == search.StatusRezervacijeId);
-            }
-
-            var lista = query.ToList();
-
-            var novalista = _mapper.Map<List<RezervacijaModelShort>>(lista);
-
-            return novalista;
         }
 
         public RezervacijaModel GetById(int id)
@@ -71,14 +65,16 @@ namespace RS2_Booking.WebAPI.Services
 
         public RezervacijaInsertRequest Insert(RezervacijaInsertRequest model)
         {
+            Klijent k = _context.Klijent.Where(x => x.KorisnikId == model.KlijentId).SingleOrDefault();
             Rezervacija r = new Rezervacija
             {
                 BrojDjece = model.BrojDjece,
                 BrojOdraslih = model.BrojOdraslih,
-                KlijentId = model.KlijentId,
+                KlijentId = k.KlijentId,
                 RezervacijaDo = model.RezervacijaDo,
                 RezervacijaOd = model.RezervacijaOd,
-                StatusRezervacijeId = 1
+                StatusRezervacijeId = 1,
+                DatumRezervacije = model.DatumRezervacije,
             };
             _context.Rezervacija.Add(r);
             _context.SaveChanges();

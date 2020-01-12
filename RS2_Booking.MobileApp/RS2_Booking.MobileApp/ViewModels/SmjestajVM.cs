@@ -133,7 +133,7 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         private void GetIzdavac()
         {
-            Application.Current.MainPage = new IzdavacViewPage(IzdavacId);
+            Application.Current.MainPage = new IzdavacViewPage(IzdavacId, sacuvani);
         }
 
         public ICommand UcitajCommand { get; set; }
@@ -192,7 +192,7 @@ namespace RS2_Booking.MobileApp.ViewModels
                 GradNaziv = GradNaziv,
                 Adresa = Adresa
             };
-            Application.Current.MainPage = new RezervisiSmjestajPage(KorisnikId, s);
+            Application.Current.MainPage = new RezervisiSmjestajPage(sacuvani, s);
 
         }
     }

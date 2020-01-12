@@ -5,22 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ViewModels="clr-namespace:RS2_Booking.MobileApp.ViewModels"
              mc:Ignorable="d"
-             x:Class="RS2_Booking.MobileApp.Views.PocetnaPage">
+             x:Class="RS2_Booking.MobileApp.Views.PocetnaPage"
+             Title="Pretraga smještaja">
     <ContentPage.BindingContext>
         <ViewModels:PocetnaVM></ViewModels:PocetnaVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding Korisnik}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
-            <Label Text="{Binding KorisnickoIme}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
             <Picker ItemsSource="{Binding ListaGradova}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding SelectedGrad}"></Picker>
-            <ListView ItemsSource="{Binding ListaSmjestaja}" ItemTapped="ListView_ItemTapped">
+            <ListView ItemsSource="{Binding ListaSmjestaja}" ItemTapped="ListView_ItemTapped" SelectedItem="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

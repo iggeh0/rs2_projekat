@@ -45,9 +45,9 @@ namespace RS2_Booking.MobileApp.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            ItemsListView.SelectedItem = 1;
+            //if (viewModel.Items.Count == 0)
+            //    viewModel.LoadItemsCommand.Execute(null);
         }
     }
 }

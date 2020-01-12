@@ -17,10 +17,10 @@ namespace RS2_Booking.MobileApp.Views
     {
         public PotvrdiRezervacijuVM viewmodel = null;
         public SmjestajModel _returnmodel = null;
-        public PotvrdiRezervaciju(RezervacijaModel model, SmjestajModel returnmodel)
+        public PotvrdiRezervaciju(RezervacijaModel model, SmjestajModel returnmodelSmjestaj, KorisnikModel returnmodelKorisnik)
         {
             InitializeComponent();
-            _returnmodel = returnmodel;
+            _returnmodel = returnmodelSmjestaj;
             viewmodel = new PotvrdiRezervacijuVM
             {
                 KlijentId = model.KlijentId,
@@ -51,7 +51,7 @@ namespace RS2_Booking.MobileApp.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new RezervisiSmjestajPage(viewmodel.KlijentId, _returnmodel);       
+            Application.Current.MainPage = new RezervisiSmjestajPage(viewmodel.returnKorisnik(), _returnmodel);       
         }
     }
 }

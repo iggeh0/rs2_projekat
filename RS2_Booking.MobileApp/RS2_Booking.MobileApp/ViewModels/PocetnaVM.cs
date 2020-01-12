@@ -14,15 +14,19 @@ namespace RS2_Booking.MobileApp.ViewModels
     {
         private readonly API_Service_Mobile _smjestajService = new API_Service_Mobile("smjestaj");
         private readonly API_Service_Mobile _gradService = new API_Service_Mobile("grad");
-        private readonly API_Service_Mobile _korisnikService = new API_Service_Mobile("korisnik/login");
 
         GradModel _odabraniGrad = null;
-
+        public KorisnikModel sacuvani = null;
         public PocetnaVM(KorisnikModel k)
         {
             UcitajCommand = new Command(async () => await Ucitaj());
             KorisnikId = k.KorisnikId;
             KorisnickoIme = k.KorisnickoIme;
+        }
+
+        public PocetnaVM()
+        {
+            UcitajCommand = new Command(async () => await Ucitaj());
         }
 
         public GradModel SelectedGrad
@@ -57,18 +61,6 @@ namespace RS2_Booking.MobileApp.ViewModels
 
         public async Task Ucitaj()
         {
-            //if (Korisnik == null || Korisnik.KorisnikId == 0 )
-            //{
-            //    LoginRequest request = new LoginRequest
-            //    {
-            //        KorisnickoIme = API_Service_Mobile.Username,
-            //        Lozinka = API_Service_Mobile.Password,
-            //        Uloga = 2
-            //    };
-            //    Korisnik = await _korisnikService.Get<KorisnikModel>(request);
-            //    KorisnickoIme = Korisnik.KorisnickoIme;
-            //    KorisnikId = Korisnik.KorisnikId;
-            //}
 
             if (ListaGradova.Count == 0)
             {

@@ -16,18 +16,19 @@ namespace RS2_Booking.MobileApp.Views
     {
         public RezervisiSmjestajVM viewmodel = null;
         public SmjestajModel sacuvani = null;
-        public RezervisiSmjestajPage(int KorisnikId, SmjestajModel Smjestaj)
+        public RezervisiSmjestajPage(KorisnikModel k, SmjestajModel Smjestaj)
         {
             InitializeComponent();
             sacuvani = Smjestaj;
             viewmodel = new RezervisiSmjestajVM
             {
                 SmjestajId = Smjestaj.SmjestajId,
-                KlijentId = KorisnikId,
+                KlijentId = k.KorisnikId,
                 SmjestajNaziv = Smjestaj.Naziv,
                 GradNaziv = Smjestaj.GradNaziv,
                 Adresa = Smjestaj.Adresa
-            };       
+            };
+            viewmodel.sacuvani = k;
             BindingContext = viewmodel;
         }
 

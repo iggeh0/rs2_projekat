@@ -22,7 +22,7 @@ namespace RS2_Booking.WebAPI.Controllers
         }
 
         [HttpGet]
-        public List<RezervacijaModelShort> Get([FromQuery]RezervacijaSearchRequest search)
+        public List<RezervacijaModel> Get([FromQuery]RezervacijaSearchRequest search)
         {
             return _service.Get(search);
         }
