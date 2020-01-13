@@ -180,5 +180,33 @@ namespace RS2_Booking.WebAPI.Services
             _context.SaveChanges();
             return request;
         }
+
+        public SlikaModel InsertImage(SlikaModel model)
+        {
+            Slika s = new Slika
+            {
+                SmjestajId = model.SmjestajId,
+                SlikaFile = model.SlikaFile
+            };
+            _context.Slika.Add(s);
+            _context.SaveChanges();
+            return model;
+        }
+
+        public List<SlikaModel> GetImages(int smjestajId)
+        {
+            List<SlikaModel> Lista = new List<SlikaModel>();
+            foreach ( Slika s in _context.Slika )
+            {
+                if ( s.SmjestajId ==  smjestajId )
+                {
+                    SlikaModel model = new SlikaModel();
+                    model.SlikaFile = s.SlikaFile;
+                    model.SmjestajId = s.SmjestajId;
+                    Lista.Add(model);
+                }
+            }
+            return Lista;
+        }
     }
 }

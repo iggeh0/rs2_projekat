@@ -14,5 +14,7 @@ namespace RS2_Booking.Model.Requests
         public int BrojDjece { get; set; }
         public int StatusRezervacijeId { get; set; }
         public List<SobaModel> Sobe { get; set; }
+        public string NazivSmjestaja { get; set; }
+        public string AdresaSmjestaja { get; set; }
     }
 }

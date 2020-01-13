@@ -105,6 +105,12 @@
     <Compile Include="Izdavac\frm_Izvjestaji.Designer.cs">
       <DependentUpon>frm_Izvjestaji.cs</DependentUpon>
     </Compile>
+    <Compile Include="Izdavac\frm_SmjestajSlike.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izdavac\frm_SmjestajSlike.Designer.cs">
+      <DependentUpon>frm_SmjestajSlike.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Izdavac\frm_DodajSmjestaj.cs">
@@ -167,7 +173,6 @@
     <Compile Include="Izdavac\frm_UrediSobe.Designer.cs">
       <DependentUpon>frm_UrediSobe.cs</DependentUpon>
     </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Administrator\frm_AdminIndex.resx">
       <DependentUpon>frm_AdminIndex.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Izdavac\frm_Izvjestaji.resx">
       <DependentUpon>frm_Izvjestaji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izdavac\frm_SmjestajSlike.resx">
+      <DependentUpon>frm_SmjestajSlike.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -245,21 +253,6 @@
       <Project>{c84cc8fa-7881-4ea6-bc12-6e5fc8c542e5}</Project>
       <Name>RS2_Booking.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

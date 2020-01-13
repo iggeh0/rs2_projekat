@@ -30,7 +30,9 @@ namespace RS2_Booking.MobileApp.Views
                 RezervacijaOd = model.RezervacijaOd,
                 StatusRezervacijeId = 1,
                 BrojDjece = model.BrojDjece,
-                BrojOdraslih = model.BrojOdraslih               
+                BrojOdraslih = model.BrojOdraslih,
+                NazivSmjestaja = model.NazivSmjestaja,
+                AdresaSmjestaja = model.AdresaSmjestaja
             };
             viewmodel.Sobe = new ObservableCollection<SobaModel>();
             foreach ( SobaModel s in model.Sobe )

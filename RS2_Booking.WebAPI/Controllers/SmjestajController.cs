@@ -35,6 +35,21 @@ namespace RS2_Booking.WebAPI.Controllers
         {
             return _smjestajService.Insert(Model);
         }
+
+        [HttpPost]
+        [Route("InsertImage")]
+        public SlikaModel InsertImage(SlikaModel Model)
+        {
+            return _smjestajService.InsertImage(Model);
+        }
+
+        [HttpGet]
+        [Route("GetImages")]
+        public List<SlikaModel> GetImages([FromQuery]SlikaGetRequest request)
+        {
+            return _smjestajService.GetImages(request.SmjestajId);
+        }
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

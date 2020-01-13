@@ -142,7 +142,7 @@ namespace RS2_Booking.MobileApp.ViewModels
                 RezervacijaDo = RezervacijaDo,
                 RezervacijaOd = RezervacijaOd,
                 StatusRezervacijeId = 2,
-                Sobe = new List<SobaModel>()
+                Sobe = new List<SobaModel>()                
             };
             foreach ( SobaModel s in Sobe )
             {
@@ -151,7 +151,7 @@ namespace RS2_Booking.MobileApp.ViewModels
 
             await _rezervacijaService.Insert<RezervacijaInsertRequest>(request);
             KorisnikModel k = returnKorisnik();
-            Application.Current.MainPage = new PocetnaPage(k);
+            Application.Current.MainPage = new MainPage(k);
         }
         public KorisnikModel returnKorisnik()
         {

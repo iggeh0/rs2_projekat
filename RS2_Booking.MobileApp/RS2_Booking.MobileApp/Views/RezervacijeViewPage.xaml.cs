@@ -15,11 +15,9 @@ namespace RS2_Booking.MobileApp.Views
     public partial class RezervacijeViewPage : ContentPage
     {
         public RezervacijeVM viewmodel = null;
-        public KorisnikModel sacuvani = null;
         public RezervacijeViewPage(KorisnikModel k)
         {
-            InitializeComponent();
-            sacuvani = k;
+            InitializeComponent();            
             viewmodel = new RezervacijeVM();
             viewmodel.sacuvani = k;
             BindingContext = viewmodel;
@@ -30,5 +28,11 @@ namespace RS2_Booking.MobileApp.Views
             await viewmodel.Ucitaj();
         }
 
+        private void RezervacijaDetalji(object sender, EventArgs e)
+        {
+            Button obj = (Button)sender;
+            int id = (int)obj.CommandParameter;
+            Application.Current.MainPage = new RezervacijeDetaljiView(id, viewmodel.sacuvani);
+        }
     }
 }

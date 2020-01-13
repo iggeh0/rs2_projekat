@@ -283,6 +283,7 @@
             this.btn_Slike.TabIndex = 23;
             this.btn_Slike.Text = "Upravljanje Slikama";
             this.btn_Slike.UseVisualStyleBackColor = true;
+            this.btn_Slike.Click += new System.EventHandler(this.btn_Slike_Click);
             // 
             // frm_UrediSmjestaj
             // 

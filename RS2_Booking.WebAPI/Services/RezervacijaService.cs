@@ -51,7 +51,7 @@ namespace RS2_Booking.WebAPI.Services
                 model.RezervacijaOdShort = r.RezervacijaOd.ToShortDateString();
                 model.DatumRezervacijeShort = r.DatumRezervacije.ToShortDateString();
                 model.StatusRezervacijeNaziv = _context.StatusRezervacije.Find(r.StatusRezervacijeId).Naziv;
-                RezervacijaSoba rs = _context.RezervacijaSoba.Where(x => x.RezervacijaId == r.RezervacijaId).SingleOrDefault();
+                RezervacijaSoba rs = _context.RezervacijaSoba.Where(x => x.RezervacijaId == r.RezervacijaId).FirstOrDefault();
                 Soba soba = _context.Soba.Find(rs.SobaId);
                 Smjestaj s = _context.Smjestaj.Find(soba.SmjestajId);
                 model.NazivSmjestaja = s.Naziv;

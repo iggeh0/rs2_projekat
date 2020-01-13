@@ -1,4 +1,5 @@
-﻿using RS2_Booking.Model;
+﻿using RS2_Booking.Izdavac.WinUI.Izdavac;
+using RS2_Booking.Model;
 using RS2_Booking.Model.Requests;
 using System;
 using System.Collections.Generic;
@@ -139,6 +140,12 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
         private void btn_Nazad_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btn_Slike_Click(object sender, EventArgs e)
+        {
+            frm_SmjestajSlike form = new frm_SmjestajSlike(_SmjestajId);
+            form.Show();
         }
     }
 }

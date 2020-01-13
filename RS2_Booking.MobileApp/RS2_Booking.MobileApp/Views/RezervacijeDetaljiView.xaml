@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ViewModels="clr-namespace:RS2_Booking.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="RS2_Booking.MobileApp.Views.RezervacijeDetaljiView">
+    <ContentPage.BindingContext>
+        <ViewModels:RezervacijaDetaljiVM></ViewModels:RezervacijaDetaljiVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="DodgerBlue">
+            <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Datum rezervacije: "/>
+                        <Span Text="{Binding DatumRezervacije}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Početak rezervacije: "/>
+                        <Span Text="{Binding RezervacijaOd}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Završetak rezervacije: "/>
+                        <Span Text="{Binding RezervacijaDo}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Naziv smještaja: "/>
+                        <Span Text="{Binding NazivSmjestaja}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Adresa smještaja: "/>
+                        <Span Text="{Binding AdresaSmjestaja}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Status rezervacije: "/>
+                        <Span Text="{Binding StatusRezervacijeNaziv}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="10,5,0,5" Text="Lista soba:" FontSize="Medium" TextColor="White"></Label>
+            <Grid BackgroundColor="CadetBlue" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                </Grid.ColumnDefinitions>
+                <Label  Grid.Column="0" Grid.Row="0" Text="Vrsta smještaja" TextColor="White"/>
+                <Label  Grid.Column="1" Grid.Row="0" Text="Broj Kreveta" TextColor="White"/>
+                <Label  Grid.Column="2" Grid.Row="0" Text="Broj Kvadrata" TextColor="White"/>
+            </Grid>
+            <ListView ItemsSource="{Binding Sobe}" BackgroundColor="CadetBlue" Margin="0,0,0,5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25*" />
+                                    <ColumnDefinition Width="25*" />
+                                    <ColumnDefinition Width="25*" />
+                                </Grid.ColumnDefinitions>
+                                <Label TextColor="White" Grid.Column="0" Text="{Binding VrstaSmjestaja}" />
+                                <Label TextColor="White" Grid.Column="1" Text="{Binding BrojKreveta}"/>
+                                <Label TextColor="White" Grid.Column="2" Text="{Binding VelicinaSobe}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Ukupno uplaceno: "/>
+                        <Span Text="{Binding UkupnoUplaceno}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button Text="Nazad" Clicked="Button_Clicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

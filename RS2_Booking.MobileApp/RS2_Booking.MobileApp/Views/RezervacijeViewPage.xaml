@@ -16,11 +16,13 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
+                                <Button Text="Detalji rezervacije" TextColor="White" CommandParameter="{Binding RezervacijaId}" Clicked="RezervacijaDetalji" BackgroundColor="DodgerBlue" >
+                                </Button>
                                 <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Datum rezervacije: "/>
-                                            <Span Text="{Binding DatumRezervacije}" />
+                                            <Span Text="{Binding DatumRezervacijeShort}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -28,7 +30,7 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Početak rezervacije: "/>
-                                            <Span Text="{Binding RezervacijaOd}" />
+                                            <Span Text="{Binding RezervacijaOdShort}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -36,7 +38,7 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Završetak rezervacije: "/>
-                                            <Span Text="{Binding RezervacijaDo}" />
+                                            <Span Text="{Binding RezervacijaDoShort}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
