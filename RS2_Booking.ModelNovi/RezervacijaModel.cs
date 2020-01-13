@@ -6,11 +6,12 @@ namespace RS2_Booking.Model
 {
     public class RezervacijaModel
     {
+        public int RezervacijaId { get; set; }
         public int StatusRezervacijeId { get; set; }
         public string StatusRezervacijeNaziv { get; set; }
-        public DateTime DatumRezervacije { get; set; }
-        public DateTime RezervacijaOd { get; set; }
-        public DateTime RezervacijaDo { get; set; }
+        public string DatumRezervacijeShort { get; set; }
+        public string RezervacijaOdShort { get; set; }
+        public string RezervacijaDoShort { get; set; }
         public int BrojOdraslih { get; set; }
         public int BrojDjece { get; set; }
         public int KlijentId { get; set; }

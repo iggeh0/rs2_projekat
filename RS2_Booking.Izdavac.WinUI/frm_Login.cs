@@ -50,19 +50,19 @@ namespace RS2_Booking.Izdavac.WinUI
                 {
                     KorisnickoIme = tb_KorisnickoIme.Text,
                     Lozinka = tb_Lozinka.Text,
-                    Uloga = Int32.Parse(cb_Uloga.SelectedValue.ToString())
+                    Uloga = Int32.Parse(cb_Uloga.SelectedValue.ToString()) - 1
                 };
 
                 var k = await _service.Get<KorisnikModel>(request);
                 if (k.OK)
                 {
-                    if (k.Uloga == Int32.Parse(cb_Uloga.SelectedValue.ToString()) && k.Uloga == 2)
+                    if (k.Uloga == 1)
                     {
                         frm_AdminIndex form = new frm_AdminIndex(k.KorisnikId);
                         form.Show();
                         Hide();
                     }
-                    else if (k.Uloga == Int32.Parse(cb_Uloga.SelectedValue.ToString()) && k.Uloga == 1)
+                    else if (k.Uloga == 0)
                     {
                         frm_Smjestaj form = new frm_Smjestaj(k.KorisnikId, k.IzdavacId);
                         form.Show();

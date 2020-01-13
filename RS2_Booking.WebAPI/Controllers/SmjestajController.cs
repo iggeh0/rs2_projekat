@@ -52,5 +52,10 @@ namespace RS2_Booking.WebAPI.Controllers
         {
             return _smjestajService.Get(search);
         }
+        [HttpGet("{id}")]
+        public SmjestajModel GetById(int id)
+        {
+            return _smjestajService.GetById(id);
+        }
     }
 }

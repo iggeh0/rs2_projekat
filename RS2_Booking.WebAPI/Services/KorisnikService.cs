@@ -257,7 +257,7 @@ namespace RS2_Booking.WebAPI.Services
                         korisnik.Uloga = 1;
                     }
 
-                    if (_context.Izdavac.Find(user.KorisnikId) != null)
+                    if (_context.Izdavac.Where(x=> x.KorisnikId == user.KorisnikId).FirstOrDefault() != null)
                     {
                         korisnik.Uloga = 0;
                     }
@@ -291,7 +291,7 @@ namespace RS2_Booking.WebAPI.Services
                     }
                     else
                     {
-                        k.Uloga = 1;
+                        k.Uloga = 0;
                         k.IzdavacId = Izdavac.IzdavacId;
                         return k;
                     }
@@ -301,7 +301,7 @@ namespace RS2_Booking.WebAPI.Services
                     Korisnik korisnik = _context.Korisnik.Find(k.KorisnikId);
                     if (korisnik.IsAdmin != null && korisnik.IsAdmin == true)
                     {
-                        k.Uloga = 2;
+                        k.Uloga = 1;
                         return k;
                     }
                     else

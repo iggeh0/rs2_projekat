@@ -96,7 +96,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private void btn_Rezervacije_Click(object sender, EventArgs e)
         {
-            frm_IzdavacRezervacija form = new frm_IzdavacRezervacija();
+            frm_IzdavacRezervacija form = new frm_IzdavacRezervacija(_KorisnikId);
             form.Show();
         }
 

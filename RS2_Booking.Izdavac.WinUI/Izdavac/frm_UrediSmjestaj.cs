@@ -19,7 +19,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
         private int _IzdavacId;
         private int _GradId;
         private readonly APIService _SmjestajService = new APIService("smjestaj");
-        private readonly APIService _NoviService = new APIService("smjestaj/getgrad");
+        private readonly APIService _NoviService = new APIService("smjestaj/GetFullSmjestaj");
         SmjestajModel Model = new SmjestajModel();
 
         public frm_UrediSmjestaj(int SmjestajId, int IzdavacId)
@@ -41,6 +41,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
         {
             if (_SmjestajId > 0)
             {
+
                 var S = await _SmjestajService.GetById<SmjestajModel>(_SmjestajId);
 
                 tb_Naziv.Text = S.Naziv;

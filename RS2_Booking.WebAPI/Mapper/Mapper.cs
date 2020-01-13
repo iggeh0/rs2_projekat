@@ -37,6 +37,8 @@ namespace RS2_Booking.WebAPI.Mapper
             CreateMap<UslugaInsertRequest, Usluga>();
             CreateMap<Rezervacija, Model.RezervacijaModel>();
             CreateMap<Model.RezervacijaModel, Rezervacija>();
+            CreateMap<Uplata, Model.UplataModel>();
+            CreateMap<Model.UplataModel, Uplata>();
 
         }
     }

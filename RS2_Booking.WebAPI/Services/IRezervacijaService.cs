@@ -14,7 +14,11 @@ namespace RS2_Booking.WebAPI.Services
         RezervacijaModel GetById(int id);
 
         RezervacijaInsertRequest Insert(RezervacijaInsertRequest model);
-
+        List<RezervacijaModel> GetAllForIzdavac(RezervacijaSearchRequest search);
         void Delete(int id);
+
+        void PromjeniStatus(int RezervacijaId, int StatusId);
+
+        List<UplataModel> DodajUplatu(UplataInsertRequest request);
     }
 }

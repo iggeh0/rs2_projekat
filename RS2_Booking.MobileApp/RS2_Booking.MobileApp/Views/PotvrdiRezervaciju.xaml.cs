@@ -1,5 +1,6 @@
 ﻿using RS2_Booking.MobileApp.ViewModels;
 using RS2_Booking.Model;
+using RS2_Booking.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,22 +18,19 @@ namespace RS2_Booking.MobileApp.Views
     {
         public PotvrdiRezervacijuVM viewmodel = null;
         public SmjestajModel _returnmodel = null;
-        public PotvrdiRezervaciju(RezervacijaModel model, SmjestajModel returnmodelSmjestaj, KorisnikModel returnmodelKorisnik)
+        public PotvrdiRezervaciju(RezervacijaInsertRequest model, SmjestajModel returnmodelSmjestaj, KorisnikModel returnmodelKorisnik)
         {
             InitializeComponent();
             _returnmodel = returnmodelSmjestaj;
             viewmodel = new PotvrdiRezervacijuVM
             {
                 KlijentId = model.KlijentId,
-                SmjestajId = model.SmjestajId,
                 DatumRezervacije = model.DatumRezervacije,
                 RezervacijaDo = model.RezervacijaDo,
                 RezervacijaOd = model.RezervacijaOd,
                 StatusRezervacijeId = 1,
                 BrojDjece = model.BrojDjece,
-                BrojOdraslih = model.BrojOdraslih,
-                AdresaSmjestaja = model.AdresaSmjestaja,
-                NazivSmjestaja = model.NazivSmjestaja,                
+                BrojOdraslih = model.BrojOdraslih               
             };
             viewmodel.Sobe = new ObservableCollection<SobaModel>();
             foreach ( SobaModel s in model.Sobe )

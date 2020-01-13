@@ -27,6 +27,13 @@ namespace RS2_Booking.WebAPI.Controllers
             return _service.Get(search);
         }
 
+        [HttpGet]
+        [Route("GetAllForIzdavac")]
+        public List<RezervacijaModel> GetAllForIzdavac([FromQuery]RezervacijaSearchRequest search)
+        {
+            return _service.GetAllForIzdavac(search);
+        }
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
@@ -43,6 +50,20 @@ namespace RS2_Booking.WebAPI.Controllers
         public virtual RezervacijaInsertRequest Insert(RezervacijaInsertRequest Model)
         {
             return _service.Insert(Model);
+        }
+
+        [HttpPost]
+        [Route("PromjeniStatus")]
+        public void PromjeniStatus(RezervacijaChangeStatusRequest request)
+        {
+            _service.PromjeniStatus(request.RezervacijaId, request.StatusId);
+        }
+
+        [HttpPost]
+        [Route("DodajUplatu")]
+        public List<UplataModel> DodajUplatu(UplataInsertRequest request)
+        {
+            return _service.DodajUplatu(request);
         }
 
         //[HttpPut("{id}")]

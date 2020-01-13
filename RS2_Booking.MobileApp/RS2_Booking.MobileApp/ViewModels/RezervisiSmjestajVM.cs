@@ -41,17 +41,13 @@ namespace RS2_Booking.MobileApp.ViewModels
         {
             if (Rezervacija.Sobe != null && Rezervacija.Sobe.Count > 0)
             {
-                Rezervacija.SmjestajId = SmjestajId;
                 Rezervacija.KlijentId = KlijentId;
                 Rezervacija.DatumRezervacije = DateTime.Now;
                 Rezervacija.RezervacijaDo = DatumDo;
                 Rezervacija.RezervacijaOd = DatumOd;
                 Rezervacija.BrojDjece = BrojDjece;
                 Rezervacija.BrojOdraslih = BrojOdraslih;
-                Rezervacija.Uplate = null;
                 Rezervacija.StatusRezervacijeId = 1;
-                Rezervacija.NazivSmjestaja = SmjestajNaziv;
-                Rezervacija.AdresaSmjestaja = Adresa + ", " + GradNaziv;
             }
             else
                 return null;
@@ -157,7 +153,7 @@ namespace RS2_Booking.MobileApp.ViewModels
         }
 
         public ObservableCollection<SobaModel> ListaSoba { get; set; } = new ObservableCollection<SobaModel>();
-        public RezervacijaModel Rezervacija { get; set; } = new RezervacijaModel();
+        public RezervacijaInsertRequest Rezervacija { get; set; } = new RezervacijaInsertRequest();
         #endregion
 
         #region NazadCommand
