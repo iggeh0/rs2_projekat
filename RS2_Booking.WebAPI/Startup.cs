@@ -53,7 +53,7 @@ namespace RS2_Booking.WebAPI
 
             services.AddMvc(x=> x.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAutoMapper();
-            var connection = @"Server=localhost;Database=IB130107;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=localhost;Database=130107;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<Online_BookingContext>(options => options.UseSqlServer(connection));
 
 

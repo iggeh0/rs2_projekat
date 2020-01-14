@@ -114,6 +114,7 @@ namespace RS2_Booking.MobileApp.ViewModels
         public ObservableCollection<UslugaModel> Usluge { get; set; } = new ObservableCollection<UslugaModel>();
         public ObservableCollection<SobaModel> Sobe { get; set; } = new ObservableCollection<SobaModel>();
 
+        public ObservableCollection<SlikaModel> Slike { get; set; } = new ObservableCollection<SlikaModel>();
 
         #endregion
 
@@ -178,7 +179,13 @@ namespace RS2_Booking.MobileApp.ViewModels
                     Sobe.Add(s);
                 }
             }
-
+            if (Model.ListSlika != null && Model.ListSlika.Count > 0)
+            {
+                foreach (SlikaModel slika in Model.ListSlika)
+                {
+                    Slike.Add(slika);
+                }
+            }
 
         }
 

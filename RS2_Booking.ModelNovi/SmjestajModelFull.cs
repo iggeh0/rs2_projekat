@@ -24,6 +24,8 @@ namespace RS2_Booking.Model
         public List<SobaModel> ListaSoba { get; set; }
         public List<UslugaModel> ListaUsluga { get; set; }
 
+        public List<SlikaModel> ListSlika { get; set; }
+
         public string Response { get; set; }
     }
 }

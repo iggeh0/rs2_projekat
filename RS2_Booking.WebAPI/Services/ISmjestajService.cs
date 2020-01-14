@@ -19,5 +19,7 @@ namespace RS2_Booking.WebAPI.Services
 
         SlikaModel InsertImage(SlikaModel model);
         List<SlikaModel> GetImages(int smjestajId);
+
+        IzvjestajModel GetIzvjestaj(int IzdavacId);
     }
 }

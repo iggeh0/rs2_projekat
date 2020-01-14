@@ -4,11 +4,17 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ViewModels="clr-namespace:RS2_Booking.MobileApp.ViewModels"
+             xmlns:converters="clr-namespace:RS2_Booking.MobileApp.Converters"
              mc:Ignorable="d"
              x:Class="RS2_Booking.MobileApp.Views.SmjestajViewPage">
     <ContentPage.BindingContext>
         <ViewModels:SmjestajVM></ViewModels:SmjestajVM>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BackgroundColor="DodgerBlue" Spacing="0">
             <Label Text="{Binding Naziv}" HorizontalOptions="Center" TextColor="White" FontSize="50" FontAttributes="Bold"></Label>
@@ -103,6 +109,17 @@
                                 <Label TextColor="White" Grid.Column="1" Text="{Binding BrojKreveta}"/>
                                 <Label TextColor="White" Grid.Column="2" Text="{Binding VelicinaSobe}"/>
                             </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView ItemsSource="{Binding Slike}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <FlexLayout Padding="10">
+                                <Image Source="{Binding SlikaFile, Converter={StaticResource imgConv}}" HeightRequest="131" WidthRequest="200"></Image>
+                            </FlexLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

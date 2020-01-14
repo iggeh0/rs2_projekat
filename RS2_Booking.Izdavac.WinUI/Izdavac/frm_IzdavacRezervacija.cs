@@ -103,5 +103,10 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

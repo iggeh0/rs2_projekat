@@ -3,6 +3,8 @@ using RS2_Booking.Model;
 using RS2_Booking.Model.Requests;
 using RS2_Booking.WebAPI.Exceptions;
 using RS2_Booking.WebAPI.Models;
+using RS2_Booking.Model.Report;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +69,15 @@ namespace RS2_Booking.WebAPI.Services
                                         KorisnickoIme = korisnik.KorisnickoIme
                                     }).FirstOrDefault();
                 model.IzdavacIme = k.KorisnickoIme;
+                model.ListSlika = new List<SlikaModel>();
+                foreach ( Slika Slika in _context.Slika.Where(x=> x.SmjestajId == id).ToList())
+                {
+                    SlikaModel slikaModel = new SlikaModel();
+                    slikaModel.SmjestajId = id;
+                    slikaModel.SlikaFile = Slika.SlikaFile;
+                    model.ListSlika.Add(slikaModel);
+                }
+
                 return model;
             }
             SmjestajModelFull PrazanModel = new SmjestajModelFull
@@ -207,6 +218,72 @@ namespace RS2_Booking.WebAPI.Services
                 }
             }
             return Lista;
+        }
+
+        public IzvjestajModel GetIzvjestaj(int IzdavacId)
+        {
+            IzvjestajModel Izvjestaj = new IzvjestajModel
+            {
+                SmjestajDioVar = new List<SmjestajDio>(),
+                KorisniciDioVar = new List<KorisniciDio>()
+            };
+            List<Smjestaj> Smjestaji = _context.Smjestaj.Where(x => x.IzdavacId == IzdavacId).ToList();
+            List<Soba> Sobe = _context.Soba.Where(x => Smjestaji.Exists(s => s.SmjestajId == x.SmjestajId)).ToList();
+
+            List<RezervacijaSoba> RS = _context.RezervacijaSoba.Where(x => Sobe.Exists(s => s.SobaId == x.SobaId)).ToList();
+            List<Rezervacija> Rezervacije = _context.Rezervacija.Where(x => RS.Exists(s => s.RezervacijaId == x.RezervacijaId)).ToList();
+            List<Klijent> Klijenti = _context.Klijent.Where(x => Rezervacije.Exists(s => s.KlijentId == x.KlijentId)).ToList();
+            List<Korisnik> Korisnici = _context.Korisnik.Where(x => Klijenti.Exists(s => s.KorisnikId == x.KorisnikId)).ToList();
+
+
+
+            foreach (Smjestaj s in Smjestaji)
+            {
+                SmjestajDio sd = new SmjestajDio();
+                sd.NazivSmjestaja = s.Naziv;
+                sd.BrojRezervacija = RS.Where(x => Sobe.Any(so => so.SobaId == x.SobaId && so.SmjestajId == s.SmjestajId)).Count();
+                List<Soba> SobeSmjestaj = Sobe.Where(x => RS.Exists(so => so.SobaId == x.SobaId)).ToList();
+                List<RezervacijaSoba> rs1 = RS.Where(x => SobeSmjestaj.Exists(so => x.SobaId == so.SobaId)).ToList();
+                double UkupnaCijena = 0;
+                double UkupnaCijenaRezervacije = 0;
+                foreach ( Rezervacija r in Rezervacije.Where(x=> rs1.Exists(y=> y.RezervacijaId == x.RezervacijaId)).ToList())
+                {
+                    UkupnaCijena = 0;
+                    UkupnaCijenaRezervacije = 0;
+                    DateTime Pocetni = r.RezervacijaOd;
+                    DateTime Krajnji = r.RezervacijaDo;
+
+                    int Dani = (Krajnji - Pocetni).Days;
+                   
+                    foreach (Soba S in Sobe.Where(x=> rs1.Exists(y=> y.SobaId == x.SobaId)).ToList())
+                    {
+                        UkupnaCijenaRezervacije += S.Cijena * Dani;
+                    }
+                    UkupnaCijena += UkupnaCijenaRezervacije;
+                    sd.Zarada = UkupnaCijena;
+                    Izvjestaj.SmjestajDioVar.Add(sd);
+                }
+
+            }
+
+            Izvjestaj.SmjestajDioVar.Sort((x, y) => x.Zarada.CompareTo(y.Zarada));
+
+
+            foreach ( Korisnik k in Korisnici )
+            {
+                KorisniciDio kd = new KorisniciDio();
+                kd.ImePrezime = k.Ime + " " + k.Prezime;
+                kd.KorisnickoIme = k.KorisnickoIme;
+                Klijent kl = Klijenti.Where(x => x.KorisnikId == k.KorisnikId).FirstOrDefault();
+                kd.BrojRezervacija = Rezervacije.Where(x => x.KlijentId == kl.KlijentId).Count();
+
+                Izvjestaj.KorisniciDioVar.Add(kd);
+            }
+
+            Izvjestaj.KorisniciDioVar = Izvjestaj.KorisniciDioVar.OrderBy(x => x.BrojRezervacija).ToList();
+            Izvjestaj.KorisniciDioVar.Sort((x, y) => x.BrojRezervacija.CompareTo(y.BrojRezervacija));
+            return Izvjestaj;
+
         }
     }
 }

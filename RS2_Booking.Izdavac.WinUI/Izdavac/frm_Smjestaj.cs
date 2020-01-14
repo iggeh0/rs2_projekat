@@ -11,6 +11,7 @@ using Flurl.Http;
 using Flurl;
 using RS2_Booking.Model;
 using RS2_Booking.Model.Requests;
+using RS2_Booking.Izdavac;
 using Newtonsoft.Json;
 
 namespace RS2_Booking.Izdavac.WinUI.Smjestaj
@@ -85,7 +86,8 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
         private void btn_Report_Click(object sender, EventArgs e)
         {
-
+            Izdavac.frm_Izvjestaji form = new Izdavac.frm_Izvjestaji(_IzdavacId);
+           form.Show();
         }
 
         private void btn_UrediProfil_Click(object sender, EventArgs e)
