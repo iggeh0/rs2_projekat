@@ -103,7 +103,7 @@ namespace RS2_Booking.Izdavac.WinUI
         {
             try
             {
-                var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
+                var url = $"{Properties.Settings.Default.APIUrl}{_route}/{id}";
 
                 return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
             }

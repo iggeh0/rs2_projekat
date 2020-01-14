@@ -66,6 +66,13 @@ namespace RS2_Booking.WebAPI.Controllers
             return _service.DodajUplatu(request);
         }
 
+        [HttpGet]
+        [Route("GetUplate")]
+        public List<UplataModel> GetUplate([FromQuery]UplataModel search)
+        {
+            return _service.GetUplate(search);
+        }
+
         //[HttpPut("{id}")]
         //public TModel Update(TModel Model, int id)
         //{

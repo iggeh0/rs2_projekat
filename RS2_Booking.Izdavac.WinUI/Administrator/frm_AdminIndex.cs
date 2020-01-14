@@ -59,5 +59,11 @@ namespace RS2_Booking.Izdavac.WinUI.Administrator
         {
             Close();
         }
+
+        private void btn_Uplate_Click(object sender, EventArgs e)
+        {
+            frm_AdminUplate form = new frm_AdminUplate();
+            form.Show();
+        }
     }
 }

@@ -55,6 +55,7 @@
             this.btn_Otkazi = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_UplataIznos = new System.Windows.Forms.TextBox();
+            this.btn_Zavrsi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Uplate)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -309,11 +310,23 @@
             this.tb_UplataIznos.Size = new System.Drawing.Size(100, 20);
             this.tb_UplataIznos.TabIndex = 24;
             // 
+            // btn_Zavrsi
+            // 
+            this.btn_Zavrsi.Location = new System.Drawing.Point(36, 217);
+            this.btn_Zavrsi.Name = "btn_Zavrsi";
+            this.btn_Zavrsi.Size = new System.Drawing.Size(75, 23);
+            this.btn_Zavrsi.TabIndex = 25;
+            this.btn_Zavrsi.Text = "Zavrsi";
+            this.btn_Zavrsi.UseVisualStyleBackColor = true;
+            this.btn_Zavrsi.Visible = false;
+            this.btn_Zavrsi.Click += new System.EventHandler(this.btn_Zavrsi_Click);
+            // 
             // frm_IzdavacRezervacijaDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_Zavrsi);
             this.Controls.Add(this.tb_UplataIznos);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_Otkazi);
@@ -380,5 +393,6 @@
         private System.Windows.Forms.Button btn_Otkazi;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_UplataIznos;
+        private System.Windows.Forms.Button btn_Zavrsi;
     }
 }

@@ -37,6 +37,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             if ( _StatusRezervacijeId == 1 )
             {
                 btn_Prihvati.Visible = true;
+
             }
             else if ( _StatusRezervacijeId == 2 )
             {
@@ -52,6 +53,14 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
 
             lbl_DatumDo.Text = Rezervacija.RezervacijaOdShort;
             lbl_DatumOd.Text = Rezervacija.RezervacijaDoShort;
+
+            if ( DateTime.Now >= Convert.ToDateTime(Rezervacija.RezervacijaDoShort) )
+            {
+                btn_Otkazi.Visible = false;
+                btn_Prihvati.Visible = false;
+                btn_Zavrsi.Visible = true;
+            }
+
             lbl_DatumKreiranja.Text = Rezervacija.DatumRezervacijeShort;
             lbl_Djeca.Text = Rezervacija.BrojDjece.ToString();
             lbl_Odrasli.Text = Rezervacija.BrojOdraslih.ToString();
@@ -119,6 +128,15 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
                 lbl_Ukupno.Text = _Ukupno.ToString();
 
             }
+        }
+
+        private async void btn_Zavrsi_Click(object sender, EventArgs e)
+        {
+            RezervacijaChangeStatusRequest request = new RezervacijaChangeStatusRequest();
+            request.RezervacijaId = _RezervacijaId;
+            request.StatusId = 1002;
+            await _rezervacijaStatusService.Insert<RezervacijaChangeStatusRequest>(request);
+            btn_Zavrsi.Visible = false;
         }
     }
 }

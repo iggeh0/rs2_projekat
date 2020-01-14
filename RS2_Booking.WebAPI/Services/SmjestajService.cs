@@ -261,8 +261,8 @@ namespace RS2_Booking.WebAPI.Services
                     }
                     UkupnaCijena += UkupnaCijenaRezervacije;
                     sd.Zarada = UkupnaCijena;
-                    Izvjestaj.SmjestajDioVar.Add(sd);
                 }
+                Izvjestaj.SmjestajDioVar.Add(sd);
 
             }
 

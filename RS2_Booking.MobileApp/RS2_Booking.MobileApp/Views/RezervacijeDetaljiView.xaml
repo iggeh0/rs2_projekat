@@ -15,7 +15,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Datum rezervacije: "/>
-                        <Span Text="{Binding DatumRezervacije}" />
+                        <Span Text="{Binding DatumRezervacijeShort}" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -23,7 +23,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Početak rezervacije: "/>
-                        <Span Text="{Binding RezervacijaOd}" />
+                        <Span Text="{Binding RezervacijaOdShort}" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -31,7 +31,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Završetak rezervacije: "/>
-                        <Span Text="{Binding RezervacijaDo}" />
+                        <Span Text="{Binding RezervacijaDoShort}" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -102,6 +102,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
+            <Button Text="Otkazi" IsVisible="{Binding Aktivna}" Command="{Binding OtkaziCommand}"></Button>
             <Button Text="Nazad" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>

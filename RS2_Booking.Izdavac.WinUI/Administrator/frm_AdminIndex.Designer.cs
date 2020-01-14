@@ -85,6 +85,7 @@
             this.btn_Uplate.TabIndex = 4;
             this.btn_Uplate.Text = "Upravljanje Uplatama";
             this.btn_Uplate.UseVisualStyleBackColor = true;
+            this.btn_Uplate.Click += new System.EventHandler(this.btn_Uplate_Click);
             // 
             // btn_UrediProfil
             // 

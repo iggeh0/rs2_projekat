@@ -215,5 +215,34 @@ namespace RS2_Booking.WebAPI.Services
             }
             return new string(chars);
         }
+
+        public List<UplataModel> GetUplate(UplataModel request)
+        {
+            var query = _context.Uplata.AsQueryable();
+            if (request.RezervacijaId > 0)
+            {
+                query = query.Where(x => x.RezervacijaId == request.RezervacijaId);
+            }
+            if (!(string.IsNullOrWhiteSpace(request.SifraUplate)))
+            {
+                query = query.Where(x => x.SifraUplate.Contains(request.SifraUplate));
+            }     
+            var lista = query.ToList();
+
+            List<UplataModel> novalista = new List<UplataModel>();
+            foreach (Uplata u in lista)
+            {
+                UplataModel un = new UplataModel
+                {
+                    DatumUplate = u.DatumUplate,
+                    Iznos = u.Iznos,
+                    RezervacijaId = u.RezervacijaId,
+                    SifraUplate = u.SifraUplate,
+                    UplataId = u.UplataId
+                };
+            }
+
+            return novalista;
+        }
     }
 }

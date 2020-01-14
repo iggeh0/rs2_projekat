@@ -77,6 +77,7 @@ namespace RS2_Booking.WebAPI.Services
             {
                 Soba s = _mapper.Map<Soba>(model);
                 _context.Soba.Add(s);
+                _context.SaveChanges();
             }
             return model;
         }

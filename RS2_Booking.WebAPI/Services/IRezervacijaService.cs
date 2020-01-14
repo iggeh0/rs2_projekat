@@ -20,5 +20,7 @@ namespace RS2_Booking.WebAPI.Services
         void PromjeniStatus(int RezervacijaId, int StatusId);
 
         List<UplataModel> DodajUplatu(UplataInsertRequest request);
+
+        List<UplataModel> GetUplate(UplataModel request);
     }
 }
