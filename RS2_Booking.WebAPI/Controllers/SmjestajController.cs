@@ -79,5 +79,12 @@ namespace RS2_Booking.WebAPI.Controllers
         {
             return _smjestajService.GetIzvjestaj(id);
         }
+
+        [HttpPost]
+        [Route("OcjeniSmjestaj")]
+        public OcjeniSmjestajRequest OcjeniSmjestaj(OcjeniSmjestajRequest request)
+        {
+            return _smjestajService.Ocjeni(request);
+        }
     }
 }

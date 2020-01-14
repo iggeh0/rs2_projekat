@@ -21,5 +21,6 @@ namespace RS2_Booking.WebAPI.Services
         List<SlikaModel> GetImages(int smjestajId);
 
         IzvjestajModel GetIzvjestaj(int IzdavacId);
+        OcjeniSmjestajRequest Ocjeni(OcjeniSmjestajRequest request);
     }
 }

@@ -12,6 +12,9 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="Odaberite način sortiranja: "></Label>
+            <Picker ItemsSource="{Binding Sorteri}" SelectedItem="{Binding SelectedSort}"></Picker>
+            <Label Text="Odaberite željeni grad: "></Label>
             <Picker ItemsSource="{Binding ListaGradova}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding SelectedGrad}"></Picker>
             <ListView ItemsSource="{Binding ListaSmjestaja}" ItemTapped="ListView_ItemTapped" SelectedItem="0">
                 <ListView.ItemTemplate>
@@ -26,6 +29,28 @@
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
+                                <Label IsVisible="{Binding Distanca.HasValue}"  LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="13" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span>Udaljenost od centra: </Span>
+                                            <Span Text="{Binding Distanca}"></Span>
+                                            <Span Text=" km"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label IsVisible="{Binding Zvijezde.HasValue}"  LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="13" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span>Ocjena korisnika:  </Span>
+                                            <Span Text="{Binding Zvijezde}"></Span>
+                                            <Span Text="/5"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

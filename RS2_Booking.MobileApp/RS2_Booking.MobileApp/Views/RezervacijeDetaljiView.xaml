@@ -103,6 +103,11 @@
                 </Label.FormattedText>
             </Label>
             <Button Text="Otkazi" IsVisible="{Binding Aktivna}" Command="{Binding OtkaziCommand}"></Button>
+            <Label Text="Ocjeni smještaj: " />
+            <Picker ItemsSource="{Binding Ocjene}" SelectedItem="{Binding OdabranaOcjena}"></Picker>
+            <Label Text="Ostavite komentar(ako želite)" />
+            <Entry Text="{Binding Komentar}"></Entry>
+            <Button Text="Ocjeni" Command="{Binding OcjeniCommand}"></Button>
             <Button Text="Nazad" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>

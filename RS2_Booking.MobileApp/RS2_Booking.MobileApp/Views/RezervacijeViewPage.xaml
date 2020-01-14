@@ -18,7 +18,7 @@
                             <StackLayout>
                                 <Button Text="Detalji rezervacije" TextColor="White" CommandParameter="{Binding RezervacijaId}" Clicked="RezervacijaDetalji" BackgroundColor="DodgerBlue" >
                                 </Button>
-                                <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                                <Label Margin="10,5,0,5" FontSize="Micro" TextColor="White">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Datum rezervacije: "/>
@@ -26,7 +26,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                                <Label Margin="10,5,0,5" FontSize="Micro" TextColor="White">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Početak rezervacije: "/>
@@ -34,7 +34,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                                <Label Margin="10,5,0,5" FontSize="Micro" TextColor="White">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Završetak rezervacije: "/>
@@ -42,7 +42,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                                <Label Margin="10,5,0,5" FontSize="Micro" TextColor="White">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Naziv smještaja: "/>
@@ -50,7 +50,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                                <Label Margin="10,5,0,5" FontSize="Micro" TextColor="White">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Adresa smještaja: "/>
@@ -58,7 +58,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
+                                <Label Margin="10,5,0,5" FontSize="Micro" TextColor="White">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Status rezervacije: "/>

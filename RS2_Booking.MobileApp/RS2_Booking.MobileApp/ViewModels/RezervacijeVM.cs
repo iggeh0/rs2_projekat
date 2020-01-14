@@ -27,6 +27,7 @@ namespace RS2_Booking.MobileApp.ViewModels
 
             if ( lista.Count > 0 )
             {
+                lista.Sort((x, y) => x.RezervacijaId.CompareTo(y.RezervacijaId));
                 foreach (RezervacijaModel r in lista)
                     Rezervacije.Add(r);
             }

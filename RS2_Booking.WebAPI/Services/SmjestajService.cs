@@ -285,5 +285,34 @@ namespace RS2_Booking.WebAPI.Services
             return Izvjestaj;
 
         }
+
+        public OcjeniSmjestajRequest Ocjeni(OcjeniSmjestajRequest request)
+        {
+            Ocjena o = new Ocjena
+            {
+                Iznos = request.Ocjena,
+                KlijentId = request.KlijentId,
+                Komentar = request.Komentar,
+                SmjestajId = request.SmjestajId
+            };
+
+            Smjestaj s = _context.Smjestaj.Find(request.SmjestajId);
+            double Prosjek = new double();
+            List<Ocjena> Ocjene = _context.Ocjena.Where(x => x.SmjestajId == s.SmjestajId).ToList();
+            if ( Ocjene != null && Ocjene.Count > 0 )
+            {
+               Ocjene.Add(o);
+               Prosjek = Ocjene.Average(x => x.Iznos);
+                s.Zvijezde = Convert.ToInt32(Prosjek);
+            }
+            else
+            {
+                s.Zvijezde = request.Ocjena;
+            }
+            _context.Ocjena.Add(o);
+            _context.SaveChanges();
+            return request;
+
+        }
     }
 }
