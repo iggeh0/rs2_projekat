@@ -26,6 +26,8 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
         {
             InitializeComponent();
             _RezervacijaId = RezervacijaId;
+            dgv_Uplate.AutoGenerateColumns = false;
+            dgv_Sobe.AutoGenerateColumns = false;
         }
 
         private async void frm_IzdavacRezervacijaDetalji_Load(object sender, EventArgs e)
@@ -96,6 +98,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
             request.StatusId = 2;
             await _rezervacijaStatusService.Insert<RezervacijaChangeStatusRequest>(request);
             btn_Prihvati.Visible = false;
+            lbl_Status.Text = "Aktivna";
         }
 
         private async void btn_Otkazi_Click(object sender, EventArgs e)

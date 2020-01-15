@@ -10,6 +10,7 @@
         <ViewModels:RezervacijaDetaljiVM></ViewModels:RezervacijaDetaljiVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout BackgroundColor="DodgerBlue">
             <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
                 <Label.FormattedText>
@@ -73,7 +74,7 @@
                 <Label  Grid.Column="1" Grid.Row="0" Text="Broj Kreveta" TextColor="White"/>
                 <Label  Grid.Column="2" Grid.Row="0" Text="Broj Kvadrata" TextColor="White"/>
             </Grid>
-            <ListView ItemsSource="{Binding Sobe}" BackgroundColor="CadetBlue" Margin="0,0,0,5">
+            <ListView ItemsSource="{Binding Sobe}" BackgroundColor="CadetBlue" Margin="0,0,0,5" HeightRequest="{Binding VisinaSobe}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -94,6 +95,41 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Label Margin="10,5,0,5" Text="Lista uplata:" FontSize="Medium" TextColor="White"></Label>
+            <Grid BackgroundColor="CadetBlue" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                </Grid.ColumnDefinitions>
+                <Label  Grid.Column="0" Grid.Row="0" Text="Šifra uplate" TextColor="White"/>
+                <Label  Grid.Column="1" Grid.Row="0" Text="Datum uplate" TextColor="White"/>
+                <Label  Grid.Column="2" Grid.Row="0" Text="Iznos uplate" TextColor="White"/>
+            </Grid>
+            <ListView ItemsSource="{Binding Uplate}" BackgroundColor="CadetBlue" Margin="0,0,0,5" HeightRequest="{Binding VisinaUplate}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25*" />
+                                    <ColumnDefinition Width="25*" />
+                                    <ColumnDefinition Width="25*" />
+                                </Grid.ColumnDefinitions>
+                                <Label TextColor="White" Grid.Column="0" Text="{Binding SifraUplate}" />
+                                <Label TextColor="White" Grid.Column="1" Text="{Binding DatumUplate}"/>
+                                <Label TextColor="White" Grid.Column="2" Text="{Binding Iznos}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
                 <Label.FormattedText>
                     <FormattedString>
@@ -104,11 +140,12 @@
             </Label>
             <Button Text="Otkazi" IsVisible="{Binding Aktivna}" Command="{Binding OtkaziCommand}"></Button>
             <Label Text="Ocjeni smještaj: " />
-            <Picker ItemsSource="{Binding Ocjene}" SelectedItem="{Binding OdabranaOcjena}"></Picker>
+            <Picker ItemsSource="{Binding Ocjene}" SelectedItem="{Binding OdabranaOcjena}" WidthRequest="30"></Picker>
             <Label Text="Ostavite komentar(ako želite)" />
             <Entry Text="{Binding Komentar}"></Entry>
             <Button Text="Ocjeni" Command="{Binding OcjeniCommand}"></Button>
             <Button Text="Nazad" Clicked="Button_Clicked"></Button>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -18,7 +18,7 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="DodgerBlue" Spacing="0">
             <Label Text="{Binding Naziv}" HorizontalOptions="Center" TextColor="White" FontSize="50" FontAttributes="Bold"></Label>
-            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+            <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Adresa: "></Span>
@@ -28,7 +28,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+            <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Udaljenost od centra: "/>
@@ -37,7 +37,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+            <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Ime izdavača: "/>
@@ -48,7 +48,7 @@
                     <TapGestureRecognizer Command="{Binding IzdavacCommand}" NumberOfTapsRequired="1"></TapGestureRecognizer>
                 </Label.GestureRecognizers>
             </Label>
-            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+            <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Kontakt Telefon: "/>
@@ -56,7 +56,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label Margin="10,5,0,5" FontSize="Medium" TextColor="White">
+            <Label Margin="10,5,0,5" FontSize="Small" TextColor="White">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Kontakt Email: "/>
@@ -64,7 +64,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label Text="Usluge: " TextColor="White"  Margin="10,5,0,5" FontAttributes="Bold"></Label>
+            <Label Text="Usluge: " TextColor="White"  Margin="10,5,0,5" FontAttributes="Bold" FontSize="Small"></Label>
             <ListView ItemsSource="{Binding Usluge}" BackgroundColor="CadetBlue" Margin="0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -72,7 +72,7 @@
                                 <StackLayout Padding="10">
                                 <Label Text="{Binding Naziv}" TextColor="White"
                                 LineBreakMode="NoWrap"
-                                FontSize="16" />
+                                FontSize="Small" />
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

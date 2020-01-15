@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_Sobe = new System.Windows.Forms.DataGridView();
             this.SobaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +48,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgv_Sobe);
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(856, 273);
@@ -69,6 +71,14 @@
             this.VlastitaKupoanica,
             this.Izmjeni,
             this.Ukloni});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Sobe.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_Sobe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Sobe.Location = new System.Drawing.Point(3, 16);
             this.dgv_Sobe.MultiSelect = false;
@@ -139,29 +149,38 @@
             // 
             // btn_DodajSobu
             // 
+            this.btn_DodajSobu.BackColor = System.Drawing.Color.Green;
+            this.btn_DodajSobu.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btn_DodajSobu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_DodajSobu.ForeColor = System.Drawing.Color.White;
             this.btn_DodajSobu.Location = new System.Drawing.Point(15, 291);
             this.btn_DodajSobu.Name = "btn_DodajSobu";
             this.btn_DodajSobu.Size = new System.Drawing.Size(101, 38);
             this.btn_DodajSobu.TabIndex = 1;
             this.btn_DodajSobu.Text = "Dodaj novu sobu";
-            this.btn_DodajSobu.UseVisualStyleBackColor = true;
+            this.btn_DodajSobu.UseVisualStyleBackColor = false;
             this.btn_DodajSobu.Click += new System.EventHandler(this.btn_DodajSobu_Click);
             // 
             // btn_Nazad
             // 
+            this.btn_Nazad.BackColor = System.Drawing.Color.Red;
             this.btn_Nazad.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_Nazad.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Nazad.ForeColor = System.Drawing.Color.White;
             this.btn_Nazad.Location = new System.Drawing.Point(767, 291);
             this.btn_Nazad.Name = "btn_Nazad";
             this.btn_Nazad.Size = new System.Drawing.Size(101, 38);
             this.btn_Nazad.TabIndex = 2;
             this.btn_Nazad.Text = "Nazad";
-            this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.UseVisualStyleBackColor = false;
             this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
             // frm_SmjestajSobe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.CancelButton = this.btn_Nazad;
             this.ClientSize = new System.Drawing.Size(887, 338);
             this.Controls.Add(this.btn_Nazad);

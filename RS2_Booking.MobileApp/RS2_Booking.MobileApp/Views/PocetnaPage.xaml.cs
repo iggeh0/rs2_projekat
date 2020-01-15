@@ -16,7 +16,6 @@ namespace RS2_Booking.MobileApp.Views
     public partial class PocetnaPage : ContentPage
     {
         PocetnaVM Model = null;
-        public KorisnikModel _KorisnikModel = null;
         
         public PocetnaPage(KorisnikModel k)
         {
@@ -25,7 +24,6 @@ namespace RS2_Booking.MobileApp.Views
             {
                 sacuvani = k
             };
-            _KorisnikModel = k;
             BindingContext = Model;
           
         }
@@ -42,14 +40,8 @@ namespace RS2_Booking.MobileApp.Views
 
             PropertyInfo pi = Odabrani.GetType().GetProperty("SmjestajId");
             int id = Convert.ToInt32(pi.GetValue(Odabrani,null).ToString());
-            Application.Current.MainPage = new SmjestajViewPage(id, _KorisnikModel);
+            Application.Current.MainPage = new SmjestajViewPage(id, Model.sacuvani);
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            API_Service_Mobile.Username = "";
-            API_Service_Mobile.Password = "";
-            Application.Current.MainPage = new LoginPage();
-        }
     }
 }

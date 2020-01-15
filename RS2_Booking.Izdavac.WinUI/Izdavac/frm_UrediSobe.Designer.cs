@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_Nazad = new System.Windows.Forms.Button();
             this.btn_Snimi = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -62,28 +63,37 @@
             // 
             // btn_Nazad
             // 
+            this.btn_Nazad.BackColor = System.Drawing.Color.Red;
             this.btn_Nazad.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_Nazad.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Nazad.ForeColor = System.Drawing.Color.White;
             this.btn_Nazad.Location = new System.Drawing.Point(302, 353);
             this.btn_Nazad.Name = "btn_Nazad";
             this.btn_Nazad.Size = new System.Drawing.Size(75, 23);
             this.btn_Nazad.TabIndex = 24;
             this.btn_Nazad.Text = "Nazad";
-            this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.UseVisualStyleBackColor = false;
             this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
             // btn_Snimi
             // 
+            this.btn_Snimi.BackColor = System.Drawing.Color.Olive;
+            this.btn_Snimi.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
+            this.btn_Snimi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Snimi.ForeColor = System.Drawing.Color.White;
             this.btn_Snimi.Location = new System.Drawing.Point(302, 324);
             this.btn_Snimi.Name = "btn_Snimi";
             this.btn_Snimi.Size = new System.Drawing.Size(75, 23);
             this.btn_Snimi.TabIndex = 23;
             this.btn_Snimi.Text = "Snimi";
-            this.btn_Snimi.UseVisualStyleBackColor = true;
+            this.btn_Snimi.UseVisualStyleBackColor = false;
             this.btn_Snimi.Click += new System.EventHandler(this.btn_Snimi_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(38, 114);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 13);
@@ -93,6 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(40, 227);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
@@ -102,6 +113,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(37, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 13);
@@ -111,6 +123,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(37, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
@@ -120,6 +133,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(38, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
@@ -129,6 +143,7 @@
             // cb_Kupaonica
             // 
             this.cb_Kupaonica.AutoSize = true;
+            this.cb_Kupaonica.ForeColor = System.Drawing.Color.White;
             this.cb_Kupaonica.Location = new System.Drawing.Point(41, 179);
             this.cb_Kupaonica.Name = "cb_Kupaonica";
             this.cb_Kupaonica.Size = new System.Drawing.Size(113, 17);
@@ -167,6 +182,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgv_Inventar);
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(267, 38);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(421, 151);
@@ -184,6 +200,14 @@
             this.Naziv,
             this.Ukloni,
             this.InventarSobaId});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Inventar.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_Inventar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Inventar.Location = new System.Drawing.Point(3, 16);
             this.dgv_Inventar.Name = "dgv_Inventar";
@@ -226,6 +250,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(278, 206);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(99, 13);
@@ -241,12 +266,16 @@
             // 
             // btn_Inventar
             // 
+            this.btn_Inventar.BackColor = System.Drawing.Color.Green;
+            this.btn_Inventar.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btn_Inventar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Inventar.ForeColor = System.Drawing.Color.White;
             this.btn_Inventar.Location = new System.Drawing.Point(390, 232);
             this.btn_Inventar.Name = "btn_Inventar";
             this.btn_Inventar.Size = new System.Drawing.Size(100, 30);
             this.btn_Inventar.TabIndex = 29;
             this.btn_Inventar.Text = "Dodaj Inventar";
-            this.btn_Inventar.UseVisualStyleBackColor = true;
+            this.btn_Inventar.UseVisualStyleBackColor = false;
             this.btn_Inventar.Click += new System.EventHandler(this.btn_Inventar_Click);
             // 
             // tb_Opis
@@ -327,6 +356,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.CancelButton = this.btn_Nazad;
             this.ClientSize = new System.Drawing.Size(698, 379);
             this.Controls.Add(this.lbl_inventarError);

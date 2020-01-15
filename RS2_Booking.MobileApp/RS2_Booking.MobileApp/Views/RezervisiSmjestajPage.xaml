@@ -11,21 +11,21 @@
         <ViewModels:RezervisiSmjestajVM></ViewModels:RezervisiSmjestajVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Rezervacija" FontSize="Title" HorizontalOptions="Center"></Label>
-            <Label Text="Početni datum:"></Label>
-            <DatePicker MinimumDate="{Binding Source={x:Static sys:DateTime.Now}}" Date="{Binding DatumOd}"></DatePicker>
-            <Label Text="Datum odlaska:"></Label>
-            <DatePicker MinimumDate="{Binding Source={x:Static sys:DateTime.Now}}" Date="{Binding DatumDo}"></DatePicker>
-            <Label Text="Broj soba"></Label>
-            <Entry Text="{Binding BrojSoba}"></Entry>
-            <Label Text="Broj odraslih osoba"></Label>
-            <Entry Text="{Binding BrojOdraslih}"></Entry>
-            <Label Text="Broj djece"></Label>
-            <Entry Text="{Binding BrojDjece}"></Entry>
-            <Button Text="Provjeri dostupnost" Clicked="Button_Clicked"></Button>
-            <Button Text="Nazad" Command="{Binding NazadCommand}"></Button>
-            <StackLayout x:Name="NekiId" IsVisible="False">
+        <StackLayout BackgroundColor="DodgerBlue">
+            <Label TextColor="White" Text="Rezervacija" FontSize="Title" HorizontalOptions="Center"></Label>
+            <Label TextColor="White" Text="Početni datum:"></Label>
+            <DatePicker TextColor="White" MinimumDate="{Binding Source={x:Static sys:DateTime.Now}}" Date="{Binding DatumOd}"></DatePicker>
+            <Label TextColor="White" Text="Datum odlaska:"></Label>
+            <DatePicker TextColor="White" MinimumDate="{Binding Source={x:Static sys:DateTime.Now}}" Date="{Binding DatumDo}"></DatePicker>
+            <Label TextColor="White" Text="Broj soba"></Label>
+            <Entry BackgroundColor="DodgerBlue" TextColor="White" Text="{Binding BrojSoba}"></Entry>
+            <Label TextColor="White" Text="Broj odraslih osoba"></Label>
+            <Entry BackgroundColor="DodgerBlue" TextColor="White" Text="{Binding BrojOdraslih}"></Entry>
+            <Label TextColor="White" Text="Broj djece"></Label>
+            <Entry BackgroundColor="DodgerBlue" TextColor="White" Text="{Binding BrojDjece}"></Entry>
+            <Button TextColor="White" Text="Provjeri dostupnost" Clicked="Button_Clicked" BackgroundColor="Accent"></Button>
+            <Button TextColor="White" Text="Nazad" Command="{Binding NazadCommand}" BackgroundColor="PaleVioletRed"></Button>
+            <StackLayout x:Name="NekiId" IsVisible="False" BackgroundColor="DodgerBlue">
                 <Label Text="Pronađene sobe: " TextColor="White"  Margin="10,5,0,5" FontAttributes="Bold"></Label>
                 <Grid BackgroundColor="CadetBlue" Margin="0">
                     <Grid.RowDefinitions>
@@ -48,7 +48,7 @@
                             <ViewCell>
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="25*" />
@@ -66,7 +66,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Text="Završi rezervisanje" Command="{Binding KompletirajCommand}"></Button>
+                <Button Text="Završi rezervisanje" Command="{Binding KompletirajCommand}" BackgroundColor="Green"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

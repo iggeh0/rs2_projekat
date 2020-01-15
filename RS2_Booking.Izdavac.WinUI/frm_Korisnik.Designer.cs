@@ -56,6 +56,7 @@
             // 
             this.lbl_Ime.AutoSize = true;
             this.lbl_Ime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Ime.ForeColor = System.Drawing.Color.White;
             this.lbl_Ime.Location = new System.Drawing.Point(439, 40);
             this.lbl_Ime.Name = "lbl_Ime";
             this.lbl_Ime.Size = new System.Drawing.Size(36, 20);
@@ -82,6 +83,7 @@
             // 
             this.lbl_Prezime.AutoSize = true;
             this.lbl_Prezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Prezime.ForeColor = System.Drawing.Color.White;
             this.lbl_Prezime.Location = new System.Drawing.Point(418, 94);
             this.lbl_Prezime.Name = "lbl_Prezime";
             this.lbl_Prezime.Size = new System.Drawing.Size(66, 20);
@@ -100,6 +102,7 @@
             // 
             this.lbl_JMBG.AutoSize = true;
             this.lbl_JMBG.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_JMBG.ForeColor = System.Drawing.Color.White;
             this.lbl_JMBG.Location = new System.Drawing.Point(421, 152);
             this.lbl_JMBG.Name = "lbl_JMBG";
             this.lbl_JMBG.Size = new System.Drawing.Size(54, 20);
@@ -118,6 +121,7 @@
             // 
             this.lbl_Telefon.AutoSize = true;
             this.lbl_Telefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Telefon.ForeColor = System.Drawing.Color.White;
             this.lbl_Telefon.Location = new System.Drawing.Point(406, 210);
             this.lbl_Telefon.Name = "lbl_Telefon";
             this.lbl_Telefon.Size = new System.Drawing.Size(103, 20);
@@ -128,6 +132,7 @@
             // 
             this.lbl_Datum.AutoSize = true;
             this.lbl_Datum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Datum.ForeColor = System.Drawing.Color.White;
             this.lbl_Datum.Location = new System.Drawing.Point(406, 269);
             this.lbl_Datum.Name = "lbl_Datum";
             this.lbl_Datum.Size = new System.Drawing.Size(121, 20);
@@ -146,6 +151,7 @@
             // 
             this.lbl_Password.AutoSize = true;
             this.lbl_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Password.ForeColor = System.Drawing.Color.White;
             this.lbl_Password.Location = new System.Drawing.Point(432, 451);
             this.lbl_Password.Name = "lbl_Password";
             this.lbl_Password.Size = new System.Drawing.Size(64, 20);
@@ -165,6 +171,7 @@
             // 
             this.lbl_Email.AutoSize = true;
             this.lbl_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Email.ForeColor = System.Drawing.Color.White;
             this.lbl_Email.Location = new System.Drawing.Point(432, 327);
             this.lbl_Email.Name = "lbl_Email";
             this.lbl_Email.Size = new System.Drawing.Size(53, 20);
@@ -184,6 +191,7 @@
             // 
             this.lbl_Username.AutoSize = true;
             this.lbl_Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Username.ForeColor = System.Drawing.Color.White;
             this.lbl_Username.Location = new System.Drawing.Point(414, 391);
             this.lbl_Username.Name = "lbl_Username";
             this.lbl_Username.Size = new System.Drawing.Size(112, 20);
@@ -202,6 +210,7 @@
             // 
             this.lbl_Passwordrepeat.AutoSize = true;
             this.lbl_Passwordrepeat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Passwordrepeat.ForeColor = System.Drawing.Color.White;
             this.lbl_Passwordrepeat.Location = new System.Drawing.Point(394, 515);
             this.lbl_Passwordrepeat.Name = "lbl_Passwordrepeat";
             this.lbl_Passwordrepeat.Size = new System.Drawing.Size(144, 20);
@@ -210,12 +219,18 @@
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(418, 627);
+            this.btn_Save.BackColor = System.Drawing.Color.Green;
+            this.btn_Save.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btn_Save.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btn_Save.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btn_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Save.ForeColor = System.Drawing.Color.White;
+            this.btn_Save.Location = new System.Drawing.Point(418, 640);
             this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(101, 42);
+            this.btn_Save.Size = new System.Drawing.Size(101, 29);
             this.btn_Save.TabIndex = 18;
             this.btn_Save.Text = "Sačuvaj";
-            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.UseVisualStyleBackColor = false;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // tb_Datum
@@ -228,19 +243,26 @@
             // 
             // btn_Nazad
             // 
+            this.btn_Nazad.BackColor = System.Drawing.Color.Firebrick;
             this.btn_Nazad.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_Nazad.FlatAppearance.BorderColor = System.Drawing.Color.Firebrick;
+            this.btn_Nazad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.btn_Nazad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
+            this.btn_Nazad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Nazad.ForeColor = System.Drawing.Color.White;
             this.btn_Nazad.Location = new System.Drawing.Point(418, 675);
             this.btn_Nazad.Name = "btn_Nazad";
-            this.btn_Nazad.Size = new System.Drawing.Size(101, 42);
+            this.btn_Nazad.Size = new System.Drawing.Size(101, 29);
             this.btn_Nazad.TabIndex = 21;
             this.btn_Nazad.Text = "Nazad";
-            this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.UseVisualStyleBackColor = false;
             this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
             // lbl_Uloga
             // 
             this.lbl_Uloga.AutoSize = true;
             this.lbl_Uloga.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Uloga.ForeColor = System.Drawing.Color.White;
             this.lbl_Uloga.Location = new System.Drawing.Point(445, 572);
             this.lbl_Uloga.Name = "lbl_Uloga";
             this.lbl_Uloga.Size = new System.Drawing.Size(51, 20);
@@ -259,6 +281,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.CancelButton = this.btn_Nazad;
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.cb_Uloga);

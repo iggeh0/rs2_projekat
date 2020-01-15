@@ -50,12 +50,15 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.DarkKhaki;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkKhaki;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(179, 302);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Dodaj Sliku";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
@@ -68,16 +71,22 @@
             // 
             // btn_Sacuvaj
             // 
+            this.btn_Sacuvaj.BackColor = System.Drawing.Color.Green;
+            this.btn_Sacuvaj.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btn_Sacuvaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Sacuvaj.ForeColor = System.Drawing.Color.White;
             this.btn_Sacuvaj.Location = new System.Drawing.Point(179, 332);
             this.btn_Sacuvaj.Name = "btn_Sacuvaj";
             this.btn_Sacuvaj.Size = new System.Drawing.Size(75, 23);
             this.btn_Sacuvaj.TabIndex = 2;
             this.btn_Sacuvaj.Text = "Sacuvaj";
-            this.btn_Sacuvaj.UseVisualStyleBackColor = true;
+            this.btn_Sacuvaj.UseVisualStyleBackColor = false;
             this.btn_Sacuvaj.Click += new System.EventHandler(this.btn_Sacuvaj_Click);
             // 
             // listView1
             // 
+            this.listView1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(456, 13);
             this.listView1.Name = "listView1";
@@ -89,13 +98,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.btn_Sacuvaj);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
             this.Name = "frm_SmjestajSlike";
-            this.Text = "frm_SmjestajSlike";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Slike";
             this.Load += new System.EventHandler(this.frm_SmjestajSlike_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

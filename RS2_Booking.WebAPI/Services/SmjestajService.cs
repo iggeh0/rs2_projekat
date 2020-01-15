@@ -239,23 +239,22 @@ namespace RS2_Booking.WebAPI.Services
 
             foreach (Smjestaj s in Smjestaji)
             {
+                double UkupnaCijena = 0;
                 SmjestajDio sd = new SmjestajDio();
                 sd.NazivSmjestaja = s.Naziv;
                 sd.BrojRezervacija = RS.Where(x => Sobe.Any(so => so.SobaId == x.SobaId && so.SmjestajId == s.SmjestajId)).Count();
                 List<Soba> SobeSmjestaj = Sobe.Where(x => RS.Exists(so => so.SobaId == x.SobaId)).ToList();
                 List<RezervacijaSoba> rs1 = RS.Where(x => SobeSmjestaj.Exists(so => x.SobaId == so.SobaId)).ToList();
-                double UkupnaCijena = 0;
-                double UkupnaCijenaRezervacije = 0;
-                foreach ( Rezervacija r in Rezervacije.Where(x=> rs1.Exists(y=> y.RezervacijaId == x.RezervacijaId)).ToList())
+
+                foreach ( Rezervacija r in Rezervacije.Where(x=> rs1.Exists(y=> y.RezervacijaId == x.RezervacijaId && y.Soba.SmjestajId ==  s.SmjestajId)).ToList())
                 {
-                    UkupnaCijena = 0;
-                    UkupnaCijenaRezervacije = 0;
+                    double UkupnaCijenaRezervacije = 0;
                     DateTime Pocetni = r.RezervacijaOd;
                     DateTime Krajnji = r.RezervacijaDo;
 
                     int Dani = (Krajnji - Pocetni).Days;
                    
-                    foreach (Soba S in Sobe.Where(x=> rs1.Exists(y=> y.SobaId == x.SobaId)).ToList())
+                    foreach (Soba S in Sobe.Where(x=> rs1.Exists(y=> y.SobaId == x.SobaId && y.RezervacijaId == r.RezervacijaId)).ToList())
                     {
                         UkupnaCijenaRezervacije += S.Cijena * Dani;
                     }
@@ -266,7 +265,7 @@ namespace RS2_Booking.WebAPI.Services
 
             }
 
-            Izvjestaj.SmjestajDioVar.Sort((x, y) => x.Zarada.CompareTo(y.Zarada));
+            Izvjestaj.SmjestajDioVar.Sort((x, y) => y.Zarada.CompareTo(x.Zarada));
 
 
             foreach ( Korisnik k in Korisnici )
@@ -280,7 +279,6 @@ namespace RS2_Booking.WebAPI.Services
                 Izvjestaj.KorisniciDioVar.Add(kd);
             }
 
-            Izvjestaj.KorisniciDioVar = Izvjestaj.KorisniciDioVar.OrderBy(x => x.BrojRezervacija).ToList();
             Izvjestaj.KorisniciDioVar.Sort((x, y) => x.BrojRezervacija.CompareTo(y.BrojRezervacija));
             return Izvjestaj;
 

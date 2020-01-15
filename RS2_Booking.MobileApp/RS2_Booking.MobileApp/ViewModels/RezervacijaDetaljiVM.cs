@@ -11,6 +11,7 @@
             StatusRezervacijeId = 2;
             StatusRezervacijeNaziv = "Otkazano od strane klijenta";
             Aktivna = false;
+            
         }
 
         public ICommand OcjeniCommand { get; set; }        public async Task Ocjeni()
@@ -26,7 +27,6 @@
 
         }        public async Task Ucitaj()        {            if (Ocjene.Count == 0)
             {
-                List<int> OcjeneList = new List<int>();
                 Ocjene.Add(1);
                 Ocjene.Add(2);
                 Ocjene.Add(3);
@@ -34,10 +34,27 @@
                 Ocjene.Add(5);
             }            RezervacijaModel model = await _smjestajService.GetById<RezervacijaModel>(RezervacijaId);            AdresaSmjestaja = model.AdresaSmjestaja;            BrojDjece = model.BrojDjece;            BrojOdraslih = model.BrojOdraslih;            DatumRezervacijeShort = model.DatumRezervacijeShort;            NazivSmjestaja = model.NazivSmjestaja;            RezervacijaDoShort = model.RezervacijaDoShort;            RezervacijaOdShort = model.RezervacijaOdShort;            StatusRezervacijeId = model.StatusRezervacijeId;            StatusRezervacijeNaziv = model.StatusRezervacijeNaziv;            SmjestajId = model.SmjestajId;            KlijentId = model.KlijentId;            if (StatusRezervacijeId == 1)
                 Aktivna = true;                      else                Aktivna = false;            DateTime Pocetni = Convert.ToDateTime(RezervacijaOdShort);            DateTime Krajnji = Convert.ToDateTime(RezervacijaDoShort);            int Dani = (Krajnji - Pocetni).Days;            UkupnaCijena = new double();            foreach ( SobaModel S in model.Sobe )            {                Sobe.Add(S);                UkupnaCijena += S.Cijena * Dani;                          }
-            UkupnoUplaceno = new double();            if ( model.Uplate != null && model.Uplate.Count > 0 )            {                              foreach ( UplataModel u in model.Uplate )                {                    Uplate.Add(u);                    UkupnoUplaceno += u.Iznos;                }            }        }        #region model        public int _RezervacijaId;        public int RezervacijaId        {            get { return _RezervacijaId; }            set { SetProperty(ref _RezervacijaId, value); }        }        public int _StatusRezervacijeId;        public int StatusRezervacijeId        {            get { return _StatusRezervacijeId; }            set { SetProperty(ref _StatusRezervacijeId, value); }        }        public string _StatusRezervacijeNaziv;        public string StatusRezervacijeNaziv        {            get { return _StatusRezervacijeNaziv; }            set { SetProperty(ref _StatusRezervacijeNaziv, value); }        }
+
+            VisinaSobe = 20 * Sobe.Count;
+            UkupnoUplaceno = new double();            if ( model.Uplate != null && model.Uplate.Count > 0 )            {                              foreach ( UplataModel u in model.Uplate )                {                    Uplate.Add(u);                    UkupnoUplaceno += u.Iznos;                }                VisinaUplate = 20 * Uplate.Count;            }            else
+            {
+                UplataModel Prazna = new UplataModel();
+                Prazna.SifraUplate = "Nema unesenih uplata";
+                Uplate.Add(Prazna);
+                VisinaUplate = 20;
+            }        }        #region model        public int _RezervacijaId;        public int RezervacijaId        {            get { return _RezervacijaId; }            set { SetProperty(ref _RezervacijaId, value); }        }        public int _StatusRezervacijeId;        public int StatusRezervacijeId        {            get { return _StatusRezervacijeId; }            set { SetProperty(ref _StatusRezervacijeId, value); }        }        public string _StatusRezervacijeNaziv;        public string StatusRezervacijeNaziv        {            get { return _StatusRezervacijeNaziv; }            set { SetProperty(ref _StatusRezervacijeNaziv, value); }        }
 
         public string _Komentar;        public string Komentar        {            get { return _Komentar; }            set { SetProperty(ref _Komentar, value); }        }
 
         public bool _Aktivna;        public bool Aktivna        {            get { return _Aktivna; }            set { SetProperty(ref _Aktivna, value); }        }        public string _DatumRezervacijeShort;         public string DatumRezervacijeShort        {            get { return _DatumRezervacijeShort; }            set { SetProperty(ref _DatumRezervacijeShort, value); }        }        public string _RezervacijaOdShort;        public string RezervacijaOdShort        {            get { return _RezervacijaOdShort; }            set { SetProperty(ref _RezervacijaOdShort, value); }        }        public string _RezervacijaDoShort;        public string RezervacijaDoShort        {            get { return _RezervacijaDoShort; }            set { SetProperty(ref _RezervacijaDoShort, value); }        }        public int _BrojOdraslih;        public int BrojOdraslih        {            get { return _BrojOdraslih; ; }            set { SetProperty(ref _BrojOdraslih, value); }        }        public int _BrojDjece;        public int BrojDjece        {            get { return _BrojDjece; ; }            set { SetProperty(ref _BrojDjece, value); }        }        public int _KlijentId;        public int KlijentId        {            get { return _KlijentId; ; }            set { SetProperty(ref _KlijentId, value); }        }        public int _SmjestajId;        public int SmjestajId        {            get { return _SmjestajId; ; }            set { SetProperty(ref _SmjestajId, value); }        }
 
-        public int _OdabranaOcjena;        public int OdabranaOcjena        {            get { return _OdabranaOcjena; ; }            set { SetProperty(ref _OdabranaOcjena, value); }        }        public string _NazivSmjestaja;        public string NazivSmjestaja        {            get { return _NazivSmjestaja; ; }            set { SetProperty(ref _NazivSmjestaja, value); }        }        public string _AdresaSmjestaja;        public string AdresaSmjestaja        {            get { return _AdresaSmjestaja; ; }            set { SetProperty(ref _AdresaSmjestaja, value); }        }        public ObservableCollection<SobaModel> Sobe { get; set; } = new ObservableCollection<SobaModel>();        public ObservableCollection<UplataModel> Uplate { get; set; } = new ObservableCollection<UplataModel>();        public ObservableCollection<int> Ocjene { get; set; } = new ObservableCollection<int>();        public double _UkupnaCijena = 0;        public double UkupnaCijena        {            get { return _UkupnaCijena; ; }            set { SetProperty(ref _UkupnaCijena, value); }        }          public double _UkupnoUplaceno = 0;        public double UkupnoUplaceno        {            get { return _UkupnoUplaceno; ; }            set { SetProperty(ref _UkupnoUplaceno, value); }        }        #endregion    }}
+        public int _OdabranaOcjena;        public int OdabranaOcjena        {            get { return _OdabranaOcjena; ; }            set { SetProperty(ref _OdabranaOcjena, value); }        }        public string _NazivSmjestaja;        public string NazivSmjestaja        {            get { return _NazivSmjestaja; ; }            set { SetProperty(ref _NazivSmjestaja, value); }        }        public string _AdresaSmjestaja;        public string AdresaSmjestaja        {            get { return _AdresaSmjestaja; ; }            set { SetProperty(ref _AdresaSmjestaja, value); }        }        public ObservableCollection<SobaModel> Sobe { get; set; } = new ObservableCollection<SobaModel>();        public ObservableCollection<UplataModel> Uplate { get; set; } = new ObservableCollection<UplataModel>();        public ObservableCollection<int> Ocjene { get; set; } = new ObservableCollection<int>();        public double _UkupnaCijena = 0;        public double UkupnaCijena        {            get { return _UkupnaCijena; ; }            set { SetProperty(ref _UkupnaCijena, value); }        }          public double _UkupnoUplaceno = 0;        public double UkupnoUplaceno        {            get { return _UkupnoUplaceno; ; }            set { SetProperty(ref _UkupnoUplaceno, value); }        }
+
+        public int _VisinaSobe;        public int VisinaSobe        {            get { return _VisinaSobe; }            set { SetProperty(ref _VisinaSobe, value); }        }
+
+        public int _VisinaUplate;        public int VisinaUplate        {            get { return _VisinaUplate; }            set { SetProperty(ref _VisinaUplate, value); }        }
+
+
+
+
+        #endregion    }}

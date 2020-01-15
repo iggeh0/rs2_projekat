@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_Usluge = new System.Windows.Forms.DataGridView();
             this.Usluga_SmjestajId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +57,7 @@
             // 
             this.groupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.groupBox1.Controls.Add(this.dgv_Usluge);
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(9, 153);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(540, 147);
@@ -74,6 +76,14 @@
             this.Opis,
             this.UslugaId,
             this.Ukloni});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Usluge.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_Usluge.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Usluge.Location = new System.Drawing.Point(3, 16);
             this.dgv_Usluge.Name = "dgv_Usluge";
@@ -128,6 +138,7 @@
             this.groupBox2.Controls.Add(this.tb_Opis_Nova);
             this.groupBox2.Controls.Add(this.tb_Naziv_Nova);
             this.groupBox2.Controls.Add(this.btn_Dodaj_Novu);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(293, 135);
@@ -138,6 +149,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(9, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 13);
@@ -147,6 +159,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(6, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
@@ -169,12 +182,15 @@
             // 
             // btn_Dodaj_Novu
             // 
+            this.btn_Dodaj_Novu.BackColor = System.Drawing.Color.Green;
+            this.btn_Dodaj_Novu.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btn_Dodaj_Novu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Dodaj_Novu.Location = new System.Drawing.Point(6, 106);
             this.btn_Dodaj_Novu.Name = "btn_Dodaj_Novu";
             this.btn_Dodaj_Novu.Size = new System.Drawing.Size(75, 23);
             this.btn_Dodaj_Novu.TabIndex = 1;
             this.btn_Dodaj_Novu.Text = "Dodaj";
-            this.btn_Dodaj_Novu.UseVisualStyleBackColor = true;
+            this.btn_Dodaj_Novu.UseVisualStyleBackColor = false;
             this.btn_Dodaj_Novu.Click += new System.EventHandler(this.btn_Dodaj_Novu_Click);
             // 
             // groupBox3
@@ -182,6 +198,7 @@
             this.groupBox3.Controls.Add(this.btn_Dodaj_Postojecu);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.cb_Usluge);
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
             this.groupBox3.Location = new System.Drawing.Point(311, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(235, 135);
@@ -191,17 +208,21 @@
             // 
             // btn_Dodaj_Postojecu
             // 
+            this.btn_Dodaj_Postojecu.BackColor = System.Drawing.Color.Green;
+            this.btn_Dodaj_Postojecu.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btn_Dodaj_Postojecu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Dodaj_Postojecu.Location = new System.Drawing.Point(7, 106);
             this.btn_Dodaj_Postojecu.Name = "btn_Dodaj_Postojecu";
             this.btn_Dodaj_Postojecu.Size = new System.Drawing.Size(75, 23);
             this.btn_Dodaj_Postojecu.TabIndex = 2;
             this.btn_Dodaj_Postojecu.Text = "Dodaj";
-            this.btn_Dodaj_Postojecu.UseVisualStyleBackColor = true;
+            this.btn_Dodaj_Postojecu.UseVisualStyleBackColor = false;
             this.btn_Dodaj_Postojecu.Click += new System.EventHandler(this.btn_Dodaj_Postojecu_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(7, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 13);
@@ -218,24 +239,30 @@
             // 
             // btn_Nazad
             // 
+            this.btn_Nazad.BackColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Nazad.ForeColor = System.Drawing.Color.White;
             this.btn_Nazad.Location = new System.Drawing.Point(230, 315);
             this.btn_Nazad.Name = "btn_Nazad";
             this.btn_Nazad.Size = new System.Drawing.Size(75, 23);
             this.btn_Nazad.TabIndex = 3;
             this.btn_Nazad.Text = "Nazad";
-            this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.UseVisualStyleBackColor = false;
             this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
             // frm_SmjestajUsluge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.ClientSize = new System.Drawing.Size(566, 350);
             this.Controls.Add(this.btn_Nazad);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frm_SmjestajUsluge";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Uredi Usluge";
             this.Load += new System.EventHandler(this.frm_SmjestajUsluge_Load);
             this.groupBox1.ResumeLayout(false);

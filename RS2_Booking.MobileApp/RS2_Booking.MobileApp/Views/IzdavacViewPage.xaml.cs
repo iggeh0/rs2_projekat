@@ -16,7 +16,6 @@ namespace RS2_Booking.MobileApp.Views
     public partial class IzdavacViewPage : ContentPage
     {
         IzdavacVM Model = null;
-        KorisnikModel _korisnikModel = null;
 
         public IzdavacViewPage()
         {
@@ -28,10 +27,11 @@ namespace RS2_Booking.MobileApp.Views
             InitializeComponent();
             Model = new IzdavacVM
             {
-                IzdavacId = izdavacId
+                IzdavacId = izdavacId,
+                sacuvani = korisnikModel
+                
             };
             BindingContext = Model;
-            _korisnikModel = korisnikModel;
         }
 
         protected async override void OnAppearing()
@@ -51,7 +51,7 @@ namespace RS2_Booking.MobileApp.Views
 
             PropertyInfo pi = Odabrani.GetType().GetProperty("SmjestajId");
             int id = Convert.ToInt32(pi.GetValue(Odabrani, null).ToString());
-            Application.Current.MainPage = new SmjestajViewPage(id,_korisnikModel);
+            Application.Current.MainPage = new SmjestajViewPage(id,Model.sacuvani);
         }
     }
 }

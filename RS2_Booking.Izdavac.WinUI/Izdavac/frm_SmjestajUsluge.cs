@@ -20,6 +20,7 @@ namespace RS2_Booking.Izdavac.WinUI.Smjestaj
         {
             _SmjestajId = SmjestajId;
             InitializeComponent();
+            dgv_Usluge.AutoGenerateColumns = false;
         }
 
         private async void btn_Dodaj_Novu_Click(object sender, EventArgs e)

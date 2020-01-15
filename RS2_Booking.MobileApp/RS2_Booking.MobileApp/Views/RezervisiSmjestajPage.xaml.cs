@@ -26,9 +26,9 @@ namespace RS2_Booking.MobileApp.Views
                 KlijentId = k.KorisnikId,
                 SmjestajNaziv = Smjestaj.Naziv,
                 GradNaziv = Smjestaj.GradNaziv,
-                Adresa = Smjestaj.Adresa
+                Adresa = Smjestaj.Adresa,
+                sacuvani = k
             };
-            viewmodel.sacuvani = k;
             BindingContext = viewmodel;
         }
 

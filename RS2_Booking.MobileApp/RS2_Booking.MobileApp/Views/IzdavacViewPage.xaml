@@ -10,23 +10,24 @@
         <ViewModels:IzdavacVM></ViewModels:IzdavacVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Korisničko ime: "></Label>
-            <Label Text="{Binding KorisnickoIme}"></Label>
-            <Label Text="Broj telefona: "></Label>
-            <Label Text="{Binding BrojTelefona}"></Label>
-            <Label Text="E-Mail: "></Label>
-            <Label Text="{Binding Email}"></Label>
+        <StackLayout BackgroundColor="DodgerBlue">
+            <Label Text="Korisničko ime: " TextColor="White"></Label>
+            <Label TextColor="White" Text="{Binding KorisnickoIme}"></Label>
+            <Label TextColor="White" Text="Broj telefona: " ></Label>
+            <Label TextColor="White" Text="{Binding BrojTelefona}"></Label>
+            <Label TextColor="White" Text="E-Mail: "></Label>
+            <Label TextColor="White" Text="{Binding Email}"></Label>
+            <Label TextColor="White" Text="Smještaji koje izdaje ovaj korisnik:" /> 
             <ListView ItemsSource="{Binding ListaSmjestaja}" ItemTapped="ListView_ItemTapped">
-                <ListView.ItemTemplate>
+                <ListView.ItemTemplate TextColor="White" >
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Naziv}" 
+                            <StackLayout Padding="10" >
+                                <Label TextColor="White" Text="{Binding Naziv}" 
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
-                                <Label Text="{Binding GradNaziv}" 
+                                <Label TextColor="White" Text="{Binding GradNaziv}" 
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
@@ -35,7 +36,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Clicked="Button_Clicked" Text="Nazad"></Button>
+            <Button Clicked="Button_Clicked" Text="Nazad" BackgroundColor="Red" TextColor="White" ></Button>
         </StackLayout>
         
     </ContentPage.Content>

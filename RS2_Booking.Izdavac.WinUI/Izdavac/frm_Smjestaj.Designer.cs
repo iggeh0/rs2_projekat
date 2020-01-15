@@ -57,9 +57,9 @@
             // gb_Smjestaj
             // 
             this.gb_Smjestaj.Controls.Add(this.dgv_Smjestaj);
-            this.gb_Smjestaj.Location = new System.Drawing.Point(73, 65);
+            this.gb_Smjestaj.Location = new System.Drawing.Point(86, 41);
             this.gb_Smjestaj.Name = "gb_Smjestaj";
-            this.gb_Smjestaj.Size = new System.Drawing.Size(702, 373);
+            this.gb_Smjestaj.Size = new System.Drawing.Size(702, 408);
             this.gb_Smjestaj.TabIndex = 0;
             this.gb_Smjestaj.TabStop = false;
             this.gb_Smjestaj.Text = "Smještaji";
@@ -122,7 +122,7 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
             this.dgv_Smjestaj.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgv_Smjestaj.Size = new System.Drawing.Size(696, 354);
+            this.dgv_Smjestaj.Size = new System.Drawing.Size(696, 389);
             this.dgv_Smjestaj.TabIndex = 0;
             this.dgv_Smjestaj.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Smjestaj_CellClick);
             // 
@@ -185,21 +185,21 @@
             // cb_GradPretraga
             // 
             this.cb_GradPretraga.FormattingEnabled = true;
-            this.cb_GradPretraga.Location = new System.Drawing.Point(105, 22);
+            this.cb_GradPretraga.Location = new System.Drawing.Point(89, 12);
             this.cb_GradPretraga.Name = "cb_GradPretraga";
             this.cb_GradPretraga.Size = new System.Drawing.Size(121, 21);
             this.cb_GradPretraga.TabIndex = 1;
             // 
             // tb_NazivPretraga
             // 
-            this.tb_NazivPretraga.Location = new System.Drawing.Point(238, 23);
+            this.tb_NazivPretraga.Location = new System.Drawing.Point(230, 12);
             this.tb_NazivPretraga.Name = "tb_NazivPretraga";
             this.tb_NazivPretraga.Size = new System.Drawing.Size(100, 20);
             this.tb_NazivPretraga.TabIndex = 2;
             // 
             // btn_Filtriraj
             // 
-            this.btn_Filtriraj.Location = new System.Drawing.Point(357, 20);
+            this.btn_Filtriraj.Location = new System.Drawing.Point(336, 12);
             this.btn_Filtriraj.Name = "btn_Filtriraj";
             this.btn_Filtriraj.Size = new System.Drawing.Size(75, 23);
             this.btn_Filtriraj.TabIndex = 3;
@@ -222,9 +222,14 @@
             // 
             // btn_Logout
             // 
-            this.btn_Logout.Location = new System.Drawing.Point(4, 349);
+            this.btn_Logout.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_Logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btn_Logout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btn_Logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Logout.ForeColor = System.Drawing.Color.White;
+            this.btn_Logout.Location = new System.Drawing.Point(0, 389);
             this.btn_Logout.Name = "btn_Logout";
-            this.btn_Logout.Size = new System.Drawing.Size(50, 51);
+            this.btn_Logout.Size = new System.Drawing.Size(65, 62);
             this.btn_Logout.TabIndex = 5;
             this.btn_Logout.Text = "Odjavi se";
             this.btn_Logout.UseVisualStyleBackColor = true;
@@ -232,9 +237,15 @@
             // 
             // btn_Rezervacije
             // 
-            this.btn_Rezervacije.Location = new System.Drawing.Point(4, 295);
+            this.btn_Rezervacije.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_Rezervacije.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btn_Rezervacije.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btn_Rezervacije.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Rezervacije.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Rezervacije.ForeColor = System.Drawing.Color.White;
+            this.btn_Rezervacije.Location = new System.Drawing.Point(0, 275);
             this.btn_Rezervacije.Name = "btn_Rezervacije";
-            this.btn_Rezervacije.Size = new System.Drawing.Size(50, 50);
+            this.btn_Rezervacije.Size = new System.Drawing.Size(65, 61);
             this.btn_Rezervacije.TabIndex = 4;
             this.btn_Rezervacije.Text = "Rezervacije";
             this.btn_Rezervacije.UseVisualStyleBackColor = true;
@@ -242,9 +253,15 @@
             // 
             // btn_Report
             // 
-            this.btn_Report.Location = new System.Drawing.Point(4, 238);
+            this.btn_Report.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_Report.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btn_Report.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btn_Report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Report.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Report.ForeColor = System.Drawing.Color.White;
+            this.btn_Report.Location = new System.Drawing.Point(0, 191);
             this.btn_Report.Name = "btn_Report";
-            this.btn_Report.Size = new System.Drawing.Size(50, 51);
+            this.btn_Report.Size = new System.Drawing.Size(65, 56);
             this.btn_Report.TabIndex = 3;
             this.btn_Report.Text = "Izvještaji";
             this.btn_Report.UseVisualStyleBackColor = true;
@@ -252,9 +269,15 @@
             // 
             // btn_UrediProfil
             // 
-            this.btn_UrediProfil.Location = new System.Drawing.Point(4, 171);
+            this.btn_UrediProfil.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_UrediProfil.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btn_UrediProfil.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btn_UrediProfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_UrediProfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_UrediProfil.ForeColor = System.Drawing.Color.White;
+            this.btn_UrediProfil.Location = new System.Drawing.Point(0, 108);
             this.btn_UrediProfil.Name = "btn_UrediProfil";
-            this.btn_UrediProfil.Size = new System.Drawing.Size(50, 51);
+            this.btn_UrediProfil.Size = new System.Drawing.Size(65, 62);
             this.btn_UrediProfil.TabIndex = 2;
             this.btn_UrediProfil.Text = "Uredi profil";
             this.btn_UrediProfil.UseVisualStyleBackColor = true;
@@ -262,8 +285,10 @@
             // 
             // btn_DodajSmjestaj
             // 
-            this.btn_DodajSmjestaj.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btn_DodajSmjestaj.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_DodajSmjestaj.FlatAppearance.BorderSize = 0;
+            this.btn_DodajSmjestaj.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btn_DodajSmjestaj.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btn_DodajSmjestaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_DodajSmjestaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DodajSmjestaj.ForeColor = System.Drawing.SystemColors.ButtonHighlight;

@@ -116,7 +116,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(319, 113);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(50, 124);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 1;
@@ -129,6 +130,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tb_NovaUdaljenost);
             this.groupBox1.Controls.Add(this.tb_NovaNaziv);
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(53, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
@@ -138,17 +140,24 @@
             // 
             // btn_DodajNovo
             // 
+            this.btn_DodajNovo.BackColor = System.Drawing.Color.Green;
+            this.btn_DodajNovo.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btn_DodajNovo.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.btn_DodajNovo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btn_DodajNovo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btn_DodajNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_DodajNovo.Location = new System.Drawing.Point(9, 71);
             this.btn_DodajNovo.Name = "btn_DodajNovo";
             this.btn_DodajNovo.Size = new System.Drawing.Size(75, 23);
             this.btn_DodajNovo.TabIndex = 4;
             this.btn_DodajNovo.Text = "Dodaj";
-            this.btn_DodajNovo.UseVisualStyleBackColor = true;
+            this.btn_DodajNovo.UseVisualStyleBackColor = false;
             this.btn_DodajNovo.Click += new System.EventHandler(this.btn_DodajNovo_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(6, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
@@ -158,6 +167,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(6, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
@@ -194,6 +204,7 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.tb_PostojecaUdaljenost);
             this.groupBox2.Controls.Add(this.cb_PostojecaNaziv);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(422, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(217, 100);
@@ -203,17 +214,24 @@
             // 
             // btn_DodajPostojece
             // 
-            this.btn_DodajPostojece.Location = new System.Drawing.Point(6, 77);
+            this.btn_DodajPostojece.BackColor = System.Drawing.Color.Green;
+            this.btn_DodajPostojece.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btn_DodajPostojece.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.btn_DodajPostojece.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btn_DodajPostojece.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btn_DodajPostojece.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_DodajPostojece.Location = new System.Drawing.Point(6, 68);
             this.btn_DodajPostojece.Name = "btn_DodajPostojece";
             this.btn_DodajPostojece.Size = new System.Drawing.Size(75, 23);
             this.btn_DodajPostojece.TabIndex = 7;
             this.btn_DodajPostojece.Text = "Dodaj";
-            this.btn_DodajPostojece.UseVisualStyleBackColor = true;
+            this.btn_DodajPostojece.UseVisualStyleBackColor = false;
             this.btn_DodajPostojece.Click += new System.EventHandler(this.btn_DodajPostojece_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(11, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 13);
@@ -223,6 +241,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(7, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 13);
@@ -239,7 +258,7 @@
             // lbl_novaNazivErr
             // 
             this.lbl_novaNazivErr.AutoSize = true;
-            this.lbl_novaNazivErr.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl_novaNazivErr.BackColor = System.Drawing.Color.DodgerBlue;
             this.lbl_novaNazivErr.ForeColor = System.Drawing.Color.Red;
             this.lbl_novaNazivErr.Location = new System.Drawing.Point(259, 34);
             this.lbl_novaNazivErr.Name = "lbl_novaNazivErr";
@@ -251,7 +270,7 @@
             // lbl_novaUdaljenostErr
             // 
             this.lbl_novaUdaljenostErr.AutoSize = true;
-            this.lbl_novaUdaljenostErr.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl_novaUdaljenostErr.BackColor = System.Drawing.Color.DodgerBlue;
             this.lbl_novaUdaljenostErr.ForeColor = System.Drawing.Color.Red;
             this.lbl_novaUdaljenostErr.Location = new System.Drawing.Point(259, 57);
             this.lbl_novaUdaljenostErr.Name = "lbl_novaUdaljenostErr";
@@ -263,7 +282,7 @@
             // lbl_postojecaUdaljenaErr
             // 
             this.lbl_postojecaUdaljenaErr.AutoSize = true;
-            this.lbl_postojecaUdaljenaErr.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl_postojecaUdaljenaErr.BackColor = System.Drawing.Color.DodgerBlue;
             this.lbl_postojecaUdaljenaErr.ForeColor = System.Drawing.Color.Red;
             this.lbl_postojecaUdaljenaErr.Location = new System.Drawing.Point(645, 64);
             this.lbl_postojecaUdaljenaErr.Name = "lbl_postojecaUdaljenaErr";
@@ -274,18 +293,23 @@
             // 
             // btn_Nazad
             // 
+            this.btn_Nazad.BackColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Nazad.ForeColor = System.Drawing.Color.White;
             this.btn_Nazad.Location = new System.Drawing.Point(307, 300);
             this.btn_Nazad.Name = "btn_Nazad";
             this.btn_Nazad.Size = new System.Drawing.Size(75, 23);
             this.btn_Nazad.TabIndex = 8;
             this.btn_Nazad.Text = "Nazad";
-            this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.UseVisualStyleBackColor = false;
             this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
             // frm_SmjestajOkoline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.ClientSize = new System.Drawing.Size(703, 335);
             this.Controls.Add(this.btn_Nazad);
             this.Controls.Add(this.lbl_postojecaUdaljenaErr);
@@ -296,6 +320,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv_Okolina);
             this.Name = "frm_SmjestajOkoline";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Uredi Okoline Smještaja";
             this.Load += new System.EventHandler(this.frm_SmjestajOkoline_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Okolina)).EndInit();

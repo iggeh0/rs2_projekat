@@ -7,20 +7,16 @@
         <ViewModels:LoginVM></ViewModels:LoginVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" Padding="20">
+        <StackLayout Padding="20" BackgroundColor="DodgerBlue">
             <Label Text="Dobrodošli"
                 VerticalOptions="Start" 
-                HorizontalOptions="Center" Margin="55" FontSize="Large"/>
-            
-            <Label Text="Korisničko ime:" HorizontalOptions="Center">
-            </Label>
-            <Entry Text="{Binding Username}"></Entry>
-            <Label Text="Šifra:" HorizontalOptions="Center">
-            </Label>
-            <Entry Text="{Binding Password}" IsPassword="True"></Entry>
-            <Button Command="{Binding LoginCommand}" Text="Login"></Button>
-            <Button Text="Registracija" Clicked="Button_Clicked"></Button>
-
+                HorizontalOptions="Center" Margin="55" FontSize="Large" TextColor="White" />
+            <Label Text="Korisničko ime:" HorizontalOptions="Center" TextColor="White" />
+            <Entry BackgroundColor="DodgerBlue" Text="{Binding Username}" TextColor="White" ></Entry>
+            <Label Text="Šifra:" HorizontalOptions="Center" TextColor="White" />
+            <Entry BackgroundColor="DodgerBlue" Text="{Binding Password}" IsPassword="True" TextColor="White" ></Entry>
+            <Button Command="{Binding LoginCommand}" Text="Login" BackgroundColor="DarkGreen" TextColor="White" ></Button>
+            <Button Text="Registracija" Clicked="Button_Clicked" BackgroundColor="YellowGreen" TextColor="White" ></Button>
         </StackLayout>
 
     </ContentPage.Content>

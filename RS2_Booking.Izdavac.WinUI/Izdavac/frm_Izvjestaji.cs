@@ -19,6 +19,8 @@ namespace RS2_Booking.Izdavac.WinUI.Izdavac
         {
             InitializeComponent();
             _IzdavacId = IzdavacId;
+            dgv_Klijenti.AutoGenerateColumns = false;
+            dgv_Smjestaji.AutoGenerateColumns = false;
         }
 
         private async void frm_Izvjestaji_Load(object sender, EventArgs e)

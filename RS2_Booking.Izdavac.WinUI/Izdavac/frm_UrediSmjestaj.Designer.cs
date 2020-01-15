@@ -56,17 +56,22 @@
             // 
             // btn_SmjestajSobe
             // 
+            this.btn_SmjestajSobe.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.btn_SmjestajSobe.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_SmjestajSobe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SmjestajSobe.ForeColor = System.Drawing.Color.White;
             this.btn_SmjestajSobe.Location = new System.Drawing.Point(60, 10);
             this.btn_SmjestajSobe.Name = "btn_SmjestajSobe";
             this.btn_SmjestajSobe.Size = new System.Drawing.Size(150, 50);
             this.btn_SmjestajSobe.TabIndex = 1;
             this.btn_SmjestajSobe.Text = "Upravljanje sobama";
-            this.btn_SmjestajSobe.UseVisualStyleBackColor = true;
+            this.btn_SmjestajSobe.UseVisualStyleBackColor = false;
             this.btn_SmjestajSobe.Click += new System.EventHandler(this.btn_SmjestajSobe_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(6, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
@@ -90,6 +95,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(6, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 13);
@@ -106,6 +112,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(6, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
@@ -115,6 +122,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(175, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(28, 13);
@@ -131,18 +139,23 @@
             // 
             // btn_Snimi
             // 
+            this.btn_Snimi.BackColor = System.Drawing.Color.Green;
+            this.btn_Snimi.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btn_Snimi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Snimi.ForeColor = System.Drawing.Color.White;
             this.btn_Snimi.Location = new System.Drawing.Point(81, 379);
             this.btn_Snimi.Name = "btn_Snimi";
             this.btn_Snimi.Size = new System.Drawing.Size(109, 23);
             this.btn_Snimi.TabIndex = 14;
             this.btn_Snimi.Text = "Snimi promjene";
-            this.btn_Snimi.UseVisualStyleBackColor = true;
+            this.btn_Snimi.UseVisualStyleBackColor = false;
             this.btn_Snimi.Click += new System.EventHandler(this.btn_Snimi_Click_1);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(77, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 20);
@@ -153,6 +166,7 @@
             // 
             this.lbl_Grad.AutoSize = true;
             this.lbl_Grad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Grad.ForeColor = System.Drawing.Color.White;
             this.lbl_Grad.Location = new System.Drawing.Point(79, 112);
             this.lbl_Grad.Name = "lbl_Grad";
             this.lbl_Grad.Size = new System.Drawing.Size(51, 20);
@@ -163,6 +177,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(80, 136);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 20);
@@ -173,6 +188,7 @@
             // 
             this.lbl_Adresa.AutoSize = true;
             this.lbl_Adresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Adresa.ForeColor = System.Drawing.Color.White;
             this.lbl_Adresa.Location = new System.Drawing.Point(80, 158);
             this.lbl_Adresa.Name = "lbl_Adresa";
             this.lbl_Adresa.Size = new System.Drawing.Size(51, 20);
@@ -181,13 +197,17 @@
             // 
             // btn_Nazad
             // 
+            this.btn_Nazad.BackColor = System.Drawing.Color.Red;
             this.btn_Nazad.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_Nazad.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Nazad.ForeColor = System.Drawing.Color.White;
             this.btn_Nazad.Location = new System.Drawing.Point(81, 408);
             this.btn_Nazad.Name = "btn_Nazad";
             this.btn_Nazad.Size = new System.Drawing.Size(109, 23);
             this.btn_Nazad.TabIndex = 20;
             this.btn_Nazad.Text = "Nazad";
-            this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.UseVisualStyleBackColor = false;
             this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
             // groupBox1
@@ -204,6 +224,7 @@
             this.groupBox1.Controls.Add(this.tb_Telefon);
             this.groupBox1.Controls.Add(this.tb_Naziv);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(81, 193);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(471, 171);
@@ -257,38 +278,51 @@
             // 
             // btn_Usluge
             // 
+            this.btn_Usluge.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.btn_Usluge.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_Usluge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Usluge.ForeColor = System.Drawing.Color.White;
             this.btn_Usluge.Location = new System.Drawing.Point(208, 10);
             this.btn_Usluge.Name = "btn_Usluge";
             this.btn_Usluge.Size = new System.Drawing.Size(150, 50);
             this.btn_Usluge.TabIndex = 14;
             this.btn_Usluge.Text = "Upravljanje Uslugama";
-            this.btn_Usluge.UseVisualStyleBackColor = true;
+            this.btn_Usluge.UseVisualStyleBackColor = false;
             this.btn_Usluge.Click += new System.EventHandler(this.btn_Usluge_Click);
             // 
             // btn_Okoline
             // 
+            this.btn_Okoline.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.btn_Okoline.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_Okoline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Okoline.ForeColor = System.Drawing.Color.White;
             this.btn_Okoline.Location = new System.Drawing.Point(356, 10);
             this.btn_Okoline.Name = "btn_Okoline";
             this.btn_Okoline.Size = new System.Drawing.Size(150, 50);
             this.btn_Okoline.TabIndex = 22;
             this.btn_Okoline.Text = "Upravljanje okolinama";
-            this.btn_Okoline.UseVisualStyleBackColor = true;
+            this.btn_Okoline.UseVisualStyleBackColor = false;
             this.btn_Okoline.Click += new System.EventHandler(this.btn_Okoline_Click);
             // 
             // btn_Slike
             // 
-            this.btn_Slike.Location = new System.Drawing.Point(506, 10);
+            this.btn_Slike.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.btn_Slike.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_Slike.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Slike.ForeColor = System.Drawing.Color.White;
+            this.btn_Slike.Location = new System.Drawing.Point(503, 10);
             this.btn_Slike.Name = "btn_Slike";
             this.btn_Slike.Size = new System.Drawing.Size(150, 50);
             this.btn_Slike.TabIndex = 23;
             this.btn_Slike.Text = "Upravljanje Slikama";
-            this.btn_Slike.UseVisualStyleBackColor = true;
+            this.btn_Slike.UseVisualStyleBackColor = false;
             this.btn_Slike.Click += new System.EventHandler(this.btn_Slike_Click);
             // 
             // frm_UrediSmjestaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.CancelButton = this.btn_Nazad;
             this.ClientSize = new System.Drawing.Size(673, 440);
             this.Controls.Add(this.btn_Slike);

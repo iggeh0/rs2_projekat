@@ -28,6 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_Cekanje = new System.Windows.Forms.DataGridView();
             this.RezervacijaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,15 +80,19 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgv_Cekanje);
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(31, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(957, 134);
+            this.groupBox1.Size = new System.Drawing.Size(957, 180);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rezervacije na čekanju";
             // 
             // dgv_Cekanje
             // 
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Cekanje.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_Cekanje.BackgroundColor = System.Drawing.Color.IndianRed;
             this.dgv_Cekanje.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Cekanje.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RezervacijaId,
@@ -93,10 +104,23 @@
             this.BrojOdraslih,
             this.BrojDjece,
             this.Detaljnije});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Cekanje.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_Cekanje.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_Cekanje.GridColor = System.Drawing.Color.IndianRed;
             this.dgv_Cekanje.Location = new System.Drawing.Point(3, 16);
             this.dgv_Cekanje.Name = "dgv_Cekanje";
-            this.dgv_Cekanje.Size = new System.Drawing.Size(951, 115);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Cekanje.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_Cekanje.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Cekanje.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Cekanje.Size = new System.Drawing.Size(951, 161);
             this.dgv_Cekanje.TabIndex = 0;
             this.dgv_Cekanje.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Cekanje_CellClick);
             // 
@@ -105,6 +129,7 @@
             this.RezervacijaId.DataPropertyName = "RezervacijaId";
             this.RezervacijaId.HeaderText = "RezervacijaId";
             this.RezervacijaId.Name = "RezervacijaId";
+            this.RezervacijaId.Visible = false;
             // 
             // NazivSmjestaja
             // 
@@ -155,27 +180,35 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Location = new System.Drawing.Point(447, 475);
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(437, 641);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
             this.button1.Text = "Nazad";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgv_Aktivne);
-            this.groupBox2.Location = new System.Drawing.Point(31, 163);
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
+            this.groupBox2.Location = new System.Drawing.Point(28, 198);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(957, 134);
+            this.groupBox2.Size = new System.Drawing.Size(957, 192);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Aktivne rezervacije";
             // 
             // dgv_Aktivne
             // 
+            this.dgv_Aktivne.BackgroundColor = System.Drawing.Color.IndianRed;
             this.dgv_Aktivne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Aktivne.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -187,10 +220,23 @@
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewButtonColumn1});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Aktivne.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_Aktivne.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_Aktivne.GridColor = System.Drawing.Color.IndianRed;
             this.dgv_Aktivne.Location = new System.Drawing.Point(3, 16);
             this.dgv_Aktivne.Name = "dgv_Aktivne";
-            this.dgv_Aktivne.Size = new System.Drawing.Size(951, 115);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Aktivne.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_Aktivne.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Aktivne.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Aktivne.Size = new System.Drawing.Size(951, 173);
             this.dgv_Aktivne.TabIndex = 0;
             this.dgv_Aktivne.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Aktivne_CellClick);
             // 
@@ -199,6 +245,7 @@
             this.dataGridViewTextBoxColumn1.DataPropertyName = "RezervacijaId";
             this.dataGridViewTextBoxColumn1.HeaderText = "RezervacijaId";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -250,15 +297,17 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgv_Zavrsene);
-            this.groupBox3.Location = new System.Drawing.Point(34, 303);
+            this.groupBox3.ForeColor = System.Drawing.Color.Black;
+            this.groupBox3.Location = new System.Drawing.Point(28, 405);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(957, 134);
+            this.groupBox3.Size = new System.Drawing.Size(957, 213);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Završene rezervacije";
             // 
             // dgv_Zavrsene
             // 
+            this.dgv_Zavrsene.BackgroundColor = System.Drawing.Color.IndianRed;
             this.dgv_Zavrsene.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Zavrsene.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn9,
@@ -270,10 +319,23 @@
             this.dataGridViewTextBoxColumn15,
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewButtonColumn2});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Zavrsene.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgv_Zavrsene.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_Zavrsene.GridColor = System.Drawing.Color.IndianRed;
             this.dgv_Zavrsene.Location = new System.Drawing.Point(3, 16);
             this.dgv_Zavrsene.Name = "dgv_Zavrsene";
-            this.dgv_Zavrsene.Size = new System.Drawing.Size(951, 115);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Zavrsene.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgv_Zavrsene.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Zavrsene.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Zavrsene.Size = new System.Drawing.Size(951, 194);
             this.dgv_Zavrsene.TabIndex = 0;
             this.dgv_Zavrsene.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Zavrsene_CellClick);
             // 
@@ -282,6 +344,7 @@
             this.dataGridViewTextBoxColumn9.DataPropertyName = "RezervacijaId";
             this.dataGridViewTextBoxColumn9.HeaderText = "RezervacijaId";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Visible = false;
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -334,6 +397,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.ClientSize = new System.Drawing.Size(1008, 687);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -359,17 +423,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgv_Cekanje;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RezervacijaId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NazivSmjestaja;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AdresaSmjestaja;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DatumRezervacijeShort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RezervacijaOdShort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RezervacijaDoShort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BrojOdraslih;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BrojDjece;
-        private System.Windows.Forms.DataGridViewButtonColumn Detaljnije;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgv_Aktivne;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridView dgv_Zavrsene;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -379,8 +436,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dgv_Zavrsene;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RezervacijaId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NazivSmjestaja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AdresaSmjestaja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumRezervacijeShort;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RezervacijaOdShort;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RezervacijaDoShort;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojOdraslih;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojDjece;
+        private System.Windows.Forms.DataGridViewButtonColumn Detaljnije;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;

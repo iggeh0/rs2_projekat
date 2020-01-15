@@ -79,6 +79,7 @@
             // cb_Kupaonica
             // 
             this.cb_Kupaonica.AutoSize = true;
+            this.cb_Kupaonica.ForeColor = System.Drawing.Color.White;
             this.cb_Kupaonica.Location = new System.Drawing.Point(12, 196);
             this.cb_Kupaonica.Name = "cb_Kupaonica";
             this.cb_Kupaonica.Size = new System.Drawing.Size(113, 17);
@@ -89,6 +90,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(10, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
@@ -98,6 +100,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(10, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
@@ -107,6 +110,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(12, 166);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 13);
@@ -116,6 +120,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(170, 41);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
@@ -125,6 +130,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(10, 127);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 13);
@@ -133,14 +139,20 @@
             // 
             // btn_Nazad
             // 
+            this.btn_Nazad.BackColor = System.Drawing.Color.Red;
             this.btn_Nazad.CausesValidation = false;
             this.btn_Nazad.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_Nazad.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Nazad.ForeColor = System.Drawing.Color.White;
             this.btn_Nazad.Location = new System.Drawing.Point(233, 237);
             this.btn_Nazad.Name = "btn_Nazad";
             this.btn_Nazad.Size = new System.Drawing.Size(75, 23);
             this.btn_Nazad.TabIndex = 12;
             this.btn_Nazad.Text = "Nazad";
-            this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.UseVisualStyleBackColor = false;
             this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
             // tb_Opis
@@ -153,12 +165,18 @@
             // 
             // btn_Snimi
             // 
+            this.btn_Snimi.BackColor = System.Drawing.Color.Green;
+            this.btn_Snimi.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btn_Snimi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btn_Snimi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btn_Snimi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Snimi.ForeColor = System.Drawing.Color.White;
             this.btn_Snimi.Location = new System.Drawing.Point(233, 208);
             this.btn_Snimi.Name = "btn_Snimi";
             this.btn_Snimi.Size = new System.Drawing.Size(75, 23);
             this.btn_Snimi.TabIndex = 15;
             this.btn_Snimi.Text = "Snimi";
-            this.btn_Snimi.UseVisualStyleBackColor = true;
+            this.btn_Snimi.UseVisualStyleBackColor = false;
             this.btn_Snimi.Click += new System.EventHandler(this.btn_Snimi_Click);
             // 
             // lbl_brKrevetaError
@@ -220,6 +238,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.CancelButton = this.btn_Nazad;
             this.ClientSize = new System.Drawing.Size(336, 268);
             this.Controls.Add(this.lbl_OpisErr);

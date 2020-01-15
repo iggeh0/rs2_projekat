@@ -270,7 +270,7 @@ namespace RS2_Booking.WebAPI.Services
             KorisnikModel k = new KorisnikModel
             {
                 OK = false,
-                Poruka = "Korisnik nije pronađen"
+                Poruka = "Neispravno korisničko ime ili lozinka"
             };
             return k;
         }

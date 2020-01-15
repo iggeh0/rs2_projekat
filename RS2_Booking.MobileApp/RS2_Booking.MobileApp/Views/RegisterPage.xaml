@@ -7,36 +7,37 @@
         <ViewModels:RegisterVM></ViewModels:RegisterVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Ime:" HorizontalOptions="Center">
+        <ScrollView>
+        <StackLayout BackgroundColor="DodgerBlue">
+            <Label Text="Ime:" HorizontalOptions="Center" TextColor="White" />
+            <Entry  BackgroundColor="DodgerBlue" TextColor="White" Text="{Binding Ime}"></Entry>
+            <Label  TextColor="White" Text="Prezime:" HorizontalOptions="Center">
             </Label>
-            <Entry Text="{Binding Ime}"></Entry>
-            <Label Text="Prezime:" HorizontalOptions="Center">
+                <Entry  BackgroundColor="DodgerBlue" TextColor="White" Text="{Binding Prezime}"></Entry>
+            <Label  TextColor="White" Text="JMBG:" HorizontalOptions="Center">
             </Label>
-            <Entry Text="{Binding Prezime}"></Entry>
-            <Label Text="JMBG:" HorizontalOptions="Center">
+                <Entry  BackgroundColor="DodgerBlue" TextColor="White" Text="{Binding JMBG}"></Entry>
+            <Label  TextColor="White" Text="Broj Telefona:" HorizontalOptions="Center">
             </Label>
-            <Entry Text="{Binding JMBG}"></Entry>
-            <Label Text="Broj Telefona:" HorizontalOptions="Center">
+                <Entry  BackgroundColor="DodgerBlue" TextColor="White" Text="{Binding BrojTelefona}"></Entry>
+            <Label  TextColor="White" Text="Datum Rođenja:" HorizontalOptions="Center">
             </Label>
-            <Entry Text="{Binding BrojTelefona}"></Entry>
-            <Label Text="Datum Rođenja:" HorizontalOptions="Center">
+            <DatePicker Date="{Binding DatumRodjenja}" HorizontalOptions="Center"  TextColor="White" BackgroundColor="DodgerBlue"></DatePicker>
+            <Label  TextColor="White" Text="E-Mail:" HorizontalOptions="Center">
             </Label>
-            <DatePicker Date="{Binding DatumRodjenja}" HorizontalOptions="Center"></DatePicker>
-            <Label Text="E-Mail:" HorizontalOptions="Center">
+                <Entry  BackgroundColor="DodgerBlue" TextColor="White" Text="{Binding Email}"></Entry>
+                <Label  BackgroundColor="DodgerBlue" TextColor="White" Text="Korisničko Ime:" HorizontalOptions="Center">
             </Label>
-            <Entry Text="{Binding Email}"></Entry>
-            <Label Text="Korisničko Ime:" HorizontalOptions="Center">
+                <Entry  BackgroundColor="DodgerBlue" TextColor="White" Text="{Binding KorisnickoIme}"></Entry>
+            <Label  TextColor="White" Text="Lozinka:" HorizontalOptions="Center">
             </Label>
-            <Entry Text="{Binding KorisnickoIme}"></Entry>
-            <Label Text="Lozinka:" HorizontalOptions="Center">
+                <Entry  BackgroundColor="DodgerBlue" TextColor="White" Text="{Binding Sifra}"></Entry>
+            <Label  TextColor="White" Text="Lozinka Ponovo:" HorizontalOptions="Center">
             </Label>
-            <Entry Text="{Binding Sifra}"></Entry>
-            <Label Text="Lozinka Ponovo:" HorizontalOptions="Center">
-            </Label>
-            <Entry Text="{Binding SifraPonovo}"></Entry>
-            <Button Command="{Binding RegisterCommand}" Text="Potvrdi izmjene"></Button>
-            <Button Text="Nazad" Clicked="Button_Clicked"></Button>
+                <Entry  BackgroundColor="DodgerBlue" TextColor="White" Text="{Binding SifraPonovo}"></Entry>
+            <Button Command="{Binding RegisterCommand}" Text="Potvrdi izmjene" BackgroundColor="Green" TextColor="White"></Button>
+            <Button Text="Nazad" Clicked="Button_Clicked" BackgroundColor="Red" TextColor="White"></Button>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -69,6 +69,10 @@ namespace RS2_Booking.Izdavac.WinUI
                         Hide();
                     }
                 }
+                else
+                {
+                    MessageBox.Show(k.Poruka);
+                }
             }
             catch (Exception ex)
             {

@@ -99,6 +99,7 @@
             // lbl_Naziv
             // 
             this.lbl_Naziv.AutoSize = true;
+            this.lbl_Naziv.ForeColor = System.Drawing.Color.White;
             this.lbl_Naziv.Location = new System.Drawing.Point(54, 36);
             this.lbl_Naziv.Name = "lbl_Naziv";
             this.lbl_Naziv.Size = new System.Drawing.Size(34, 13);
@@ -108,6 +109,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(54, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 13);
@@ -117,6 +119,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(57, 84);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
@@ -126,6 +129,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(57, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 13);
@@ -143,6 +147,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(54, 213);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
@@ -152,6 +157,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(54, 242);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 13);
@@ -161,6 +167,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(54, 268);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 13);
@@ -169,28 +176,40 @@
             // 
             // btn_Dodaj
             // 
+            this.btn_Dodaj.BackColor = System.Drawing.Color.Green;
+            this.btn_Dodaj.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btn_Dodaj.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btn_Dodaj.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btn_Dodaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Dodaj.ForeColor = System.Drawing.Color.White;
             this.btn_Dodaj.Location = new System.Drawing.Point(246, 307);
             this.btn_Dodaj.Name = "btn_Dodaj";
             this.btn_Dodaj.Size = new System.Drawing.Size(75, 23);
             this.btn_Dodaj.TabIndex = 16;
             this.btn_Dodaj.Text = "Dodaj";
-            this.btn_Dodaj.UseVisualStyleBackColor = true;
+            this.btn_Dodaj.UseVisualStyleBackColor = false;
             this.btn_Dodaj.Click += new System.EventHandler(this.btn_Dodaj_Click);
             // 
             // btn_Nazad
             // 
+            this.btn_Nazad.BackColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btn_Nazad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Nazad.ForeColor = System.Drawing.Color.White;
             this.btn_Nazad.Location = new System.Drawing.Point(246, 337);
             this.btn_Nazad.Name = "btn_Nazad";
             this.btn_Nazad.Size = new System.Drawing.Size(75, 23);
             this.btn_Nazad.TabIndex = 17;
             this.btn_Nazad.Text = "Nazad";
-            this.btn_Nazad.UseVisualStyleBackColor = true;
+            this.btn_Nazad.UseVisualStyleBackColor = false;
             this.btn_Nazad.Click += new System.EventHandler(this.btn_Nazad_Click);
             // 
             // lbl_NazivErr
             // 
             this.lbl_NazivErr.AutoSize = true;
-            this.lbl_NazivErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_NazivErr.ForeColor = System.Drawing.Color.Firebrick;
             this.lbl_NazivErr.Location = new System.Drawing.Point(404, 35);
             this.lbl_NazivErr.Name = "lbl_NazivErr";
             this.lbl_NazivErr.Size = new System.Drawing.Size(35, 13);
@@ -201,7 +220,7 @@
             // lbl_UdaljenostErr
             // 
             this.lbl_UdaljenostErr.AutoSize = true;
-            this.lbl_UdaljenostErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_UdaljenostErr.ForeColor = System.Drawing.Color.Firebrick;
             this.lbl_UdaljenostErr.Location = new System.Drawing.Point(404, 64);
             this.lbl_UdaljenostErr.Name = "lbl_UdaljenostErr";
             this.lbl_UdaljenostErr.Size = new System.Drawing.Size(35, 13);
@@ -212,7 +231,7 @@
             // lbl_GradErr
             // 
             this.lbl_GradErr.AutoSize = true;
-            this.lbl_GradErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_GradErr.ForeColor = System.Drawing.Color.Firebrick;
             this.lbl_GradErr.Location = new System.Drawing.Point(404, 90);
             this.lbl_GradErr.Name = "lbl_GradErr";
             this.lbl_GradErr.Size = new System.Drawing.Size(35, 13);
@@ -223,7 +242,7 @@
             // lbl_OpisErr
             // 
             this.lbl_OpisErr.AutoSize = true;
-            this.lbl_OpisErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_OpisErr.ForeColor = System.Drawing.Color.Firebrick;
             this.lbl_OpisErr.Location = new System.Drawing.Point(403, 117);
             this.lbl_OpisErr.Name = "lbl_OpisErr";
             this.lbl_OpisErr.Size = new System.Drawing.Size(41, 13);
@@ -234,7 +253,7 @@
             // lbl_AdresaErr
             // 
             this.lbl_AdresaErr.AutoSize = true;
-            this.lbl_AdresaErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_AdresaErr.ForeColor = System.Drawing.Color.Firebrick;
             this.lbl_AdresaErr.Location = new System.Drawing.Point(404, 216);
             this.lbl_AdresaErr.Name = "lbl_AdresaErr";
             this.lbl_AdresaErr.Size = new System.Drawing.Size(41, 13);
@@ -245,7 +264,7 @@
             // lbl_TelefonErr
             // 
             this.lbl_TelefonErr.AutoSize = true;
-            this.lbl_TelefonErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_TelefonErr.ForeColor = System.Drawing.Color.Firebrick;
             this.lbl_TelefonErr.Location = new System.Drawing.Point(404, 245);
             this.lbl_TelefonErr.Name = "lbl_TelefonErr";
             this.lbl_TelefonErr.Size = new System.Drawing.Size(41, 13);
@@ -256,7 +275,7 @@
             // lbl_EmailErr
             // 
             this.lbl_EmailErr.AutoSize = true;
-            this.lbl_EmailErr.ForeColor = System.Drawing.Color.Red;
+            this.lbl_EmailErr.ForeColor = System.Drawing.Color.Firebrick;
             this.lbl_EmailErr.Location = new System.Drawing.Point(404, 271);
             this.lbl_EmailErr.Name = "lbl_EmailErr";
             this.lbl_EmailErr.Size = new System.Drawing.Size(41, 13);
@@ -268,6 +287,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.ClientSize = new System.Drawing.Size(473, 384);
             this.Controls.Add(this.lbl_EmailErr);
             this.Controls.Add(this.lbl_TelefonErr);

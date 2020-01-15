@@ -39,8 +39,6 @@ namespace RS2_Booking.MobileApp.ViewModels
             IsBusy = true;
             API_Service_Mobile.Username = Username;
             API_Service_Mobile.Password = Password;
-            try
-            {
                 LoginRequest request = new LoginRequest
                 {
                     KorisnickoIme = Username,
@@ -52,13 +50,15 @@ namespace RS2_Booking.MobileApp.ViewModels
                 if (k.OK)
                 {
                     Application.Current.MainPage = new MainPage(k);
+                    
+                }
+                else
+                {
+                   await Application.Current.MainPage.DisplayAlert("Greška", k.Poruka, "OK");
                 }
 
             }
-            catch(Exception ex)
-            {
 
-            }
         }
     }
-}
+

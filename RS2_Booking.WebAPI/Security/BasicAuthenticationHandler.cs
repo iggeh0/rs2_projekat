@@ -52,7 +52,7 @@ namespace RS2_Booking.WebAPI.Security
                 return AuthenticateResult.Fail("Invalid Authorization Header");
             }
 
-            if (user == null)
+            if (user.OK == false)
                 return AuthenticateResult.Fail("Invalid Username or Password");
 
             var claims = new List<Claim> {

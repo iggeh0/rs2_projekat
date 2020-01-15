@@ -41,6 +41,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Location = new System.Drawing.Point(30, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
@@ -65,6 +66,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label2.Location = new System.Drawing.Point(30, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
@@ -81,27 +83,40 @@
             // 
             // btn_Login
             // 
+            this.btn_Login.BackColor = System.Drawing.Color.Green;
+            this.btn_Login.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btn_Login.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btn_Login.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btn_Login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Login.ForeColor = System.Drawing.Color.White;
             this.btn_Login.Location = new System.Drawing.Point(115, 106);
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(75, 23);
             this.btn_Login.TabIndex = 5;
             this.btn_Login.Text = "Login";
-            this.btn_Login.UseVisualStyleBackColor = true;
+            this.btn_Login.UseVisualStyleBackColor = false;
             this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
             // btn_Registracija
             // 
+            this.btn_Registracija.BackColor = System.Drawing.Color.SeaGreen;
+            this.btn_Registracija.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btn_Registracija.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btn_Registracija.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SeaGreen;
+            this.btn_Registracija.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Registracija.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_Registracija.Location = new System.Drawing.Point(115, 136);
             this.btn_Registracija.Name = "btn_Registracija";
             this.btn_Registracija.Size = new System.Drawing.Size(75, 23);
             this.btn_Registracija.TabIndex = 6;
             this.btn_Registracija.Text = "Registracija";
-            this.btn_Registracija.UseVisualStyleBackColor = true;
+            this.btn_Registracija.UseVisualStyleBackColor = false;
             this.btn_Registracija.Click += new System.EventHandler(this.btn_Registracija_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label3.Location = new System.Drawing.Point(33, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
@@ -113,6 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(305, 176);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_Registracija);
